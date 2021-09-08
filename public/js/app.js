@@ -49724,8 +49724,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp7.3.27.0\htdocs\GoTemplate\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp7.3.27.0\htdocs\GoTemplate\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp7.3.27.0\htdocs\gotemplate_v2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp7.3.27.0\htdocs\gotemplate_v2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

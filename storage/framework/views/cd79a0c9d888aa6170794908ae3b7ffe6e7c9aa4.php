@@ -50,67 +50,68 @@ if(isset($isShopList) && $isShopList) {
 
 ?>
 
-<div class="card {{$classNames?$classNames:""}}{{$listItemClasses?$listItemClasses:""}} my-3 border-none bg-transparent " data-price="{{ $item->regular_price }}">
+<div class="card <?php echo e($classNames?$classNames:""); ?><?php echo e($listItemClasses?$listItemClasses:""); ?> my-3 border-none bg-transparent " data-price="<?php echo e($item->regular_price); ?>">
     <div class="custom-card <?php echo $flexColumnBetween; ?>" style="<?php echo $cardStyle; ?>">
         <div class="custom-card__header <?php echo $headerClasses; ?>">
-            <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" title="{{ $item->item_name }}">
-                @if($item->item_thumbnail!='')
-                    <img style="<?php echo $imgStyle; ?>"  src="{{ url('/') }}/public/storage/items/{{ $item->item_thumbnail }}" alt="{{ $item->item_name }}">
-                @else
-                    <img style="<?php echo $imgStyle; ?>" src="{{ url('/') }}/public/img/no-image.jpg" alt="{{ $item->item_name }}">
-                @endif
+            <a href="<?php echo e(URL::to('/item')); ?>/<?php echo e($item->item_slug); ?>/<?php echo e($item->item_id); ?>" title="<?php echo e($item->item_name); ?>">
+                <?php if($item->item_thumbnail!=''): ?>
+                    <img style="<?php echo $imgStyle; ?>"  src="<?php echo e(url('/')); ?>/public/storage/items/<?php echo e($item->item_thumbnail); ?>" alt="<?php echo e($item->item_name); ?>">
+                <?php else: ?>
+                    <img style="<?php echo $imgStyle; ?>" src="<?php echo e(url('/')); ?>/public/img/no-image.jpg" alt="<?php echo e($item->item_name); ?>">
+                <?php endif; ?>
             </a>
 
             <a
                 class="item-type"
                 data-toggle="tooltip"
                 data-placement="top"
-                title="{{$item->item_type}}"
-                href="{{ URL::to('/shop') }}/item-type/{{ $item->item_type }}"
+                title="<?php echo e($item->item_type); ?>"
+                href="<?php echo e(URL::to('/shop')); ?>/item-type/<?php echo e($item->item_type); ?>"
             >
-                {{$item->item_type}}
+                <?php echo e($item->item_type); ?>
+
             </a>
 
-            @if(isset($isLike) && $isLike)
+            <?php if(isset($isLike) && $isLike): ?>
                 <a
-                    href="{{ route('item.liked.remove',[base64_encode($item->like_id),base64_encode($item->item_id)]) }}"
+                    href="<?php echo e(route('item.liked.remove',[base64_encode($item->like_id),base64_encode($item->item_id)])); ?>"
                     id="drop1"
                     class="dropdown-trigger like-item-remove"
                     onClick="return confirm('Are you sure you want to remove from likes?');"
                 >
                     <span class="lnr lnr-trash setting-icon"></span>
                 </a>
-            @endif
+            <?php endif; ?>
 
-            @if(isset($isFavorite) && $isFavorite)
+            <?php if(isset($isFavorite) && $isFavorite): ?>
                 <a
-                    href="{{ url('/favourites') }}/{{ base64_encode($item->fav_id) }}/{{ base64_encode($item->item_id) }}"
+                    href="<?php echo e(url('/favourites')); ?>/<?php echo e(base64_encode($item->fav_id)); ?>/<?php echo e(base64_encode($item->item_id)); ?>"
                     id="drop1"
                     class="dropdown-trigger favourite-item-remove"
-                    onClick="return confirm('{{ Helper::translation(2991,$translate) }}');"
+                    onClick="return confirm('<?php echo e(Helper::translation(2991,$translate)); ?>');"
                 >
                     <span class="lnr lnr-trash setting-icon"></span>
                 </a>
-            @endif
+            <?php endif; ?>
 
         <!-- =Future: need to implement tags like as popular, best seller -->
             <div style="<?php echo $tagStyle; ?>" class="custom-tag text-truncate">
                 Best Seller
             </div>
-            {{--start favourite custom code--}}
-            @if (Auth::check())
-                @if($item->user_id != Auth::user()->id)
+            
+            <?php if(Auth::check()): ?>
+                <?php if($item->user_id != Auth::user()->id): ?>
                     <a
-                        href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}"
-                        class="favourite flex-center {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
+                        href="<?php echo e(url('/item')); ?>/<?php echo e(base64_encode($item->item_id)); ?>/favorite/<?php echo e(base64_encode($item->item_liked)); ?>"
+                        class="favourite flex-center <?php echo e((\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''); ?>"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Add to Favourite"
                     >
                         <i class="fa fa-heart-o"></i>
                     </a>
-                @endif
-            @else
+                <?php endif; ?>
+            <?php else: ?>
                 <a
                     href="javascript:void(0);"
                     class="favourite flex-center"
@@ -121,46 +122,46 @@ if(isset($isShopList) && $isShopList) {
                 >
                     <i class="fa fa-heart-o"></i>
                 </a>
-            @endif
-            {{--end favourite custom code--}}
+            <?php endif; ?>
+            
         </div>
 
         <div class="custom-card__body <?php echo $bodyClasses; ?>">
-            <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" title="{{ $item->item_name }}">
-                <p class="product-title">{{$item->item_name}}</p>
+            <a href="<?php echo e(URL::to('/item')); ?>/<?php echo e($item->item_slug); ?>/<?php echo e($item->item_id); ?>" title="<?php echo e($item->item_name); ?>">
+                <p class="product-title"><?php echo e($item->item_name); ?></p>
             </a>
 
             <p class="author-name">
-                {{-- <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo?$item->user_photo:$item->user->user_photo }}" alt="{{ $item->username}}" /> --}}
-                <a href="{{ URL::to('/user') }}/{{ $item->username }}">{{ $item->username }}</a>
+                
+                <a href="<?php echo e(URL::to('/user')); ?>/<?php echo e($item->username); ?>"><?php echo e($item->username); ?></a>
             </p>
 
             <div class="details-info flex-row-between align-items-center">
                 <div>
                     <!-- =Future: currency should show according to setting's currency -->
-                    <p class="price">{{$item->free_download ? "FREE" : "BDT ".$item->regular_price}}</p>
+                    <p class="price"><?php echo e($item->free_download ? "FREE" : "BDT ".$item->regular_price); ?></p>
 
-                    @include('rating_star', ['ratings' => isset($item->ratings) ? $item->ratings : []])
+                    <?php echo $__env->make('rating_star', ['ratings' => isset($item->ratings) ? $item->ratings : []], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                    <p class="sells-count">{{$item->item_sold}} Sales</p>
+                    <p class="sells-count"><?php echo e($item->item_sold); ?> Sales</p>
                 </div>
 
                 <div class="icons-container">
 
-                    {{--like custom code--}}
-                    @if (Auth::check())
-                        @if($item->user_id != Auth::user()->id)
+                    
+                    <?php if(Auth::check()): ?>
+                        <?php if($item->user_id != Auth::user()->id): ?>
                             <a
-                                href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}"
-                                class="icon-holder {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like item-thumbs-up':''}}"
+                                href="<?php echo e(route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)])); ?>"
+                                class="icon-holder <?php echo e((\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like item-thumbs-up':''); ?>"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 title="Like This Product"
                             >
                                 <i class="fa fa-thumbs-o-up"></i>
                             </a>
-                        @endif
-                    @else
+                        <?php endif; ?>
+                    <?php else: ?>
                         <a
                             href="javascript:void(0);"
                             class="icon-holder"
@@ -171,8 +172,8 @@ if(isset($isShopList) && $isShopList) {
                         >
                             <i class="fa fa-thumbs-o-up"></i>
                         </a>
-                    @endif
-                    {{--end like custom code--}}
+                    <?php endif; ?>
+                    
 
                     <span
                         class="icon-holder"
@@ -188,10 +189,10 @@ if(isset($isShopList) && $isShopList) {
                         data-target="#videoModal"
                         data-toggle="modal"
                         data-placement="center"
-                        data-preview-type="{{$item->video_preview_type}}"
-                        data-video-url="{{$item->video_url}}"
-                        data-video-file="{{$item->video_file}}"
-                        data-item-preview="{{$item->item_preview}}"
+                        data-preview-type="<?php echo e($item->video_preview_type); ?>"
+                        data-video-url="<?php echo e($item->video_url); ?>"
+                        data-video-file="<?php echo e($item->video_file); ?>"
+                        data-item-preview="<?php echo e($item->item_preview); ?>"
                     >
                         <i
                             class="fa fa-video-camera"
@@ -203,38 +204,39 @@ if(isset($isShopList) && $isShopList) {
                 </div>
             </div>
 
-            @if($footerInBody)
+            <?php if($footerInBody): ?>
                 <a
                     class="custom-card__footer"
                     style="margin-top: 10px; border-radius: 3px; display: block;"
-                    href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}"
-                    title="{{ $item->item_name }}"
+                    href="<?php echo e(URL::to('/item')); ?>/<?php echo e($item->item_slug); ?>/<?php echo e($item->item_id); ?>"
+                    title="<?php echo e($item->item_name); ?>"
                 >
                     BUY NOW
                 </a>
-            @endif
+            <?php endif; ?>
         </div>
 
-        {{-- shop-list --}}
-        <span class="new-items display-none">{{ $item->item_id }}</span>
-        <span class="popular-items display-none">{{ $item->item_liked }}</span>
-        <span class="free-items display-none">{{ $item->free_download }}</span>
+        
+        <span class="new-items display-none"><?php echo e($item->item_id); ?></span>
+        <span class="popular-items display-none"><?php echo e($item->item_liked); ?></span>
+        <span class="free-items display-none"><?php echo e($item->free_download); ?></span>
 
 
-        <span class="{{ $item->item_type }}" style="display:none;">{{ $item->item_type }}</span>
+        <span class="<?php echo e($item->item_type); ?>" style="display:none;"><?php echo e($item->item_type); ?></span>
 
         <div class="block">
-            <span class="{{ $item->item_type }} display-none">{{ $item->item_type }}_{{ $item->item_category_type }}</span>
+            <span class="<?php echo e($item->item_type); ?> display-none"><?php echo e($item->item_type); ?>_<?php echo e($item->item_category_type); ?></span>
         </div>
 
-        @if(!$footerInBody)
+        <?php if(!$footerInBody): ?>
             <a
                 class="custom-card__footer"
-                href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}"
-                title="{{ $item->item_name }}"
+                href="<?php echo e(URL::to('/item')); ?>/<?php echo e($item->item_slug); ?>/<?php echo e($item->item_id); ?>"
+                title="<?php echo e($item->item_name); ?>"
             >
                 BUY NOW
             </a>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
+<?php /**PATH C:\xampp7.3.27.0\htdocs\gotemplate_v2\resources\views///components/item_card.blade.php ENDPATH**/ ?>

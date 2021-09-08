@@ -15,4 +15,4 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 // For updating preview/output automatically
-mix.browserSync('http://localhost/GoTemplate');
+mix.browserSync('https://localhost/gotemplate_v2/');
