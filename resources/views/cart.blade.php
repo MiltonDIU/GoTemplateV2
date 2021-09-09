@@ -6,7 +6,6 @@
 <head>
     <title>{{ Helper::translation(2885,$translate) }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload cart-page">

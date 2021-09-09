@@ -6,7 +6,6 @@
 <head>
     <title>{{ Helper::translation(3016,$translate) }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload term-condition-page">

@@ -6,7 +6,6 @@
 <head>
     <title>{{ Helper::translation(2910,$translate) }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
     {!! NoCaptcha::renderJs() !!}
 </head>
 

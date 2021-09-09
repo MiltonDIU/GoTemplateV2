@@ -6,7 +6,6 @@
 <head>
     <title>@if(Auth::user()->user_type == 'vendor') {{ Helper::translation(2930,$translate) }} @else {{ Helper::translation(2860,$translate) }} @endif - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload dashboard-statement">

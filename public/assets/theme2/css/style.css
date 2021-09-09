@@ -606,8 +606,7 @@ h1,h2,h3,h4,h5,h6,p{
 
 /* ---------------------------- popular category end ---------------------------- */
 
-/* ---------------------------- Return to Top start ---------------------------- */
-
+/* ---------- Return to Top start --------- */
 #return-to-top {
     position: fixed;
     bottom: 90px;
@@ -635,10 +634,9 @@ h1,h2,h3,h4,h5,h6,p{
 #return-to-top:hover {
     background: #FCA311;
 }
+/* ----------- Return to Top start ----------- */
 
-/* ---------------------------- Return to Top start ---------------------------- */
-
-/* ---------------------------- Messenger start ---------------------------- */
+/* ----------- Messenger start ------------ */
 #messenger{
     position: fixed;
     bottom: 20px;
@@ -648,7 +646,6 @@ h1,h2,h3,h4,h5,h6,p{
     height: 50px;
     border-radius: 50%;
 }
-
 #messenger i{
     color: #fff;
     margin: 0;
@@ -658,155 +655,10 @@ h1,h2,h3,h4,h5,h6,p{
     font-size: 35px;
     transition: all linear .3s;
 }
-
 #messenger:hover i{
     color: #14213D;
 }
-/* ---------------------------- Messenger end ---------------------------- */
-
-/* ---------------------------- Footer start ---------------------------- */
-footer{
-    background-color: #14213D;
-    margin-top: 100px;
-    color: #fff;
-}
-
-footer .footer_main{
-    padding-top: 95px;
-    padding-bottom: 60px;
-}
-
-footer .footer_main .footer_title{
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #FCA311;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-}
-
-footer .footer_main .r_title{
-    font-weight: 400;
-}
-
-footer .footer_main .follow_icons{
-    margin-bottom: 44px;
-}
-
-footer .footer_main .follow_icons a{
-    color: #14213D;
-    margin-right: 11px;
-}
-
-footer .footer_main .follow_icons a:hover i{
-    background-color: #FCA311;
-}
-
-footer .footer_main .follow_icons i{
-    font-size: 16px;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 30px;
-    transition: all linear .3s;
-}
-
-footer .footer_main .contact_us .contact_details{
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-footer .footer_main .contact_us .contact_details i{
-    font-size: 16px;
-    margin-right: 14px;
-}
-
-footer .footer_main .contact_us .contact_details p{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-footer .footer_main .footer_link .all_links a{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: #fff;
-    display: block;
-    margin-bottom: 8px;
-    text-transform: capitalize;
-    transition: all linear .3s;
-}
-
-footer .footer_main .footer_link .all_links a:hover{
-    color: #FCA311;
-}
-
-footer .footer_main .newsletter_details{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 27px;
-    margin-bottom: 38px;
-}
-
-footer .footer_main .newsletter form{
-    position: relative;
-}
-
-footer .footer_main .newsletter .footer_subscribe{
-    border: none;
-    height: 40px;
-    width: 100%;
-    border-radius: 40px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    padding-left: 14px;
-}
-
-footer .footer_main .newsletter .footer_subscribe:focus{
-    outline:none;
-}
-
-footer .footer_main .newsletter .subscribe_button{
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 40px;
-    border-radius: 0 40px 40px 0;
-    border: none;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 0 14px 0 10px;
-    background-color: #FCA311;
-    color: #14213D;
-    transition: all linear .3s;
-}
-
-footer .footer_main .newsletter .subscribe_button:hover{
-    color: #fff;
-}
-
-footer .footer_copyright{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    background-color: #000;
-    color: #c7c7c7;
-    padding: 25px 0;
-}
-
-footer .footer_copyright .c_link{
-    color: #FCA311;
-}
-
-/* ---------------------------- Footer end ---------------------------- */
+/* ------------- Messenger end ------------ */
 
 
 /* ======================================================================

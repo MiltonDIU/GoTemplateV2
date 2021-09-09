@@ -6,7 +6,6 @@
 <head>
     <title>{{ Helper::translation(3178,$translate) }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload category-list-page">

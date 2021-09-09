@@ -6,7 +6,6 @@
 <head>
     <title>{{ __('Reset Password') }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload home1 mutlti-vendor">

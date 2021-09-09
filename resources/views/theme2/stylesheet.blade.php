@@ -3,9 +3,9 @@
   <link rel="shortcut icon" href="{{ url('/') }}/public/storage/settings/{{ $allsettings->site_favicon }}">
 @endif
 
-<link rel="stylesheet" href="public/assets/theme2/css/all.min.css">
-<link rel="stylesheet" href="public/assets/theme2/css/bootstrap.min.css">
-<link rel="stylesheet" href="public/assets/theme2/css/slick.css">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/css/animate.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/css/jquery-ui.css') }}">
@@ -26,11 +26,9 @@
 
 
 <link rel="stylesheet" href="{{ asset('resources/views/static-style.css') }}">
-<link rel="stylesheet" href="public/assets/theme2/css/style.css">
-<link rel="stylesheet" href="public/assets/theme2/css/header.css">
-
-
-<!-- views styles -->
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/header.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/footer.css') }}">
 <link rel="stylesheet" href="{{ asset('resources/views/css/item-card.css') }}">
 <link rel="stylesheet" href="{{ asset('resources/views/css/item.css') }}">
 

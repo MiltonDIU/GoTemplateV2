@@ -6,7 +6,6 @@
 <head>
     <title>{{ __('Forgot Your Password') }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload recover-pass-page">

@@ -6,7 +6,6 @@
 <head>
     <title>{{ $item['item']->item_name }} - {{ $allsettings->site_title }}</title>
     @include('stylesheet')
-    @include('dynamic-style')
 </head>
 
 <body class="preload single_prduct2">
