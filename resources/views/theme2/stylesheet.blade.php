@@ -25,10 +25,13 @@
 <link rel="stylesheet" href="{{ asset('resources/views/admin/template/dragdrop/css/jquery.filer.css') }}" >
 
 
-<link rel="stylesheet" href="{{ asset('resources/views/static-style.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/static-style.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/header.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/banner.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/footer.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/responsive.css') }}">
+
 <link rel="stylesheet" href="{{ asset('resources/views/css/item-card.css') }}">
 <link rel="stylesheet" href="{{ asset('resources/views/css/item.css') }}">
 
