@@ -90,7 +90,8 @@ class CommonController extends Controller {
 		//SitemapGenerator::create(URL::to('/'))->writeToFile('sitemap.xml');
 
 
-		return view('index')->with($data);
+		// return view('index')->with($data);
+		return view('theme2.index', compact('data'));
 	}
 
 	public function payment_cancel() {

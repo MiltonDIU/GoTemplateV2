@@ -1,0 +1,1 @@
+@extends('theme2.layout.master')

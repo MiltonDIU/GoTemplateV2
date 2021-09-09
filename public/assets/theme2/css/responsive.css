@@ -1,0 +1,130 @@
+
+
+@media (min-width:320px) and (max-width:575px){
+
+    /* ----------------------------- Home page start ----------------------------- */
+    
+    .top_menu{
+        justify-content: space-evenly;
+        margin-left: 0;
+    }
+    
+    .top_menu li a{
+        font-size: 13px;
+    }
+    
+    .navbar .navbar-brand img{
+        height: 25px;
+    }
+
+    .navbar .nav_sign a{
+        font-size: 14px;
+    }
+
+    #banner .banner_main_heading{
+        padding-top: 70px;
+    }
+
+    #banner h1{
+        font-size: 15px;
+        margin-bottom: 22px;
+    }
+
+    #banner .search_box{
+        margin: 0 10px;
+        padding: 11px 16px;
+    }
+
+    #banner .banner_example{
+        padding-bottom: 70px;
+    }
+
+    #banner .banner_example h6{
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    .main_category li{
+        padding-bottom: 30px;
+    }
+
+    .category_button {
+        font-size: 13px;
+        margin: 0 8px;
+    }
+
+    .title {
+        text-align: center;
+        padding-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    #premium_member{
+        margin-top: 50px;
+    }
+
+    #premium_member .counter_main {
+        padding-top: 60px;
+        padding-bottom: 33px;
+    }
+
+    #premium_member h3 {
+        font-size: 25px;
+    }
+
+    #premium_member .counter_number p {
+        font-size: 14px;
+        padding-top: 8px;
+    }
+
+    #premium_member .counter_number {
+        margin-bottom: 30px;
+    }
+
+    #premium_member .member_action .action_button a {
+        padding: 17px 20px;
+        font-size: 15px;
+    }
+
+    #premium_member .member_action .member_text p {
+        font-size: 13px;
+    }
+
+    #premium_member .member_action {
+        padding-bottom: 50px;
+    }
+
+    #popular_category .popular_why h4 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #popular_category .popular_why p {
+        text-align: center;
+    }
+
+    #popular_category .popular_why .popular_details {
+        padding-right: 0;
+        padding-left: 50px;
+    }
+
+    #popular_category .popular_why .popular_details_box{
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    #popular_category .popular_why .popular_text h5 {
+        padding-top: 0;
+        padding-left: 15px;
+    }
+
+    #popular_category .popular_why .popular_icons i {
+        font-size: 21px;
+    }
+
+
+
+    /* ----------------------------- Home page end ----------------------------- */
+}
+
