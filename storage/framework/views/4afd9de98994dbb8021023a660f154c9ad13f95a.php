@@ -5,7 +5,6 @@
 <head>
     <title><?php echo e(Helper::translation(3225,$translate)); ?> - <?php echo e($allsettings->site_title); ?></title>
     <?php echo $__env->make('stylesheet', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->make('dynamic-style', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>
 
 <body class="preload home1 mutlti-vendor">

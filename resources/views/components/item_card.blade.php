@@ -97,6 +97,7 @@ if(isset($isShopList) && $isShopList) {
             <div style="<?php echo $tagStyle; ?>" class="custom-tag text-truncate">
                 Best Seller
             </div>
+            
             {{--start favourite custom code--}}
             @if (Auth::check())
                 @if($item->user_id != Auth::user()->id)

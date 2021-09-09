@@ -20459,15 +20459,7 @@ h4 {
     }
 }
 
-.item-active-like{
-    background-color: #EE6055 !important;
-}
-.item-active-like:hover{
-    background-color: #EE6055;
-}
-.item-active-like:hover i{
-    color: #fff !important;
-}
+
 .item-thumbs-up {
     border: 1px solid #ee6055 !important;
 }

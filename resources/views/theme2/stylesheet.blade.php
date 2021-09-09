@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/banner.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/footer.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 
 <link rel="stylesheet" href="{{ asset('resources/views/css/item-card.css') }}">
 <link rel="stylesheet" href="{{ asset('resources/views/css/item.css') }}">
