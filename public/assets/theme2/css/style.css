@@ -18,17 +18,18 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 
-
-
-/* ---------------------------- category start ---------------------------- */
-.main_category{
+/*------------- category start --------------*/
+#category .main_category {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    margin: 50px 0 10px 0;
+    justify-content: center;
+    margin-top: 50px;
 }
-
-.category_button{
+#category .main_category li {
+    display: flex;
+    margin-bottom: 10px;
+}
+#category .category_button {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -40,12 +41,12 @@ h1,h2,h3,h4,h5,h6,p{
     transition: all linear .3s;
     cursor: pointer;
 }
-
-.category_button:hover{
+#category .category_button:hover {
     background-color: #FCA311;
     color: #14213D;
 }
-/* ---------------------------- category end ---------------------------- */
+/*---------------- category end ---------------*/
+
 
 /* ---------------------------- section title start ---------------------------- */
 .title{
