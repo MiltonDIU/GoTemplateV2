@@ -66,4 +66,10 @@
   <!-- latest item end -->
 
 
+  @include('theme2.layout.insights', [
+    "totalearning" => $data['totalearning'],
+    "totalfiles"   => $data['totalfiles'],
+    "totalsales"   => $data['totalsales'],
+    "totalmembers" => $data['totalmembers']
+  ])
 @endsection
