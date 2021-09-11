@@ -72,4 +72,20 @@
     "totalsales"   => $data['totalsales'],
     "totalmembers" => $data['totalmembers']
   ])
+
+
+  <!-- start popular category -->
+  <section id="popular_category">
+    <div class="container">
+      <div class="title">
+        <h2 class="section_title">Popular Categories<span><a href="#">See All</a></span></h2>
+      </div>
+
+      <div class="row">
+        @include('theme2.layout.why_choose')
+        @include('theme2.layout.popular_category')
+      </div>
+    </div>
+  </section>
+  <!-- end popular category -->
 @endsection
