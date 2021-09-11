@@ -107,17 +107,26 @@
         <div class="item_author_img">
           <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo?$item->user_photo:$item->user->user_photo }}" alt="{{ $item->username}}">
         </div>
-        <a href="{{ URL::to('/user') }}/{{ $item->username }}">{{ $item->username }}</a>
+        <a 
+          class="text-truncate" 
+          style="max-width: 85px;" 
+          href="{{ URL::to('/user') }}/{{ $item->username }}"
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{{ $item->username }}"
+        >
+          {{ $item->username }}
+        </a>
       </div>
       <div class="item_bottom_icons">
-        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add to Cart" class="item_bottom_cart">
+        <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart">
           <i class="fa fa-cart-plus"></i>
         </a>
-        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Downloads">
-          <i class="fa fa-download"></i>{{$item->item_sold}}
+        <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads">
+          <i class="fa fa-download"></i>{{ $item->item_sold }}
         </a>
-        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes">
-          <i class="fa fa-heart"></i>300
+        <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes">
+          <i class="fa fa-heart"></i>{{ $item->liked }}
         </a>
       </div>
     </div>
