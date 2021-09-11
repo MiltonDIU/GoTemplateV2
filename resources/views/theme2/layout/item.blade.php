@@ -30,7 +30,7 @@
             @if($item->user_id != Auth::user()->id)
               <a 
                 href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}" 
-                class="item_icons {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
+                class="item_icons {{(\Feberr\Models\Items::getfavouriteCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
                 data-bs-toggle="tooltip" 
                 data-bs-placement="left" 
                 title="Save"
@@ -43,6 +43,27 @@
                 data-bs-placement="left" 
                 title="Like" 
                 class="item_icons {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
+              >
+                <i class="fas fa-heart"></i>
+              </a>
+            @else
+              <a 
+                href="javascript:void(0);" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Save" 
+                class="item_icons"
+                onClick="alert(`You can't save your own item!`)"
+              >
+                <i class="fas fa-folder-plus"></i>
+              </a>
+              <a 
+                href="javascript:void(0);" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Like" 
+                class="item_icons"
+                onClick="alert(`You can't like your own item!`)"
               >
                 <i class="fas fa-heart"></i>
               </a>
