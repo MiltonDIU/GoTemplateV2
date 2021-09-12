@@ -152,56 +152,47 @@ class Members extends Model
 	
 	
 	/* edit profile */
-	
-	
-  
-  
-  public static function editprofileData($token){
+  public static function editprofileData($token) {
     $value = DB::table('users')
-      ->where('id', 1)
+      ->where('id', $token)
       ->first();
-	return $value;
+	  return $value;
   }
   
-  
-  public static function editUser($slug){
+  public static function editUser($slug) {
     $value = DB::table('users')
       ->where('username', $slug)
       ->first();
-	return $value;
+	  return $value;
   }
   
-  public static function getInuser($slug){
+  public static function getInuser($slug) {
     $value = DB::table('users')
       ->where('username', $slug)
-	  ->where('drop_status', 'no')
+	    ->where('drop_status', 'no')
       ->first();
-	return $value;
+	  return $value;
   }
   
-  public static function adminData(){
+  public static function adminData() {
     $value = DB::table('users')
       ->where('id', 1)
       ->first();
-	return $value;
+	  return $value;
   }
   
-  
-  public static function updateprofileData($token,$data){
+  public static function updateprofileData($token,$data) {
     DB::table('users')
       ->where('id', 1)
       ->update($data);
   }
   
-  
-  public static function droprofilePhoto($token)
-  {
-     $image = DB::table('users')->where('id', 1)->first();
-        $file= $image->user_photo;
-        $filename = public_path().'/storage/users/'.$file;
-        File::delete($filename);
+  public static function droprofilePhoto($token) {
+    $image = DB::table('users')->where('id', 1)->first();
+    $file= $image->user_photo;
+    $filename = public_path().'/storage/users/'.$file;
+    File::delete($filename);
   }
-	
 	/* edit profile */
 	
 	
