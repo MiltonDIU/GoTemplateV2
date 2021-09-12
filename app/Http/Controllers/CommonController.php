@@ -31,7 +31,7 @@ class CommonController extends Controller {
 	public function view_start_selling() {
 		$setting['setting'] = Settings::editSelling();
 		$data = array('setting' => $setting);
-		return view('start-selling')->with($data);
+		return view('theme2.start-selling', compact('data'));
 	}
 
 	public function view_preview($item_slug, $item_id) {
@@ -45,18 +45,17 @@ class CommonController extends Controller {
 	}
 
 	public function view_index() {
-		$blog['data'] = Blog::homeblogData();
-		$comments = Blog::getgroupcommentData();
-		$review['data'] = Items::homereviewsData();
-		$totalmembers = Members::getmemberData();
-		$totalsales = Items::totalsaleitemCount();
-		$totalfiles = Items::totalfileItems();
-		$total['earning'] = Items::totalearningCount();
+		$blog['data']      = Blog::homeblogData();
+		$comments          = Blog::getgroupcommentData();
+		$review['data']    = Items::homereviewsData();
+		$totalmembers      = Members::getmemberData();
+		$totalsales        = Items::totalsaleitemCount();
+		$totalfiles        = Items::totalfileItems();
+		$total['earning']  = Items::totalearningCount();
 		$featured['items'] = Items::featuredItems();
-
-        $populars = Items::orderBy('items.item_sold', 'desc')->where('drop_status','no')->where('item_status','1')->take(8)->get();
-        $flashes = Items::where('item_flash','1')->where('drop_status','no')->where('item_status','1')->orderBy('items.item_sold', 'desc')->take(4)->get();
-		$free['items'] = Items::where('free_download','1')->where('drop_status','no')->where('item_status','1')->get();
+    $populars          = Items::orderBy('items.item_sold', 'desc')->where('drop_status','no')->where('item_status','1')->take(8)->get();
+    $flashes           = Items::where('item_flash','1')->where('drop_status','no')->where('item_status','1')->orderBy('items.item_sold', 'desc')->take(4)->get();
+		$free['items']     = Items::where('free_download','1')->where('drop_status','no')->where('item_status','1')->get();
 
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);

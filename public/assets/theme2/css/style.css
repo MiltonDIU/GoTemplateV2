@@ -1379,41 +1379,41 @@ h1,h2,h3,h4,h5,h6,p{
     color: #14213D;
 }
 
-#payment_breakdown .sale_title_big{
+#payment_breakdown .sale_title_big {
     color: #FCA311;
     padding-top: 60px;
     padding-bottom: 50px;
 }
 
-#payment_breakdown .payment_table{
+#payment_breakdown .payment_table {
     color: #fff;
     padding-bottom: 50px;
     text-align: center;
 }
-
-#payment_breakdown .payment_table thead th{
+#payment_breakdown .payment_table thead th {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.8;
     padding-bottom: 35px;
-    border-bottom-color: rgba(255, 255, 255, .1);
 }
-
-#payment_breakdown .payment_table tbody th,td{
+#payment_breakdown .payment_table tbody th,td {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 2;
+    padding: 12px 0;
+}
+#payment_breakdown .payment_table thead th,
+#payment_breakdown .payment_table tbody tr th, 
+#payment_breakdown .payment_table tbody tr td {
     border-bottom-color: rgba(255, 255, 255, .1);
+}
+#payment_breakdown .payment_table tbody td {
     padding: 12px 0;
 }
 
-#payment_breakdown .payment_table tbody td{
-    padding: 12px 0;
-}
-
-#payment_breakdown .payment_table tbody .last_col td{
+#payment_breakdown .payment_table tbody .last_col td {
     padding: 27px 0;
 }
 
