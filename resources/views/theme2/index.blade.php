@@ -57,8 +57,7 @@
       <div class="row">
         @foreach( $data['itemData']['item'] as $item)
           @include('theme2.layout.item', [
-            "item" => $item,
-            "item_slider" => false
+            "item" => $item
           ])
         @endforeach
       </div>
@@ -159,4 +158,26 @@
     </div>
   </section>
   <!-- end popular category -->
+
+
+  <!-- popular item start -->
+  <section id="popular_item">
+    <div class="container">
+      <div class="title">
+        <h2 class="section_title">Popular Items<span><a href="#">See All</a></span></h2>
+      </div>
+
+      <div class="item_slider_main">
+        @foreach($data['populars']->all() as $item)
+          <div class="slider_item">
+            @include('theme2.layout.item', [
+              "item" => $item,
+              "item_slider" => true
+            ])
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  <!-- popular item end -->
 @endsection
