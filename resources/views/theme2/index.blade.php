@@ -57,13 +57,84 @@
       <div class="row">
         @foreach( $data['itemData']['item'] as $item)
           @include('theme2.layout.item', [
-            "item" => $item
+            "item" => $item,
+            "item_slider" => false
           ])
         @endforeach
       </div>
     </div>
   </section>
   <!-- latest item end -->
+
+
+  <!-- start flash sale -->
+  @if($data['flashes']->all())
+    <section id="flash_sale">
+      <div class="container">
+        <div class="title">
+          <h2 class="section_title">Flash Sale<span><a href="{{ URL::to('/flash-sale') }}">See All</a></span></h2>
+        </div>
+
+        <div class="item_slider_main">
+          @foreach($data['flashes']->all() as $item)
+            <div class="slider_item">
+              @include('theme2.layout.item', [
+                "item" => $item,
+                "item_slider" => true
+              ])
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </section>
+  @endif
+  <!-- end flash sale -->
+
+
+  <!-- featured item start -->
+  <section id="featured_item">
+    <div class="container">
+      <div class="title">
+        <h2 class="section_title">Featured Items<span><a href="#">See All</a></span></h2>
+      </div>
+
+      <div class="item_slider_main">
+        @foreach( $data['featured']['items'] as $item)
+          <div class="slider_item">
+            @include('theme2.layout.item', [
+              "item" => $item,
+              "item_slider" => true
+            ])
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  <!-- featured item end -->
+
+
+  <!-- free item start -->
+  @if($data['free']['items']->all())
+    <section id="free_item">
+      <div class="container">
+        <div class="title">
+          <h2 class="section_title">Free Items<span><a href="#">See All</a></span></h2>
+        </div>
+
+        <div class="item_slider_main">
+          @foreach($data['free']['items']->all() as $item)
+            <div class="slider_item">
+              @include('theme2.layout.item', [
+                "item" => $item,
+                "item_slider" => true
+              ])
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </section>
+  @endif
+  <!-- free item end -->
 
 
   @include('theme2.layout.insights', [
