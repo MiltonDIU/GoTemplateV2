@@ -1,0 +1,130 @@
+#flash_banner {
+  text-align: center;
+  color: #14213D;
+  background-color: rgba(20, 33, 61, .1);
+}
+
+.page_banner_title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  padding-top: 100px;
+}
+
+.page_banner_description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 17px;
+}
+
+#flash_banner .flash_counter {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+  margin-bottom: 90px;
+}
+
+#flash_banner .count_time {
+  background-color: #14213D;
+  width: 135px;
+  border-radius: 20px;
+}
+
+#flash_banner .flash_counter .count_number {
+  font-family: 'Raleway', sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  color: #FCA311;
+  line-height: 1;
+  padding: 10px 0;
+}
+
+#flash_banner .flash_counter .count_text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  padding: 0 18px 6px 18px;
+}
+
+#flash_category {
+  line-height: 1.25;
+}
+
+.sort_main {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.sort_main .mixitup-control-active {
+  color: #14213D;
+}
+
+.sort_group {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sort_title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(20, 33, 61, .8);
+}
+
+.sort_btn {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(20, 33, 61, .7);
+  margin: 0 10px;
+  padding: 6px 16px;
+  background: transparent;
+}
+
+#pagination_main {
+  margin-top: 40px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-link {
+  border: none;
+  color: #14213D;
+  height: 30px;
+  width: 30px;
+  background: rgba(20, 33, 61, .05);
+  margin: 0 13px;
+  border-radius: 50%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all linear .3s;
+}
+
+.page-link:hover {
+  background-color: #14213D;
+  color: #fff;
+}
+
+.page-link:focus {
+  box-shadow: none;
+  background: #14213D;
+  color: #FCA311;
+}
+
+.page-item:first-child .page-link {
+border-radius: 50%;
+}
+
+.page-item:last-child .page-link {
+border-radius: 50%;
+}

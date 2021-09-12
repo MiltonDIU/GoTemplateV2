@@ -99,6 +99,7 @@ if(isset($isShopList) && $isShopList) {
                 Best Seller
             </div>
             
+            
             <?php if(Auth::check()): ?>
                 <?php if($item->user_id != Auth::user()->id): ?>
                     <a

@@ -431,6 +431,7 @@
   <script src="public/assets/theme2/js/slick.min.js"></script>
   <script src="public/assets/theme2/js/waypoints.min.js"></script>
   <script src="public/assets/theme2/js/jquery.counterup.min.js"></script>
+  <script src="public/assets/theme2/js/jquery.countdown.js"></script>
 
   <script>
     $(window).scroll(function() {

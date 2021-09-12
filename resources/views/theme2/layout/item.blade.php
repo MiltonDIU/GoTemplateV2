@@ -3,12 +3,21 @@
     <div class="item_view">
       <div class="item_view_overlay">
         <div class="item_details">
-          <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item"><i class="fa fa-gift"></i></a>
+          @if($item->free_download)
+            <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item">
+              <i class="fa fa-gift"></i>
+            </a>
+          @else
+            <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">
+              <i class="fas fa-dollar-sign"></i>
+              <p class="price">{{ $item->regular_price }}</p>
+            </a>
+          @endif
+
           <div class="item_title">
             <a 
               href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" 
               class="item_name"
-              title="{{ $item->item_name }}"
             >
               {{$item->item_name}}
             </a>
