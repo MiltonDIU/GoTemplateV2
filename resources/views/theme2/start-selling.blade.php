@@ -1,5 +1,9 @@
 @extends('theme2.layout.master')
 
+@push('styles')
+  <link rel="stylesheet" href="public/assets/theme2/css/start-selling.css">
+@endpush
+
 @section('content')
 
   <!-- selling banner start -->

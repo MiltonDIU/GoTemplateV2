@@ -1,5 +1,9 @@
 @extends('theme2.layout.master')
 
+@push('styles')
+  <link rel="stylesheet" href="public/assets/theme2/css/flash-sale.css">
+@endpush
+
 @section('content')
 
 <!-- Flash banner start -->

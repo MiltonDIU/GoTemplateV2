@@ -4,20 +4,6 @@
   background-color: rgba(20, 33, 61, .1);
 }
 
-.page_banner_title {
-  font-family: 'Raleway', sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  padding-top: 100px;
-}
-
-.page_banner_description {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  margin-top: 17px;
-}
-
 #flash_banner .flash_counter {
   display: flex;
   justify-content: space-around;

@@ -33,8 +33,6 @@
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/insights.css') }}">
-<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/start-selling.css') }}">
-<link rel="stylesheet" href="{{ asset('public/assets/theme2/css/flash-sale.css') }}">
 
 
 <link rel="stylesheet" href="{{ asset('resources/views/css/item-card.css') }}">

@@ -28,6 +28,20 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 
+.page_banner_title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    padding-top: 100px;
+}
+.page_banner_description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 17px;
+}
+
+
 /*------------- category start --------------*/
 #category .main_category,
 #flash_category .main_category {

@@ -12,12 +12,12 @@
 
 .sale_page_button a {
   padding: 17px 26px;
-font-family: 'Raleway', sans-serif;
-font-size: 20px;
-font-weight: 700;
-color: #fff;
-background-color: #14213D;
-border-radius: 32px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #14213D;
+  border-radius: 32px;
   transition: all linear .3s;
 }
 
