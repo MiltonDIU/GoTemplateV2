@@ -1,192 +1,105 @@
-@if($allsettings->maintenance_mode == 0)
-@include('version')
-<!DOCTYPE html>
-<html lang="en">
+@extends('theme2.layout.master')
 
-<head>
-    <title>{{ Helper::translation(3233,$translate) }} - {{ $allsettings->site_title }}</title>
-    @include('stylesheet')
-    {!! NoCaptcha::renderJs() !!}
-</head>
+@push('styles')
+    <link rel="stylesheet" href="public/assets/theme2/css/signin.css">
+    <link rel="stylesheet" href="public/assets/theme2/css/signup.css">
+@endpush
 
-<body class="preload signup-page">
+@section('content')
+<section id="signup">
+    <!-- container start -->
+    <div class="container">
+        <div class="row">
 
-    @include('header')
+            <div class="col-lg-5">
+                <!-- sign up text start -->
+                <div class="sign_text">
+                    <h1>Create a free account!</h1>
+                    <h3>GoTemplate - Digital product & template marketplace in Bangladesh.</h3>
+                    <div class="text_point_main">
 
-    <section class="signup_area section--padding2">
-        <div class="container"><div>
-
-        @if (!$errors->isEmpty())
-        <div class="alert alert-danger" role="alert">
-            <span class="alert_icon lnr lnr-warning"></span>
-
-            @foreach ($errors->all() as $error)
-            {{ $error }}
-            @endforeach
-
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
-
-        </div>
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <form method="POST" action="{{ route('register') }}" id="item_form">
-                        @csrf
-                        <div class="cardify signup_form">
-                            <div class="login--header">
-                                <h3>{{ Helper::translation(3234,$translate) }}</h3>
-                                <p>{{ Helper::translation(3236,$translate) }}
-                                </p>
-                            </div>
-
-
-                            <div class="login--form">
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="urname">{{ Helper::translation(3237,$translate) }}</label>
-                                        <input
-                                            id="name"
-                                            type="text"
-                                            class="text_field text-field__modify @error('name') is-invalid @enderror"
-                                            name="name"
-                                            placeholder="{{ Helper::translation(3238,$translate) }}"
-                                            value="{{ old('name') }}"
-                                            data-bvalidator="required"
-                                            autocomplete="name"
-                                            autofocus
-                                        >
-
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label for="user_name">{{ Helper::translation(3111,$translate) }}</label>
-                                        <input
-                                            id="username"
-                                            type="text"
-                                            name="username"
-                                            class="text_field text-field__modify"
-                                            placeholder="{{ Helper::translation(3239,$translate) }}"
-                                            data-bvalidator="required"
-                                        >
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="email_ad">{{ Helper::translation(3240,$translate) }}</label>
-                                        <input
-                                            id="email"
-                                            type="email"
-                                            class="text_field text-field__modify @error('email') is-invalid @enderror"
-                                            name="email"
-                                            value="{{ old('email') }}"
-                                            placeholder="{{ Helper::translation(3241,$translate) }}"
-                                            autocomplete="email"
-                                            data-bvalidator="email,required"
-                                        >
-
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label for="password">{{ Helper::translation(3113,$translate) }}</label>
-                                        <input
-                                            id="password"
-                                            type="password"
-                                            class="text_field text-field__modify @error('password') is-invalid @enderror"
-                                            name="password"
-                                            placeholder="{{ Helper::translation(3242,$translate) }}"
-                                            autocomplete="new-password"
-                                            data-bvalidator="required"
-                                        >
-
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label for="con_pass"> {{ Helper::translation(3114,$translate) }}</label>
-
-                                        <input
-                                            id="password-confirm"
-                                            type="password"
-                                            class="text_field text-field__modify"
-                                            name="password_confirmation"
-                                            placeholder="{{ Helper::translation(3243,$translate) }}"
-                                            data-bvalidator="equal[password],required"
-                                            autocomplete="new-password"
-                                        >
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label for="email_ad">{{ Helper::translation(4827,$translate) }} <span class="required">*</span></label>
-                                        <select id="user_type" class="text_field text-field__modify" name="user_type" data-bvalidator="required">
-                                            <option value="" selected disabled>Select type</option>
-                                            <option value="{{ $encrypter->encrypt('customer') }}">{{ Helper::translation(4830,$translate) }}</option>
-                                            <option value="{{ $encrypter->encrypt('vendor') }}">{{ Helper::translation(3142,$translate) }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                                    <label for="con_pass"> {{ Helper::translation(3244,$translate) }}</label>
-
-                                    {!! app('captcha')->display() !!}
-                                    @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block">
-                                        <strong class="red">{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-
-                                <button class="btn btn--md register_btn theme-button" type="submit">
-                                    {{ Helper::translation(3233,$translate) }}
-                                </button>
-
-                                <div class="login_assist">
-                                    <p>{{ Helper::translation(3245,$translate) }}
-                                        <a href="{{ URL::to('/login') }}" class="theme-color">
-                                            {{ Helper::translation(3225,$translate) }}
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- end .login--form -->
+                        <div class="text_point">
+                            <i class="fas fa-check"></i>
+                            <h6>5000+ Products</h6>
                         </div>
-                        <!-- end .cardify -->
-                    </form>
+
+                        <div class="text_point">
+                            <i class="fas fa-check"></i>
+                            <h6>200+ Sales</h6>
+                        </div>
+
+                        <div class="text_point">
+                            <i class="fas fa-check"></i>
+                            <h6>100+ Professionals</h6>
+                        </div>
+
+                        <div class="text_point">
+                            <i class="fas fa-check"></i>
+                            <h6>New products upload every week</h6>
+                        </div>
+
+                    </div>
                 </div>
-                <!-- end .col-md-6 -->
+                <!-- sign up text end -->
             </div>
-            <!-- end .row -->
+
+            <div class="col-lg-7">
+                <!-- sign up form start -->
+                <div class="sign_form s_up">
+
+                    <h2>Sign up</h2>
+
+                    <form action="">
+                        <div class="form_group group_flex">
+                            <div class="group_box">
+                                <p>Name</p>
+                                <input type="text" placeholder="Your name" class="f_input" required>
+                            </div>
+                            <div class="group_box">
+                                <p>Username</p>
+                                <input type="text" placeholder="Your username" class="f_input" required>
+                            </div>
+                        </div>
+
+                        <div class="form_group group_flex">
+                            <div class="group_box">
+                                <p>Email</p>
+                                <input type="email" placeholder="Your email" class="f_input" required>
+                            </div>
+                            <div class="group_box">
+                                <p>User Type</p>
+                                <select name="" id="" class="f_input">
+                                    <option value="" disabled selected hidden>Select Type</option>
+                                    <option value="">Customer</option>
+                                    <option value="">Vendor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form_group group_flex">
+                            <div class="group_box">
+                                <p>Password</p>
+                                <input type="password" placeholder="Your password" class="f_input" required>
+                            </div>
+                            <div class="group_box">
+                                <p>Confirm Password</p>
+                                <input type="password" placeholder="Confirm password" class="f_input" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="s_btn">Sign up</button>
+                    </form>
+
+                    <div class="form_bottom f_bottom_up">
+                        <div class="c_account">
+                            <p>Already have an account? <a href="sign-in.html">Sign in</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- sign up form end -->
+            </div>
         </div>
-    </section>
-
-    @include('footer')
-
-    @include('javascript')
-</body>
-
-</html>
-@else
-@include('503')
-@endif
+    </div>
+    <!-- container end -->
+</section>
+@endsection
