@@ -1,99 +1,80 @@
 @extends('theme2.layout.master')
 
+@push('styles')
+  <link rel="stylesheet" href="public/assets/theme2/css/blog.css">
+@endpush
+
 @section('content')
 
 <section id="blog_box">
   <div class="container">
     <div class="row">
+
       <div class="col-lg-8">
         <div class="blog_list">
-          <div class="single_blog">
-            <div class="blog_banner">
-              <a href="#">
-                <img src="images/blog_1.png" class="blog_banner_img" alt="blog">
-              </a>
-            </div>
 
-            <div class="blog_data">
-              <div class="blog_count">
-                <i class="far fa-calendar-alt"></i>
-                <p class="data_text">08 June 2021</p>
+          @foreach($data['blogData']['post'] as $item)
+            <div class="single_blog">
+              <div class="blog_banner">
+                <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}">
+                  @if($item->post_image!='')
+                    <img src="{{ url('/') }}/public/storage/post/{{ $item->post_image }}" alt="{{ $item->post_title }}">
+                  @else
+                    <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->post_title }}">
+                  @endif
+                </a>
               </div>
 
-              <div class="blog_count">
-                <i class="far fa-comment-dots"></i>
-                <p class="data_text">10</p>
+              <div class="blog_data">
+                <div class="blog_count">
+                  <i class="far fa-calendar-alt"></i>
+                  <p class="data_text">{{ $item->post_date }}</p>
+                </div>
+
+                <div class="blog_count">
+                  <i class="far fa-comment-dots"></i>
+                  <p class="data_text">
+                    {{ 
+                      $data['comments']->has($item->post_id) 
+                      ? count($data['comments'][$item->post_id]) 
+                      : 0 
+                    }}
+                  </p>
+                </div>
+
+                <div class="blog_count">
+                  <i class="far fa-eye"></i>
+                  <p class="data_text">{{ $item->post_view }}</p>
+                </div>
               </div>
 
-              <div class="blog_count">
-                <i class="far fa-eye"></i>
-                <p class="data_text">98</p>
-              </div>
-            </div>
+              <div class="blog_details">
+                <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}" class="blog_title">{{ $item->post_title }}</a>
 
-            <div class="blog_details">
-              <a href="#" class="blog_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-
-              <div class="blog_des">
-                <p class="b_des_text">
-                  Why do you even need any other app stores when you’ve got Android Playstore and Apple App Store? Oh well, there are plenty of reasons: > App Store and Playstore are extremely crowded. Trying to get your app any visibility on these platforms is hard. > There are markets like China where Playsto...
-                </p>
-              </div>
-            </div>
-
-            <div class="blog_btn">
-              <a href="#" class="more_btn">Read more</a>
-            </div>
-          </div>
-
-          <div class="single_blog">
-            <div class="blog_banner">
-              <a href="#">
-                <img src="images/blog_1.png" class="blog_banner_img" alt="blog">
-              </a>
-            </div>
-
-            <div class="blog_data">
-              <div class="blog_count">
-                <i class="far fa-calendar-alt"></i>
-                <p class="data_text">08 June 2021</p>
+                <div class="blog_des">
+                  <p class="b_des_text">
+                    {{ substr($item->post_short_desc, 0, 300).'...' }}
+                  </p>
+                </div>
               </div>
 
-              <div class="blog_count">
-                <i class="far fa-comment-dots"></i>
-                <p class="data_text">10</p>
-              </div>
-
-              <div class="blog_count">
-                <i class="far fa-eye"></i>
-                <p class="data_text">98</p>
+              <div class="blog_btn">
+                <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}" class="more_btn">Read more</a>
               </div>
             </div>
+          @endforeach
 
-            <div class="blog_details">
-              <a href="#" class="blog_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-
-              <div class="blog_des">
-                <p class="b_des_text">
-                  Why do you even need any other app stores when you’ve got Android Playstore and Apple App Store? Oh well, there are plenty of reasons: > App Store and Playstore are extremely crowded. Trying to get your app any visibility on these platforms is hard. > There are markets like China where Playsto...
-                </p>
-              </div>
-            </div>
-
-            <div class="blog_btn">
-              <a href="#" class="more_btn">Read more</a>
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="blog_sidebar">
+
           <div class="blog_category">
             <h3 class="sidebar_title">Categories</h3>
 
             <ul class="blog_category_main">
-              @foreach($data['catData']['post']->all() as $item)
+              @foreach($data['catData']['post'] as $item)
                 <li>
                   <a href="{{ URL::to('/blog') }}/category/{{ $item->blog_cat_id }}/{{ $item->blog_category_slug }}" class="category_box">
                     <span class="category_text">
@@ -116,42 +97,23 @@
             <h3 class="sidebar_title">Popular</h3>
 
             <ul class="sidebar_list">
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
+              @foreach($data['blog']['popular'] as $item)
+                <li class="sidebar_blog">
+                  <div class="sidebar_blog_img">
+                    @if($item->post_image!='')
+                      <img src="{{ url('/') }}/public/storage/post/{{ $item->post_image }}" alt="{{ $item->post_title }}">
+                    @else
+                      <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->post_title }}">
+                    @endif
+                  </div>
 
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
+                  <div class="sidebar_blog_title">
+                    <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}" class="s_title">
+                      {{ $item->post_title }}
+                    </a>
+                  </div>
+                </li>
+              @endforeach
             </ul>
           </div>
 
@@ -159,46 +121,29 @@
             <h3 class="sidebar_title">Latest</h3>
 
             <ul class="sidebar_list">
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
+              @foreach($data['blogPost']['latest'] as $item)
+                <li class="sidebar_blog">
+                  <div class="sidebar_blog_img">
+                    @if($item->post_image!='')
+                      <img src="{{ url('/') }}/public/storage/post/{{ $item->post_image }}" alt="{{ $item->post_title }}">
+                    @else
+                      <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->post_title }}">
+                    @endif
+                  </div>
 
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
-              <li class="sidebar_blog">
-                <div class="sidebar_blog_img">
-                  <img src="images/blog_1.png" alt="blog">
-                </div>
-                <div class="sidebar_blog_title">
-                  <a href="#" class="s_title">App Development Outsourcing – 10 Success Stories to Debunk Your Fears</a>
-                </div>
-              </li>
-
+                  <div class="sidebar_blog_title">
+                    <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}" class="s_title">
+                      {{ $item->post_title }}
+                    </a>
+                  </div>
+                </li>
+              @endforeach
             </ul>
           </div>
+
         </div>
       </div>
+
     </div>
   </div>
 </section>

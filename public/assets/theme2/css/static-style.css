@@ -14163,14 +14163,6 @@ span.counter {
     background: #eff1f5;
 }
 
-.single_blog {
-    background: #fff;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-}
-
 .single_blog figure img {
     -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
