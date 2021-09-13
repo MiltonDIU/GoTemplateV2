@@ -9,169 +9,126 @@ use Illuminate\Validation\Rule;
 use Feberr\Models\Members;
 use Feberr\Models\Settings;
 
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
 
-    public function view_profile_settings()
-    {
-        return view('profile-settings');
+    public function view_profile_settings() {
+        return view('theme2.profile-settings');
     }
 
 
-
-    public function update_profile(Request $request)
-    {
-
-        $name = $request->input('name');
+    public function update_profile(Request $request) {
+        $name     = $request->input('name');
         $username = $request->input('username');
-        $email = $request->input('email');
+        $email    = $request->input('email');
 
 
-        if(!empty($request->input('password')))
-        {
+        if(!empty($request->input('password'))) {
             $password = bcrypt($request->input('password'));
             $pass = $password;
-        }
-        else
-        {
+        }else {
             $pass = $request->input('save_password');
         }
 
-        if(!empty($request->input('website')))
-        {
+        if(!empty($request->input('website'))) {
             $website  = $request->input('website');
             $website_url = $website;
-        }
-        else
-        {
+        }else {
             $website_url = "";
         }
+
         $country = $request->input('country');
-
         $profile_heading = $request->input('profile_heading');
-
         $about = $request->input('about');
 
-        if(!empty($request->input('facebook_url')))
-        {
+        if (!empty($request->input('facebook_url'))) {
             $facebook_url  = $request->input('facebook_url');
             $facebook = $facebook_url;
-        }
-        else
-        {
+        }else {
             $facebook = "";
         }
 
 
-        if(!empty($request->input('twitter_url')))
-        {
+        if(!empty($request->input('twitter_url'))) {
             $twitter_url  = $request->input('twitter_url');
             $twitter = $twitter_url;
-        }
-        else
-        {
+        }else {
             $twitter = "";
         }
 
 
-        if(!empty($request->input('gplus_url')))
-        {
+        if(!empty($request->input('gplus_url'))) {
             $gplus_url  = $request->input('gplus_url');
             $gplus = $gplus_url;
-        }
-        else
-        {
+        }else {
             $gplus = "";
         }
 
 
-        if(!empty($request->input('item_update_email')))
-        {
+        if(!empty($request->input('item_update_email'))) {
             $item_update_email  = $request->input('item_update_email');
             $item_update = $item_update_email;
-        }
-        else
-        {
+        }else {
             $item_update = 0;
         }
 
 
-        if(!empty($request->input('item_comment_email')))
-        {
+        if(!empty($request->input('item_comment_email'))) {
             $item_comment_email  = $request->input('item_comment_email');
             $item_comment = $item_comment_email;
-        }
-        else
-        {
+        }else {
             $item_comment = 0;
         }
 
 
-        if(!empty($request->input('item_review_email')))
-        {
+        if(!empty($request->input('item_review_email'))) {
             $item_review_email  = $request->input('item_review_email');
             $item_review = $item_review_email;
-        }
-        else
-        {
+        }else {
             $item_review = 0;
         }
 
-
-        if(!empty($request->input('buyer_review_email')))
-        {
+        if(!empty($request->input('buyer_review_email'))) {
             $buyer_review_email  = $request->input('buyer_review_email');
             $buyer_review = $buyer_review_email;
-        }
-        else
-        {
+        }else {
             $buyer_review = 0;
         }
 
-
-
-        if(!empty($request->input('user_freelance')))
-        {
+        if(!empty($request->input('user_freelance'))) {
             $user_freelance  = $request->input('user_freelance');
             $freelance = $user_freelance;
-        }
-        else
-        {
+        }else {
             $freelance = 0;
         }
 
         $country_badge = $request->input('country_badge');
-
         $exclusive_author = $request->input('exclusive_author');
 
-        if ($exclusive_author==1 && auth()->user()->exclusive_author==1){
+        if ($exclusive_author==1 && auth()->user()->exclusive_author==1) {
             $exclusive_author =1;
             $exclusive_author_need_approval = 1;
-        }else if($exclusive_author==1 && auth()->user()->exclusive_author==0){
+        }else if($exclusive_author==1 && auth()->user()->exclusive_author==0) {
             $exclusive_author =0;
             $exclusive_author_need_approval = 1;
-        }else{
+        }else {
             $exclusive_author =0;
             $exclusive_author_need_approval =0;
         }
+
         /*  $earnings = $request->input('save_earnings');*/
         $allsettings = Settings::allSettings();
         $image_size = $allsettings->site_max_image_size;
-
         $id = $request->input('id');
-
         $token = $request->input('user_token');
-
 
         $request->validate([
             'name' => 'required',
@@ -180,28 +137,21 @@ class ProfileController extends Controller
             'password' => 'confirmed|min:7',
             'user_photo' => 'mimes:jpeg,jpg,png,gif|max:'.$image_size,
             'user_banner' => 'mimes:jpeg,jpg,png,gif|max:'.$image_size,
-
         ]);
+
         $rules = array(
             'username' => ['required', 'regex:/^[\w-]*$/', 'max:255', Rule::unique('users') ->ignore($id, 'id') -> where(function($sql){ $sql->where('drop_status','=','no');})],
             'email' => ['required', 'email', 'max:255', Rule::unique('users') ->ignore($id, 'id') -> where(function($sql){ $sql->where('drop_status','=','no');})],
-
         );
 
-        $messsages = array(
-
-        );
+        $messsages = array();
 
         $validator = Validator::make($request->all(), $rules,$messsages);
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             $failedRules = $validator->failed();
             return back()->withErrors($validator);
-        }
-        else
-        {
-
+        }else {
             if ($request->hasFile('user_photo')) {
 
                 Members::droPhoto($token);
@@ -212,12 +162,9 @@ class ProfileController extends Controller
                 $imagePath = $destinationPath. "/".  $img_name;
                 $image->move($destinationPath, $img_name);
                 $user_image = $img_name;
-            }
-            else
-            {
+            }else {
                 $user_image = $request->input('save_photo');
             }
-
 
             if ($request->hasFile('user_banner')) {
 
@@ -229,16 +176,11 @@ class ProfileController extends Controller
                 $imagePath = $destinationPath. "/".  $img_name;
                 $image->move($destinationPath, $img_name);
                 $user_banner = $img_name;
-            }
-            else
-            {
+            }else {
                 $user_banner = $request->input('save_banner');
             }
 
-
-
-
-            $data = array(
+            $data = array (
                 'name' => $name,
                 'username' => $username,
                 'email' => $email,
@@ -261,30 +203,19 @@ class ProfileController extends Controller
                 'exclusive_author' => $exclusive_author,
                 'exclusive_author_need_approval' => $exclusive_author_need_approval,
             );
+
             Members::updateData($token, $data);
-            if(!empty($request->input('become-vendor')))
-            {
+            if(!empty($request->input('become-vendor'))) {
                 $become_vendor = $request->input('become-vendor');
-                if($become_vendor == 1)
-                {
+                if($become_vendor == 1) {
                     $data_value = array('user_type' => 'vendor');
                     Members::updateData($token, $data_value);
                 }
-            }
-            else
-            {
+            }else {
                 $become_vendor = 0;
             }
+
             return redirect()->back()->with('success', 'Update successfully.');
-
-
         }
-
-
-
-
     }
-
-
-
 }

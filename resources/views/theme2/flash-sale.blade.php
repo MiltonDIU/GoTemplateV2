@@ -250,10 +250,6 @@
     </div>
   </section>
   <!-- Pagination end -->
-@else
-  <section>
-    <h1>NO DATA FOUND!</h1>
-  </section>
 @endif
 
 <script src="{{ asset('public/assets/theme2/js/mixitup.min.js') }}"></script>

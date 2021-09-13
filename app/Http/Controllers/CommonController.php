@@ -28,11 +28,13 @@ class CommonController extends Controller {
 		return Redirect::route('index')->withCookie('translate');
 	}
 
+
 	public function view_start_selling() {
 		$setting['setting'] = Settings::editSelling();
 		$data = array('setting' => $setting);
 		return view('theme2.start-selling', compact('data'));
 	}
+
 
 	public function view_preview($item_slug, $item_id) {
 		$item['item'] = Items::singleitemData($item_slug, $item_id);
@@ -40,9 +42,11 @@ class CommonController extends Controller {
 		return view('preview')->with($data);
 	}
 
+
 	public function not_found() {
-		return view('404');
+		return view('theme2.404');
 	}
+
 
 	public function view_index() {
 		$blog['data']      = Blog::homeblogData();
@@ -72,19 +76,19 @@ class CommonController extends Controller {
 		}
 
 		$data = array(
-			'blog' => $blog,
-			'comments' => $comments,
-			'review' => $review,
-			'totalmembers' => $totalmembers,
-			'totalsales' => $totalsales,
-			'totalfiles' => $totalfiles,
+			'blog'         => $blog,
+			'free'         => $free,
+			'newest'       => $newest,
+			'review'       => $review,
+			'flashes'      => $flashes,
+			'featured'     => $featured,
+			'itemData'     => $itemData,
+			'populars'     => $populars,
+			'comments'     => $comments,
+			'totalsales'   => $totalsales,
+			'totalfiles'   => $totalfiles,
 			'totalearning' => $totalearning,
-			'featured' => $featured,
-			'newest' => $newest,
-			'itemData' => $itemData,
-			'free' => $free,
-			'populars' => $populars,
-			'flashes' => $flashes,
+			'totalmembers' => $totalmembers,
 		);
 		//SitemapGenerator::create(URL::to('/'))->writeToFile('sitemap.xml');
 
@@ -93,33 +97,38 @@ class CommonController extends Controller {
 		return view('theme2.index', compact('data'));
 	}
 
+
 	public function payment_cancel() {
-		return view('cancel');
+		return view('theme2.cancel');
 	}
 
-    public function payment_fail() {
-        return view('fail');
-    }
+
+	public function payment_fail() {
+		return view('theme2.fail');
+	}
+
 
 	public function user_verify($user_token) {
 		$data = array('verified' => '1');
 		$user['user'] = Members::verifyuserData($user_token, $data);
 
-		return redirect('login')->with('success', 'Your e-mail is verified. You can now login.');
+		return redirect('theme2.login')->with('success', 'Your e-mail is verified. You can now login.');
 	}
+
 
 	public function view_forgot() {
-		return view('forgot');
+		return view('theme2.forgot');
 	}
 
+
 	public function view_contact() {
-		return view('contact');
+		return view('theme2.contact');
 	}
 
 
 	public function view_reset($token) {
 		$data = array('token' => $token);
-		return view('reset')->with($data);
+		return view('theme2.reset', compact('data'));
 	}
 
 
@@ -128,6 +137,7 @@ class CommonController extends Controller {
 		return redirect()->back();
 	}
 
+
 	public function view_free_item($item_token) {
 
 		$token = base64_decode($item_token);
@@ -135,39 +145,60 @@ class CommonController extends Controller {
 		$item['data'] = Items::edititemData($token);
 		$item_count = $item['data']->download_count + 1;
 		$data = array('download_count' => $item_count);
+
 		Items::updateitemData($token, $data);
 
 		$filename = public_path() . '/storage/items/' . $item['data']->item_file;
 		$headers = ['Content-Type: application/octet-stream'];
 		$new_name = uniqid() . time() . '.zip';
+
 		return response()->download($filename, $new_name, $headers);
 	}
-
-
 
 
 	public function view_follow($my_id, $follow_id) {
 		$user_id = $follow_id;
 		$followcheck = Items::getfollowuserCheck($user_id);
-		$data = array('follower_user_id' => $my_id, 'following_user_id' => $follow_id);
+
+		$data = array(
+			'follower_user_id' => $my_id, 
+			'following_user_id' => $follow_id
+		);
+
 		if ($followcheck == 0) {
 			Items::saveFollow($data);
 		} else {
 			return redirect()->back();
 		}
+
 		return redirect()->back();
 	}
 
 
 	public function view_top_authors() {
+		$user['user'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->leftJoin('item_order', 'item_order.item_user_id', 'users.id')
+			->leftJoin('country', 'country.country_id', 'users.country')
+			->where('users.drop_status', '=', 'no')
+			->where('users.id', '!=', 1)
+			->orderByRaw('count(*) DESC')
+			->groupBy('item_order.item_user_id')
+			->get();
 
-		$user['user'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->leftJoin('item_order', 'item_order.item_user_id', 'users.id')->leftJoin('country', 'country.country_id', 'users.country')->where('users.drop_status', '=', 'no')->where('users.id', '!=', 1)->orderByRaw('count(*) DESC')->groupBy('item_order.item_user_id')->get();
 		$count_items = Items::getgroupItems();
 		$count_sale = Items::getgroupSale();
 		$sid = 1;
 		$badges['setting'] = Settings::editBadges($sid);
-		$data = array('user' => $user, 'count_items' => $count_items, 'count_sale' => $count_sale, 'badges' => $badges);
-		return view('top-authors')->with($data);
+
+		$data = array (
+			'user' => $user, 
+			'badges' => $badges,
+			'count_sale' => $count_sale, 
+			'count_items' => $count_items
+		);
+		
+		return view('theme2.top-authors', compact('data'));
 	}
 
 
@@ -181,9 +212,11 @@ class CommonController extends Controller {
 		$badges['setting'] = Settings::editBadges($sid);
 		$sold['item'] = Items::SoldAmount($user_id);
 		$sold_amount = 0;
+
 		foreach ($sold['item'] as $iter) {
 			$sold_amount += $iter->total_price;
 		}
+
 		$country['view'] = Settings::editCountry($user['user']->country);
 		$membership = date('m/d/Y', strtotime($user['user']->created_at));
 		$membership_date = explode("/", $membership);
@@ -200,75 +233,67 @@ class CommonController extends Controller {
 		$since = date("F Y", strtotime($user['user']->created_at));
 
 		$getitemcount = Items::getuseritemCount($user_id);
-
 		$getsalecount = Items::getsaleitemCount($user_id);
+		$getreview    = Items::getreviewData($user_id);
 
-
-
-		$getreview  = Items::getreviewData($user_id);
 		if ($getreview != 0) {
 			$review['view'] = Items::getreviewRecord($user_id);
 			$top = 0;
 			$bottom = 0;
+
 			foreach ($review['view'] as $review) {
-				if ($review->rating == 1) {
-					$value1 = $review->rating * 1;
-				} else {
-					$value1 = 0;
-				}
-				if ($review->rating == 2) {
-					$value2 = $review->rating * 2;
-				} else {
-					$value2 = 0;
-				}
-				if ($review->rating == 3) {
-					$value3 = $review->rating * 3;
-				} else {
-					$value3 = 0;
-				}
-				if ($review->rating == 4) {
-					$value4 = $review->rating * 4;
-				} else {
-					$value4 = 0;
-				}
-				if ($review->rating == 5) {
-					$value5 = $review->rating * 5;
-				} else {
-					$value5 = 0;
-				}
+				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
+				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
+				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
+				$value4 = $review->rating == 4 ? $review->rating * 4 : 0;
+				$value5 = $review->rating == 5 ? $review->rating * 5 : 0;
 
 				$top += $value1 + $value2 + $value3 + $value4 + $value5;
 				$bottom += $review->rating;
 			}
-			if (!empty(round($top / $bottom))) {
-				$count_rating = round($top / $bottom);
-			} else {
-				$count_rating = 0;
-			}
+
+			$count_rating = !empty(round($top / $bottom)) ? round($top / $bottom) : 0;
+
 		} else {
 			$count_rating = 0;
 			$bottom = 0;
 		}
 
 		$ratingview['list'] = Items::getreviewUser($user_id);
-		$countreview = Items::getreviewCountUser($user_id);
-
-		if (Auth::check()) {
-			$followcheck = Items::getfollowuserCheck($user_id);
-		} else {
-			$followcheck = 0;
-		}
-
+		$countreview    = Items::getreviewCountUser($user_id);
+		$followcheck    = Auth::check() ? Items::getfollowuserCheck($user_id) : 0;
 		$followingcount = Items::getfollowingCount($user_id);
-
-		$followercount = Items::getfollowerCount($user_id);
-
+		$followercount  = Items::getfollowerCount($user_id);
 		$featured_count = Items::getfeaturedUser($user_id);
-		$free_count = Items::getfreeUser($user_id);
-		$tren_count = Items::getTrendUser($user_id);
+		$free_count     = Items::getfreeUser($user_id);
+		$tren_count     = Items::getTrendUser($user_id);
 
-		$data = array('user' => $user, 'since' => $since, 'itemData' => $itemData, 'getitemcount' => $getitemcount, 'getsalecount' => $getsalecount, 'count_rating' => $count_rating, 'bottom' => $bottom, 'ratingview' => $ratingview, 'countreview' => $countreview, 'getreview' => $getreview, 'followcheck' => $followcheck, 'followingcount' =>  $followingcount, 'followercount' => $followercount, 'badges' => $badges, 'sold_amount' => $sold_amount, 'country' => $country, 'year' => $year, 'collect_amount' => $collect_amount, 'referral_count' => $referral_count, 'featured_count' => $featured_count, 'free_count' => $free_count, 'tren_count' => $tren_count);
-		return view('user-reviews')->with($data);
+		$data = array (
+			'user'           => $user, 
+			'year'           => $year, 
+			'since'          => $since, 
+			'badges'         => $badges, 
+			'bottom'         => $bottom, 
+			'country'        => $country, 
+			'itemData'       => $itemData, 
+			'getreview'      => $getreview, 
+			'ratingview'     => $ratingview, 
+			'free_count'     => $free_count, 
+			'tren_count'     => $tren_count,
+			'countreview'    => $countreview, 
+			'followcheck'    => $followcheck, 
+			'sold_amount'    => $sold_amount, 
+			'getitemcount'   => $getitemcount, 
+			'getsalecount'   => $getsalecount, 
+			'count_rating'   => $count_rating, 
+			'followercount'  => $followercount, 
+			'followingcount' =>  $followingcount, 
+			'collect_amount' => $collect_amount, 
+			'referral_count' => $referral_count, 
+			'featured_count' => $featured_count, 
+		);
+		
+		return view('theme2.user-reviews', compact('data'));
 	}
 
 
@@ -281,6 +306,7 @@ class CommonController extends Controller {
 		$badges['setting'] = Settings::editBadges($sid);
 		$sold['item'] = Items::SoldAmount($user_id);
 		$sold_amount = 0;
+
 		foreach ($sold['item'] as $iter) {
 			$sold_amount += $iter->total_price;
 		}
@@ -300,79 +326,70 @@ class CommonController extends Controller {
 		$since = date("F Y", strtotime($user['user']->created_at));
 
 		$getitemcount = Items::getuseritemCount($user_id);
-
 		$getsalecount = Items::getsaleitemCount($user_id);
+		$getreview    = Items::getreviewData($user_id);
 
-
-
-		$getreview  = Items::getreviewData($user_id);
 		if ($getreview != 0) {
 			$review['view'] = Items::getreviewRecord($user_id);
 			$top = 0;
 			$bottom = 0;
-			foreach ($review['view'] as $review) {
-				if ($review->rating == 1) {
-					$value1 = $review->rating * 1;
-				} else {
-					$value1 = 0;
-				}
-				if ($review->rating == 2) {
-					$value2 = $review->rating * 2;
-				} else {
-					$value2 = 0;
-				}
-				if ($review->rating == 3) {
-					$value3 = $review->rating * 3;
-				} else {
-					$value3 = 0;
-				}
-				if ($review->rating == 4) {
-					$value4 = $review->rating * 4;
-				} else {
-					$value4 = 0;
-				}
-				if ($review->rating == 5) {
-					$value5 = $review->rating * 5;
-				} else {
-					$value5 = 0;
-				}
+			foreach ($review['view'] as $review) {	
+				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
+				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
+				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
+				$value4 = $review->rating == 4 ? $review->rating * 4 : 0;
+				$value5 = $review->rating == 5 ? $review->rating * 5 : 0;
 
 				$top += $value1 + $value2 + $value3 + $value4 + $value5;
 				$bottom += $review->rating;
 			}
-			if (!empty(round($top / $bottom))) {
-				$count_rating = round($top / $bottom);
-			} else {
-				$count_rating = 0;
-			}
+
+			$count_rating = !empty(round($top / $bottom)) ? round($top / $bottom) : 0;
+
 		} else {
 			$count_rating = 0;
 			$bottom = 0;
 		}
 
-		$ratingview['list'] = Items::getreviewUser($user_id);
-		$countreview = Items::getreviewCountUser($user_id);
-
-		if (Auth::check()) {
-			$followcheck = Items::getfollowuserCheck($user_id);
-		} else {
-			$followcheck = 0;
-		}
-		$followingcount = Items::getfollowingCount($user_id);
-
-		$followercount = Items::getfollowerCount($user_id);
-
+		$ratingview['list']    = Items::getreviewUser($user_id);
+		$countreview           = Items::getreviewCountUser($user_id);
+		$followcheck           = Auth::check() ? Items::getfollowuserCheck($user_id) : 0;
+		$followingcount        = Items::getfollowingCount($user_id);
+		$followercount         = Items::getfollowerCount($user_id);
 		$viewfollowing['view'] = Items::getfollowerView($user_id);
-
-		$featured_count = Items::getfeaturedUser($user_id);
-		$free_count = Items::getfreeUser($user_id);
-		$tren_count = Items::getTrendUser($user_id);
+		$featured_count        = Items::getfeaturedUser($user_id);
+		$free_count            = Items::getfreeUser($user_id);
+		$tren_count            = Items::getTrendUser($user_id);
 		//$viewfollowing['view'] = Follow::with('followers')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('follow.following_user_id','=',$user_id)->orderBy('follow.fid', 'desc')->get();
 
-		$data = array('user' => $user, 'since' => $since, 'itemData' => $itemData, 'getitemcount' => $getitemcount, 'getsalecount' => $getsalecount, 'count_rating' => $count_rating, 'bottom' => $bottom, 'ratingview' => $ratingview, 'countreview' => $countreview, 'getreview' => $getreview, 'followcheck' => $followcheck, 'followingcount' =>  $followingcount, 'followercount' => $followercount, 'viewfollowing' => $viewfollowing, 'badges' => $badges, 'sold_amount' => $sold_amount, 'country' => $country, 'year' => $year, 'collect_amount' => $collect_amount, 'referral_count' => $referral_count, 'featured_count' => $featured_count, 'free_count' => $free_count, 'tren_count' => $tren_count);
-		return view('user-followers')->with($data);
-	}
+		$data = array (
+			'user'           => $user, 
+			'since'          => $since, 
+			'itemData'       => $itemData, 
+			'getitemcount'   => $getitemcount, 
+			'getsalecount'   => $getsalecount, 
+			'count_rating'   => $count_rating, 
+			'bottom'         => $bottom, 
+			'ratingview'     => $ratingview, 
+			'countreview'    => $countreview, 
+			'getreview'      => $getreview, 
+			'followcheck'    => $followcheck, 
+			'followingcount' =>  $followingcount, 
+			'followercount'  => $followercount, 
+			'viewfollowing'  => $viewfollowing, 
+			'badges'         => $badges, 
+			'sold_amount'    => $sold_amount, 
+			'country'        => $country, 
+			'year'           => $year, 
+			'collect_amount' => $collect_amount, 
+			'referral_count' => $referral_count, 
+			'featured_count' => $featured_count, 
+			'free_count'     => $free_count, 
+			'tren_count'     => $tren_count
+		);
 
+		return view('theme2.user-followers', compact('data'));
+	}
 
 
 	public function view_user_following($slug) {
@@ -403,77 +420,69 @@ class CommonController extends Controller {
 		$since = date("F Y", strtotime($user['user']->created_at));
 
 		$getitemcount = Items::getuseritemCount($user_id);
-
 		$getsalecount = Items::getsaleitemCount($user_id);
+		$getreview    = Items::getreviewData($user_id);
 
-
-
-		$getreview  = Items::getreviewData($user_id);
 		if ($getreview != 0) {
 			$review['view'] = Items::getreviewRecord($user_id);
 			$top = 0;
 			$bottom = 0;
+
 			foreach ($review['view'] as $review) {
-				if ($review->rating == 1) {
-					$value1 = $review->rating * 1;
-				} else {
-					$value1 = 0;
-				}
-				if ($review->rating == 2) {
-					$value2 = $review->rating * 2;
-				} else {
-					$value2 = 0;
-				}
-				if ($review->rating == 3) {
-					$value3 = $review->rating * 3;
-				} else {
-					$value3 = 0;
-				}
-				if ($review->rating == 4) {
-					$value4 = $review->rating * 4;
-				} else {
-					$value4 = 0;
-				}
-				if ($review->rating == 5) {
-					$value5 = $review->rating * 5;
-				} else {
-					$value5 = 0;
-				}
+				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
+				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
+				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
+				$value4 = $review->rating == 4 ? $review->rating * 4 : 0;
+				$value5 = $review->rating == 5 ? $review->rating * 5 : 0;
 
 				$top += $value1 + $value2 + $value3 + $value4 + $value5;
 				$bottom += $review->rating;
 			}
-			if (!empty(round($top / $bottom))) {
-				$count_rating = round($top / $bottom);
-			} else {
-				$count_rating = 0;
-			}
+
+			$count_rating = !empty(round($top / $bottom)) ? round($top / $bottom) : 0;
 		} else {
 			$count_rating = 0;
 			$bottom = 0;
 		}
 
-		$ratingview['list'] = Items::getreviewUser($user_id);
-		$countreview = Items::getreviewCountUser($user_id);
-
-		if (Auth::check()) {
-			$followcheck = Items::getfollowuserCheck($user_id);
-		} else {
-			$followcheck = 0;
-		}
-		$followingcount = Items::getfollowingCount($user_id);
-
-		$followercount = Items::getfollowerCount($user_id);
-
+		$ratingview['list']    = Items::getreviewUser($user_id);
+		$countreview           = Items::getreviewCountUser($user_id);
+		$followcheck           = Auth::check() ? Items::getfollowuserCheck($user_id) : 0;
+		$followingcount        = Items::getfollowingCount($user_id);
+		$followercount         = Items::getfollowerCount($user_id);
 		$viewfollowing['view'] = Items::getfollowingView($user_id);
-
-		$featured_count = Items::getfeaturedUser($user_id);
-		$free_count = Items::getfreeUser($user_id);
-		$tren_count = Items::getTrendUser($user_id);
+		$featured_count        = Items::getfeaturedUser($user_id);
+		$free_count            = Items::getfreeUser($user_id);
+		$tren_count            = Items::getTrendUser($user_id);
 		//$viewfollowing['view'] = Follow::with('followers')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('follow.following_user_id','=',$user_id)->orderBy('follow.fid', 'desc')->get();
 
-		$data = array('user' => $user, 'since' => $since, 'itemData' => $itemData, 'getitemcount' => $getitemcount, 'getsalecount' => $getsalecount, 'count_rating' => $count_rating, 'bottom' => $bottom, 'ratingview' => $ratingview, 'countreview' => $countreview, 'getreview' => $getreview, 'followcheck' => $followcheck, 'followingcount' =>  $followingcount, 'followercount' => $followercount, 'viewfollowing' => $viewfollowing, 'badges' => $badges, 'sold_amount' => $sold_amount, 'country' => $country, 'year' => $year, 'collect_amount' => $collect_amount, 'referral_count' => $referral_count, 'featured_count' => $featured_count, 'free_count' => $free_count, 'tren_count' => $tren_count);
-		return view('user-following')->with($data);
+		$data = array (
+			'user'           => $user, 
+			'year'           => $year, 
+			'since'          => $since, 
+			'badges'         => $badges, 
+			'bottom'         => $bottom, 
+			'country'        => $country, 
+			'itemData'       => $itemData, 
+			'getreview'      => $getreview, 
+			'free_count'     => $free_count, 
+			'tren_count'     => $tren_count,
+			'ratingview'     => $ratingview, 
+			'countreview'    => $countreview, 
+			'followcheck'    => $followcheck, 
+			'sold_amount'    => $sold_amount, 
+			'getitemcount'   => $getitemcount, 
+			'getsalecount'   => $getsalecount, 
+			'count_rating'   => $count_rating, 
+			'followercount'  => $followercount, 
+			'viewfollowing'  => $viewfollowing, 
+			'followingcount' =>  $followingcount, 
+			'collect_amount' => $collect_amount, 
+			'referral_count' => $referral_count, 
+			'featured_count' => $featured_count, 
+		);
+		
+		return view('theme2.user-following', compact('data'));
 	}
 
 
@@ -487,9 +496,11 @@ class CommonController extends Controller {
 		$badges['setting'] = Settings::editBadges($sid);
 		$sold['item'] = Items::SoldAmount($user_id);
 		$sold_amount = 0;
+
 		foreach ($sold['item'] as $iter) {
 			$sold_amount += $iter->total_price;
 		}
+
 		$country['view'] = Settings::editCountry($user['user']->country);
 		$membership = date('m/d/Y', strtotime($user['user']->created_at));
 		$membership_date = explode("/", $membership);
@@ -502,88 +513,79 @@ class CommonController extends Controller {
 		// badges
 
 		$itemData['item'] = Items::getuserItem($user_id);
+		$since            = date("F Y", strtotime($user['user']->created_at));
+		$getitemcount     = Items::getuseritemCount($user_id);
+		$getsalecount     = Items::getsaleitemCount($user_id);
+		$followcheck      = Auth::check() ? Items::getfollowuserCheck($user_id) : 0;
+		$followingcount   = Items::getfollowingCount($user_id);
+		$followercount    = Items::getfollowerCount($user_id);
+		$getreview        = Items::getreviewData($user_id);
 
-		$since = date("F Y", strtotime($user['user']->created_at));
-
-		$getitemcount = Items::getuseritemCount($user_id);
-
-		$getsalecount = Items::getsaleitemCount($user_id);
-
-		if (Auth::check()) {
-			$followcheck = Items::getfollowuserCheck($user_id);
-		} else {
-			$followcheck = 0;
-		}
-
-		$followingcount = Items::getfollowingCount($user_id);
-
-		$followercount = Items::getfollowerCount($user_id);
-
-		$getreview  = Items::getreviewData($user_id);
 		if ($getreview != 0) {
 			$review['view'] = Items::getreviewRecord($user_id);
 			$top = 0;
 			$bottom = 0;
+
 			foreach ($review['view'] as $review) {
-				if ($review->rating == 1) {
-					$value1 = $review->rating * 1;
-				} else {
-					$value1 = 0;
-				}
-				if ($review->rating == 2) {
-					$value2 = $review->rating * 2;
-				} else {
-					$value2 = 0;
-				}
-				if ($review->rating == 3) {
-					$value3 = $review->rating * 3;
-				} else {
-					$value3 = 0;
-				}
-				if ($review->rating == 4) {
-					$value4 = $review->rating * 4;
-				} else {
-					$value4 = 0;
-				}
-				if ($review->rating == 5) {
-					$value5 = $review->rating * 5;
-				} else {
-					$value5 = 0;
-				}
+				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
+				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
+				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
+				$value4 = $review->rating == 4 ? $review->rating * 4 : 0;
+				$value5 = $review->rating == 5 ? $review->rating * 5 : 0;
 
 				$top += $value1 + $value2 + $value3 + $value4 + $value5;
 				$bottom += $review->rating;
 			}
-			if (!empty(round($top / $bottom))) {
-				$count_rating = round($top / $bottom);
-			} else {
-				$count_rating = 0;
-			}
+
+			$count_rating = !empty(round($top / $bottom)) ? round($top / $bottom) : 0;
+
 		} else {
 			$count_rating = 0;
 			$bottom = 0;
 		}
 
 		$featured_count = Items::getfeaturedUser($user_id);
-		$free_count = Items::getfreeUser($user_id);
-		$tren_count = Items::getTrendUser($user_id);
+		$free_count     = Items::getfreeUser($user_id);
+		$tren_count     = Items::getTrendUser($user_id);
 
-		$data = array('user' => $user, 'since' => $since, 'itemData' => $itemData, 'getitemcount' => $getitemcount, 'getsalecount' => $getsalecount, 'count_rating' => $count_rating, 'bottom' => $bottom, 'getreview' => $getreview, 'followcheck' => $followcheck, 'followingcount' => $followingcount, 'followercount' => $followercount, 'badges' => $badges, 'sold_amount' => $sold_amount, 'country' => $country, 'year' => $year, 'collect_amount' => $collect_amount, 'referral_count' => $referral_count, 'featured_count' => $featured_count, 'free_count' => $free_count, 'tren_count' => $tren_count);
-		return view('user')->with($data);
+		$data = array (
+			'user'           => $user, 
+			'year'           => $year, 
+			'since'          => $since, 
+			'badges'         => $badges, 
+			'bottom'         => $bottom, 
+			'country'        => $country, 
+			'itemData'       => $itemData, 
+			'getreview'      => $getreview, 
+			'free_count'     => $free_count, 
+			'tren_count'     => $tren_count,
+			'sold_amount'    => $sold_amount, 
+			'followcheck'    => $followcheck, 
+			'getitemcount'   => $getitemcount, 
+			'getsalecount'   => $getsalecount, 
+			'count_rating'   => $count_rating, 
+			'followercount'  => $followercount, 
+			'collect_amount' => $collect_amount, 
+			'referral_count' => $referral_count, 
+			'featured_count' => $featured_count, 
+			'followingcount' => $followingcount, 
+		);
+
+		return view('theme2.user', compact('data'));
 	}
 
 
 	public function send_message(Request $request) {
 		$message_text = $request->input('message');
-		$from_email = $request->input('from_email');
-		$from_name = $request->input('from_name');
-		$to_email = $request->input('to_email');
-		$to_name = $request->input('to_name');
+		$from_email   = $request->input('from_email');
+		$from_name    = $request->input('from_name');
+		$to_email     = $request->input('to_email');
+		$to_name      = $request->input('to_name');
 
 		$record = array('message_text' => $message_text, 'from_name' => $from_name);
+
 		Mail::send('user_mail', $record, function ($message) use ($from_name, $from_email, $to_email, $to_name) {
-			$message->to($to_email, $to_name)
-				->subject('New message received');
+			$message->to($to_email, $to_name)->subject('New message received');
 			$message->from($from_email, $from_name);
 		});
 
@@ -599,11 +601,10 @@ class CommonController extends Controller {
 		$data = array("user_token" => $user_token);
 		$value = Members::verifytokenData($data);
 		$user['user'] = Members::gettokenData($user_token);
-		if ($value) {
 
+		if ($value) {
 			$request->validate([
 				'password' => 'required|confirmed|min:7',
-
 			]);
 			$rules = array();
 
@@ -615,24 +616,26 @@ class CommonController extends Controller {
 				$failedRules = $validator->failed();
 				return back()->withErrors($validator);
 			} else {
-
 				$record = array('password' => $password);
 				Members::updatepasswordData($user_token, $record);
-				return redirect('login')->with('success', 'Your new password updated successfully. Please login now.');
+
+				// $data = [
+				// 	'status' => 'success',
+				// 	'message' => 'Your new password updated successfully. Please login now.'
+				// ];
+				
+				return redirect('theme2.login')->with('success', 'Your new password updated successfully. Please login now.');
 			}
 		} else {
-
 			return redirect()->back()->with('error', 'These credentials do not match our records.');
 		}
 	}
 
 
 	public function update_forgot(Request $request) {
-		$email = $request->input('email');
-
-		$data = array("email" => $email);
-
-		$value = Members::verifycheckData($data);
+		$email        = $request->input('email');
+		$data         = array("email" => $email);
+		$value        = Members::verifycheckData($data);
 		$user['user'] = Members::getemailData($email);
 
 		if ($value) {
@@ -646,29 +649,41 @@ class CommonController extends Controller {
 			$from_email = $setting['setting']->sender_email;
 
 			$record = array('user_token' => $user_token);
+
 			Mail::send('forgot_mail', $record, function ($message) use ($from_name, $from_email, $email, $name, $user_token) {
-				$message->to($email, $name)
-					->subject('Forgot Password');
+				$message->to($email, $name)->subject('Forgot Password');
 				$message->from($from_email, $from_name);
 			});
 
-			return redirect('forgot')->with('success', 'We have e-mailed your password reset link!');
+			return redirect('theme2.forgot')->with('success', 'We have e-mailed your password reset link!');
 		} else {
-
 			return redirect()->back()->with('error', 'These credentials do not match our records.');
 		}
 	}
 
+
 	// start shop
 	public function view_all_items() {
 		//$itemData['item'] = Items::allitemData();
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'asc')->get();
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->orderBy('items.item_id', 'asc')
+			->get();
+
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData' => $catData
+		];
+
+		return view('theme2.shop', compact('data'));
 	}
 
 
+	// -----------------TODO-----------------
 	public function view_flash_items() {
 
 		// $itemData['item'] = Items::with('ratings')
@@ -706,7 +721,6 @@ class CommonController extends Controller {
 
 		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.free_download', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
 
-
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
 
@@ -715,7 +729,9 @@ class CommonController extends Controller {
 			Items::updateFree($data);
 		}
 
-		return view('free-items', ['itemData' => $itemData]);
+		$data = $itemData;
+
+		return view('theme2.free-items', compact('data'));
 	}
 
 
@@ -723,40 +739,90 @@ class CommonController extends Controller {
 		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'asc')->get();
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop-list', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData'  => $catData
+		];
+
+		return view('theme2.shop-list', compact('data'));
 	}
 
 
 	public function view_item_type($item_type, $slug) {
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.item_type', '=', $slug)->orderBy('items.item_id', 'desc')->get();
-
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->where('items.item_type', '=', $slug)
+			->orderBy('items.item_id', 'desc')
+			->get();
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData' => $catData
+		];
+
+		return view('theme2.shop', compact('data'));
 	}
 
 
 	public function view_filter_items($filter) {
 		if ($filter == "recent-items") {
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->orderBy('items.item_id', 'desc')
+				->get();
 		} else if ($filter == "featured-items") {
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.item_featured', '=', 'yes')->orderBy('items.item_id', 'desc')->get();
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->where('items.item_featured', '=', 'yes')
+				->orderBy('items.item_id', 'desc')
+				->get();
 		} else if ($filter == "free-items") {
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.free_download', '=', 1)->orderBy('items.item_id', 'desc')->get();
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->where('items.free_download', '=', 1)
+				->orderBy('items.item_id', 'desc')
+				->get();
 		}
 
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData' => $catData
+		];
+
+		return view('theme2.shop', compact('data'));
 	}
+
 
 	public function view_category_items($type, $id, $slug) {
 
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.item_category', '=', $id)->where('items.item_category_type', '=', $type)->orderBy('items.item_id', 'desc')->get();
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->where('items.item_category', '=', $id)
+			->where('items.item_category_type', '=', $type)
+			->orderBy('items.item_id', 'desc')
+			->get();
 
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData' => $catData
+		];
+
+		return view('theme2.shop', compact('data'));
 	}
 
 
@@ -773,22 +839,46 @@ class CommonController extends Controller {
 			$cat_id = $split[1];
 			$cat_name = $split[0];
 
-
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.item_category', '=', $cat_id)->where('items.item_category_type', '=', $cat_name)->orderBy('items.item_id', 'desc')->get();
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->where('items.item_category', '=', $cat_id)
+				->where('items.item_category_type', '=', $cat_name)
+				->orderBy('items.item_id', 'desc')
+				->get();
 		} else if (!empty($request->input('product_item')) && !empty($request->input('category'))) {
 			$product_item = $request->input('product_item');
 			$category = $request->input('category');
 			$split = explode("_", $category);
 			$cat_id = $split[1];
 			$cat_name = $split[0];
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.item_name', 'LIKE', "%$product_item%")->where('items.item_category', '=', $cat_id)->where('items.item_category_type', '=', $cat_name)->orderBy('items.item_id', 'desc')->get();
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->where('items.item_name', 'LIKE', "%$product_item%")
+				->where('items.item_category', '=', $cat_id)
+				->where('items.item_category_type', '=', $cat_name)
+				->orderBy('items.item_id', 'desc')
+				->get();
 		} else {
-			$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();;
+			$itemData['item'] = Items::with('ratings')
+				->leftjoin('users', 'users.id', '=', 'items.user_id')
+				->where('items.item_status', '=', 1)
+				->where('items.drop_status', '=', 'no')
+				->orderBy('items.item_id', 'desc')
+				->get();;
 		}
 
 		$catData['item'] = Items::getitemcatData();
 
-		return view('shop', ['itemData' => $itemData, 'catData' => $catData]);
+		$data = [
+			'itemData' => $itemData,
+			'catData' => $catData
+		];
+
+		return view('theme2.shop', compact('data'));
 	}
 	// end shop
 
@@ -816,9 +906,11 @@ class CommonController extends Controller {
 
 		$sold['item'] = Items::SoldAmount($item_user_id);
 		$sold_amount = 0;
+
 		foreach ($sold['item'] as $iter) {
 			$sold_amount += $iter->total_price;
 		}
+
 		$collect_amount = Items::CollectedAmount($item_user_id);
 		$referral_count = $item['item']->referral_count;
 
@@ -837,70 +929,73 @@ class CommonController extends Controller {
 		$getcount  = Items::getimagesCount($token);
 		$item_image['item'] = Items::getsingleimagesData($token);
 		$item_allimage = Items::getimagesData($token);
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->where('items.user_id', '=', $item_user_id)->where('items.item_id', '!=', $item_id)->orderBy('items.item_id', 'asc')->take(3)->get();
-
-		if (Auth::check()) {
-			$checkif_purchased = Items::ifpurchaseCount($token);
-		} else {
-			$checkif_purchased = 0;
-		}
-
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->where('items.user_id', '=', $item_user_id)
+			->where('items.item_id', '!=', $item_id)
+			->orderBy('items.item_id', 'asc')
+			->take(3)
+			->get();
+		$checkif_purchased = Auth::check() ? Items::ifpurchaseCount($token) : 0;
 		$getreview  = Items::getreviewCount($item_id);
+
 		if ($getreview != 0) {
 			$review['view'] = Items::getreviewView($item_id);
 			$top = 0;
 			$bottom = 0;
+
 			foreach ($review['view'] as $review) {
-				if ($review->rating == 1) {
-					$value1 = $review->rating * 1;
-				} else {
-					$value1 = 0;
-				}
-				if ($review->rating == 2) {
-					$value2 = $review->rating * 2;
-				} else {
-					$value2 = 0;
-				}
-				if ($review->rating == 3) {
-					$value3 = $review->rating * 3;
-				} else {
-					$value3 = 0;
-				}
-				if ($review->rating == 4) {
-					$value4 = $review->rating * 4;
-				} else {
-					$value4 = 0;
-				}
-				if ($review->rating == 5) {
-					$value5 = $review->rating * 5;
-				} else {
-					$value5 = 0;
-				}
+				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
+				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
+				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
+				$value4 = $review->rating == 4 ? $review->rating * 4 : 0;
+				$value5 = $review->rating == 5 ? $review->rating * 5 : 0;
 
 				$top += $value1 + $value2 + $value3 + $value4 + $value5;
 				$bottom += $review->rating;
 			}
-			if (!empty(round($top / $bottom))) {
-				$count_rating = round($top / $bottom);
-			} else {
-				$count_rating = 0;
-			}
+
+			$count_rating = !empty(round($top / $bottom)) ? round($top / $bottom) : 0;
 		} else {
 			$count_rating = 0;
 		}
 
 		$getreviewdata['view']  = Items::getreviewItems($item_id);
-
-
-		$comment['view'] = Comment::with('ReplyComment')->leftjoin('users', 'users.id', '=', 'item_comments.comm_user_id')->where('item_comments.comm_item_id', '=', $item_id)->orderBy('comm_id', 'asc')->get();
-
+		$comment['view'] = Comment::with('ReplyComment')
+			->leftjoin('users', 'users.id', '=', 'item_comments.comm_user_id')
+			->where('item_comments.comm_item_id', '=', $item_id)
+			->orderBy('comm_id', 'asc')
+			->get();
 		$comment_count = $comment['view']->count();
-
-
 		$viewattribute['details'] = Attribute::getattributeViews($token);
 
-		$data = array('item' => $item, 'getcount' => $getcount, 'item_image' => $item_image, 'item_allimage' => $item_allimage, 'category_name' => $category_name, 'item_tags' => $item_tags, 'itemData' => $itemData, 'checkif_purchased' => $checkif_purchased, 'getreview' => $getreview, 'count_rating' => $count_rating, 'getreviewdata' => $getreviewdata, 'comment' => $comment, 'comment_count' => $comment_count, 'badges' => $badges, 'country' => $country, 'trends' => $trends, 'year' => $year, 'sold_amount' => $sold_amount, 'collect_amount' => $collect_amount, 'referral_count' => $referral_count, 'viewattribute' => $viewattribute);
-		return view('item')->with($data);
+		$data = array (
+			'item' => $item, 
+			'getcount' => $getcount, 
+			'item_image' => $item_image, 
+			'item_allimage' => $item_allimage, 
+			'category_name' => $category_name, 
+			'item_tags' => $item_tags, 
+			'itemData' => $itemData, 
+			'checkif_purchased' => $checkif_purchased, 
+			'getreview' => $getreview, 
+			'count_rating' => $count_rating, 
+			'getreviewdata' => $getreviewdata, 
+			'comment' => $comment, 
+			'comment_count' => $comment_count, 
+			'badges' => $badges, 
+			'country' => $country, 
+			'trends' => $trends, 
+			'year' => $year, 
+			'sold_amount' => $sold_amount, 
+			'collect_amount' => $collect_amount, 
+			'referral_count' => $referral_count, 
+			'viewattribute' => $viewattribute
+		);
+		
+		return view('theme2.item', compact('data'));
 	}
 	// end item
 
@@ -916,8 +1011,15 @@ class CommonController extends Controller {
 		$admin_name = $setting['setting']->sender_name;
 		$admin_email = $setting['setting']->sender_email;
 
-		$record = array('from_name' => $from_name, 'from_email' => $from_email, 'message_text' => $message_text, 'contact_date' => date('Y-m-d'));
+		$record = array (
+			'from_name' => $from_name, 
+			'from_email' => $from_email, 
+			'message_text' => $message_text, 
+			'contact_date' => date('Y-m-d')
+		);
+		
 		$contact_count = Items::getcontactCount($from_email);
+
 		if ($contact_count == 0) {
 
 			$request->validate([
@@ -925,31 +1027,27 @@ class CommonController extends Controller {
 				'from_email' => 'required|email',
 				'message_text' => 'required',
 				'g-recaptcha-response' => 'required|captcha',
-
-
 			]);
+
 			$rules = array();
-
 			$messsages = array();
-
 			$validator = Validator::make($request->all(), $rules, $messsages);
 
 			if ($validator->fails()) {
 				$failedRules = $validator->failed();
 				return back()->withErrors($validator);
+
 			} else {
-
-
 				Items::saveContact($record);
 				Mail::send('contact_mail', $record, function ($message) use ($admin_name, $admin_email, $from_email, $from_name) {
-					$message->to($admin_email, $admin_name)
-						->subject('Contact');
+					$message->to($admin_email, $admin_name)->subject('Contact');
 					$message->from($from_email, $from_name);
 				});
-				return redirect('contact')->with('success', 'Your message has been sent successfully');
+
+				return redirect('theme2.contact')->with('success', 'Your message has been sent successfully');
 			}
 		} else {
-			return redirect('contact')->with('error', 'Sorry! Your message already sent');
+			return redirect('theme2.contact')->with('error', 'Sorry! Your message already sent');
 		}
 	}
 	// end contact
@@ -968,14 +1066,11 @@ class CommonController extends Controller {
 
 
 	public function activate_newsletter($token) {
-
 		$check = Members::checkNewsletter($token);
+
 		if ($check == 1) {
-
 			$data = array('news_status' => 1);
-
 			Members::updateNewsletter($token, $data);
-
 			return redirect('/newsletter')->with('success', 'Thank You! Your subscription has been confirmed!');
 		} else {
 			return redirect('/newsletter')->with('error', 'This email address already subscribed');
@@ -984,8 +1079,7 @@ class CommonController extends Controller {
 
 
 	public function view_newsletter() {
-
-		return view('newsletter');
+		return view('theme2.newsletter');
 	}
 
 
@@ -999,11 +1093,13 @@ class CommonController extends Controller {
 			'news_email' => 'required|email',
 		]);
 
-		$rules = array(
-			'news_email' => ['required',  Rule::unique('newsletter')->where(function ($sql) {
-				$sql->where('news_status', '=', 0);
-			})],
-
+		$rules = array (
+			'news_email' => [
+				'required',  
+				Rule::unique('newsletter')->where(function ($sql) {
+					$sql->where('news_status', '=', 0);
+				})
+			],
 		);
 
 		$messsages = array();
@@ -1016,8 +1112,11 @@ class CommonController extends Controller {
 			return redirect()->back()->with('news-error', 'This email address already subscribed.');
 		} else {
 
-
-			$data = array('news_email' => $news_email, 'news_token' => $news_token, 'news_status' => $news_status);
+			$data = array (
+				'news_email' => $news_email, 
+				'news_token' => $news_token, 
+				'news_status' => $news_status
+			);
 
 			Members::savenewsletterData($data);
 
@@ -1030,8 +1129,7 @@ class CommonController extends Controller {
 
 			$record = array('activate_url' => $activate_url);
 			Mail::send('newsletter_mail', $record, function ($message) use ($from_name, $from_email, $news_email) {
-				$message->to($news_email)
-					->subject('Newsletter');
+				$message->to($news_email)->subject('Newsletter');
 				$message->from($from_email, $from_name);
 			});
 
@@ -1045,6 +1143,6 @@ class CommonController extends Controller {
 		$review['data'] = Items::homereviewsData();
 		$data = array('review' => $review);
 
-		return view('reviews')->with($data);
+		return view('theme2.reviews', compact('data'));
 	}
 }

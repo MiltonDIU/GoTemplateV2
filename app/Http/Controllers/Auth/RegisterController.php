@@ -37,99 +37,109 @@ class RegisterController extends Controller {
      */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct() {
         $this->middleware('guest');
     }
 
+
 	public function register(Request $request) {
-         $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
-		 $allsettings = Settings::allSettings();
-		 $name = $request->input('name');
-		 $username = $request->input('username');
-         $email = $request->input('email');
-		 $user_type = $encrypter->decrypt($request->input('user_type'));
-		 $password = bcrypt($request->input('password'));
+        $encrypter   = app('Illuminate\Contracts\Encryption\Encrypter');
+        $allsettings = Settings::allSettings();
+        $name        = $request->input('name');
+        $username    = $request->input('username');
+        $email       = $request->input('email');
+        $user_type   = $encrypter->decrypt($request->input('user_type'));
+        $password    = bcrypt($request->input('password'));
+        $earnings    = !empty($request->input('earnings')) ? $request->input('earnings') : 0;
 
-		 if(!empty($request->input('earnings'))) {
-		    $earnings = $request->input('earnings');
-         }else {
-		   $earnings = 0;
-		 }
+		if(!empty(unserialize(Cookie::get('referral')))) {
+            $referral_by         = unserialize(Cookie::get('referral'));
+            $referral_commission = $allsettings->site_referral_commission;
+            $check_referral      = Members::referralCheck($referral_by);
 
-		 if(!empty(unserialize(Cookie::get('referral')))) {
-		     $referral_by = unserialize(Cookie::get('referral'));
-		     $referral_commission = $allsettings->site_referral_commission;
-		     $check_referral = Members::referralCheck($referral_by);
+            if($check_referral != 0) {
+                $referred['display'] = Members::referralUser($referral_by);
+                $wallet_amount       = $referred['display']->earnings + $referral_commission;
+                $referral_amount     = $referred['display']->referral_amount + $referral_commission;
+                $referral_count      = $referred['display']->referral_count + 1;
 
-		     if($check_referral != 0) {
-		         $referred['display'] = Members::referralUser($referral_by);
-		         $wallet_amount = $referred['display']->earnings + $referral_commission;
-		         $referral_amount = $referred['display']->referral_amount + $referral_commission;
-		         $referral_count = $referred['display']->referral_count + 1;
+                $update_data = array (
+                    'earnings' => $wallet_amount, 
+                    'referral_amount' => $referral_amount, 
+                    'referral_count' => $referral_count
+                );
 
-		         $update_data = array('earnings' => $wallet_amount, 'referral_amount' => $referral_amount, 'referral_count' => $referral_count);
-		         Members::updateReferral($referral_by,$update_data);
-		     }
-         }else {
-		     $referral_by = "";
-		 }
+                Members::updateReferral($referral_by,$update_data);
+            }
+        }else {
+		    $referral_by = "";
+		}
 
-		 $request->validate([
-            'name' => 'required',
+        $request->validate([
+            'name'     => 'required',
             'username' => 'required',
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'password' => ['required', 'min:6'],
             //'g-recaptcha-response' => 'required|captcha',
-         ]);
+        ]);
 
-		 $rules = array(
-		     'username' => ['required', 'regex:/^[\w-]*$/', 'max:255', Rule::unique('users') -> where(function($sql){ $sql->where('drop_status','=','no');})],
-             'email' => ['required', 'email', 'max:255', Rule::unique('users') -> where(function($sql){ $sql->where('drop_status','=','no');})],
-	     );
+        $rules = array (
+            'username' => ['required', 'regex:/^[\w-]*$/', 'max:255', Rule::unique('users') -> where(function($sql){ $sql->where('drop_status','=','no');})],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users') -> where(function($sql){ $sql->where('drop_status','=','no');})],
+        );
 
-		 $messsages = array();
+        $messsages = array();
 
-		 $validator = Validator::make($request->all(), $rules,$messsages);
+        $validator = Validator::make($request->all(), $rules,$messsages);
 
-		 if($validator->fails()) {
-             $failedRules = $validator->failed();
-             return back()->withErrors($validator);
-		 }else {
+        if($validator->fails()) {
+            $failedRules = $validator->failed();
+            return back()->withErrors($validator);
+        }else {
 
-              if($allsettings->email_verification == 1) {
-                  $verified = 0;
-              }else {
-                  $verified = 1;
-              }
-              $user_token = $this->generateRandomString();
+            if($allsettings->email_verification == 1) {
+                $verified = 0;
+            }else {
+                $verified = 1;
+            }
+            
+            $user_token = $this->generateRandomString();
 
-              $data = array('name' => $name, 'username' => $username, 'email' => $email, 'user_type' => $user_type, 'password' => $password, 'earnings' => $earnings, 'verified' => $verified, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'), 'user_token' => $user_token, 'referral_by' => $referral_by);
-              Members::insertData($data);
+            $data = array (
+                'name' => $name, 
+                'username' => $username, 
+                'email' => $email, 
+                'user_type' => $user_type, 
+                'password' => $password, 
+                'earnings' => $earnings, 
+                'verified' => $verified, 
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s'), 
+                'user_token' => $user_token, 
+                'referral_by' => $referral_by
+            );
 
-              if($allsettings->email_verification == 1) {
-                  $sid = 1;
-                  $setting['setting'] = Settings::editGeneral($sid);
-                  $from_name = $setting['setting']->sender_name;
-                  $from_email = $setting['setting']->sender_email;
-                  Mail::send('register_mail', $data, function($message) use ($from_name, $from_email, $email, $name, $user_token) {
-                      $message->to($email, $name)->subject('Email Confirmation For Registration');
-                      $message->from($from_email,$from_name);
-                  });
-                  return redirect('login')->with('success','We sent you an activation code. Check your email inbox/spam box and click on the link to verify.');
-              }else {
-                  return redirect('login')->with('success','Your account has been created. You can now login.');
-              }
+            Members::insertData($data);
 
-
-		 }
+            if($allsettings->email_verification == 1) {
+                $sid = 1;
+                $setting['setting'] = Settings::editGeneral($sid);
+                $from_name = $setting['setting']->sender_name;
+                $from_email = $setting['setting']->sender_email;
+                Mail::send('register_mail', $data, function($message) use ($from_name, $from_email, $email, $name, $user_token) {
+                    $message->to($email, $name)->subject('Email Confirmation For Registration');
+                    $message->from($from_email,$from_name);
+                });
+                return redirect('theme2.login')->with('success','We sent you an activation code. Check your email inbox/spam box and click on the link to verify.');
+            }else {
+                return redirect('theme2.login')->with('success','Your account has been created. You can now login.');
+            }
+        }
 
         // $this->guard()->login($user);
     }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -137,8 +147,7 @@ class RegisterController extends Controller {
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -148,6 +157,7 @@ class RegisterController extends Controller {
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -155,39 +165,43 @@ class RegisterController extends Controller {
      * @return \Feberr\User
      */
 	public function generateRandomString($length = 25) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        return $randomString;
     }
 
-    protected function create(array $data)
-    {
+
+    protected function create(array $data) {
 	    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
 	    $allsettings = Settings::allSettings();
-		if(!empty(unserialize(Cookie::get('referral'))))
-		 {
-	      $referral_by = unserialize(Cookie::get('referral'));
-		  $referral_commission = $allsettings->site_referral_commission;
-		  $check_referral = Members::referralCheck($referral_by);
-		  if($check_referral != 0)
-		  {
-			  $referred['display'] = Members::referralUser($referral_by);
-			  $wallet_amount = $referred['display']->earnings + $referral_commission;
-			  $referral_amount = $referred['display']->referral_amount + $referral_commission;
-			  $referral_count = $referred['display']->referral_count + 1;
+		if(!empty(unserialize(Cookie::get('referral')))) {
+	        $referral_by = unserialize(Cookie::get('referral'));
+		    $referral_commission = $allsettings->site_referral_commission;
+		    $check_referral = Members::referralCheck($referral_by);
+		    if($check_referral != 0) {
+                $referred['display'] = Members::referralUser($referral_by);
+                $wallet_amount = $referred['display']->earnings + $referral_commission;
+                $referral_amount = $referred['display']->referral_amount + $referral_commission;
+                $referral_count = $referred['display']->referral_count + 1;
 
-			  $update_data = array('earnings' => $wallet_amount, 'referral_amount' => $referral_amount, 'referral_count' => $referral_count);
-			  Members::updateReferral($referral_by,$update_data);
-		   }
-         }
-		 else
-		 {
-		  $referral_by = "";
-		 }
+                $update_data = array (
+                    'earnings' => $wallet_amount, 
+                    'referral_amount' => $referral_amount, 
+                    'referral_count' => $referral_count
+                );
+                
+                Members::updateReferral($referral_by,$update_data);
+		    }
+        }else {
+		    $referral_by = "";
+		}
+
 		$token = $this->generateRandomString();
 		return User::create([
             'name' => $data['name'],
@@ -200,9 +214,5 @@ class RegisterController extends Controller {
 			'referral_by' => $referral_by,
 			'g-recaptcha-response' => 'required|captcha',
         ]);
-
-
-
-
     }
 }
