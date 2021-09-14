@@ -28,7 +28,7 @@
 
       <div class="benefit_main">
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-12 col-xl-4">
             <div class="benefit_details">
               <div class="benefit_points">
                 <i class="fas fa-check"></i>
@@ -45,7 +45,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-12 col-xl-4">
             <div class="benefit_points">
               <i class="fas fa-check"></i>
               <p>Set your own prices</p>
@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-12 col-xl-4">
             <div class="benefit_points">
               <i class="fas fa-check"></i>
               <p>Transparent & clear payout system</p>
@@ -141,6 +141,8 @@
       </div>
       <!-- table end -->
 
+      <a href="{{ url('/') }}/public/assets/theme2/images/payment-breakdown-gotemplate.png" class="payment_download_btn" download>Click to Download</a>
+
     </div>
   </section>
   <!-- payment breakdown end-->
@@ -162,7 +164,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Website Templates</h5>
               <p class="sale_item_text">
@@ -174,7 +176,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Plugins</h5>
               <p class="sale_item_text">
@@ -186,7 +188,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Presentation</h5>
               <p class="sale_item_text">
@@ -197,7 +199,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Graphics</h5>
               <p class="sale_item_text">
@@ -208,7 +210,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Audios and Videos</h5>
               <p class="sale_item_text">
@@ -236,36 +238,36 @@
 
     <div class="apply_steps">
       <div class="container">
-        <div class="row">
-          <div class="col">
+        <div class="row apply_steps_xs">
+          <div class="col col-lg-4 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="step_number">1</p>
               <p class="steps_details">Complete your registration as a vendor</p>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-4 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Log in to your account and upload your product</p>
               <p class="step_number">2</p>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-4 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Submit your request for product upload by filling out details.</p>
               <p class="step_number">3</p>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-4 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Our system will review your product and publish after review</p>
               <p class="step_number">4</p>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-4 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">See your product online and start making sales!</p>
               <p class="step_number">5</p>
@@ -293,7 +295,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Passionate</h5>
               <p class="sale_item_text">
@@ -304,7 +306,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Facilitators</h5>
               <p class="sale_item_text">
@@ -315,7 +317,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Open Minded</h5>
               <p class="sale_item_text">
@@ -326,7 +328,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="sale_item_box">
               <h5 class="sale_item_title">Willing to work as outsource</h5>
               <p class="sale_item_text">
@@ -363,7 +365,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-7 m-auto">
+        <div class="col-lg-7 m-auto col-sm-12 col-md-12">
           <div class="payment_policy">
             <div class="payment_policy_text">
               <i class="fas fa-check"></i>
