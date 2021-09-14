@@ -1,4 +1,4 @@
-<div class="col-lg-3 {{ isset($item_slider) && $item_slider ? 'w-100' : '' }}">
+<div class="col-lg-4 col-sm-12 col-md-6 col-xl-3 {{ isset($item_slider) && $item_slider ? 'w-100' : '' }}">
   <div class="item_box">
     <div class="item_view">
       <div class="item_view_overlay">
