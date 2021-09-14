@@ -1,3 +1,7 @@
+@push('styles')
+  <link rel="stylesheet" href="public/assets/theme2/css/popular-category.css">
+@endpush
+
 <div class="col-lg-6 col-sm-12 col-md-12 col-xl-6">
   <div class="popular_why">
     <h4>Why choose GoTemplate?</h4>

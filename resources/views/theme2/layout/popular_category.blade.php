@@ -1,7 +1,7 @@
-<div class="col-lg-6">
+<div class="col-lg-6 col-sm-12 col-md-12 col-md-12 col-xl-6">
   <div class="popular_category_item">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">
@@ -12,7 +12,7 @@
         </a>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">
@@ -23,7 +23,7 @@
         </a>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">
@@ -34,7 +34,7 @@
         </a>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">
@@ -45,7 +45,7 @@
         </a>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">
@@ -56,7 +56,7 @@
         </a>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6 col-md-4 col-xl-4 item_in">
         <a href="{{ URL::to('/shop') }}">
           <div class="popular_category_image">
             <div class="category_overlay">

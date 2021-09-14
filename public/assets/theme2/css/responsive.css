@@ -1520,7 +1520,7 @@
     }
 
     #popular_category .popular_why .popular_details {
-        padding-right: 30px;
+        padding-right: 30px !important;
         padding-left: 30px;
         margin-bottom: 40px;
         margin-top: 15px;
