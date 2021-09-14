@@ -107,7 +107,7 @@ class LoginController extends Controller {
 			}
 		}
 	    
-		return redirect('theme2.login')->withErrors([
+		return redirect('login')->withErrors([
 			'error' => 'These credentials do not match our records.',
 		]);	
 	} 

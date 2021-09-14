@@ -8,6 +8,42 @@
 <?php $__env->startSection('content'); ?>
 <section id="signin">
     <div class="container">
+        <div>
+            <?php if($message = Session::get('success')): ?>
+            <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-checkmark-circle"></span>
+                    <span><?php echo e($message); ?></span>
+                </span>
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            <?php endif; ?>
+
+            <?php if($message = Session::get('error')): ?>
+            <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-warning"></span>
+                    <span><?php echo e($message); ?></span>
+                </span>
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            <?php endif; ?>
+
+            <?php if(!$errors->isEmpty()): ?>
+            <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-warning"></span>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php echo e($error); ?>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </span>
+
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            <?php endif; ?>
+        </div>
+
         <div class="row">
 
             <div class="col-lg-6">
@@ -45,7 +81,8 @@
 
                     <h2>Sign in</h2>
 
-                    <form action="">
+                    <form action="<?php echo e(route('login')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
                         <div class="form_group">
                             <p>Username/ Email</p>
                             <input type="text" placeholder="Your username or email" class="f_input" required>

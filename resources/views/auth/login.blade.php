@@ -8,6 +8,41 @@
 @section('content')
 <section id="signin">
     <div class="container">
+        <div>
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-checkmark-circle"></span>
+                    <span>{{ $message }}</span>
+                </span>
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-warning"></span>
+                    <span>{{ $message }}</span>
+                </span>
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            @endif
+
+            @if (!$errors->isEmpty())
+            <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+                <span>
+                    <span class="alert_icon lnr lnr-warning"></span>
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </span>
+
+                <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
+            </div>
+            @endif
+        </div>
+
         <div class="row">
 
             <div class="col-lg-6">
@@ -45,7 +80,8 @@
 
                     <h2>Sign in</h2>
 
-                    <form action="">
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
                         <div class="form_group">
                             <p>Username/ Email</p>
                             <input type="text" placeholder="Your username or email" class="f_input" required>

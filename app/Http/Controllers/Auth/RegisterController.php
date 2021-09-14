@@ -131,9 +131,9 @@ class RegisterController extends Controller {
                     $message->to($email, $name)->subject('Email Confirmation For Registration');
                     $message->from($from_email,$from_name);
                 });
-                return redirect('theme2.login')->with('success','We sent you an activation code. Check your email inbox/spam box and click on the link to verify.');
+                return redirect('login')->with('success','We sent you an activation code. Check your email inbox/spam box and click on the link to verify.');
             }else {
-                return redirect('theme2.login')->with('success','Your account has been created. You can now login.');
+                return redirect('login')->with('success','Your account has been created. You can now login.');
             }
         }
 

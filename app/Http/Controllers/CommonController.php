@@ -112,7 +112,7 @@ class CommonController extends Controller {
 		$data = array('verified' => '1');
 		$user['user'] = Members::verifyuserData($user_token, $data);
 
-		return redirect('theme2.login')->with('success', 'Your e-mail is verified. You can now login.');
+		return redirect('login')->with('success', 'Your e-mail is verified. You can now login.');
 	}
 
 
@@ -624,7 +624,7 @@ class CommonController extends Controller {
 				// 	'message' => 'Your new password updated successfully. Please login now.'
 				// ];
 				
-				return redirect('theme2.login')->with('success', 'Your new password updated successfully. Please login now.');
+				return redirect('login')->with('success', 'Your new password updated successfully. Please login now.');
 			}
 		} else {
 			return redirect()->back()->with('error', 'These credentials do not match our records.');
