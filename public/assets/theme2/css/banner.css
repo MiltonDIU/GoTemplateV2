@@ -84,3 +84,11 @@
   font-weight: 400;
   color: rgba(20, 33, 61, .65);
 }
+
+
+/* media query */
+@media (max-width: 768px) {
+  #banner .search_box .search_field .search_input {
+    width: 93%;
+  }
+}
