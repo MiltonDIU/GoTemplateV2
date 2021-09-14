@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <div class="offset-lg-2 col-lg-8">
+      <div class="offset-lg-1 col-lg-10 col-sm-12 col-md-12 offset-xl-2 col-xl-8">
         <div class="search_box">
 
           <form 
