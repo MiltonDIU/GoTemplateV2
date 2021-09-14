@@ -29,7 +29,7 @@
   <header id="header">
     <div class="container">
       <div class="row">
-        <div class="offset-lg-8 col-lg-4">
+        <div class="offset-lg-7 col-lg-5 offset-sm-3 col-sm-9 offset-md-4 col-md-8 offset-xl-8 col-xl-4">
           <ul class="top_menu">
             <li>
               <a class="link" href="{{ URL::to('/start-selling') }}">{{ Helper::translation(3018,$translate) }}</a>
@@ -293,7 +293,7 @@
       <div class="footer_main">
         <div class="row">
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="footer_follow">
               <div class="follow_us">
                 <p class="footer_title">Follow <span class="r_title">Us</span></p>
@@ -322,7 +322,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="footer_link">
               <p class="footer_title">POPULAR <span class="r_title">CATEGORIES</span></p>
               <div class="all_links">
@@ -337,7 +337,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
             <div class="footer_link">
               <p class="footer_title">More <span class="r_title">Info</span></p>
               <div class="all_links">
@@ -357,7 +357,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
 
             <div class="newsletter">
               <p class="footer_title">{{ Helper::translation(3005,$translate) }}</p>
