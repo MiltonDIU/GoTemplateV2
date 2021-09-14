@@ -2,6 +2,7 @@
 
 @push('styles')
   <link rel="stylesheet" href="public/assets/theme2/css/flash-sale.css">
+  <link rel="stylesheet" href="public/assets/theme2/css/item.css">
 @endpush
 
 @section('content')
@@ -13,7 +14,7 @@
     <h2 class="page_banner_description">Only for a short period of time you can grab these files with 50% discount</h2>
 
     <div class="row">
-      <div class="col-lg-7 m-auto">
+      <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">
         <!-- counter start -->
         <div id="getting-started" class="flash_counter">
           <div class="count_time">
@@ -90,7 +91,11 @@
 
         <div class="row">
           @foreach($data['item']->all() as $item)
-            <div class="mix scripts item_box" data-price="200" data-published-date="2020-10-1">
+            <div 
+              class="mix scripts item_box" 
+              data-price="{{ $item->regular_price }}" 
+              data-published-date="{{ $item->created_at }}"
+            >
               <div class="item_view">
                 <div class="item_view_overlay">
                   <div class="item_details">
