@@ -1,5 +1,10 @@
 @extends('theme2.layout.master')
 
+@push('styles')
+  <link rel="stylesheet" href="public/assets/theme2/css/banner.css">
+  <link rel="stylesheet" href="public/assets/theme2/css/item.css">
+@endpush 
+
 @section('content')
   @include('theme2.layout.banner')
 
