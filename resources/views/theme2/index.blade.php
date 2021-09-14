@@ -75,7 +75,7 @@
         </div>
 
         <div class="item_slider_main">
-          @foreach($data['flashes']->all() as $item)
+          @foreach($data['flashes'] as $item)
             <div class="slider_item">
               @include('theme2.layout.item', [
                 "item" => $item,

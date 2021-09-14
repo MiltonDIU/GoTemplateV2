@@ -686,30 +686,22 @@ class CommonController extends Controller {
 	// -----------------TODO-----------------
 	public function view_flash_items() {
 
-		// $itemData['item'] = Items::with('ratings')
-		// 	->leftjoin('users', 'users.id', '=', 'items.user_id')
-		// 	->where('items.item_status', '=', 1)
-		// 	->where('items.item_flash', '=', 1)
-		// 	->where('items.drop_status', '=', 'no')
-		// 	->orderBy('items.item_id', 'desc')
-		// 	->get();
-			
-		$sid = 1;
-		$setting['setting'] = Settings::editGeneral($sid);
-		$category_limit = $setting['setting']->site_category_newest_files;
-		$newest_limit = $setting['setting']->site_newest_files;
-
-		$newest['items'] = Category::homecategoryData($category_limit);
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->take($newest_limit)->get();
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.item_flash', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->orderBy('items.item_id', 'desc')
+			->get();
 		
 
-		// $sid = 1;
-		// $setting['setting'] = Settings::editGeneral($sid);
+		$sid = 1;
+		$setting['setting'] = Settings::editGeneral($sid);
 
-		// if ($setting['setting']->site_flash_end_date < date("Y-m-d")) {
-		// 	$data = array('item_flash' => 0);
-		// 	Items::updateFlash($data);
-		// }
+		if ($setting['setting']->site_flash_end_date < date("Y-m-d")) {
+			$data = array('item_flash' => 0);
+			Items::updateFlash($data);
+		}
 
 		$data = $itemData;
 
