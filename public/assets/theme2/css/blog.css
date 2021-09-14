@@ -147,6 +147,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: 9px;
+  margin-top: 7px;
 }
 
 .sidebar_blog{

@@ -109,6 +109,7 @@
   background-color: #14213D;
   padding-bottom: 60px;
   color: #14213D;
+  text-align: center;
 }
 
 #payment_breakdown .sale_title_big {
@@ -122,6 +123,24 @@
   padding-bottom: 50px;
   text-align: center;
 }
+
+.payment_download_btn{
+  display: inline-block;
+  padding: 13px 24px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #14213D;
+  background-color: #fff;
+  border-radius: 32px;
+  transition: all linear .3s;
+  margin-top: 50px;
+}
+.payment_download_btn:hover{
+  background-color: #FCA311;
+  color: #14213D;
+}
+
 #payment_breakdown .payment_table thead th {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
@@ -148,14 +167,6 @@
 #payment_breakdown .payment_table tbody .last_col td {
   padding: 27px 0;
 }
-
-/* #payment_breakdown .payment_table tbody .last_col th{
-  border-bottom: none;
-}
-
-#payment_breakdown .payment_table tbody .last_col td{
-  border-bottom: none;
-} */
 
 #sale_items {
   margin-top: 80px;

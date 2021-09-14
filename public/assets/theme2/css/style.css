@@ -1336,6 +1336,7 @@ h1,h2,h3,h4,h5,h6,p{
 #cart .remove_icon i{
     color: #14213D;
     transition: all linear .2s;
+    cursor: pointer;
 }
 
 #cart .remove_icon i:hover{
@@ -1669,8 +1670,9 @@ h1,h2,h3,h4,h5,h6,p{
 
 #payment_policy .payment_breakdown{
     background-color: rgba(20, 33, 61, .05);
-    padding: 50px 0 40px 0;
+    padding: 60px 0 65px 0;
     margin-top: 50px;
+    text-align: center;
 }
 
 #payment_policy .payment_breakdown .p_box{
@@ -1698,6 +1700,15 @@ h1,h2,h3,h4,h5,h6,p{
     line-height: 2;
     border-bottom-color: rgba(20, 33, 61, .2);
     padding: 12px 0;
+}
+
+#payment_policy .payment_breakdown .p_box a{
+    background-color: #14213D;
+}
+
+#payment_policy .payment_breakdown .p_box a:hover{
+    color: #14213D;
+    background-color: #FCA311;
 }
 
 .p_box a{
