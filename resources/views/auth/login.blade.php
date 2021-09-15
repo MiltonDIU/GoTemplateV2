@@ -83,7 +83,7 @@
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="form_group">
-                            <label>Username/ Email</label>
+                            <label for="user_name">Username/ Email</label>
                             <input 
                                 id="user_name"
                                 type="text" 

@@ -1,7 +1,0 @@
-Dark Blue: #14213D
-Orange: #FCA311
-
-
-
-font-family: 'Open Sans', sans-serif;
-font-family: 'Raleway', sans-serif;

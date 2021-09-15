@@ -84,7 +84,7 @@
                     <form action="<?php echo e(route('login')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class="form_group">
-                            <label>Username/ Email</label>
+                            <label for="user_name">Username/ Email</label>
                             <input 
                                 id="user_name"
                                 type="text" 
@@ -178,6 +178,8 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
 
+
+                    <!-- not use currently -->
                     <?php if($allsettings->display_social_login == 1): ?>
                     <div class="row form-group mt-4 social-media-login">
                         <div class="col-md-12 text-center">

@@ -21,6 +21,7 @@
   @include('theme2/stylesheet')
   
   @stack('styles')
+  @stack('others')
 
   <link rel="stylesheet" href="public/assets/theme2/css/responsive.css">
 </head>
