@@ -58,11 +58,12 @@
   margin-bottom: 35px;
 }
 
-.form_group p {
+.form_group label {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
+  color: #555555;
 }
 
 .form_group .f_input {

@@ -46,7 +46,7 @@
 
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xl-6">
                 <div class="sign_text">
                     <h1>Great to have you back!</h1>
                     <h3>GoTemplate - Digital product & template marketplace in Bangladesh.</h3>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="offset-lg-1 col-lg-5">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xl-6">
                 <div class="sign_form">
 
                     <h2>Sign in</h2>
@@ -84,17 +84,82 @@
                     <form action="<?php echo e(route('login')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class="form_group">
-                            <p>Username/ Email</p>
-                            <input type="text" placeholder="Your username or email" class="f_input" required>
+                            <label>Username/ Email</label>
+                            <input 
+                                id="user_name"
+                                type="text" 
+                                placeholder="Your username or email" 
+                                class="f_input <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                name="email"
+                                value="<?php echo e(old('email')); ?>" 
+                                required
+                                autofocus
+                            >
+
+                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form_group">
-                            <p>Password</p>
-                            <input type="password" placeholder="Your password" class="f_input" required>
+                            <label for="pass">Password</label>
+
+                            <input 
+                                id="pass"
+                                type="password" 
+                                placeholder="Your password" 
+                                class="f_input <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form_group f_check">
-                            <input type="checkbox" id="form_checkbox">
+                            <input 
+                                type="checkbox" 
+                                id="form_checkbox"
+                                name="remember"
+                                <?php echo e(old('remember') ? 'checked' : ''); ?>
+
+                            >
+
                             <label for="form_checkbox" class="l_checkbox">Remember Me</label>
                         </div>
 
@@ -102,13 +167,36 @@
                     </form>
 
                     <div class="form_bottom">
+                        <?php if(Route::has('password.request')): ?>
                         <div class="forgot_pass">
-                            <a href="#">Forgot password?</a>
+                            <a href="<?php echo e(URL::to('/forgot')); ?>">Forgot password?</a>
                         </div>
+                        <?php endif; ?>
+
                         <div class="c_account">
-                            <p>Don't have an <a href="sign-up.html">account?</a></p>
+                            <p>Don't have an <a href="<?php echo e(URL::to('/register')); ?>">account?</a></p>
                         </div>
                     </div>
+
+                    <?php if($allsettings->display_social_login == 1): ?>
+                    <div class="row form-group mt-4 social-media-login">
+                        <div class="col-md-12 text-center">
+                            <label class="font-weight-bold" for="fullname">
+                                <?php echo e(Helper::translation(3232,$translate)); ?>
+
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="<?php echo e(url('/login/facebook')); ?>">
+                                <img src="<?php echo e(url('/')); ?>/public/img/fb.png" alt="" />
+                            </a>
+                            <a href="<?php echo e(url('/login/google')); ?>">
+                                <img src="<?php echo e(url('/')); ?>/public/img/gp.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <?php endif; ?>
 
                 </div>
             </div>
