@@ -14,6 +14,7 @@
 #single_item_top .vendor_img img {
   display: block;
   width: 100%;
+  min-width: 55px;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
@@ -280,6 +281,12 @@
 #single_item_view .item_view_details .action_buy:hover {
   background-color: #FCA311;
   color: #14213D;
+}
+#single_item_view .item-active-like {
+  background-color: #FCA311 !important;
+}
+#single_item_view .item-active-like:hover i {
+  color: #FFFFFF;
 }
 
 

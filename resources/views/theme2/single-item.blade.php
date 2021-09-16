@@ -31,7 +31,35 @@
 
       <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 v_follow_sm">
         <div class="v_follow">
-          <button class="vendor_follow"><i class="fas fa-plus"></i>Follow</button>
+          @if(Auth::guest())
+            <a href="javascript:void(0);" class="vendor_follow" onClick="alert('Login user only');">
+              <i class="fas fa-plus"></i>{{ Helper::translation(3202,$translate) }}
+            </a>
+          @endif
+
+          @if (Auth::check())
+            @if($item->user_id != Auth::user()->id)
+
+              <!-- TODO: $followcheck should be received -->
+              @php $followcheck = 0; @endphp
+
+              @if($followcheck == 0)
+                <a 
+                  href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $item->user_id }}" 
+                  class="vendor_follow"
+                >
+                  <i class="fas fa-plus"></i>{{ Helper::translation(3202,$translate) }}
+                </a>
+              @else
+                <a 
+                  href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $item->user_id }}" 
+                  class="vendor_follow"
+                >
+                  <i class="fas fa-plus"></i>{{ Helper::translation(3203,$translate) }}
+                </a>
+              @endif
+            @endif
+          @endif
         </div>
       </div>
     </div>
@@ -255,9 +283,53 @@
             @endif
 
             <div class="btn_buy">
-              <button class="item_action_btn action_buy"><i class="fas fa-shopping-cart"></i>Buy Now</button>
-              <button class="item_action_btn btn_save_like"><i class="fas fa-folder-plus"></i>Save</button>
-              <button class="item_action_btn btn_save_like"><i class="fas fa-heart"></i>Like</button>
+              @if(Auth::guest())
+                <a href="javascript:void(0);" class="item_action_btn action_buy" onClick="alert('Login user only');">
+                  <i class="fas fa-shopping-cart"></i> {{ Helper::translation(3074,$translate) }}
+                </a>
+                <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert('Login user only');">
+                  <i class="fas fa-folder-plus"></i>Save
+                </a>
+                <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert('Login user only');">
+                  <i class="fas fa-heart"></i>Like
+                </a>
+              @endif
+
+              @if (Auth::check())
+                @if($item->user_id == Auth::user()->id)
+                  <a href="{{ URL::to('/edit-item') }}/{{ $item->item_token }}" class="item_action_btn action_buy">{{ Helper::translation(2935,$translate) }}</a>
+                  <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert(`You can't save your own item!`)">
+                    <i class="fas fa-folder-plus"></i>Save
+                  </a>
+                  <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert(`You can't like your own item!`)">
+                    <i class="fas fa-heart"></i>Like
+                  </a>
+                @else
+                  <input type="hidden" name="user_id"      value="{{ Auth::user()->id }}">
+                  <input type="hidden" name="item_id"      value="{{ $item->item_id }}">
+                  <input type="hidden" name="item_name"    value="{{ $item->item_name }}">
+                  <input type="hidden" name="item_user_id" value="{{ $item->user_id }}">
+                  <input type="hidden" name="item_token"   value="{{ $item->item_token }}">
+                  @if($data['checkif_purchased'] == 0)
+                    @if(Auth::user()->id != 1)
+                      <button type="submit" class="item_action_btn action_buy"><i class="fas fa-shopping-cart"></i> {{ Helper::translation(3074,$translate) }}</button>
+                    @endif
+                  @endif
+
+                  <a 
+                    href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}" 
+                    class="item_action_btn btn_save_like {{(\Feberr\Models\Items::getfavouriteCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
+                  >
+                    <i class="fas fa-folder-plus"></i>Save
+                  </a>
+                  <a 
+                    href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}" 
+                    class="item_action_btn btn_save_like {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
+                  >
+                    <i class="fas fa-heart"></i>Like
+                  </a>
+                @endif
+              @endif
             </div>
           </form>
         </div>
@@ -275,13 +347,13 @@
       <div class="col-lg-8">
         <div class="item_product">
           <h4 class="product_title">Product Overview</h4>
-          <p class="product_details">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+          <p class="product_details">{!! html_entity_decode($item->item_desc) !!}</p>
         </div>
 
-        <div class="item_features">
+        <!-- <div class="item_features">
           <h4 class="product_title">Features</h4>
-          <p class="product_details">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
+          <p class="product_details"></p>
+        </div> -->
       </div>
       <!-- overview and features end -->
 
@@ -289,12 +361,9 @@
         <!-- tags start -->
         <div class="product_tags">
           <h4 class="product_title">Tags</h4>
-          <a href="#" class="p_tag">HTML</a>
-          <a href="#" class="p_tag">CSS</a>
-          <a href="#" class="p_tag">Bootstrap</a>
-          <a href="#" class="p_tag">Web Design</a>
-          <a href="#" class="p_tag">Responsive Web Design</a>
-          <a href="#" class="p_tag">Restaurant website</a>
+          @foreach($data['item_tags'] as $tag)
+            <a href="{{ url('/tag') }}/item/{{ strtolower(str_replace(' ','-',$tag)) }}" class="p_tag">{{ $tag }}</a>
+          @endforeach
         </div>
         <!-- tags end -->
       </div>
