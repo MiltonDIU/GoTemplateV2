@@ -327,12 +327,17 @@ class ItemController extends Controller {
 
 
 	public function manage_item() {
-
-
 		$itemData['item'] = Items::getmanageitemData();
 		$encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
 		$viewitem['type'] = Items::gettypeItem();
-		return view('manage-item', ['itemData' => $itemData, 'encrypter' => $encrypter, 'viewitem' => $viewitem]);
+
+		$data = [
+			'itemData' => $itemData, 
+			'encrypter' => $encrypter, 
+			'viewitem' => $viewitem
+		];
+
+		return view('theme2.manage-item', compact('data'));
 	}
 
 
