@@ -24,40 +24,40 @@
             <div class="container">
                 <div>
 
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            <span class="alert_icon lnr lnr-checkmark-circle"></span>
-            {{ $message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        <span class="alert_icon lnr lnr-checkmark-circle"></span>
+                        {{ $message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
 
-        @if ($message = Session::get('error'))
-        <div class="alert alert-danger" role="alert">
-            <span class="alert_icon lnr lnr-warning"></span>
-            {{ $message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <span class="alert_icon lnr lnr-warning"></span>
+                        {{ $message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
-        @if (!$errors->isEmpty())
-        <div class="alert alert-danger" role="alert">
-            <span class="alert_icon lnr lnr-warning"></span>
+                    @if (!$errors->isEmpty())
+                    <div class="alert alert-danger" role="alert">
+                        <span class="alert_icon lnr lnr-warning"></span>
 
-            @foreach ($errors->all() as $error)
-            {{ $error }}
-            @endforeach
+                        @foreach ($errors->all() as $error)
+                        {{ $error }}
+                        @endforeach
 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
                 </div>
                 <!-- end /.row -->

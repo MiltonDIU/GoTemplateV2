@@ -454,7 +454,7 @@
   </script>
 
   <script src="{{ asset('public/assets/theme2/js/script.js') }}"></script>
-
+  @include('theme2.javascript')
 </body>
 
 </html>
