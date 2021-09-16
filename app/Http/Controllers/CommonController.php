@@ -987,7 +987,7 @@ class CommonController extends Controller {
 			'viewattribute' => $viewattribute
 		);
 		
-		return view('theme2.item', compact('data'));
+		return view('theme2.single-item', compact('data'));
 	}
 	// end item
 

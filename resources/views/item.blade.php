@@ -754,7 +754,8 @@
                                                 @foreach(explode(",",$item['item']->extended_licence) as $licence)
                                                     <li><span class="lnr lnr-checkmark-circle right"></span>    {{$licence}}</li>
                                                 @endforeach
-@endif
+                                                @endif
+                                                
                                                 @if($item['item']->future_update == 1)
                                                     <li><span class="lnr lnr-checkmark-circle right"></span> {{ Helper::translation(3069,$translate) }}</li>
                                                 @else

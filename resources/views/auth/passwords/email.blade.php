@@ -46,7 +46,8 @@
                         @csrf
                         <div class="cardify recover_pass">
                             <div class="login--header">
-                                <p>Please enter the email address for your account. A verification link will be sent to you.
+                                <p>
+                                    Please enter the email address for your account. A verification link will be sent to you.
                                     Once you have received the verification link, you will be able to create a new password
                                     for your account.</p>
                             </div>

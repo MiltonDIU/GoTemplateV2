@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoTemplate</title>
-  <link rel="icon" href="public/assets/theme2/images/fav.png" type="image/fav" sizes="16x16">
+  <link rel="icon" href="{{ asset('public/assets/theme2/images/fav.png') }}" type="image/fav" sizes="16x16">
 
   <!-- Google Fonts start -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
   @stack('styles')
   @stack('others')
 
-  <link rel="stylesheet" href="public/assets/theme2/css/responsive.css">
+  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/responsive.css') }}">
 </head>
 
 <body>
@@ -429,13 +429,13 @@
   </footer>
 
 
-  <script src="public/assets/theme2/js/jquery-1.12.4.min.js"></script>
-  <script src="public/assets/theme2/js/popper.min.js"></script>
-  <script src="public/assets/theme2/js/bootstrap.bundle.min.js"></script>
-  <script src="public/assets/theme2/js/slick.min.js"></script>
-  <script src="public/assets/theme2/js/waypoints.min.js"></script>
-  <script src="public/assets/theme2/js/jquery.counterup.min.js"></script>
-  <script src="public/assets/theme2/js/jquery.countdown.js"></script>
+  <script src="{{ asset('public/assets/theme2/js/jquery-1.12.4.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/popper.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/slick.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/waypoints.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/jquery.counterup.min.js') }}"></script>
+  <script src="{{ asset('public/assets/theme2/js/jquery.countdown.js') }}"></script>
 
   <script>
     $(window).scroll(function() {
@@ -453,7 +453,7 @@
     });
   </script>
 
-  <script src="public/assets/theme2/js/script.js"></script>
+  <script src="{{ asset('public/assets/theme2/js/script.js') }}"></script>
 
 </body>
 
