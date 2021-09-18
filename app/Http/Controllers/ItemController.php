@@ -359,14 +359,19 @@ class ItemController extends Controller {
 
 
 	public function upload_item($itemtype) {
-
 		$encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
 		$type_id   = $encrypter->decrypt($itemtype);
 		$itemWell['type'] = Items::gettypeItem();
 		$attribute['fields'] = Attribute::selectedAttribute($type_id);
 		$type_name = Items::viewItemtype($type_id);
-		$data = array('itemWell' => $itemWell, 'attribute' => $attribute, 'type_id' => $type_id, 'type_name' => $type_name);
-		return view('upload-item')->with($data);
+		$data = array(
+			'itemWell' => $itemWell, 
+			'attribute' => $attribute, 
+			'type_id' => $type_id, 
+			'type_name' => $type_name
+		);
+
+		return view('theme2.upload-item')->with($data);
 	}
 
 
