@@ -1,7 +1,7 @@
 @extends('theme2.layout.master')
 
 @push('styles')
-  <link rel="stylesheet" href="public/assets/theme2/css/blog.css">
+  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/blog.css') }}">
 @endpush
 
 @section('content')
@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-lg-8">
+      <div class="col-lg-8 col-sm-12 col-md-8 col-xl-8">
         <div class="blog_list">
 
           @foreach($data['blogData']['post'] as $item)
@@ -53,7 +53,7 @@
 
                 <div class="blog_des">
                   <p class="b_des_text">
-                    {{ substr($item->post_short_desc, 0, 300).'...' }}
+                    {!! html_entity_decode(substr($item->post_short_desc, 0, 300)).'...' !!}
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-12 col-md-4 col-xl-4">
         <div class="blog_sidebar">
 
           <div class="blog_category">

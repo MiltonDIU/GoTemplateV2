@@ -108,7 +108,7 @@ class BlogController extends Controller {
 			'category_count' => $category_count
 		];
 
-	  return view('theme2.single', compact('data'));
+	  return view('theme2.single-blog', compact('data'));
 	}
 	
 	

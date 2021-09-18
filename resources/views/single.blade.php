@@ -180,23 +180,44 @@
                                     {{ csrf_field() }}
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input class="input_field" type="text" name="comment_name" placeholder="{{ Helper::translation(2917,$translate) }}" data-bvalidator="required">
+                                                <input 
+                                                    class="input_field" 
+                                                    type="text" 
+                                                    name="comment_name" 
+                                                    placeholder="{{ Helper::translation(2917,$translate) }}" 
+                                                    data-bvalidator="required"
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input class="input_field" type="text" name="comment_email" placeholder="{{ Helper::translation(2915,$translate) }}" data-bvalidator="required,email">
+                                                <input 
+                                                    class="input_field" 
+                                                    type="text" 
+                                                    name="comment_email" 
+                                                    placeholder="{{ Helper::translation(2915,$translate) }}" 
+                                                    data-bvalidator="required,email"
+                                                >
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="input_field" name="comment_content" placeholder="{{ Helper::translation(3186,$translate) }}" rows="10" cols="80" data-bvalidator="required"></textarea>
+                                                <textarea 
+                                                    class="input_field" 
+                                                    name="comment_content" 
+                                                    placeholder="{{ Helper::translation(3186,$translate) }}" 
+                                                    rows="10" 
+                                                    cols="80" 
+                                                    data-bvalidator="required"
+                                                ></textarea>
                                             </div>
                                             
                                             <input type="hidden" name="post_id" value="{{ $edit['post']->post_id }}">
 
-                                            <button type="submit" class="btn btn--default theme-button" name="btn">{{ Helper::translation(3064,$translate) }}</button>
+                                            <button type="submit" class="btn btn--default theme-button" name="btn">
+                                                {{ Helper::translation(3064,$translate) }}
+                                            </button>
                                         </div>
                                     </form>
                                     <!-- end form -->
