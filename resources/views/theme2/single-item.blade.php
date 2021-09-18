@@ -2,7 +2,6 @@
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/single-item.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 @endpush
 
 @section('content')

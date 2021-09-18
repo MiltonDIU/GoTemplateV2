@@ -21,7 +21,6 @@
     <section class="blog_area section--padding2">
         <div class="container">
             <div class="row" data-uk-grid>
-                
                
                 @foreach($blogData['post'] as $post)
                 <div class="col-lg-4 col-md-6">
@@ -61,16 +60,9 @@
                     
                 </div>
                 @endforeach 
-            
-                
-               
+
             </div>
-            
-            
-            
-           
         </div>
-        
     </section>
     @endif
     
@@ -82,100 +74,96 @@
         <div class="container">
             <div class="row" data-uk-grid>
     
-    @foreach($itemData['item'] as $item)
-                        <div class="col-lg-4 col-md-4 col-sm-6 li-item">
-                            <!-- start .single-product -->
-                            <div class="product product--card">
+                @foreach($itemData['item'] as $item)
+                    <div class="col-lg-4 col-md-4 col-sm-6 li-item">
+                        <!-- start .single-product -->
+                        <div class="product product--card">
 
-                                <div class="product__thumbnail">
-                                   @if($item->item_preview!='')
-                                        <img src="{{ url('/') }}/public/storage/items/{{ $item->item_preview }}" alt="{{ $item->item_name }}" class="item-thumbnail">
-                                        @else
-                                        <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" class="item-thumbnail">
-                                        @endif
-                                    <div class="prod_btn">
-                                        <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="transparent btn--sm btn--round">{{ Helper::translation(2999,$translate) }}</a>
-                                        <a href="{{ url('/preview') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="transparent btn--sm btn--round" target="_blank">{{ Helper::translation(3000,$translate) }}</a>
-                                    </div>
-                                    <!-- end /.prod_btn -->
-                                </div>
-                                <!-- end /.product__thumbnail -->
-
-                                <div class="product-desc">
-                                    <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="product_title ellipsis">
-                                    <h4>{{ $item->item_name }}</h4>
-                                </a>
-                                    <ul class="titlebtm">
-                                        <li>
-                                            @if($item->user_photo!='')
-                                        <img  src="{{ url('/') }}/public/storage/users/{{ $item->user_photo }}" alt="{{ $item->username }}" class="auth-img">
-                                        @else
-                                        <img src="{{ url('/') }}/public/img/no-user.png" alt="{{ $item->username }}" class="auth-img">
-                                        @endif
-                                            <p>
-                                                <a href="{{ URL::to('/user') }}/{{ $item->username }}">{{ $item->username }}</a>
-                                            </p>
-                                        </li>
-                                        <li class="product_cat">
-                                             <a href="{{ URL::to('/shop') }}/item-type/{{ $item->item_type }}" class="theme-color">
-                                            <span class="lnr lnr-book"></span>{{ str_replace('-',' ',$item->item_type) }}</a>
-                                        </li>
-                                    </ul>
-
-                                    <p>{{ substr($item->item_shortdesc,0,120).'...' }}</p>
-                                </div>
-                                <!-- end /.product-desc -->
-
-                                <div class="product-purchase">
-                                    <div class="price_love">
-                                        @if($item->free_download == 1)
-                                    <span>Free</span>
+                            <div class="product__thumbnail">
+                                @if($item->item_preview!='')
+                                    <img src="{{ url('/') }}/public/storage/items/{{ $item->item_preview }}" alt="{{ $item->item_name }}" class="item-thumbnail">
                                     @else
-                                    <span>{{ $item->regular_price }} {{ $allsettings->site_currency }}</span>
+                                    <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" class="item-thumbnail">
+                                    @endif
+                                <div class="prod_btn">
+                                    <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="transparent btn--sm btn--round">{{ Helper::translation(2999,$translate) }}</a>
+                                    <a href="{{ url('/preview') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="transparent btn--sm btn--round" target="_blank">{{ Helper::translation(3000,$translate) }}</a>
+                                </div>
+                                <!-- end /.prod_btn -->
+                            </div>
+                            <!-- end /.product__thumbnail -->
+
+                            <div class="product-desc">
+                                <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="product_title ellipsis">
+                                <h4>{{ $item->item_name }}</h4>
+                            </a>
+                                <ul class="titlebtm">
+                                    <li>
+                                        @if($item->user_photo!='')
+                                    <img  src="{{ url('/') }}/public/storage/users/{{ $item->user_photo }}" alt="{{ $item->username }}" class="auth-img">
+                                    @else
+                                    <img src="{{ url('/') }}/public/img/no-user.png" alt="{{ $item->username }}" class="auth-img">
                                     @endif
                                         <p>
-                                            <span class="lnr lnr-heart"></span> {{ $item->item_liked }}</p>
-                                    </div>
-
-                                    <div class="rating product--rating">
-                                        <!--<ul>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star-half-o"></span>
-                                            </li>
-                                        </ul>-->
-                                    </div>
-
-                                    <div class="sell">
-                                        <p>
-                                            <span class="lnr lnr-cart"></span>
-                                            <span>{{ $item->item_sold }}</span>
+                                            <a href="{{ URL::to('/user') }}/{{ $item->username }}">{{ $item->username }}</a>
                                         </p>
-                                    </div>
-                                </div>
-                                <!-- end /.product-purchase -->
+                                    </li>
+                                    <li class="product_cat">
+                                            <a href="{{ URL::to('/shop') }}/item-type/{{ $item->item_type }}" class="theme-color">
+                                        <span class="lnr lnr-book"></span>{{ str_replace('-',' ',$item->item_type) }}</a>
+                                    </li>
+                                </ul>
+
+                                <p>{{ substr($item->item_shortdesc,0,120).'...' }}</p>
                             </div>
-                            <!-- end /.single-product -->
+                            <!-- end /.product-desc -->
+
+                            <div class="product-purchase">
+                                <div class="price_love">
+                                    @if($item->free_download == 1)
+                                <span>Free</span>
+                                @else
+                                <span>{{ $item->regular_price }} {{ $allsettings->site_currency }}</span>
+                                @endif
+                                    <p>
+                                        <span class="lnr lnr-heart"></span> {{ $item->item_liked }}</p>
+                                </div>
+
+                                <div class="rating product--rating">
+                                    <!--<ul>
+                                        <li>
+                                            <span class="fa fa-star"></span>
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star"></span>
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star"></span>
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star"></span>
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star-half-o"></span>
+                                        </li>
+                                    </ul>-->
+                                </div>
+
+                                <div class="sell">
+                                    <p>
+                                        <span class="lnr lnr-cart"></span>
+                                        <span>{{ $item->item_sold }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end /.product-purchase -->
                         </div>
-                       @endforeach 
-    </div>
-            
-            
-            
-           
+                        <!-- end /.single-product -->
+                    </div>
+                @endforeach 
+
+            </div>
         </div>
-        
     </section>
     @endif
     

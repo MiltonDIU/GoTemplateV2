@@ -1,9 +1,5 @@
 @extends('theme2.layout.master')
 
-@push('styles')
-  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
-@endpush
-
 @section('content')
 
 <div class="container">
