@@ -35,16 +35,10 @@
                             {!! html_entity_decode($page['page']->page_desc) !!}
                             </div>
                         </div>
-                        
-                        <!-- end /.term -->
                     </div>
-                    <!-- end /.term_modules -->
                 </div>
-                <!-- end /.col-md-12 -->
             </div>
-            <!-- end /.row -->
         </div>
-        <!-- end /.container -->
     </section>
     
    @include('footer')
