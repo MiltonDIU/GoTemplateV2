@@ -136,3 +136,24 @@
 .form_bottom a:hover {
   color: #fca311;
 }
+
+#signup{
+  margin-top: 65px;
+  color: #14213D;
+}
+.s_up{
+  margin-left: 50px;
+}
+.group_flex{
+  display: flex;
+  justify-content: space-between;
+}
+.group_box{
+  width: 47%;
+}
+.group_box select{
+  appearance: none;
+}
+.f_bottom_up{
+  justify-content: right;
+}

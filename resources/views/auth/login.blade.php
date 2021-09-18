@@ -1,8 +1,7 @@
 @extends('theme2.layout.master')
 
 @push('styles')
-  <link rel="stylesheet" href="public/assets/theme2/css/signin.css">
-  <link rel="stylesheet" href="public/assets/theme2/css/signup.css">
+  <link rel="stylesheet" href="public/assets/theme2/css/form.css">
 @endpush
 
 @section('content')
