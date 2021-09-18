@@ -285,10 +285,6 @@ class ItemController extends Controller {
 
 
 	public function edit_item($token) {
-
-
-
-
 		$edit['item'] = Items::edititemData($token);
 		$type_id = $edit['item']->item_type;
 		$getcount  = Items::getimagesCount($token);
@@ -299,16 +295,28 @@ class ItemController extends Controller {
 		$type_name = Items::slugItemtype($type_id);
 		$typer_id = $type_name->item_type_id;
 		$attribute['fields'] = Attribute::againAttribute($typer_id, $token);
+
 		if (count($attribute['fields']) != 0) {
 			$attri_field['display'] = Attribute::againAttribute($typer_id, $token);
 		} else {
 			$attri_field['display'] = Attribute::selectedAttribute($typer_id);
 		}
 
-		$data = array('edit' => $edit, 'token' => $token, 'item_image' => $item_image, 'getcount' => $getcount, 'cat_id' => $cat_id, 'cat_name' => $cat_name, 'type_name' => $type_name, 'attri_field' => $attri_field, 'attribute' => $attribute, 'typer_id' => $typer_id);
+		$data = array(
+			'edit'        => $edit, 
+			'token'       => $token, 
+			'item_image'  => $item_image, 
+			'getcount'    => $getcount, 
+			'cat_id'      => $cat_id, 
+			'cat_name'    => $cat_name, 
+			'type_name'   => $type_name, 
+			'attri_field' => $attri_field, 
+			'attribute'   => $attribute, 
+			'typer_id'    => $typer_id
+		);
 
 		if ($edit['item']->user_id == Auth::user()->id) {
-			return view('edit-item')->with($data);
+			return view('theme2.edit-item')->with($data);
 		} else {
 			return view('404');
 		}
