@@ -106,7 +106,7 @@ class ItemController extends Controller {
 			$pdf = PDF::loadView('pdf_view', $data);
 			return $pdf->download($pdf_filename);
 		} else {
-			return redirect('404');
+			return redirect('theme2.404');
 		}
 	}
 
@@ -318,7 +318,7 @@ class ItemController extends Controller {
 		if ($edit['item']->user_id == Auth::user()->id) {
 			return view('theme2.edit-item')->with($data);
 		} else {
-			return view('404');
+			return view('theme2.404');
 		}
 	}
 
@@ -360,7 +360,7 @@ class ItemController extends Controller {
 			Items::deleteData($token_key, $data);
 			return redirect()->back()->with('success', 'Your Item Deleted Successfully.');
 		} else {
-			return redirect('404');
+			return redirect('theme2.404');
 		}
 	}
 
@@ -2009,7 +2009,7 @@ class ItemController extends Controller {
 				return response()->download($filename, $new_name, $headers);
 			}
 		} else {
-			return redirect('404');
+			return redirect('theme2.404');
 		}
 	}
 
