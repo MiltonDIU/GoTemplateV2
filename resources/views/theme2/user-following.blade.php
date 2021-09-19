@@ -84,8 +84,8 @@
                     <div class="f_count">
                       <div class="follow_details">
                         <!-- TODO -->
-                        <h3 class="total_follow">100 Followers</h3>
-                        <h3 class="total_follow">100 Following</h3>
+                        <!-- <h3 class="total_follow">100 Followers</h3>
+                        <h3 class="total_follow">100 Following</h3> -->
                       </div>
                       <p class="v_sub_details">{{ Helper::translation(3077,$translate) }} {{ date("F Y", strtotime($follower->created_at)) }}</p>
                     </div>
