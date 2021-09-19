@@ -6,6 +6,7 @@
 
 @php
   $users = $data['user']['user']
+
 @endphp
 
 @section('content')
@@ -66,8 +67,11 @@
                 <div class="f_count">
                   <div class="follow_details">
                     <!-- TODO -->
-                    <h3 class="total_follow">100 Followers</h3>
-                    <h3 class="total_follow">100 Following</h3>
+                  
+                    <h3 class="total_follow">{{ \Feberr\Models\Items::getfollowerCount($user->id) }} Followers</h3>
+                    <h3 class="total_follow">{{ \Feberr\Models\Items::getfollowingCount($user->id) }} Following</h3>
+                   
+
                   </div>
                   <p class="v_sub_details">{{ Helper::translation(3077,$translate) }} {{ date("F Y", strtotime($user->created_at)) }}</p>
                 </div>

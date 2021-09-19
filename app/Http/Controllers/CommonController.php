@@ -893,6 +893,7 @@ class CommonController extends Controller {
 		$trends = Items::trendsCount($token);
 		$item_cat_id = $item['item']->item_category;
 		$item_user_id = $item['item']->user_id;
+
 		$item_cat_type = $item['item']->item_category_type;
 		$country['view'] = Settings::editCountry($item['item']->country);
 
@@ -905,6 +906,8 @@ class CommonController extends Controller {
 
 		$collect_amount = Items::CollectedAmount($item_user_id);
 		$referral_count = $item['item']->referral_count;
+
+		$followcheck = Auth::check() ? Items::getfollowuserCheck($item_user_id) : 0;
 
 		if ($item_cat_type == 'category') {
 			$category['name'] = Category::getsinglecatData($item_cat_id);
@@ -984,7 +987,8 @@ class CommonController extends Controller {
 			'sold_amount' => $sold_amount, 
 			'collect_amount' => $collect_amount, 
 			'referral_count' => $referral_count, 
-			'viewattribute' => $viewattribute
+			'viewattribute' => $viewattribute,
+			'followcheck' => $followcheck
 		);
 		
 		return view('theme2.single-item', compact('data'));
