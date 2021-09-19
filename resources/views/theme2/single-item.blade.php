@@ -72,11 +72,7 @@
 
           @if (Auth::check())
             @if($item->user_id != Auth::user()->id)
-
-              <!-- TODO: $followcheck should be received -->
-              @php $followcheck = 0; @endphp
-
-              @if($followcheck == 0)
+              @if($item->followcheck == 0)
                 <a 
                   href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $item->user_id }}" 
                   class="vendor_follow"
