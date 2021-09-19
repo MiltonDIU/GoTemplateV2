@@ -31,7 +31,7 @@
         </div>
   
         <div class="user_area">
-          <ul id="listShow" class="mb-0">
+          <ul id="listShow" class="mb-0 row">
             @foreach($followers as $follower)
 
               <div class="li-item card col-lg-4 col-sm-6 col-md-6 col-xl-3">
@@ -66,8 +66,7 @@
                     <div class="author_count">
                       <div class="product_count">
                         <i class="fas fa-briefcase count_icon"></i>
-                        <!-- TODO -->
-                        <h6 class="v_count">50 Products</h6>
+                        <h6 class="v_count">{{ \Feberr\Models\Items::getuseritemCount($follower->id) }} Products</h6>
                       </div>
                       <div class="product_sale">
                         <i class="fas fa-dollar-sign count_icon"></i>
@@ -76,16 +75,19 @@
                     </div>
 
                     <div class="author_ratings">
-                      <!-- TODO -->
                       <p>Ratings</p>
-                      @include('theme2.layout.rating_star', ['ratings' => isset($follower->ratings) ? $follower->ratings : []])
+
+                      @php
+                        $count_rating = \Feberr\Models\Items::getreviewRecord($follower->id);
+                      @endphp
+
+                      @include('theme2.layout.rating_star', ['ratings' => isset($count_rating) ? $count_rating : []])
                     </div>
 
                     <div class="f_count">
                       <div class="follow_details">
-                        <!-- TODO -->
-                        <!-- <h3 class="total_follow">100 Followers</h3>
-                        <h3 class="total_follow">100 Following</h3> -->
+                        <h3 class="total_follow">{{ \Feberr\Models\Items::getfollowerCount($follower->id) }} Followers</h3>
+                        <h3 class="total_follow">{{ \Feberr\Models\Items::getfollowingCount($follower->id) }} Following</h3>
                       </div>
                       <p class="v_sub_details">{{ Helper::translation(3077,$translate) }} {{ date("F Y", strtotime($follower->created_at)) }}</p>
                     </div>

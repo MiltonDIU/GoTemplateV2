@@ -8,34 +8,33 @@ use Illuminate\Support\Facades\File;
 use Auth;
 use Storage;
 
-class Items extends Model
-{
+class Items extends Model {
 
 	/* items */
   protected $table = 'items';
-protected $primaryKey ='item_id';
-   public function Ratings()
-    {
-        return $this->hasMany(Ratings::class, 'or_item_id', 'item_id');
-    }
+  protected $primaryKey ='item_id';
 
-
-	 public static function deleteItemtype($id,$data){
-
-
-	DB::table('item_type')
-      ->where('item_type_id', $id)
-      ->update($data);
-
+  public function Ratings() {
+    return $this->hasMany(Ratings::class, 'or_item_id', 'item_id');
   }
 
-    public static function checkPurchased($logged,$token)
-  {
 
-    $get=DB::table('item_order')->where('item_token','=', $token)->where('user_id','=', $logged)->where('approval_status','!=', 'payment released to buyer')->get();
-	$value = $get->count();
+	public static function deleteItemtype($id,$data) {
+    DB::table('item_type')
+      ->where('item_type_id', $id)
+      ->update($data);
+  }
+
+  public static function checkPurchased($logged,$token) {
+    $get=DB::table('item_order')
+      ->where('item_token','=', $token)
+      ->where('user_id','=', $logged)
+      ->where('approval_status','!=', 'payment released to buyer')
+      ->get();
+	  
+    $value = $get->count();
+    
     return $value;
-
   }
 
 	public static function getallItems()
@@ -400,22 +399,26 @@ protected $primaryKey ='item_id';
 
   }
 
-  public static function getfollowingView($user_id)
-  {
+  public static function getfollowingView($user_id) {
+    $value=DB::table('users')
+      ->join('follow','users.id','follow.following_user_id')
+      ->leftJoin('country','users.country','country.country_id')
+      ->where('follow.follower_user_id','=',$user_id)
+      ->get();
 
-    $value=DB::table('users')->join('follow','users.id','follow.following_user_id')->leftJoin('country','users.country','country.country_id')->where('follow.follower_user_id','=',$user_id)->get();
-	return $value;
-
+	  return $value;
   }
 
+  public static function getsaleitemCount($user_id) {
+    $get=DB::table('item_order')
+      ->where('item_user_id','=',$user_id)
+      ->where('order_status','=','completed')
+      ->where('approval_status','=','payment released to vendor')
+      ->orderBy('ord_id', 'desc')->get();
 
-  public static function getsaleitemCount($user_id)
-  {
+	  $value = $get->count();
 
-    $get=DB::table('item_order')->where('item_user_id','=',$user_id)->where('order_status','=','completed')->where('approval_status','=','payment released to vendor')->orderBy('ord_id', 'desc')->get();
-	$value = $get->count();
     return $value;
-
   }
 
 
@@ -1128,13 +1131,14 @@ protected $primaryKey ='item_id';
 
 
   /* rating */
-
-  public static function getratingItem()
-  {
-
-    $value=DB::table('item_ratings')->join('users','users.id','item_ratings.or_user_id')->join('items','items.item_id','item_ratings.or_item_id')->orderBy('item_ratings.rating_id', 'desc')->get();
+  public static function getratingItem() {
+    $value = DB::table('item_ratings')
+      ->join('users','users.id','item_ratings.or_user_id')
+      ->join('items','items.item_id','item_ratings.or_item_id')
+      ->orderBy('item_ratings.rating_id', 'desc')
+      ->get();
+      
     return $value;
-
   }
 
   public static function dropRating($rating_id){
