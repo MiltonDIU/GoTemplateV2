@@ -151,7 +151,14 @@
                                         <div class="cart_calculation">
                                             <div class="cart--subtotal">
                                                 <p class="coupon-block">
-                                                    <input type="text" class="form-control coupon-text mt-3" id="coupon" name="coupon" value="" required>
+                                                    <input 
+                                                        type="text" 
+                                                        class="form-control coupon-text mt-3" 
+                                                        id="coupon" 
+                                                        name="coupon" 
+                                                        value="" 
+                                                        required
+                                                    >
                                                     <button type="submit" class="btn btn--sm theme-button">
                                                     {{ Helper::translation(2893,$translate) }}
                                                     </button>
@@ -169,11 +176,20 @@
                                                 @endphp
                                                 <div class="cart--subtotal">
                                                     <p>
-                                                        <span>{{ Helper::translation(2895,$translate) }}</span><span class="fs14 green">( {{ Helper::translation(2866,$translate) }} : <strong>{{ $coupon_code }}</strong> )<a href="{{ URL::to('/cart/') }}/remove/{{ $coupon_code }}" class="red fs14" onClick="return confirm('{{ Helper::translation(2892,$translate) }}');" title="Remove"> <i class="fa fa-remove"></i> </a></span>{{ $coupon_discount }} {{ $allsettings->site_currency }}</p>
+                                                        <span>{{ Helper::translation(2895,$translate) }}</span>
+                                                        <span class="fs14 green">
+                                                            ( {{ Helper::translation(2866,$translate) }} : <strong>{{ $coupon_code }}</strong> )
+                                                            <a href="{{ URL::to('/cart/') }}/remove/{{ $coupon_code }}" class="red fs14" onClick="return confirm('{{ Helper::translation(2892,$translate) }}');" title="Remove"> 
+                                                                <i class="fa fa-remove"></i> 
+                                                            </a>
+                                                        </span>
+                                                        {{ $coupon_discount }} {{ $allsettings->site_currency }}
+                                                    </p>
                                                 </div>
                                             @else
                                                 @php $final = $subtotal; @endphp
                                             @endif
+                                            
                                             <div class="cart--total">
                                                 <p>
                                                     <span>{{ Helper::translation(2896,$translate) }}</span>{{ $final }} {{ $allsettings->site_currency }}</p>

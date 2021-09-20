@@ -1099,25 +1099,22 @@ class ItemController extends Controller {
 	}
 
 
-	/* cart */
-
+	/*----- start cart -----*/
 	public function show_cart() {
 		$cart['item'] = Items::getcartData();
 		$cart_count = Items::getcartCount();
 		$data = array('cart' => $cart, 'cart_count' => $cart_count);
 
-		return view('cart')->with($data);
+		return view('theme2.cart', compact('data'));
 	}
 
 
 	public function remove_cart_item($ordid) {
-
 		$ord_id = base64_decode($ordid);
 		Items::deletecartdata($ord_id);
 
 		return redirect()->back()->with('success', 'Cart item removed');
 	}
-
 
 
 	public function view_cart(Request $request) {
@@ -1134,10 +1131,11 @@ class ItemController extends Controller {
 
 		$price = base64_decode($split[0]);
 		$license = $split[1];
-		if ($license == 'regular') {
+
+		if($license == 'regular') {
 			$start_date = date('Y-m-d');
 			$end_date = date('Y-m-d', strtotime('+6 month'));
-		} else if ($license == 'extended') {
+		}else if($license == 'extended') {
 			$start_date = date('Y-m-d');
 			$end_date = date('Y-m-d', strtotime('+12 month'));
 		}
@@ -1146,35 +1144,52 @@ class ItemController extends Controller {
 
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
-		if ($user_exclusive_type == 1) {
+
+		if($user_exclusive_type == 1) {
 			$commission = ($setting['setting']->site_exclusive_commission * $price) / 100;
-		} else {
+		}else {
 			$commission = ($setting['setting']->site_non_exclusive_commission * $price) / 100;
 		}
+
 		$vendor_amount = $price - $commission;
 		$admin_amount = $commission;
 
 
 		$getcount  = Items::getorderCount($item_id, $user_id, $order_status);
 
-		$savedata = array('user_id' => $user_id, 'item_id' => $item_id, 'item_name' => $item_name, 'item_user_id' => $item_user_id, 'item_token' => $item_token, 'license' => $license, 'start_date' => $start_date, 'end_date' => $end_date, 'item_price' => $price, 'vendor_amount' => $vendor_amount, 'admin_amount' => $admin_amount, 'total_price' => $price, 'order_status' => $order_status);
+		$savedata = array(
+			'user_id' => $user_id, 
+			'item_id' => $item_id, 
+			'item_name' => $item_name, 
+			'item_user_id' => $item_user_id, 
+			'item_token' => $item_token, 
+			'license' => $license, 
+			'start_date' => $start_date, 
+			'end_date' => $end_date, 
+			'item_price' => $price, 
+			'vendor_amount' => $vendor_amount, 
+			'admin_amount' => $admin_amount, 
+			'total_price' => $price, 
+			'order_status' => $order_status
+		);
 
-
-		$updatedata = array('license' => $license, 'start_date' => $start_date, 'end_date' => $end_date, 'item_price' => $price, 'total_price' => $price);
+		$updatedata = array(
+			'license' => $license, 
+			'start_date' => $start_date, 
+			'end_date' => $end_date, 
+			'item_price' => $price, 
+			'total_price' => $price
+		);
 
 		if ($getcount == 0) {
 			Items::savecartData($savedata);
-
 			return redirect('cart')->with('success', 'Item has been added to cart');
 		} else {
 			Items::updatecartData($item_id, $user_id, $order_status, $updatedata);
-
 			return redirect('cart')->with('success', 'Item has been updated to cart');
 		}
 	}
-
-
-	/* cart */
+	/*----- end cart -----*/
 
 
 	/* checkout */

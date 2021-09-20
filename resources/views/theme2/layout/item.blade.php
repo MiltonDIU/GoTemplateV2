@@ -132,7 +132,13 @@
         </a>
       </div>
       <div class="item_bottom_icons">
-        <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart">
+        <a 
+          href="#" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="Add to Cart" 
+          class="item_bottom_cart"
+        >
           <i class="fa fa-cart-plus"></i>
         </a>
         <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads">
