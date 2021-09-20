@@ -23,47 +23,47 @@
 
         <div class="dashboard_contents">
 
-        <div class="container">
-            <div>
+            <div class="container">
 
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            <span class="alert_icon lnr lnr-checkmark-circle"></span>
-            {{ $message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
+                <div>
+
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        <span class="alert_icon lnr lnr-checkmark-circle"></span>
+                        {{ $message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
 
-        @if ($message = Session::get('error'))
-        <div class="alert alert-danger" role="alert">
-            <span class="alert_icon lnr lnr-warning"></span>
-            {{ $message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="lnr lnr-cross" aria-hidden="true"></span>
-            </button>
-        </div>
-        @endif
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger" role="alert">
+                        <span class="alert_icon lnr lnr-warning"></span>
+                        {{ $message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
-        @if (!$errors->isEmpty())
-        <div class="alert alert-danger" role="alert">
-        <span class="alert_icon lnr lnr-warning"></span>
-        @foreach ($errors->all() as $error)
+                    @if (!$errors->isEmpty())
+                    <div class="alert alert-danger" role="alert">
+                        <span class="alert_icon lnr lnr-warning"></span>
+                        @foreach ($errors->all() as $error)
 
-        {{ $error }}
+                        {{ $error }}
 
-       @endforeach
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span class="lnr lnr-cross" aria-hidden="true"></span>
-        </button>
-        </div>
-        @endif
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span class="lnr lnr-cross" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    @endif
 
 
                 </div>
-                <!-- end /.row -->
 
                 <div class="product_archive">
                     <div class="title_area">
@@ -85,23 +85,23 @@
 
                     <div class="row">
 
-                    @foreach($orderData['item'] as $item)
+                        @foreach($orderData['item'] as $item)
                         <div class="col-md-12">
                             <div class="single_product clearfix">
                                 <div class="row">
                                     <div class="col-lg-5 col-md-5">
                                         <div class="product__description">
                                             <a href="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
-                                            @if($item->item_thumbnail!='')
-                                            <img src="{{ url('/') }}/public/storage/items/{{ $item->item_thumbnail }}" alt="{{ $item->item_name }}" class="cart-thumb">
-                                            @else
-                                            <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" class="cart-thumb">
-                                            @endif
+                                                @if($item->item_thumbnail!='')
+                                                <img src="{{ url('/') }}/public/storage/items/{{ $item->item_thumbnail }}" alt="{{ $item->item_name }}" class="cart-thumb">
+                                                @else
+                                                <img src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" class="cart-thumb">
+                                                @endif
                                             </a>
                                             <div class="short_desc">
-                                            <a href="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
-                                                <h4>{{ $item->item_name }}</h4>
-                                              </a>
+                                                <a href="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
+                                                    <h4>{{ $item->item_name }}</h4>
+                                                </a>
                                             </div>
                                         </div>
                                         <!-- end /.product__description -->
@@ -113,32 +113,39 @@
                                             <ul>
                                                 <li>
                                                     <p>
-                                                        <span>{{ __('Order Id :') }} </span> #{{ $item->ord_id }}</p>
+                                                        <span>{{ __('Order Id :') }} </span> #{{ $item->ord_id }}
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <span>{{ __('Purchase Id :') }} </span> {{ $item->purchase_token }}</p>
+                                                        <span>{{ __('Purchase Id :') }} </span> {{ $item->purchase_token }}
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <span>{{ Helper::translation(3102,$translate) }}: </span> {{ date("d F Y", strtotime($item->start_date)) }}</p>
+                                                        <span>{{ Helper::translation(3102,$translate) }}: </span> {{ date("d F Y", strtotime($item->start_date)) }}
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <span>{{ Helper::translation(3103,$translate) }}: </span> {{ date("d F Y", strtotime($item->end_date)) }}</p>
+                                                        <span>{{ Helper::translation(3103,$translate) }}: </span> {{ date("d F Y", strtotime($item->end_date)) }}
+                                                    </p>
                                                 </li>
                                                 <li class="license theme-color">
                                                     <p>
-                                                        <span>{{ Helper::translation(3105,$translate) }}:</span> {{ $item->license }}</p>
+                                                        <span>{{ Helper::translation(3105,$translate) }}:</span> {{ $item->license }}
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <span>{{ Helper::translation(3142,$translate) }}:</span> {{ $item->username }}</p>
+                                                        <span>{{ Helper::translation(3142,$translate) }}:</span> {{ $item->username }}
+                                                    </p>
                                                 </li>
                                                 @if($item->approval_status != 'payment released to buyer')
                                                 <li>
                                                     <p>
-                                                        <span>{{ Helper::translation(3143,$translate) }}:</span> <a href="javascript:void(0);" data-toggle="modal" data-target="#refund_{{ $item->ord_id }}"> Send Request</a></p>
+                                                        <span>{{ Helper::translation(3143,$translate) }}:</span> <a href="javascript:void(0);" data-toggle="modal" data-target="#refund_{{ $item->ord_id }}"> Send Request</a>
+                                                    </p>
                                                 </li>
                                                 @endif
                                             </ul>
@@ -153,8 +160,8 @@
                                                 <span>{{ $item->item_price }} {{ $allsettings->site_currency }}</span>
                                             </div>
                                             <div class="item_action v_middle">
-                                            @if($item->approval_status != 'payment released to buyer')
-                                            @if($item->approval_status == 'payment released to vendor')
+                                                @if($item->approval_status != 'payment released to buyer')
+                                                @if($item->approval_status == 'payment released to vendor')
                                                 <a href="{{ url('/purchases') }}/{{ $item->item_token }}" class="btn btn--md theme-button">{{ Helper::translation(3144,$translate) }}</a><a href="{{ url('/invoice') }}/{{ $item->item_token }}/{{ $item->ord_id }}" class="btn btn-danger btn--md"><i class="dwg-download mr-1"></i>{{ __('Invoice') }}</a>
 
                                                 @if($item->rating != 0)
@@ -229,7 +236,7 @@
                                                                 <span class="fa fa-star-o"></span>
                                                             </li>
                                                             @endif
-                                                             @if($item->rating == 5)
+                                                            @if($item->rating == 5)
                                                             <li>
                                                                 <span class="fa fa-star"></span>
                                                             </li>
@@ -292,139 +299,139 @@
                             <!-- end /.single_product -->
                         </div>
 
-       <div class="modal fade rating_modal" id="refund_{{ $item->ord_id }}" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h3 class="modal-title" id="rating_modal">{{ Helper::translation(3143,$translate) }}</h3>
-                    <h4>{{ $item->item_name }}</h4>
+                        <div class="modal fade rating_modal" id="refund_{{ $item->ord_id }}" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h3 class="modal-title" id="rating_modal">{{ Helper::translation(3143,$translate) }}</h3>
+                                        <h4>{{ $item->item_name }}</h4>
 
-                </div>
-                <!-- end /.modal-header -->
-
-                <div class="modal-body">
-                    <form action="{{ route('refund') }}" class="setting_form" method="post" id="profile_form" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="item_id" value="{{ $item->item_id }}">
-                    <input type="hidden" name="ord_id" value="{{ $item->ord_id }}">
-                    <input type="hidden" name="purchased_token" value="{{ $item->purchase_token }}">
-                    <input type="hidden" name="item_token" value="{{ $item->item_token }}">
-                    <input type="hidden" name="user_id" value="{{ $item->user_id }}">
-                    <input type="hidden" name="item_user_id" value="{{ $item->item_user_id }}">
-                    <input type="hidden" name="item_url" value="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
-                        <ul>
-
-                            <li>
-                                <p>{{ Helper::translation(3146,$translate) }}</p>
-                                <div class="right_content">
-                                    <div class="select-wrap">
-                                        <select name="refund_reason">
-                                            <option value="{{ Helper::translation(3147,$translate) }}">{{ Helper::translation(3147,$translate) }}</option>
-                                            <option value="{{ Helper::translation(3148,$translate) }}">{{ Helper::translation(3148,$translate) }}</option>
-                                            <option value="{{ Helper::translation(3149,$translate) }}">{{ Helper::translation(3149,$translate) }}</option>
-                                            <option value="{{ Helper::translation(3150,$translate) }}">{{ Helper::translation(3150,$translate) }}</option>
-                                            <option value="{{ Helper::translation(3151,$translate) }}">{{ Helper::translation(3151,$translate) }}</option>
-                                        </select>
-
-                                        <span class="lnr lnr-chevron-down"></span>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                    <!-- end /.modal-header -->
 
-                        <div class="rating_field">
-                            <label for="rating_field">{{ Helper::translation(3054,$translate) }}</label>
-                            <textarea name="refund_comment" id="refund_comment" class="text_field" required="required"></textarea>
+                                    <div class="modal-body">
+                                        <form action="{{ route('refund') }}" class="setting_form" method="post" id="profile_form" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="item_id" value="{{ $item->item_id }}">
+                                            <input type="hidden" name="ord_id" value="{{ $item->ord_id }}">
+                                            <input type="hidden" name="purchased_token" value="{{ $item->purchase_token }}">
+                                            <input type="hidden" name="item_token" value="{{ $item->item_token }}">
+                                            <input type="hidden" name="user_id" value="{{ $item->user_id }}">
+                                            <input type="hidden" name="item_user_id" value="{{ $item->item_user_id }}">
+                                            <input type="hidden" name="item_url" value="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
+                                            <ul>
 
-                        </div>
-                        <button type="submit" class="btn btn--md theme-button">{{ Helper::translation(3152,$translate) }}</button>
+                                                <li>
+                                                    <p>{{ Helper::translation(3146,$translate) }}</p>
+                                                    <div class="right_content">
+                                                        <div class="select-wrap">
+                                                            <select name="refund_reason">
+                                                                <option value="{{ Helper::translation(3147,$translate) }}">{{ Helper::translation(3147,$translate) }}</option>
+                                                                <option value="{{ Helper::translation(3148,$translate) }}">{{ Helper::translation(3148,$translate) }}</option>
+                                                                <option value="{{ Helper::translation(3149,$translate) }}">{{ Helper::translation(3149,$translate) }}</option>
+                                                                <option value="{{ Helper::translation(3150,$translate) }}">{{ Helper::translation(3150,$translate) }}</option>
+                                                                <option value="{{ Helper::translation(3151,$translate) }}">{{ Helper::translation(3151,$translate) }}</option>
+                                                            </select>
 
-                    </form>
-                    <!-- end /.form -->
-                </div>
-                <!-- end /.modal-body -->
-            </div>
-        </div>
-    </div>
+                                                            <span class="lnr lnr-chevron-down"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
 
+                                            <div class="rating_field">
+                                                <label for="rating_field">{{ Helper::translation(3054,$translate) }}</label>
+                                                <textarea name="refund_comment" id="refund_comment" class="text_field" required="required"></textarea>
 
+                                            </div>
+                                            <button type="submit" class="btn btn--md theme-button">{{ Helper::translation(3152,$translate) }}</button>
 
-       <div class="modal fade rating_modal" id="myModal_{{ $item->ord_id }}" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h3 class="modal-title" id="rating_modal">{{ Helper::translation(3153,$translate) }}</h3>
-                    <h4>{{ $item->item_name }}</h4>
-                    <p>by
-                        {{ $item->username }}
-                    </p>
-                </div>
-                <!-- end /.modal-header -->
-
-                <div class="modal-body">
-                    <form action="{{ route('purchases') }}" class="setting_form" method="post" id="profile_form" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="item_id" value="{{ $item->item_id }}">
-                    <input type="hidden" name="ord_id" value="{{ $item->ord_id }}">
-                    <input type="hidden" name="item_token" value="{{ $item->item_token }}">
-                    <input type="hidden" name="user_id" value="{{ $item->user_id }}">
-                    <input type="hidden" name="item_user_id" value="{{ $item->item_user_id }}">
-                    <input type="hidden" name="item_url" value="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
-                        <ul>
-                            <li>
-                                <p>{{ Helper::translation(3154,$translate) }}</p>
-                                <div class="right_content btn btn--round btn--white btn--md">
-                                    <select name="rating" class="give_rating">
-                                        <option value="1" @if($item->rating == 1) selected @endif>1</option>
-                                        <option value="2" @if($item->rating == 2) selected @endif>2</option>
-                                        <option value="3" @if($item->rating == 3) selected @endif>3</option>
-                                        <option value="4" @if($item->rating == 4) selected @endif>4</option>
-                                        <option value="5" @if($item->rating == 5) selected @endif>5</option>
-                                    </select>
-                                </div>
-                            </li>
-
-                            <li>
-                                <p>{{ Helper::translation(3155,$translate) }}</p>
-                                <div class="right_content">
-                                    <div class="select-wrap">
-                                        <select name="rating_reason">
-                                            <option value="design" @if($item->rating_reason == 'design') selected @endif>{{ Helper::translation(3156,$translate) }}</option>
-                                            <option value="customization" @if($item->rating_reason == 'customization') selected @endif>{{ Helper::translation(3157,$translate) }}</option>
-                                            <option value="support" @if($item->rating_reason == 'support') selected @endif>{{ Helper::translation(3055,$translate) }}</option>
-                                            <option value="performance" @if($item->rating_reason == 'performance') selected @endif>{{ Helper::translation(3158,$translate) }}</option>
-                                            <option value="documentation" @if($item->rating_reason == 'documentation') selected @endif>{{ Helper::translation(3159,$translate) }}</option>
-                                        </select>
-
-                                        <span class="lnr lnr-chevron-down"></span>
+                                        </form>
+                                        <!-- end /.form -->
                                     </div>
+                                    <!-- end /.modal-body -->
                                 </div>
-                            </li>
-                        </ul>
-
-                        <div class="rating_field">
-                            <label for="rating_field">{{ Helper::translation(3054,$translate) }}</label>
-                            <textarea name="rating_comment" id="rating_comment" class="text_field" required="required">{{ $item->rating_comment }}</textarea>
-                            <p class="notice">{{ Helper::translation(3160,$translate) }} </p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn--md theme-button">{{ Helper::translation(3161,$translate) }}</button>
-
-                    </form>
-                    <!-- end /.form -->
-                </div>
-                <!-- end /.modal-body -->
-            </div>
-        </div>
-    </div>
 
 
-                       @endforeach
+
+                        <div class="modal fade rating_modal" id="myModal_{{ $item->ord_id }}" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h3 class="modal-title" id="rating_modal">{{ Helper::translation(3153,$translate) }}</h3>
+                                        <h4>{{ $item->item_name }}</h4>
+                                        <p>by
+                                            {{ $item->username }}
+                                        </p>
+                                    </div>
+                                    <!-- end /.modal-header -->
+
+                                    <div class="modal-body">
+                                        <form action="{{ route('purchases') }}" class="setting_form" method="post" id="profile_form" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="item_id" value="{{ $item->item_id }}">
+                                            <input type="hidden" name="ord_id" value="{{ $item->ord_id }}">
+                                            <input type="hidden" name="item_token" value="{{ $item->item_token }}">
+                                            <input type="hidden" name="user_id" value="{{ $item->user_id }}">
+                                            <input type="hidden" name="item_user_id" value="{{ $item->item_user_id }}">
+                                            <input type="hidden" name="item_url" value="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}">
+                                            <ul>
+                                                <li>
+                                                    <p>{{ Helper::translation(3154,$translate) }}</p>
+                                                    <div class="right_content btn btn--round btn--white btn--md">
+                                                        <select name="rating" class="give_rating">
+                                                            <option value="1" @if($item->rating == 1) selected @endif>1</option>
+                                                            <option value="2" @if($item->rating == 2) selected @endif>2</option>
+                                                            <option value="3" @if($item->rating == 3) selected @endif>3</option>
+                                                            <option value="4" @if($item->rating == 4) selected @endif>4</option>
+                                                            <option value="5" @if($item->rating == 5) selected @endif>5</option>
+                                                        </select>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <p>{{ Helper::translation(3155,$translate) }}</p>
+                                                    <div class="right_content">
+                                                        <div class="select-wrap">
+                                                            <select name="rating_reason">
+                                                                <option value="design" @if($item->rating_reason == 'design') selected @endif>{{ Helper::translation(3156,$translate) }}</option>
+                                                                <option value="customization" @if($item->rating_reason == 'customization') selected @endif>{{ Helper::translation(3157,$translate) }}</option>
+                                                                <option value="support" @if($item->rating_reason == 'support') selected @endif>{{ Helper::translation(3055,$translate) }}</option>
+                                                                <option value="performance" @if($item->rating_reason == 'performance') selected @endif>{{ Helper::translation(3158,$translate) }}</option>
+                                                                <option value="documentation" @if($item->rating_reason == 'documentation') selected @endif>{{ Helper::translation(3159,$translate) }}</option>
+                                                            </select>
+
+                                                            <span class="lnr lnr-chevron-down"></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                            <div class="rating_field">
+                                                <label for="rating_field">{{ Helper::translation(3054,$translate) }}</label>
+                                                <textarea name="rating_comment" id="rating_comment" class="text_field" required="required">{{ $item->rating_comment }}</textarea>
+                                                <p class="notice">{{ Helper::translation(3160,$translate) }} </p>
+                                            </div>
+                                            <button type="submit" class="btn btn--md theme-button">{{ Helper::translation(3161,$translate) }}</button>
+
+                                        </form>
+                                        <!-- end /.form -->
+                                    </div>
+                                    <!-- end /.modal-body -->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @endforeach
 
 
 
@@ -442,17 +449,16 @@
                     </div>
                     <!-- end /.row -->
                 </div>
-                <!-- end /.product_archive2 -->
+
             </div>
-            <!-- end /.container -->
+
         </div>
 
         </div>
-        <!-- end /.dashboard_menu_area -->
     </section>
 
-   @include('footer')
-   @include('javascript')
+    @include('footer')
+    @include('javascript')
 </body>
 
 </html>
