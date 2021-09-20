@@ -42,15 +42,15 @@ class ItemController extends Controller {
 		$data = array('fav' => $fav);
 		return view('favourites')->with($data);
 	}
-    public function likes_item() {
-        $fav['item'] = Items::getLikeItemData();
-        $data = array('fav' => $fav);
-        return view('likes')->with($data);
-    }
+	public function likes_item() {
+		$fav['item'] = Items::getLikeItemData();
+		$data = array('fav' => $fav);
+		return view('likes')->with($data);
+	}
 
 
 
-    public function view_coupon(Request $request) {
+	public function view_coupon(Request $request) {
 		$allsettings = Settings::allSettings();
 		$coupon = $request->input('coupon');
 		$user_id = Auth::user()->id;
@@ -59,6 +59,7 @@ class ItemController extends Controller {
 		if ($check_coupon == 1) {
 			$single = Items::singleCoupon($coupon);
 			$coupondata['get'] = Items::getCoupon($coupon, $user_id);
+
 			foreach ($coupondata['get'] as $couponview) {
 				$order_id = $couponview->ord_id;
 				$coupon_id = $single->coupon_id;
@@ -83,6 +84,7 @@ class ItemController extends Controller {
 					}
 				}
 			}
+
 			return redirect()->back()->with('success', 'Coupon Added Successfully.');
 		} else {
 			return redirect()->back()->with('error', 'Invalid Coupon Code or Expired');
@@ -93,6 +95,7 @@ class ItemController extends Controller {
 	public function invoice_download($product_token, $order_id) {
 		$logged = Auth::user()->id;
 		$check_purchased = Items::checkPurchased($logged, $product_token);
+
 		if ($check_purchased != 0) {
 			$item['data'] = Items::solditemData($product_token);
 			$order_details = Items::singleorderData($order_id);
@@ -147,33 +150,33 @@ class ItemController extends Controller {
 	}
 
 
-    public function view_likes_item($itemid,  $liked) {
-        $item_id = base64_decode($itemid);
-        $like = base64_decode($liked) + 1;
-        $log_user = Auth::user()->id;
-        $getcount  = Items::getLikeCount($item_id, $log_user);
-        if ($getcount == 0) {
-            $data = array('item_id' => $item_id, 'user_id' => $log_user);
-            Like::create($data);
-            $record = array('liked' => $like);
-            Items::updateLikeData($item_id, $record);
-            return redirect()->back()->with('success', 'Item added to likes');
-        } else {
-            return redirect()->back()->with('error', 'Sorry Item already added to likes');
-        }
-    }
+	public function view_likes_item($itemid,  $liked) {
+		$item_id = base64_decode($itemid);
+		$like = base64_decode($liked) + 1;
+		$log_user = Auth::user()->id;
+		$getcount  = Items::getLikeCount($item_id, $log_user);
+		if ($getcount == 0) {
+			$data = array('item_id' => $item_id, 'user_id' => $log_user);
+			Like::create($data);
+			$record = array('liked' => $like);
+			Items::updateLikeData($item_id, $record);
+			return redirect()->back()->with('success', 'Item added to likes');
+		} else {
+			return redirect()->back()->with('error', 'Sorry Item already added to likes');
+		}
+	}
 
-    public function remove_likes_item($favid, $itemid) {
+	public function remove_likes_item($favid, $itemid) {
 
-        $fav_id = base64_decode($favid);
-        $item_id = base64_decode($itemid);
-        Items::dropLikeItem($fav_id);
-        $get['item'] = Items::selecteditemData($item_id);
-        $liked = $get['item']->liked - 1;
-        $record = array('liked' => $liked);
-        Items::updateLikeData($item_id, $record);
-        return redirect()->back()->with('success', 'Item removed to Liked');
-    }
+		$fav_id = base64_decode($favid);
+		$item_id = base64_decode($itemid);
+		Items::dropLikeItem($fav_id);
+		$get['item'] = Items::selecteditemData($item_id);
+		$liked = $get['item']->liked - 1;
+		$record = array('liked' => $liked);
+		Items::updateLikeData($item_id, $record);
+		return redirect()->back()->with('success', 'Item removed to Liked');
+	}
 
 	public function view_withdrawal() {
 		$allsettings = Settings::allSettings();
@@ -303,15 +306,15 @@ class ItemController extends Controller {
 		}
 
 		$data = array(
-			'edit'        => $edit, 
-			'token'       => $token, 
-			'item_image'  => $item_image, 
-			'getcount'    => $getcount, 
-			'cat_id'      => $cat_id, 
-			'cat_name'    => $cat_name, 
-			'type_name'   => $type_name, 
-			'attri_field' => $attri_field, 
-			'attribute'   => $attribute, 
+			'edit'        => $edit,
+			'token'       => $token,
+			'item_image'  => $item_image,
+			'getcount'    => $getcount,
+			'cat_id'      => $cat_id,
+			'cat_name'    => $cat_name,
+			'type_name'   => $type_name,
+			'attri_field' => $attri_field,
+			'attribute'   => $attribute,
 			'typer_id'    => $typer_id
 		);
 
@@ -332,16 +335,14 @@ class ItemController extends Controller {
 	}
 
 
-
-
 	public function manage_item() {
 		$itemData['item'] = Items::getmanageitemData();
 		$encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
 		$viewitem['type'] = Items::gettypeItem();
 
 		$data = [
-			'itemData' => $itemData, 
-			'encrypter' => $encrypter, 
+			'itemData' => $itemData,
+			'encrypter' => $encrypter,
 			'viewitem' => $viewitem
 		];
 
@@ -365,7 +366,6 @@ class ItemController extends Controller {
 	}
 
 
-
 	public function upload_item($itemtype) {
 		$encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
 		$type_id   = $encrypter->decrypt($itemtype);
@@ -373,9 +373,9 @@ class ItemController extends Controller {
 		$attribute['fields'] = Attribute::selectedAttribute($type_id);
 		$type_name = Items::viewItemtype($type_id);
 		$data = array(
-			'itemWell' => $itemWell, 
-			'attribute' => $attribute, 
-			'type_id' => $type_id, 
+			'itemWell' => $itemWell,
+			'attribute' => $attribute,
+			'type_id' => $type_id,
 			'type_name' => $type_name
 		);
 
@@ -393,23 +393,21 @@ class ItemController extends Controller {
 		return $randomString;
 	}
 
+
 	public function item_slug($string) {
 		$slug = strtolower(str_replace(' ', '-', $string));
 		return $slug;
 	}
 
 
-
-
-
 	public function update_items(Request $request) {
 
 		$item_name = $request->input('item_name');
-        $item_slug = str_replace("/","-",$item_name);
+		$item_slug = str_replace("/", "-", $item_name);
 		$item_slug = $this->item_slug($item_slug);
 		$item_token = $request->input('item_token');
-//		$item_desc = htmlentities($request->input('item_desc'));
-        $item_desc = htmlentities($_POST['item_desc']);
+		//		$item_desc = htmlentities($request->input('item_desc'));
+		$item_desc = htmlentities($_POST['item_desc']);
 		$item_category = $request->input('item_category');
 		$split = explode("_", $item_category);
 
@@ -480,31 +478,31 @@ class ItemController extends Controller {
 				'item_name' => 'required',
 				'item_desc' => 'required',
 				/*'item_thumbnail' => 'mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=80,height=80',*/
-                'item_thumbnail' => 'mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=255,height=165',
-                'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=700,height=400',
-                'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size.'|dimensions:width=350,height=235',
+				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
+				'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
 				'item_file' => 'mimes:zip|max:' . $file_size,
 
 
-			],[
-                'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-                'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-                'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
-            ]);
+			], [
+				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
+				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
+				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
+			]);
 		} else {
 			$request->validate([
 				'item_name' => 'required',
 				'item_desc' => 'required',
 				'item_file' => 'required|mimes:zip|max:' . $file_size,
-                'item_thumbnail' => 'mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=255,height=165',
-                'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=700,height=400',
-                'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size.'|dimensions:width=350,height=235',
+				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
+				'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
 
-			],[
-                'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-                'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-                'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
-            ]);
+			], [
+				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
+				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
+				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
+			]);
 		}
 		$rules = array(
 
@@ -652,7 +650,7 @@ class ItemController extends Controller {
 			$updated_item = date('Y-m-d H:i:s');
 
 
-			$data = array('item_name' => $item_name, 'item_desc' => $item_desc, 'item_thumbnail' => $item_thumbnail, 'item_preview' => $item_preview, 'item_file' => $item_file, 'item_category' => $cat_id, 'item_category_type' => $cat_name, 'item_type' => $item_type, 'regular_price' => $regular_price,'regular_licence' => $regular_licence, 'extended_price' => $extended_price, 'extended_licence' => $extended_licence, 'demo_url' => $demo_url, 'item_tags' => $item_tags, 'item_status' => $item_status, 'item_shortdesc' => $item_shortdesc, 'free_download' => $free_download, 'item_slug' => $item_slug, 'video_url' => $video_url, 'future_update' => $future_update, 'item_support' => $item_support, 'updated_item' => $updated_item, 'item_flash_request' => $item_flash_request, 'video_preview_type' => $video_preview_type, 'video_file' => $video_file);
+			$data = array('item_name' => $item_name, 'item_desc' => $item_desc, 'item_thumbnail' => $item_thumbnail, 'item_preview' => $item_preview, 'item_file' => $item_file, 'item_category' => $cat_id, 'item_category_type' => $cat_name, 'item_type' => $item_type, 'regular_price' => $regular_price, 'regular_licence' => $regular_licence, 'extended_price' => $extended_price, 'extended_licence' => $extended_licence, 'demo_url' => $demo_url, 'item_tags' => $item_tags, 'item_status' => $item_status, 'item_shortdesc' => $item_shortdesc, 'free_download' => $free_download, 'item_slug' => $item_slug, 'video_url' => $video_url, 'future_update' => $future_update, 'item_support' => $item_support, 'updated_item' => $updated_item, 'item_flash_request' => $item_flash_request, 'video_preview_type' => $video_preview_type, 'video_file' => $video_file);
 
 			Items::updateitemData($item_token, $data);
 
@@ -752,16 +750,13 @@ class ItemController extends Controller {
 	}
 
 
-
-
-
 	public function save_items(Request $request) {
 
 		$item_name = $request->input('item_name');
-        $item_slug = str_replace("/","-",$item_name);
+		$item_slug = str_replace("/", "-", $item_name);
 		$item_slug = $this->item_slug($item_slug);
-//		$item_desc = htmlentities($request->input('item_desc'));
-        $item_desc = htmlentities($_POST['item_desc']);
+		//		$item_desc = htmlentities($request->input('item_desc'));
+		$item_desc = htmlentities($_POST['item_desc']);
 		$item_category = $request->input('item_category');
 
 		$split = explode("_", $item_category);
@@ -774,7 +769,7 @@ class ItemController extends Controller {
 		$demo_url = $request->input('demo_url');
 		$item_tags = $request->input('item_tags');
 		$regular_price = $request->input('regular_price');
-        $regular_licence = $request->input('regular_licence');
+		$regular_licence = $request->input('regular_licence');
 		$item_shortdesc = $request->input('item_shortdesc');
 		$free_download = $request->input('free_download');
 		$video_url = $request->input('video_url');
@@ -784,10 +779,10 @@ class ItemController extends Controller {
 
 		if (!empty($request->input('extended_price'))) {
 			$extended_price = $request->input('extended_price');
-            $extended_licence = $request->input('extended_licence');
+			$extended_licence = $request->input('extended_licence');
 		} else {
 			$extended_price = 0;
-            $extended_licence = "";
+			$extended_licence = "";
 		}
 
 		if (!empty($request->input('future_update'))) {
@@ -829,22 +824,23 @@ class ItemController extends Controller {
 		$file_size = $allsettings->site_max_file_size;
 		$url = URL::to("/");
 
-		$request->validate([
-			'item_name' => 'required',
-			'item_desc' => 'required',
-            'item_thumbnail' => 'required|mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=255,height=165',
-            'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=700,height=400',
-            'item_preview' => 'required|mimes:jpeg,jpg,png|max:' . $image_size.'|dimensions:width=350,height=235',
-			'item_file' => 'mimes:zip|required|max:' . $file_size,
-			'video_file' => 'mimes:mp4|max:' . $file_size,
+		$request->validate(
+			[
+				'item_name' => 'required',
+				'item_desc' => 'required',
+				'item_thumbnail' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
+				'item_preview' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
+				'item_file' => 'mimes:zip|required|max:' . $file_size,
+				'video_file' => 'mimes:mp4|max:' . $file_size,
 
-		],
-            [
-                'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-                'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-                'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
-            ]
-        );
+			],
+			[
+				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
+				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
+				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
+			]
+		);
 		$rules = array(
 
 			'item_name' => ['required', 'max:100', Rule::unique('items')->where(function ($sql) {
@@ -986,7 +982,7 @@ class ItemController extends Controller {
 			}
 
 
-			$data = array('user_id' => $user_id, 'item_token' => $item_token, 'item_name' => $item_name, 'item_desc' => $item_desc, 'item_thumbnail' => $item_thumbnail, 'item_preview' => $item_preview, 'item_file' => $item_file, 'item_category' => $cat_id, 'item_category_type' => $cat_name, 'item_type' => $item_type,  'regular_price' => $regular_price,'regular_licence' => $regular_licence, 'extended_price' => $extended_price, 'extended_licence' => $extended_licence,  'demo_url' => $demo_url, 'item_tags' => $item_tags, 'item_status' => $item_status, 'item_shortdesc' => $item_shortdesc, 'free_download' => $free_download, 'item_slug' => $item_slug, 'video_url' => $video_url, 'future_update' => $future_update, 'item_support' => $item_support, 'created_item' => $created_item, 'updated_item' => $updated_item, 'item_flash_request' => $item_flash_request, 'video_preview_type' => $video_preview_type, 'video_file' => $video_file);
+			$data = array('user_id' => $user_id, 'item_token' => $item_token, 'item_name' => $item_name, 'item_desc' => $item_desc, 'item_thumbnail' => $item_thumbnail, 'item_preview' => $item_preview, 'item_file' => $item_file, 'item_category' => $cat_id, 'item_category_type' => $cat_name, 'item_type' => $item_type,  'regular_price' => $regular_price, 'regular_licence' => $regular_licence, 'extended_price' => $extended_price, 'extended_licence' => $extended_licence,  'demo_url' => $demo_url, 'item_tags' => $item_tags, 'item_status' => $item_status, 'item_shortdesc' => $item_shortdesc, 'free_download' => $free_download, 'item_slug' => $item_slug, 'video_url' => $video_url, 'future_update' => $future_update, 'item_support' => $item_support, 'created_item' => $created_item, 'updated_item' => $updated_item, 'item_flash_request' => $item_flash_request, 'video_preview_type' => $video_preview_type, 'video_file' => $video_file);
 
 			Items::saveitemData($data);
 
@@ -1063,9 +1059,6 @@ class ItemController extends Controller {
 	}
 
 
-
-
-
 	public function contact_support(Request $request) {
 		$support_subject = $request->input('support_subject');
 		$support_msg = $request->input('support_msg');
@@ -1132,10 +1125,10 @@ class ItemController extends Controller {
 		$price = base64_decode($split[0]);
 		$license = $split[1];
 
-		if($license == 'regular') {
+		if ($license == 'regular') {
 			$start_date = date('Y-m-d');
 			$end_date = date('Y-m-d', strtotime('+6 month'));
-		}else if($license == 'extended') {
+		} else if ($license == 'extended') {
 			$start_date = date('Y-m-d');
 			$end_date = date('Y-m-d', strtotime('+12 month'));
 		}
@@ -1145,9 +1138,9 @@ class ItemController extends Controller {
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
 
-		if($user_exclusive_type == 1) {
+		if ($user_exclusive_type == 1) {
 			$commission = ($setting['setting']->site_exclusive_commission * $price) / 100;
-		}else {
+		} else {
 			$commission = ($setting['setting']->site_non_exclusive_commission * $price) / 100;
 		}
 
@@ -1158,26 +1151,26 @@ class ItemController extends Controller {
 		$getcount  = Items::getorderCount($item_id, $user_id, $order_status);
 
 		$savedata = array(
-			'user_id' => $user_id, 
-			'item_id' => $item_id, 
-			'item_name' => $item_name, 
-			'item_user_id' => $item_user_id, 
-			'item_token' => $item_token, 
-			'license' => $license, 
-			'start_date' => $start_date, 
-			'end_date' => $end_date, 
-			'item_price' => $price, 
-			'vendor_amount' => $vendor_amount, 
-			'admin_amount' => $admin_amount, 
-			'total_price' => $price, 
+			'user_id' => $user_id,
+			'item_id' => $item_id,
+			'item_name' => $item_name,
+			'item_user_id' => $item_user_id,
+			'item_token' => $item_token,
+			'license' => $license,
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'item_price' => $price,
+			'vendor_amount' => $vendor_amount,
+			'admin_amount' => $admin_amount,
+			'total_price' => $price,
 			'order_status' => $order_status
 		);
 
 		$updatedata = array(
-			'license' => $license, 
-			'start_date' => $start_date, 
-			'end_date' => $end_date, 
-			'item_price' => $price, 
+			'license' => $license,
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'item_price' => $price,
 			'total_price' => $price
 		);
 
@@ -1437,13 +1430,11 @@ class ItemController extends Controller {
 			</form>';
 				$paypal .= '<script>window.paypal_form.submit();</script>';
 				echo $paypal;
-			}
-			else if ($payment_method == '2checkout') {
+			} else if ($payment_method == '2checkout') {
 
 				$record = array('final_amount' => $final_amount, 'purchase_token' => $purchase_token, 'payment_method' => $payment_method, 'item_names_data' => $item_names_data, 'site_currency' => $site_currency, 'website_url' => $website_url, 'two_checkout_private' => $two_checkout_private, 'two_checkout_account' => $two_checkout_account, 'two_checkout_mode' => $two_checkout_mode, 'token' => $token, 'two_checkout_publishable' => $two_checkout_publishable);
 				return view('order-confirm')->with($record);
-			}
-			else if ($payment_method == 'paystack') {
+			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
 				$price_amount = $final_amount * 100;
@@ -1461,19 +1452,14 @@ class ItemController extends Controller {
 					</form>';
 				$paystack .= '<script>window.stack_form.submit();</script>';
 				echo $paystack;
-			}
-			else if ($payment_method == 'localbank') {
+			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
 				$bank_data = array('purchase_token' => $purchase_token, 'bank_details' => $bank_details);
 				return view('bank-details')->with($bank_data);
-			}
-
-            else if ($payment_method == 'SSLCommerz') {
-                $ssl = new SslCommerzPaymentController();
-                $ssl->index($request,$savedata);
-            }
-
-			else if ($payment_method == 'wallet') {
+			} else if ($payment_method == 'SSLCommerz') {
+				$ssl = new SslCommerzPaymentController();
+				$ssl->index($request, $savedata);
+			} else if ($payment_method == 'wallet') {
 				if ($buyer_wallet_amount >= $final_amount) {
 					$purchased_token = $purchase_token;
 					$payment_status = 'completed';
@@ -1541,8 +1527,7 @@ class ItemController extends Controller {
 					return redirect()->back()->with('error', 'Please check your wallet balance amount');
 				}
 			}
-			/* stripe code */
-            else if ($payment_method == 'stripe') {
+			/* stripe code */ else if ($payment_method == 'stripe') {
 
 
 				$stripe = array(
@@ -1696,13 +1681,11 @@ class ItemController extends Controller {
 			</form>';
 				$paypal .= '<script>window.paypal_form.submit();</script>';
 				echo $paypal;
-			}
-			else if ($payment_method == '2checkout') {
+			} else if ($payment_method == '2checkout') {
 
 				$record = array('final_amount' => $final_amount, 'purchase_token' => $purchase_token, 'payment_method' => $payment_method, 'item_names_data' => $item_names_data, 'site_currency' => $site_currency, 'website_url' => $website_url, 'two_checkout_private' => $two_checkout_private, 'two_checkout_account' => $two_checkout_account, 'two_checkout_mode' => $two_checkout_mode, 'token' => $token, 'two_checkout_publishable' => $two_checkout_publishable);
 				return view('order-confirm')->with($record);
-			}
-			else if ($payment_method == 'paystack') {
+			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
 				$paystack = '<form method="post" id="stack_form" action="' . route('paystack') . '">
@@ -1719,14 +1702,12 @@ class ItemController extends Controller {
 					</form>';
 				$paystack .= '<script>window.stack_form.submit();</script>';
 				echo $paystack;
-			}
-			else if ($payment_method == 'localbank') {
+			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
 				$bank_data = array('purchase_token' => $purchase_token, 'bank_details' => $bank_details);
 				return view('bank-details')->with($bank_data);
 			}
-			/* stripe code */
-            else if ($payment_method == 'stripe') {
+			/* stripe code */ else if ($payment_method == 'stripe') {
 
 
 				$stripe = array(
