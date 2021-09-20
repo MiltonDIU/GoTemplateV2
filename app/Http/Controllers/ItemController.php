@@ -1306,7 +1306,7 @@ class ItemController extends Controller {
 
 
 				$data_record = array('payment_token' => $payment_token);
-				return view('success')->with($data_record);
+				return view('theme2.success')->with($data_record);
 			} else {
 				return redirect('/cancel');
 			}
@@ -1635,7 +1635,7 @@ class ItemController extends Controller {
 
 
 					$data_record = array('payment_token' => $payment_token);
-					return view('success')->with($data_record);
+					return view('theme2.success')->with($data_record);
 				}
 			}
 			/* stripe code */
@@ -1814,7 +1814,7 @@ class ItemController extends Controller {
 					}
 
 					$data_record = array('payment_token' => $payment_token);
-					return view('success')->with($data_record);
+					return view('theme2.success')->with($data_record);
 				}
 			}
 			/* stripe code */
@@ -1896,7 +1896,7 @@ class ItemController extends Controller {
 				/* manual payment verification : OFF */
 			}
 			$data_record = array('payment_token' => $payment_token);
-			return view('success')->with($data_record);
+			return view('theme2.success')->with($data_record);
 		} else {
 			return redirect('/cancel');
 		}
@@ -1904,7 +1904,7 @@ class ItemController extends Controller {
 
 
 	public function view_success() {
-		return view('success');
+		return view('theme2.success');
 	}
 
 	public function paypal_success($ord_token, Request $request) {
@@ -1972,7 +1972,7 @@ class ItemController extends Controller {
 
 
 		$result_data = array('payment_token' => $payment_token);
-		return view('success')->with($result_data);
+		return view('theme2.success')->with($result_data);
 	}
 
 
