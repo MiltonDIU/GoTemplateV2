@@ -929,6 +929,7 @@ h1,h2,h3,h4,h5,h6,p{
     font-family: 'Open Sans', sans-serif;
     font-size: 25px;
     font-weight: 800;
+    color: #14213D;
 }
 
 #checkout .order_details_main{

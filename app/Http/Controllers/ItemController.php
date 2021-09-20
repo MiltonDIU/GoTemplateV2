@@ -1194,9 +1194,13 @@ class ItemController extends Controller {
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
 		$get_payment = explode(',', $setting['setting']->payment_option);
-		$data = array('cart' => $cart, 'cart_count' => $cart_count, 'get_payment' => $get_payment);
+		$data = array(
+			'cart' => $cart, 
+			'cart_count' => $cart_count, 
+			'get_payment' => $get_payment
+		);
 
-		return view('checkout')->with($data);
+		return view('theme2.checkout')->with($data);
 	}
 
 	public function confirm_2checkout(Request $request) {
@@ -1815,7 +1819,7 @@ class ItemController extends Controller {
 			}
 			/* stripe code */
 		}
-		return view('checkout');
+		return view('theme2.checkout');
 	}
 
 	public function redirectToGateway() {
