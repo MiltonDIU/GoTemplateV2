@@ -21,6 +21,9 @@
   font-weight: 400;
   transition: all linear .3s;
 }
+#header .top_menu li a.title {
+  color: #14213D;
+}
 #header .top_menu li .link::after {
   content: '';
   width: 0;

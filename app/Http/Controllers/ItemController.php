@@ -1436,8 +1436,22 @@ class ItemController extends Controller {
 				echo $paypal;
 			} else if ($payment_method == '2checkout') {
 
-				$record = array('final_amount' => $final_amount, 'purchase_token' => $purchase_token, 'payment_method' => $payment_method, 'item_names_data' => $item_names_data, 'site_currency' => $site_currency, 'website_url' => $website_url, 'two_checkout_private' => $two_checkout_private, 'two_checkout_account' => $two_checkout_account, 'two_checkout_mode' => $two_checkout_mode, 'token' => $token, 'two_checkout_publishable' => $two_checkout_publishable);
-				return view('order-confirm')->with($record);
+				$record = array(
+					'final_amount' => $final_amount, 
+					'purchase_token' => $purchase_token, 
+					'payment_method' => $payment_method, 
+					'item_names_data' => $item_names_data, 
+					'site_currency' => $site_currency, 
+					'website_url' => $website_url, 
+					'two_checkout_private' => $two_checkout_private, 
+					'two_checkout_account' => $two_checkout_account, 
+					'two_checkout_mode' => $two_checkout_mode, 
+					'token' => $token, 
+					'two_checkout_publishable' => $two_checkout_publishable
+				);
+				
+				return view('theme2.order-confirm')->with($record);
+
 			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
@@ -1458,8 +1472,12 @@ class ItemController extends Controller {
 				echo $paystack;
 			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
-				$bank_data = array('purchase_token' => $purchase_token, 'bank_details' => $bank_details);
-				return view('bank-details')->with($bank_data);
+				$bank_data = array(
+					'purchase_token' => $purchase_token, 
+					'bank_details' => $bank_details
+				);
+				
+				return view('theme2.bank-details')->with($bank_data);
 			} else if ($payment_method == 'SSLCommerz') {
 				$ssl = new SslCommerzPaymentController();
 				$ssl->index($request, $savedata);
@@ -1687,8 +1705,21 @@ class ItemController extends Controller {
 				echo $paypal;
 			} else if ($payment_method == '2checkout') {
 
-				$record = array('final_amount' => $final_amount, 'purchase_token' => $purchase_token, 'payment_method' => $payment_method, 'item_names_data' => $item_names_data, 'site_currency' => $site_currency, 'website_url' => $website_url, 'two_checkout_private' => $two_checkout_private, 'two_checkout_account' => $two_checkout_account, 'two_checkout_mode' => $two_checkout_mode, 'token' => $token, 'two_checkout_publishable' => $two_checkout_publishable);
-				return view('order-confirm')->with($record);
+				$record = array(
+					'final_amount' => $final_amount, 
+					'purchase_token' => $purchase_token, 
+					'payment_method' => $payment_method, 
+					'item_names_data' => $item_names_data, 
+					'site_currency' => $site_currency, 
+					'website_url' => $website_url, 
+					'two_checkout_private' => $two_checkout_private, 
+					'two_checkout_account' => $two_checkout_account, 
+					'two_checkout_mode' => $two_checkout_mode, 
+					'token' => $token, 
+					'two_checkout_publishable' => $two_checkout_publishable
+				);
+				
+				return view('theme2.order-confirm')->with($record);
 			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
@@ -1708,8 +1739,12 @@ class ItemController extends Controller {
 				echo $paystack;
 			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
-				$bank_data = array('purchase_token' => $purchase_token, 'bank_details' => $bank_details);
-				return view('bank-details')->with($bank_data);
+				$bank_data = array(
+					'purchase_token' => $purchase_token, 
+					'bank_details' => $bank_details
+				);
+				
+				return view('theme2.bank-details')->with($bank_data);
 			}
 			/* stripe code */ else if ($payment_method == 'stripe') {
 
@@ -1983,7 +2018,7 @@ class ItemController extends Controller {
 
 	public function view_purchases() {
 		$orderData['item'] = Items::getuserOrders();
-		return view('purchases', ['orderData' => $orderData]);
+		return view('theme2.purchases', ['orderData' => $orderData]);
 	}
 
 
@@ -2095,7 +2130,7 @@ class ItemController extends Controller {
 			$drawal_amount += $drawal->wd_amount;
 		}
 
-		return view('sales', ['orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale, 'credit_amount' => $credit_amount, 'drawal_amount' => $drawal_amount]);
+		return view('theme2.sales', ['orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale, 'credit_amount' => $credit_amount, 'drawal_amount' => $drawal_amount]);
 	}
 
 
@@ -2103,7 +2138,7 @@ class ItemController extends Controller {
 	public function view_order_details($token) {
 		$checkout['view'] = Items::singlecheckoutView($token);
 		$order['view'] = Items::getorderView($token);
-		return view('order-details', ['checkout' => $checkout, 'order' => $order]);
+		return view('theme2.order-details', ['checkout' => $checkout, 'order' => $order]);
 	}
 
 

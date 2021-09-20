@@ -68,8 +68,12 @@
 
                     @foreach($cart['item'] as $cart)
                       <li class="order_info">
-                        <a href="{{ url('/item') }}/{{ $cart->item_slug }}/{{ $cart->item_id }}" class="order_item_text order_item_name">{{ $cart->item_name }}</a>
-                        <p class="order_item_text order_item_price">{{ $cart->item_price }} {{ $allsettings->site_currency }}</p>
+                        <a href="{{ url('/item') }}/{{ $cart->item_slug }}/{{ $cart->item_id }}" class="order_item_text order_item_name">
+                          {{ $cart->item_name }}
+                        </a>
+                        <p class="order_item_text order_item_price">
+                          {{ $cart->item_price }} {{ $allsettings->site_currency }}
+                        </p>
                       </li>
 
                       @php
