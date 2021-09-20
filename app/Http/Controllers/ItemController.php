@@ -27,28 +27,24 @@ use Illuminate\Support\Str;
 use Feberr\Http\Controllers\SslCommerzPaymentController;
 
 class ItemController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+
 	public function __construct() {
 		$this->middleware('auth');
 	}
 
-
 	public function favourites_item() {
 		$fav['item'] = Items::getfavitemData();
 		$data = array('fav' => $fav);
-		return view('favourites')->with($data);
+
+		return view('theme2.favourites', compact("data"));
 	}
+
 	public function likes_item() {
 		$fav['item'] = Items::getLikeItemData();
 		$data = array('fav' => $fav);
-		return view('likes')->with($data);
+
+		return view('theme2.likes', compact("data"));
 	}
-
-
 
 	public function view_coupon(Request $request) {
 		$allsettings = Settings::allSettings();

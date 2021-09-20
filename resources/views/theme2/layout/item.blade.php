@@ -40,7 +40,7 @@
           </a>
 
           @if (Auth::check())
-            @if($item->user_id != Auth::user()->id)
+            @if($item->id != Auth::user()->id)
               <a 
                 href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}" 
                 class="item_icons {{(\Feberr\Models\Items::getfavouriteCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
