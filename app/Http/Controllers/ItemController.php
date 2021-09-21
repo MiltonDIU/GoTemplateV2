@@ -180,7 +180,7 @@ class ItemController extends Controller {
 		$itemData['item'] = Items::getdrawalData();
 		$data = array('withdraw_option' => $withdraw_option, 'itemData' => $itemData);
 
-		return view('withdrawal')->with($data);
+		return view('theme2.withdrawal')->with($data);
 	}
 
 
