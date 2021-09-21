@@ -65,7 +65,7 @@
           <div class="back_home">
             <i class="fas fa-gifts p_icon"></i>
             <p class="p_thanks">Thank you for the payment!</p>
-            <a href="index.html" class="back_btn">Go Back to Home Page</a>
+            <a href="{{ URL::to('/') }}" class="back_btn">Go Back to Home Page</a>
           </div>
         </div>
       </div>
