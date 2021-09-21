@@ -21,8 +21,8 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="statement_table table-responsive">
-            <table class="table">
+          <div class="statement_table table-responsive p-5">
+            <table class="table table-borderless">
               <thead>
                 <tr>
                   <th>{{ Helper::translation(2920,$translate) }}</th>
