@@ -1,8 +1,10 @@
+@if($allsettings->maintenance_mode == 0)
+
 @extends('theme2.layout.master')
 
 @php
-$page = $data['page']['page'];
-$page_id = $page->page_id;
+  $page = $data['page']['page'];
+  $page_id = $page->page_id;
 @endphp
 
 @section('content')
@@ -662,3 +664,7 @@ $page_id = $page->page_id;
 
 
 @endsection
+
+@else
+  @include('theme2.503')
+@endif
