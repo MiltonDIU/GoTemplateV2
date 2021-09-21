@@ -44,19 +44,22 @@ h1,h2,h3,h4,h5,h6,p{
 
 /*------------- category start --------------*/
 #category .main_category,
-#flash_category .main_category {
+#flash_category .main_category,
+#all_category .main_category {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 50px;
 }
 #category .main_category li,
-#flash_category .main_category li {
+#flash_category .main_category li,
+#all_category .main_category li {
     display: flex;
     margin-bottom: 10px;
 }
 #category .category_button,
-#flash_category .category_button {
+#flash_category .category_button,
+#all_category .category_button {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -69,7 +72,8 @@ h1,h2,h3,h4,h5,h6,p{
     cursor: pointer;
 }
 #category .category_button:hover,
-#flash_category .category_button:hover {
+#flash_category .category_button:hover,
+#all_category .category_button:hover {
     background-color: #FCA311;
     color: #14213D;
 }
