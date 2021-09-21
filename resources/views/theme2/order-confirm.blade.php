@@ -85,5 +85,5 @@
 @endsection
 
 @else
-@include('theme2.503')
+  @include('theme2.503')
 @endif
