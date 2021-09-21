@@ -1,9 +1,11 @@
+@if($allsettings->maintenance_mode == 0)
+
 @extends('theme2.layout.master')
 
 @section('content')
 @include("./components/hero", [
-"list" => [array("path" => "/profile-settings", "text" => 3109)],
-"headline" => 3109
+  "list" => [array("path" => "/profile-settings", "text" => 3109)],
+  "headline" => 3109
 ])
 
 <div class="container">
@@ -386,3 +388,7 @@
   </form>
 </div>
 @endsection
+
+@else
+  @include('theme2.503')
+@endif

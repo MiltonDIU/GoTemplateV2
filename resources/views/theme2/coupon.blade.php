@@ -1,3 +1,5 @@
+@if($allsettings->maintenance_mode == 0)
+
 @extends('theme2.layout.master')
 
 @section('content')
@@ -21,8 +23,8 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="statement_table table-responsive">
-            <table class="table">
+          <div class="statement_table table-responsive p-5">
+            <table class="table table-borderless">
               <thead>
                 <tr>
                   <th>{{ Helper::translation(2920,$translate) }}</th>
@@ -72,3 +74,7 @@
 @include('theme2.not-found')
 @endif
 @endsection
+
+@else
+  @include('theme2.503')
+@endif
