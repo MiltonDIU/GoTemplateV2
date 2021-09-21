@@ -1716,6 +1716,7 @@ class ItemController extends Controller {
 				);
 				
 				return view('theme2.order-confirm')->with($record);
+				
 			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
