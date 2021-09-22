@@ -1,3 +1,5 @@
+@if($allsettings->maintenance_mode == 0)
+
 @extends('theme2.layout.master')
 
 @section('content')
@@ -22,3 +24,7 @@
     </div>
 </div>
 @endsection
+
+@else
+    @include('503')
+@endif
