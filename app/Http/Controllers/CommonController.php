@@ -1035,7 +1035,7 @@ class CommonController extends Controller {
 
 			} else {
 				Items::saveContact($record);
-				Mail::send('contact_mail', $record, function ($message) use ($admin_name, $admin_email, $from_email, $from_name) {
+				Mail::send('theme2.contact_mail', $record, function ($message) use ($admin_name, $admin_email, $from_email, $from_name) {
 					$message->to($admin_email, $admin_name)->subject('Contact');
 					$message->from($from_email, $from_name);
 				});
