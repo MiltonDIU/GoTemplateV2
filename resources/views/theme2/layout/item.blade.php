@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 @endpush
 
-<div class="col-lg-4 col-sm-12 col-md-6 col-xl-3 {{ isset($item_slider) && $item_slider ? 'w-100' : '' }}">
+<div class="li-items col-lg-4 col-sm-12 col-md-6 col-xl-3 {{ isset($item_slider) && $item_slider ? 'w-100' : '' }}">
   <div class="item_box">
     <div class="item_view">
       <div class="item_view_overlay">
