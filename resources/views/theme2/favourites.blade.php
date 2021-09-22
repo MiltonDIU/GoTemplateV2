@@ -40,12 +40,16 @@
       @endif
     </div>
 
-    <div class="row">
+    <div class="row" id="listShow">
       @foreach( $data['fav']['item'] as $item)
         @include('theme2.layout.item', [
           "item" => $item
         ])
       @endforeach
+
+      <div class="pagination-area">
+        <div class="turn-page" id="blogpager"></div>
+      </div>
     </div>
   </div>
 </section>
