@@ -208,7 +208,7 @@ class ItemController extends Controller {
 			$to_email = $getvendor['user']->email;
 
 			$record = array('item_url' => $item_url, 'from_name' => $from_name, 'from_email' => $from_email, 'comm_text' => $comm_text);
-			Mail::send('comment_mail', $record, function ($message) use ($from_email, $from_name, $to_name, $to_email) {
+			Mail::send('theme2.comment_mail', $record, function ($message) use ($from_email, $from_name, $to_name, $to_email) {
 				$message->to($to_email, $to_name)
 					->subject('New Comment Received');
 				$message->from($from_email, $from_name);
@@ -244,7 +244,7 @@ class ItemController extends Controller {
 			$to_email = $getvendor['user']->email;
 
 			$record = array('item_url' => $item_url, 'from_name' => $from_name, 'from_email' => $from_email, 'comm_text' => $comm_text);
-			Mail::send('comment_mail', $record, function ($message) use ($from_email, $from_name, $to_name, $to_email) {
+			Mail::send('theme2.comment_mail', $record, function ($message) use ($from_email, $from_name, $to_name, $to_email) {
 				$message->to($to_email, $to_name)
 					->subject('New Comment Received');
 				$message->from($from_email, $from_name);

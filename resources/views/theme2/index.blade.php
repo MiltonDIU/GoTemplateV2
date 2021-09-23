@@ -54,10 +54,11 @@
 
 
   <!-- latest item start -->
+  @if($data['itemData']['item']->all())
   <section id="latest_item">
     <div class="container">
       <div class="title">
-        <h2 class="section_title">Latest Items<span><a href="#">See All</a></span></h2>
+        <h2 class="section_title">Latest Items<span><a href="{{ URL::to('/shop/recent-items') }}">See All</a></span></h2>
       </div>
 
       <div class="row">
@@ -69,6 +70,7 @@
       </div>
     </div>
   </section>
+  @endif
   <!-- latest item end -->
 
 
@@ -97,14 +99,15 @@
 
 
   <!-- featured item start -->
+  @if($data['featured']['items']->all())
   <section id="featured_item">
     <div class="container">
       <div class="title">
-        <h2 class="section_title">Featured Items<span><a href="#">See All</a></span></h2>
+        <h2 class="section_title">Featured Items<span><a href="{{ URL::to('/shop/featured-items') }}">See All</a></span></h2>
       </div>
 
       <div class="item_slider_main">
-        @foreach( $data['featured']['items'] as $item)
+        @foreach($data['featured']['items'] as $item)
           <div class="slider_item">
             @include('theme2.layout.item', [
               "item" => $item,
@@ -115,29 +118,30 @@
       </div>
     </div>
   </section>
+  @endif
   <!-- featured item end -->
 
 
   <!-- free item start -->
   @if($data['free']['items']->all())
-    <section id="free_item">
-      <div class="container">
-        <div class="title">
-          <h2 class="section_title">Free Items<span><a href="#">See All</a></span></h2>
-        </div>
-
-        <div class="item_slider_main">
-          @foreach($data['free']['items']->all() as $item)
-            <div class="slider_item">
-              @include('theme2.layout.item', [
-                "item" => $item,
-                "item_slider" => true
-              ])
-            </div>
-          @endforeach
-        </div>
+  <section id="free_item">
+    <div class="container">
+      <div class="title">
+        <h2 class="section_title">Free Items<span><a href="{{ URL::to('/free-items') }}">See All</a></span></h2>
       </div>
-    </section>
+
+      <div class="item_slider_main">
+        @foreach($data['free']['items']->all() as $item)
+          <div class="slider_item">
+            @include('theme2.layout.item', [
+              "item" => $item,
+              "item_slider" => true
+            ])
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
   @endif
   <!-- free item end -->
 
@@ -167,6 +171,7 @@
 
 
   <!-- popular item start -->
+  @if($data['populars']->all())
   <section id="popular_item">
     <div class="container">
       <div class="title">
@@ -185,6 +190,7 @@
       </div>
     </div>
   </section>
+  @endif
   <!-- popular item end -->
 @endsection
 

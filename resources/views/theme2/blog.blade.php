@@ -13,10 +13,10 @@
     <div class="row">
 
       <div class="col-lg-8 col-sm-12 col-md-8 col-xl-8">
-        <div class="blog_list">
+        <div class="blog_list" id="listShow">
 
           @foreach($data['blogData']['post'] as $item)
-            <div class="single_blog">
+            <div class="single_blog li-items">
               <div class="blog_banner">
                 <a href="{{ URL::to('/single') }}/{{ $item->post_slug }}">
                   @if($item->post_image!='')
@@ -65,6 +65,10 @@
               </div>
             </div>
           @endforeach
+
+          <div class="pagination-area">
+            <div class="turn-page" id="blogpager"></div>
+          </div>
 
         </div>
       </div>
@@ -151,6 +155,7 @@
 </section>
 
 
+<!--
 <section id="pagination_main">
   <div class="container">
     <nav aria-label="Page navigation example">
@@ -165,6 +170,8 @@
     </nav>
   </div>
 </section>
+-->
+
 
 @endsection
 
