@@ -1,7 +1,7 @@
 
 
 <?php $__env->startPush('styles'); ?>
-  <link rel="stylesheet" href="public/assets/theme2/css/form.css">
+  <link rel="stylesheet" href="<?php echo e(asset('public/assets/theme2/css/form.css')); ?>">
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>

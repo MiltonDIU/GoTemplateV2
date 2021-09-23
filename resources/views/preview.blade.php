@@ -1,4 +1,4 @@
-@include('version')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
