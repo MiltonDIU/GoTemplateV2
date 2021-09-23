@@ -39,7 +39,7 @@ class CommonController extends Controller {
 	public function view_preview($item_slug, $item_id) {
 		$item['item'] = Items::singleitemData($item_slug, $item_id);
 		$data = array('item' => $item);
-		return view('preview')->with($data);
+		return view('theme2.preview')->with($data);
 	}
 
 

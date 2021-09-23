@@ -1590,7 +1590,7 @@ class ItemController extends Controller
 	    $purchase_sale += $item->total;
 	  }
 
-	  return view('sales',[ 'orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale]);
+	  return view('theme2.sales',[ 'orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale]);
 
 	}
 
@@ -1600,7 +1600,7 @@ class ItemController extends Controller
 	{
 	  $checkout['view'] = Items::singlecheckoutView($token);
 	  $order['view'] = Items::getorderView($token);
-	  return view('order-details',[ 'checkout' => $checkout, 'order' => $order]);
+	  return view('theme2.order-details',[ 'checkout' => $checkout, 'order' => $order]);
 	}
 
 

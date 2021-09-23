@@ -18,7 +18,7 @@ class SslCommerzPaymentController extends Controller
 
     public function exampleHostedCheckout()
     {
-        return view('exampleHosted');
+        return view('theme2.exampleHosted');
     }
 
     public function index(Request $request,$savedata)
