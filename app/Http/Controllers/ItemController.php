@@ -102,7 +102,7 @@ class ItemController extends Controller {
 			$user_details = Members::singlebuyerData($user_id);
 			$data = ['order_id' => $order_details->ord_id, 'purchase_id' => $order_details->purchase_token, 'purchase_date' => $order_details->start_date, 'expiry_date' => $order_details->end_date, 'license' => $order_details->license, 'product_name' => $order_details->item_name, 'product_slug' => $product_slug, 'payment_token' => $order_details->payment_token, 'payment_type' => $order_details->payment_type, 'product_price' => $order_details->item_price, 'username' => $user_details->username, 'product_id' => $product_id];
 
-			$pdf = PDF::loadView('pdf_view', $data);
+			$pdf = PDF::loadView('theme2.pdf_view', $data);
 			return $pdf->download($pdf_filename);
 		} else {
 			return redirect('theme2.404');
