@@ -127,7 +127,7 @@ class RegisterController extends Controller {
                 $setting['setting'] = Settings::editGeneral($sid);
                 $from_name = $setting['setting']->sender_name;
                 $from_email = $setting['setting']->sender_email;
-                Mail::send('register_mail', $data, function($message) use ($from_name, $from_email, $email, $name, $user_token) {
+                Mail::send('theme2.register_mail', $data, function($message) use ($from_name, $from_email, $email, $name, $user_token) {
                     $message->to($email, $name)->subject('Email Confirmation For Registration');
                     $message->from($from_email,$from_name);
                 });
