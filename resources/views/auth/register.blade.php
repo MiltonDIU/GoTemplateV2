@@ -5,7 +5,7 @@
 @endpush
 
 @push('styles')
-    <link rel="stylesheet" href="public/assets/theme2/css/form.css">
+    <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/form.css') }}">
 @endpush
 
 @section('content')

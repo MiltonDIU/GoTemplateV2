@@ -1,5 +1,5 @@
 @push('styles')
-  <link rel="stylesheet" href="public/assets/theme2/css/insights.css">
+  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/insights.css') }}">
 @endpush
 
 <section id="premium_member">

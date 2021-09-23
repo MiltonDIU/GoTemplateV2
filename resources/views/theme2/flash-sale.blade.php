@@ -3,8 +3,8 @@
 @extends('theme2.layout.master')
 
 @push('styles')
-  <link rel="stylesheet" href="public/assets/theme2/css/flash-sale.css">
-  <link rel="stylesheet" href="public/assets/theme2/css/item.css">
+  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/flash-sale.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 @endpush
 
 @section('content')
