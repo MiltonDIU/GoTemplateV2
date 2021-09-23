@@ -102,7 +102,7 @@ class ItemController extends Controller {
 			$user_details = Members::singlebuyerData($user_id);
 			$data = ['order_id' => $order_details->ord_id, 'purchase_id' => $order_details->purchase_token, 'purchase_date' => $order_details->start_date, 'expiry_date' => $order_details->end_date, 'license' => $order_details->license, 'product_name' => $order_details->item_name, 'product_slug' => $product_slug, 'payment_token' => $order_details->payment_token, 'payment_type' => $order_details->payment_type, 'product_price' => $order_details->item_price, 'username' => $user_details->username, 'product_id' => $product_id];
 
-			$pdf = PDF::loadView('pdf_view', $data);
+			$pdf = PDF::loadView('theme2.pdf_view', $data);
 			return $pdf->download($pdf_filename);
 		} else {
 			return redirect('theme2.404');
@@ -732,7 +732,7 @@ class ItemController extends Controller {
 				foreach ($checkdata['order'] as $order) {
 					$to_name = $order->username;
 					$to_email = $order->email;
-					Mail::send('item_update_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $to_name) {
+					Mail::send('theme2.item_update_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $to_name) {
 						$message->to($to_email, $to_name)
 							->subject('Item Update Notifications');
 						$message->from($admin_email, $admin_name);
@@ -1071,14 +1071,14 @@ class ItemController extends Controller {
 		$admin_email = $setting['setting']->sender_email;
 
 		$record = array('to_name' => $to_name, 'from_name' => $from_name, 'from_email' => $from_email, 'item_url' => $item_url, 'support_msg' => $support_msg, 'support_subject' => $support_subject);
-		Mail::send('support_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
+		Mail::send('theme2.support_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
 			$message->to($admin_email, $admin_name)
 				->subject('Contact Support');
 			$message->from($from_email, $from_name);
 		});
 
 
-		Mail::send('support_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
+		Mail::send('theme2.support_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
 			$message->to($to_email, $to_name)
 				->subject('Contact Support');
 			$message->from($from_email, $from_name);
@@ -2080,7 +2080,7 @@ class ItemController extends Controller {
 				$admin_name = $setting['setting']->sender_name;
 				$admin_email = $setting['setting']->sender_email;
 				$record = array('to_name' => $to_name, 'from_name' => $from_name, 'from_email' => $from_email, 'item_url' => $item_url, 'rating' => $rating, 'rating_reason' => $rating_reason, 'rating_comment' => $rating_comment);
-				Mail::send('rating_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
+				Mail::send('theme2.rating_mail', $record, function ($message) use ($admin_name, $admin_email, $to_email, $from_email, $to_name, $from_name) {
 					$message->to($to_email, $to_name)
 						->subject('Item Rating Received');
 					$message->from($from_email, $from_name);
@@ -2171,7 +2171,7 @@ class ItemController extends Controller {
 			$admin_name = $setting['setting']->sender_name;
 			$admin_email = $setting['setting']->sender_email;
 			$record = array('from_name' => $from_name, 'from_email' => $from_email, 'item_url' => $item_url, 'ref_refund_reason' => $ref_refund_reason, 'ref_refund_comment' => $ref_refund_comment);
-			Mail::send('refund_mail', $record, function ($message) use ($admin_name, $admin_email, $from_email, $from_name) {
+			Mail::send('theme2.refund_mail', $record, function ($message) use ($admin_name, $admin_email, $from_email, $from_name) {
 				$message->to($admin_email, $admin_name)
 					->subject('Refund Request Received');
 				$message->from($from_email, $from_name);

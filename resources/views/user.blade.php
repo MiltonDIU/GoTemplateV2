@@ -1,5 +1,5 @@
 @if($allsettings->maintenance_mode == 0)
-@include('version')
+
 <!DOCTYPE html>
 <html lang="en">
 

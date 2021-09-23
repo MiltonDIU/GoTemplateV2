@@ -1590,7 +1590,7 @@ class ItemController extends Controller
 	    $purchase_sale += $item->total;
 	  }
 
-	  return view('sales',[ 'orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale]);
+	  return view('theme2.sales',[ 'orderData' => $orderData, 'total_sale' => $total_sale, 'purchase_sale' => $purchase_sale]);
 
 	}
 
@@ -1600,7 +1600,7 @@ class ItemController extends Controller
 	{
 	  $checkout['view'] = Items::singlecheckoutView($token);
 	  $order['view'] = Items::getorderView($token);
-	  return view('order-details',[ 'checkout' => $checkout, 'order' => $order]);
+	  return view('theme2.order-details',[ 'checkout' => $checkout, 'order' => $order]);
 	}
 
 
@@ -1637,7 +1637,7 @@ class ItemController extends Controller
 		$admin_name = $setting['setting']->sender_name;
 		$admin_email = $setting['setting']->sender_email;
 		$record = array('from_name' => $from_name, 'from_email' => $from_email, 'item_url' => $item_url, 'ref_refund_reason' => $ref_refund_reason, 'ref_refund_comment' => $ref_refund_comment);
-		Mail::send('refund_mail', $record, function($message) use ($admin_name, $admin_email, $from_email, $from_name) {
+		Mail::send('theme2.refund_mail', $record, function($message) use ($admin_name, $admin_email, $from_email, $from_name) {
 				$message->to($admin_email, $admin_name)
 						->subject('Refund Request Received');
 				$message->from($from_email,$from_name);

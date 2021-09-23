@@ -39,7 +39,7 @@ class CommonController extends Controller {
 	public function view_preview($item_slug, $item_id) {
 		$item['item'] = Items::singleitemData($item_slug, $item_id);
 		$data = array('item' => $item);
-		return view('preview')->with($data);
+		return view('theme2.preview')->with($data);
 	}
 
 
@@ -584,7 +584,7 @@ class CommonController extends Controller {
 
 		$record = array('message_text' => $message_text, 'from_name' => $from_name);
 
-		Mail::send('user_mail', $record, function ($message) use ($from_name, $from_email, $to_email, $to_name) {
+		Mail::send('theme2.user_mail', $record, function ($message) use ($from_name, $from_email, $to_email, $to_name) {
 			$message->to($to_email, $to_name)->subject('New message received');
 			$message->from($from_email, $from_name);
 		});
@@ -650,7 +650,7 @@ class CommonController extends Controller {
 
 			$record = array('user_token' => $user_token);
 
-			Mail::send('forgot_mail', $record, function ($message) use ($from_name, $from_email, $email, $name, $user_token) {
+			Mail::send('theme2.forgot_mail', $record, function ($message) use ($from_name, $from_email, $email, $name, $user_token) {
 				$message->to($email, $name)->subject('Forgot Password');
 				$message->from($from_email, $from_name);
 			});
@@ -1124,7 +1124,7 @@ class CommonController extends Controller {
 			$activate_url = URL::to('/newsletter') . '/' . $news_token;
 
 			$record = array('activate_url' => $activate_url);
-			Mail::send('newsletter_mail', $record, function ($message) use ($from_name, $from_email, $news_email) {
+			Mail::send('theme2.newsletter_mail', $record, function ($message) use ($from_name, $from_email, $news_email) {
 				$message->to($news_email)->subject('Newsletter');
 				$message->from($from_email, $from_name);
 			});

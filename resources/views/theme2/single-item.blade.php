@@ -169,7 +169,7 @@
                   @else
                     <div class="item_view_price">
                       <i class="fas fa-dollar-sign"></i>
-                      <h2 class="price">{{ $item->regular_price }}</h2>
+                      <h2 class="price">{{ $item_price }}</h2>
                     </div>
                   @endif
                 </span>
@@ -434,6 +434,21 @@
     </div>
   </div>
 </section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    $("input[name$='item_price']").click(function() {
+      var licence = $(this).val();
+      const licence_type = licence.split('_');
+  
+      //console.log('licence=====', licence_type[1]); // extended, regular
+
+      var price = licence_type[1] === 'extended' ? <?php echo $extend_item_price; ?> : <?php echo $item_price; ?>;
+
+      $('.item_view_price .price').empty().append(`<h2 class="price">${price}</h2>`);
+    });
+  });
+</script>
 
 @endsection
 
