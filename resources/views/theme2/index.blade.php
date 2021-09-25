@@ -40,13 +40,9 @@
     <div class="container">
       <ul class="main_category">
         <li><a href="{{ URL::to('/shop') }}" class="category_button">All items</a></li>
-        <li><a href="#" class="category_button">Scripts</a></li>
-        <li><a href="#" class="category_button">Apps</a></li>
-        <li><a href="#" class="category_button">Themes</a></li>
-        <li><a href="#" class="category_button">Plugins</a></li>
-        <li><a href="#" class="category_button">Graphics</a></li>
-        <li><a href="#" class="category_button">Business</a></li>
-        <li><a href="#" class="category_button">Education</a></li>
+        @foreach($data['catData'] as $cat)
+          <li><a href="{{ URL::to('/shop') }}" class="category_button">{{ $cat->category_name }}</a></li>
+        @endforeach
       </ul>
     </div>
   </section>
@@ -54,7 +50,7 @@
 
 
   <!-- latest item start -->
-  @if($data['itemData']['item']->all())
+  @if($data['newest']->all())
   <section id="latest_item">
     <div class="container">
       <div class="title">
@@ -62,7 +58,7 @@
       </div>
 
       <div class="row">
-        @foreach( $data['itemData']['item'] as $item)
+        @foreach( $data['newest'] as $item)
           @include('theme2.layout.item', [
             "item" => $item
           ])

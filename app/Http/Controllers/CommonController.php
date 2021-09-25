@@ -49,6 +49,7 @@ class CommonController extends Controller {
 
 
 	public function view_index() {
+		// dd(Items::recentitemData());
 		$blog['data']      = Blog::homeblogData();
 		$comments          = Blog::getgroupcommentData();
 		$review['data']    = Items::homereviewsData();
@@ -64,11 +65,20 @@ class CommonController extends Controller {
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
 		$category_limit = $setting['setting']->site_category_newest_files;
+
 		$newest_limit = $setting['setting']->site_newest_files;
 
-		$newest['items'] = Category::homecategoryData($category_limit);
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->take($newest_limit)->get();
+		$catData = Category::homecategoryData($category_limit);
 
+		$newest = Items::recentitemData()->take($newest_limit);
+
+		$itemData['item'] = Items::with('ratings')
+			->leftjoin('users', 'users.id', '=', 'items.user_id')
+			->where('items.item_status', '=', 1)
+			->where('items.drop_status', '=', 'no')
+			->orderBy('items.item_id', 'desc')
+			->take($newest_limit)
+			->get();
 
 		$totalearning = 0;
 		foreach ($total['earning'] as $earning) {
@@ -81,6 +91,7 @@ class CommonController extends Controller {
 			'newest'       => $newest,
 			'review'       => $review,
 			'flashes'      => $flashes,
+			'catData'      => $catData,
 			'featured'     => $featured,
 			'itemData'     => $itemData,
 			'populars'     => $populars,
