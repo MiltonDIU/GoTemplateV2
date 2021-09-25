@@ -13346,12 +13346,6 @@ span.counter {
 /***************************************
 	END CHECKOUT CSS
 ****************************************/
-.login_area,
-.signup_area,
-.pass_recover_area {
-    background: #eff1f5;
-}
-
 .login,
 .signup_form,
 .recover_pass {
