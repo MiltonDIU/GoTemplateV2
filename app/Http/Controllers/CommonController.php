@@ -1136,7 +1136,7 @@ class CommonController extends Controller {
 
 
 	public function view_all_reviews() {
-		$review['data'] = Items::homereviewsData();
+		$review = Items::homereviewsData();
 		$data = array('review' => $review);
 
 		return view('theme2.reviews', compact('data'));
