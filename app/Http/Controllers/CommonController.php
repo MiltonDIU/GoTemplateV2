@@ -727,17 +727,17 @@ class CommonController extends Controller {
 	}
 
 
-	public function view_all_list_items() {
-		$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'asc')->get();
-		$catData['item'] = Items::getitemcatData();
+	// public function view_all_list_items() {
+	// 	$itemData['item'] = Items::with('ratings')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'asc')->get();
+	// 	$catData['item'] = Items::getitemcatData();
 
-		$data = [
-			'itemData' => $itemData,
-			'catData'  => $catData
-		];
+	// 	$data = [
+	// 		'itemData' => $itemData,
+	// 		'catData'  => $catData
+	// 	];
 
-		return view('theme2.shop-list', compact('data'));
-	}
+	// 	return view('theme2.shop-list', compact('data'));
+	// }
 
 
 	public function view_item_type($item_type, $slug) {
