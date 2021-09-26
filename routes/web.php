@@ -98,9 +98,9 @@ Route::group(['middleware' => ['XSS']], function () {
 	// favourites
 	Route::get('/favourites', 'ItemController@favourites_item');
 	Route::get('/favourites/{fav_id}/{item_id}', 'ItemController@remove_favourites_item');
-    // likes
-    Route::get('/likes', 'ItemController@likes_item');
-    Route::get('/likes/{like_id}/{item_id}', 'ItemController@remove_likes_item')->name('item.liked.remove');
+  // likes
+  Route::get('/likes', 'ItemController@likes_item');
+  Route::get('/likes/{like_id}/{item_id}', 'ItemController@remove_likes_item')->name('item.liked.remove');
 
 
 	// forgot

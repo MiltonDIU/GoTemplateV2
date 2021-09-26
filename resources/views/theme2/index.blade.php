@@ -171,7 +171,7 @@
   <section id="popular_item">
     <div class="container">
       <div class="title">
-        <h2 class="section_title">Popular Items<span><a href="#">See All</a></span></h2>
+        <h2 class="section_title">Popular Items<span><a href="{{ URL::to('/shop/popular-items') }}">See All</a></span></h2>
       </div>
 
       <div class="item_slider_main">

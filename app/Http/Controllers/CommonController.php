@@ -794,6 +794,12 @@ class CommonController extends Controller {
 				->where('items.free_download', '=', 1)
 				->orderBy('items.item_id', 'desc')
 				->get();
+		} else if($filter == "popular-items") {
+			$itemData['item'] = Items::orderBy('items.item_sold', 'desc')
+				->where('drop_status','no')
+				->where('item_status','1')
+				->take(20) // will change later
+				->get();
 		}
 
 		$catData['item'] = Items::getitemcatData();
