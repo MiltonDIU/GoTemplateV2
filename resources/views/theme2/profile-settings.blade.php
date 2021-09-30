@@ -3,9 +3,8 @@
 @extends('theme2.layout.master')
 
 @section('content')
-@include("./components/hero", [
-  "list" => [array("path" => "/profile-settings", "text" => 3109)],
-  "headline" => 3109
+@include("theme2.layout.breadcrumb", [
+  "list" => [array("path" => "/profile-settings", "text" => 3109)]
 ])
 
 <div class="container">

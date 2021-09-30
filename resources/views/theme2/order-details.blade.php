@@ -4,9 +4,8 @@
 
 @section('content')
 
-  @include("./components/hero", [
-    "list" => [array("path" => "/sales", "text" => 2930)],
-    "headline" => 3097
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/sales", "text" => 2930)]
   ])
 
   <section class="dashboard-area pt-0">

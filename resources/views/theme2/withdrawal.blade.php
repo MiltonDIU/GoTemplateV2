@@ -3,11 +3,15 @@
 @extends('theme2.layout.master')
 
 @section('content')
-<section class="dashboard-area pt-0">
+<section class="pt-0">
 
-  <div class="dashboard_contents">
+  <div class="container">
+    @include("theme2.layout.breadcrumb", [
+      "list" => [array("path" => "/withdrawal", "text" => "Withdrawal")]
+    ])
+
     <div class="container">
-      <div>
+      <div class="row">
         @if ($message = Session::get('success'))
         <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
           <span>
@@ -169,7 +173,6 @@
         </div>
         <!-- end /.col-md-12 -->
       </div>
-      <!-- end /.row -->
 
       <div class="row">
         <div class="col-md-12">
@@ -215,7 +218,6 @@
         </div>
       </div>
     </div>
-    <!-- end /.container -->
   </div>
 
 </section>

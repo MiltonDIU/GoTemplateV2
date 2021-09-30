@@ -4,9 +4,8 @@
 
 @section('content')
 {{ dd($data['token'])}}
-  @include("./components/hero", [
-    "list" => [array("path" => "/login", "text" => 3015)],
-    "headline" => 3015
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/login", "text" => 3015)]
   ])
 
   <section class="login_area section--padding2">

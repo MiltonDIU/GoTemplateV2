@@ -3,9 +3,10 @@
 @extends('theme2.layout.master')
 
 @section('content')
-    @include("./components/hero", [
-        "list" => [array("path" => "/password/reset", "text" => "Forgot Your Password")],
-        "headline" => "Forgot Your Password"
+    @include("theme2.layout.breadcrumb", [
+        "list" => [
+            array("path" => "/password/reset", "text" => "Forgot Your Password")
+        ]
     ])
 
     <section class="pass_recover_area section--padding2">

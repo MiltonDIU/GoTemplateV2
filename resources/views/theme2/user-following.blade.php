@@ -7,9 +7,8 @@
 @endpush
 
 @section('content')
-  @include("./components/hero", [
-    "list" => [array("path" => "/user-following", "text" => 3200)],
-    "headline" => 3200
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/user-following", "text" => 3200)]
   ])
 
   @php

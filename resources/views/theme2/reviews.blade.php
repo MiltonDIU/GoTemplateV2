@@ -7,9 +7,8 @@
 @endpush
 
 @section('content')
-  @include("./components/hero", [
-    "list" => [array("path" => "/customer_reviews", "text" => "Reviews")],
-    "headline" => "Customers Review"
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/customer_reviews", "text" => "Reviews")]
   ])
 
   <section id="reviews" class="container pb-5">

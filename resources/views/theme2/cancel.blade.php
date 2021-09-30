@@ -3,9 +3,10 @@
 @extends('theme2.layout.master')
 
 @section('content')
-@include("./components/hero", [
-  "list" => [array("path" => "/cancel", "text" => 2882)],
-  "headline" => 2883
+@include("theme2.layout.breadcrumb", [
+  "list" => [
+    array("path" => "/cancel", "text" => 2882)
+  ]
 ])
 
 <section class="term_condition_area">

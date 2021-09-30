@@ -5,12 +5,11 @@
 @section('content')
 @if(Auth::user()->user_type == 'vendor')
 
-@include("./components/hero", [
+@include("theme2.layout.breadcrumb", [
   "list" => [
     array("path" => "/upload-item", "text" => 2931),
     array("text" => $type_name->item_type_name)
-  ],
-  "headline" => "Upload Item ". $type_name->item_type_name
+  ]
 ])
 
 

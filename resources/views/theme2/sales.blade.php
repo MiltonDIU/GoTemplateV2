@@ -5,9 +5,8 @@
 @section('content')
 @if(Auth::user()->user_type == 'vendor')
 
-  @include("./components/hero", [
-    "list" => [array("path" => "/sales", "text" => 2930)],
-    "headline" => 2930
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/sales", "text" => 2930)]
   ])
 
   <section class="dashboard-area pt-0">

@@ -3,9 +3,8 @@
 @extends('theme2.layout.master')
 
 @section('content')
-  @include("./components/hero", [
-    "list" => [array("path" => "/user-reviews", "text" => 3207)],
-    "headline" => 3207
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/user-reviews", "text" => 3207)]
   ])
 
   <section class="author-profile-area">

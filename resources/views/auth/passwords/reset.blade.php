@@ -3,9 +3,10 @@
 @extends('theme2.layout.master')
 
 @section('content')
-    @include("./components/hero", [
-        "list" => [array("path" => "/login", "text" => "Reset Password")],
-        "headline" => "Reset Password"
+    @include("theme2.layout.breadcrumb", [
+        "list" => [
+            array("path" => "/login", "text" => "Reset Password")
+        ]
     ])
     
     <section class="login_area section--padding2">

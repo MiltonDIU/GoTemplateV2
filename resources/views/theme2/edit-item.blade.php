@@ -4,12 +4,11 @@
 
 @section('content')
 @if(Auth::user()->user_type == 'vendor')
-@include("./components/hero", [
+@include("theme2.layout.breadcrumb", [
   "list" => [
     array("path" => "/upload-item", "text" => 2935),
     array("text" => $type_name->item_type_name)
-  ],
-  "headline" => 2935
+  ]
 ])
 
 <section class="dashboard-area pt-0">

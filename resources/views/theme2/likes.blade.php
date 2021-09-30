@@ -5,6 +5,10 @@
 @section('content')
 <section class="mt-5">
   <div class="container">
+    @include("theme2.layout.breadcrumb", [
+      "list" => [array("path" => "/likes", "text" => "Likes")]
+    ])
+
     <div>
       @if ($message = Session::get('success'))
       <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
