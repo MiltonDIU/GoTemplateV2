@@ -1,0 +1,35 @@
+#dashboard-menu{
+  margin-bottom: 40px;
+}
+
+#dashboard-menu .navbar{
+  border-bottom: 0;
+}
+
+#dashboard-menu .nav-link{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #14213D;
+  border-radius: 25px;
+  padding: 6px 12px;
+  background: rgba(20, 33, 61, .08);
+  transition: all linear .3s;
+}
+
+#dashboard-menu .active{
+  background: #FCA311;
+}
+
+#dashboard-menu .nav-link i{
+  margin-right: 12px;
+}
+
+#dashboard-menu .nav-link:hover{
+  background: rgba(20, 33, 61, .3);
+}
+
+#dashboard-menu .navbar-nav{
+  width: 100%;
+  justify-content: space-between;
+}

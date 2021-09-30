@@ -21,6 +21,8 @@
       "list" => [array("path" => "/manage-item", "text" => "Manage Item")]
     ])
 
+    @include("theme2.layout.dashboard_menu", ["manage_item"=>true])
+
     <div>
       @if ($message = Session::get('success'))
       <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">

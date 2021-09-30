@@ -97,26 +97,26 @@
 }
 
 
-#navbar {
+.navbar {
   background-color: #fff;
   padding: 14px 0;
   border-bottom: 1px solid rgba(20, 33, 61, .1);
 }
-#navbar .navbar-brand img {
+.navbar .navbar-brand img {
   width: auto;
   height: 38px;
 }
-#navbar .nav_sign a {
+.navbar .nav_sign a {
   color: #14213D;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
 }
-#navbar .nav_sign .sign_in {
+.navbar .nav_sign .sign_in {
   position: relative;
   margin-left: 25px;
 }
-#navbar .nav_sign .sign_in::after {
+.navbar .nav_sign .sign_in::after {
   content: '';
   width: 0;
   height: 4px;
@@ -126,15 +126,15 @@
   left: 0;
   transition: all linear .2s;
 }
-#navbar .nav_sign .sign_in:hover::after {
+.navbar .nav_sign .sign_in:hover::after {
   width: 100%;
 }
-#navbar .nav_sign .sign_up {
+.navbar .nav_sign .sign_up {
   font-weight: 600;
   position: relative;
   margin-left: 25px;
 }
-#navbar .nav_sign .sign_up::after {
+.navbar .nav_sign .sign_up::after {
   content: '';
   width: 0;
   height: 4px;
@@ -144,6 +144,6 @@
   left: 0;
   transition: all linear .2s;
 }
-#navbar .nav_sign .sign_up:hover::after {
+.navbar .nav_sign .sign_up:hover::after {
   width: 100%;
 }

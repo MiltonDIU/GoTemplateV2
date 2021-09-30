@@ -3,11 +3,13 @@
 @extends('theme2.layout.master')
 
 @section('content')
-@include("theme2.layout.breadcrumb", [
-  "list" => [array("path" => "/profile-settings", "text" => 3109)]
-])
 
 <div class="container">
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/profile-settings", "text" => 3109)]
+  ])
+  @include("theme2.layout.dashboard_menu", ["setting"=>true])
+  
   <div>
     @if ($message = Session::get('success'))
     <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">

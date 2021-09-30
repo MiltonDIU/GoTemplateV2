@@ -3,6 +3,17 @@
 @extends('theme2.layout.master')
 
 @section('content')
+@php
+  $user = $data['user']['user'];
+  $items = $data['itemData']['item'];
+@endphp
+
+<div class="container">
+  @include("theme2.layout.breadcrumb", [
+    "list" => [array("path" => "/user/{{$user->username}}", "text" => "User Profile")]
+  ])
+  @include("theme2.layout.dashboard_menu", ["profile"=>true])
+</div>
 
 <div class="container">
   @if ($message = Session::get('success'))
@@ -38,11 +49,6 @@
     </div>
   @endif
 </div>
-
-@php
-  $user = $data['user']['user'];
-  $items = $data['itemData']['item'];
-@endphp
 
 <!-- vendor main start -->
 <section id="vendor_main">

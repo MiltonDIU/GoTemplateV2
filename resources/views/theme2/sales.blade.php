@@ -5,14 +5,18 @@
 @section('content')
 @if(Auth::user()->user_type == 'vendor')
 
-  @include("theme2.layout.breadcrumb", [
-    "list" => [array("path" => "/sales", "text" => 2930)]
-  ])
+  
 
-  <section class="dashboard-area pt-0">
+  <section class="pt-0">
 
-    <div class="dashboard_contents dashboard_statement_area">
+    <div class="dashboard_statement_area">
       <div class="container">
+        @include("theme2.layout.breadcrumb", [
+          "list" => [array("path" => "/sales", "text" => 2930)]
+        ])
+
+        @include("theme2.layout.dashboard_menu", ["sales"=>true])
+
         <div class="row">
           <div class="col-lg-3 col-md-3">
             <div class="statement_info_card">

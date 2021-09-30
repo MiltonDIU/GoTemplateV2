@@ -1277,8 +1277,8 @@ h6 {
     background: #fff;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     margin-bottom: 30px;
 }
 
@@ -6199,7 +6199,7 @@ h6 {
     transition: 0.3s ease;
 }
 
-.dropdowns.dropdown--author ul li a span {
+.dropdowns.dropdown--author ul li a i {
     float: none;
     margin-right: 15px;
 }
@@ -7407,8 +7407,8 @@ div#ui-datepicker-div tbody tr td a:hover {
     background: #fff;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 /* common toggle module css */
@@ -11416,8 +11416,8 @@ span.counter {
     background: #fff;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .product_archive .title_area {
@@ -12070,9 +12070,8 @@ span.counter {
     background: #fff;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-    padding: 20px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .upload_modules .form-group,
