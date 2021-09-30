@@ -26,7 +26,7 @@
     <!-- start Filter -->
     <div class="filter_field">
       <div class="row">
-        <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3 filter_box">
+        <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4 filter_box">
           <div class="filter_options">
             <label for="filter_s">Tags</label>
             <div class="f_s_box">
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3 filter_box">
+        <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4 filter_box">
           <div class="filter_options">
             <label for="filter_p">Price</label>
             <select name="" id="filter_p" class="f_o_select">
@@ -47,6 +47,8 @@
           </div>
         </div>
 
+        <!-- TODO: temporary comment, need to implement in future -->
+        <!--
         <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3 filter_box">
           <div class="filter_options">
             <label for="filter_t">Type</label>
@@ -57,8 +59,9 @@
             </select>
           </div>
         </div>
+        -->
 
-        <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3 filter_box">
+        <div class="col-lg-4 col-sm-12 col-md-6 col-xl-4 filter_box">
           <div class="filter_options">
             <label for="filter_l">License</label>
             <select name="" id="filter_l" class="f_o_select">
@@ -78,7 +81,7 @@
 
       @foreach($items as $item)
         <div 
-          class="mix item_box {{ $item->item_type }}" 
+          class="mix item_box {{ $item->item_type }} {{$item->regular_price != 0 ? 'premium' : 'free'}}" 
           data-price="{{ $item->regular_price }}" 
           data-published-date="{{ $item->created_at }}"
         >
