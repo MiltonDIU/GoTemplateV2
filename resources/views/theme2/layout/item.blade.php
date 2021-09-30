@@ -13,7 +13,8 @@
             </a>
           @else
             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">
-              <i class="fas fa-dollar-sign"></i>
+              <!-- <i class="fas fa-dollar-sign"></i> -->
+              <span class="bd-taka">&#2547;</span>
               <p class="price">{{ $item->regular_price }}</p>
             </a>
           @endif

@@ -37,7 +37,10 @@
               <a class="link" href="{{ URL::to('/start-selling') }}">{{ Helper::translation(3018,$translate) }}</a>
             </li>
             <li class="top_flash_sale">
-              <a class="link" href="{{ URL::to('/flash-sale') }}"><i class="fas fa-dollar-sign"></i>{{ Helper::translation(2993,$translate) }}</a>
+              <a class="link" href="{{ URL::to('/flash-sale') }}">
+                <!-- <i class="fas fa-dollar-sign"></i> -->
+                <span class="bd-taka">&#2547;</span>{{ Helper::translation(2993,$translate) }}
+              </a>
             </li>
 
             <!-- guest user -->

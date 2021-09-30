@@ -9,6 +9,11 @@
 
 @section('content')
 
+@php
+  $items = $data['itemData']['item'];
+  $cats = $data['catData'];
+@endphp
+
 <!-- Flash banner start -->
 <section id="flash_banner">
   <div class="container">
@@ -43,23 +48,19 @@
 </section>
 <!-- Flash banner end -->
 
-
-@if($data['item']->all())
+@if($items->all())
   <!-- category start -->
   <section id="flash_category">
     <!-- container start -->
     <div class="container">
       <!-- category buttons start -->
-      <div class="controls main_category">
-        <button type="button" class="control category_button" data-filter="all">All</button>
-        <button type="button" class="control category_button" data-filter=".scripts">Scripts</button>
-        <button type="button" class="control category_button" data-filter=".apps">apps</button>
-        <button type="button" class="control category_button" data-filter=".themes">Themes</button>
-        <button type="button" class="control category_button" data-filter=".plugins">Plugins</button>
-        <button type="button" class="control category_button" data-filter=".graphics">Graphics</button>
-        <button type="button" class="control category_button" data-filter=".business">Business</button>
-        <button type="button" class="control category_button" data-filter=".education">Education</button>
-      </div>
+      <ul class="controls main_category">
+        <li class="control category_button" data-filter="all">All</li>
+
+        @foreach($cats as $cat)
+          <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
+        @endforeach
+      </ul>
       <!-- category buttons end -->
 
       <!-- sort start -->
@@ -92,9 +93,9 @@
       <div class="mix_container">
 
         <div class="row">
-          @foreach($data['item']->all() as $item)
+          @foreach($items->all() as $item)
             <div 
-              class="mix scripts item_box" 
+              class="mix scripts item_box {{ $item->item_type }}" 
               data-price="{{ $item->regular_price }}" 
               data-published-date="{{ $item->created_at }}"
             >
@@ -102,7 +103,8 @@
                 <div class="item_view_overlay">
                   <div class="item_details">
                     <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">
-                      <i class="fas fa-dollar-sign"></i>
+                      <!-- <i class="fas fa-dollar-sign"></i> -->
+                      <span class="bd-taka">&#2547;</span>
                       <p class="price">{{ $item->regular_price }}</p>
                     </a>
                     <div class="item_title">

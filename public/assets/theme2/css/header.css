@@ -49,10 +49,10 @@
 #header .top_menu .top_flash_sale a:hover {
   color: #fff;
 }
-#header .top_menu .top_flash_sale a:hover i {
+#header .top_menu .top_flash_sale a:hover .bd-taka {
   background-color: #fff;
 }
-#header .top_menu .top_flash_sale i {
+#header .top_menu .top_flash_sale .bd-taka {
   font-size: 12px;
   height: 20px;
   width: 20px;
@@ -63,6 +63,8 @@
   line-height: 20px;
   margin-right: 10px;
   transition: all linear .3s;
+  display: inline-block;
+  font-weight: bold;
 }
 #header .top_menu .h_cart {
   position: relative;

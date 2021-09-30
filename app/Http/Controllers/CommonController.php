@@ -714,7 +714,12 @@ class CommonController extends Controller {
 			Items::updateFlash($data);
 		}
 
-		$data = $itemData;
+		$catData = Items::getitemcatData();
+
+		$data = array(
+			"itemData"=> $itemData,
+			"catData"=> $catData
+		);
 
 		return view('theme2.flash-sale', compact('data'));
 	}
