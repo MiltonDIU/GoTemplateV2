@@ -104,7 +104,7 @@
                 <div class="form-group">
                   <div class="upload_wrapper">
                     <p class="label">{{ Helper::translation(2943,$translate) }} <sup>*</sup>
-                      <span>({{ Helper::translation(2946,$translate) }} : 80x80px)</span>
+                      <span>({{ Helper::translation(2946,$translate) }} : 400x300 px)</span>
                     </p>
 
                     <div class="custom_upload">
@@ -125,7 +125,7 @@
                 <div class="form-group">
                   <div class="upload_wrapper">
                     <p class="label">{{ Helper::translation(2945,$translate) }} <sup>*</sup>
-                      <span>({{ Helper::translation(2946,$translate) }} : 361x230px)</span>
+                      <span>({{ Helper::translation(2946,$translate) }} : 600x450px)</span>
                     </p>
 
                     <div class="custom_upload">
@@ -166,7 +166,7 @@
                 <div class="form-group">
                   <div class="upload_wrapper">
                     <p class="label">{{ Helper::translation(2950,$translate) }}
-                      <span>({{ Helper::translation(2946,$translate) }} : 750x430px)</span>
+                      <span>({{ Helper::translation(2946,$translate) }} : 1200x900px)</span>
                     </p>
 
                     <div class="custom_upload">
@@ -199,14 +199,14 @@
 
 
                 <div class="form-group" id="youtube">
-                  <label for="tags">{{ Helper::translation(2967,$translate) }} <sup>*</sup></label>
-                  <input type="text" id="video_url" name="video_url" class="text_field" data-bvalidator="required">
+                  <label for="tags">{{ Helper::translation(2967,$translate) }}</label>
+                  <input type="text" id="video_url" name="video_url" class="text_field">
                   <small>(example : https://www.youtube.com/watch?v=C0DPdy98e4c)</small>
                 </div>
 
 
                 <div class="form-group" id="mp4">
-                  <label for="tags">Upload MP4 Video <sup>*</sup></label>
+                  <label for="tags">Upload MP4 Video</label>
                   <input type="file" id="video_file" name="video_file" class="text_field files"><small>(MP4 - file only)</small>
                 </div>
 

@@ -1,72 +1,29 @@
-.dashboard_contents .dropdown-content {
-  right: 8px;
-  top: 40px;
-}
-.dashboard_contents .product .prod_option {
+#manage_item .item_view .manage_item_top i{
   position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
-}
-.dashboard_contents .product .prod_option.show .options.dropdown-menu {
-  visibility: visible;
-  opacity: 1;
-}
-.dashboard_contents .product .prod_option .options {
-  position: absolute;
-  width: 120px;
-  background: #fff;
-  padding: 15px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  opacity: 0;
-  display: initial;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  visibility: hidden;
-  top: 18px !important;
-}
-.dashboard_contents .product .prod_option .options:before {
-  content: "";
-  position: absolute;
-  bottom: 100%;
+  top: 10px;
   left: 10px;
-  border-bottom: 10px solid #fff;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-}
-.dashboard_contents .product .prod_option .options ul li a {
-  color: #54667a;
-  padding: 0;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  display: inline-block;
-}
-.dashboard_contents .product .prod_option .options ul li a span {
-  margin-right: 5px;
   font-size: 14px;
-}
-.dashboard_contents .product .prod_option .options ul li a.delete:hover {
-  color: #ff6a6d;
-}
-.dashboard_contents .product .product__thumbnail:before {
-  background-color: unset !important;
-}
-.dashboard_contents .product .setting-icon {
-  font-size: 20px;
-  line-height: 45px;
-  width: 45px;
-  text-align: center;
-  background: #000;
   color: #fff;
-  display: inline-block;
-  background: #FCA311 !important;
-  -webkit-border-radius: 200px;
-  border-radius: 200px;
-  cursor: pointer;
+  background-color: #FCA311;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
 }
-.dashboard_contents .dropdown-menu {
-  font-size: 14px;
+
+#manage_item .dropdown-toggle::after {
+display: none;
+}
+
+#manage_item .manage_item_btn .show{
+position: absolute;
+top: 34px;
+  left: 10px;
+margin: 0px;
+transform: translate(0px, 6px);
+}
+
+#manage_item .dropdown-menu {
+  min-width: 60px !important;
 }

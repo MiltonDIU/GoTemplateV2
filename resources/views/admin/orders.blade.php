@@ -65,12 +65,14 @@
                                         <tr>
                                             <th>Sno</th>
                                             <th>Order ID</th>
+                                            <th>Payment Date</th>
                                             <th>Buyer</th>
                                             <th>Vendor Amount</th>
                                             <th>Admin Amount</th>
                                             <th>Processing Fee</th>
                                             <th>Payment Type</th>
                                             <th>Payment Id</th>
+
                                             <th>Complete Payment? (Localbank Only)</th>
                                             <!--<th>Payment Approval?</th> -->
                                             <th>Action</th>
@@ -82,6 +84,8 @@
                                         <tr>
                                             <td>{{ $no }}</td>
                                             <td>{{ $order->purchase_token }} </td>
+                                            <td>{{ $order->payment_date }} </td>
+
                                             <td><a href="{{ URL::to('/user') }}/{{ $order->username }}" target="_blank" class="blue-color">{{ $order->username }}</a></td>
                                             <td>{{ $order->vendor_amount }} {{ $allsettings->site_currency }} </td>
                                             <td>{{ $order->admin_amount }} {{ $allsettings->site_currency }}</td>

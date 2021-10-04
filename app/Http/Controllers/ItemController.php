@@ -824,17 +824,17 @@ class ItemController extends Controller {
 			[
 				'item_name' => 'required',
 				'item_desc' => 'required',
-				'item_thumbnail' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
-				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
-				'item_preview' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
+				'item_thumbnail' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=400,height=300',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=1200,height=900',
+				'item_preview' => 'required|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=600,height=450',
 				'item_file' => 'mimes:zip|required|max:' . $file_size,
 				'video_file' => 'mimes:mp4|max:' . $file_size,
 
 			],
 			[
-				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
+				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 400px and height 300px.',
+				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 1200px and height 900px.',
+				'item_preview.dimensions' => 'The item preview has invalid image dimensions. only support for width 600px and height 450px.'
 			]
 		);
 		$rules = array(
@@ -1191,8 +1191,8 @@ class ItemController extends Controller {
 		$setting['setting'] = Settings::editGeneral($sid);
 		$get_payment = explode(',', $setting['setting']->payment_option);
 		$data = array(
-			'cart' => $cart, 
-			'cart_count' => $cart_count, 
+			'cart' => $cart,
+			'cart_count' => $cart_count,
 			'get_payment' => $get_payment
 		);
 
@@ -1433,19 +1433,19 @@ class ItemController extends Controller {
 			} else if ($payment_method == '2checkout') {
 
 				$record = array(
-					'final_amount' => $final_amount, 
-					'purchase_token' => $purchase_token, 
-					'payment_method' => $payment_method, 
-					'item_names_data' => $item_names_data, 
-					'site_currency' => $site_currency, 
-					'website_url' => $website_url, 
-					'two_checkout_private' => $two_checkout_private, 
-					'two_checkout_account' => $two_checkout_account, 
-					'two_checkout_mode' => $two_checkout_mode, 
-					'token' => $token, 
+					'final_amount' => $final_amount,
+					'purchase_token' => $purchase_token,
+					'payment_method' => $payment_method,
+					'item_names_data' => $item_names_data,
+					'site_currency' => $site_currency,
+					'website_url' => $website_url,
+					'two_checkout_private' => $two_checkout_private,
+					'two_checkout_account' => $two_checkout_account,
+					'two_checkout_mode' => $two_checkout_mode,
+					'token' => $token,
 					'two_checkout_publishable' => $two_checkout_publishable
 				);
-				
+
 				return view('theme2.order-confirm')->with($record);
 
 			} else if ($payment_method == 'paystack') {
@@ -1469,10 +1469,10 @@ class ItemController extends Controller {
 			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
 				$bank_data = array(
-					'purchase_token' => $purchase_token, 
+					'purchase_token' => $purchase_token,
 					'bank_details' => $bank_details
 				);
-				
+
 				return view('theme2.bank-details')->with($bank_data);
 			} else if ($payment_method == 'SSLCommerz') {
 				$ssl = new SslCommerzPaymentController();
@@ -1702,21 +1702,21 @@ class ItemController extends Controller {
 			} else if ($payment_method == '2checkout') {
 
 				$record = array(
-					'final_amount' => $final_amount, 
-					'purchase_token' => $purchase_token, 
-					'payment_method' => $payment_method, 
-					'item_names_data' => $item_names_data, 
-					'site_currency' => $site_currency, 
-					'website_url' => $website_url, 
-					'two_checkout_private' => $two_checkout_private, 
-					'two_checkout_account' => $two_checkout_account, 
-					'two_checkout_mode' => $two_checkout_mode, 
-					'token' => $token, 
+					'final_amount' => $final_amount,
+					'purchase_token' => $purchase_token,
+					'payment_method' => $payment_method,
+					'item_names_data' => $item_names_data,
+					'site_currency' => $site_currency,
+					'website_url' => $website_url,
+					'two_checkout_private' => $two_checkout_private,
+					'two_checkout_account' => $two_checkout_account,
+					'two_checkout_mode' => $two_checkout_mode,
+					'token' => $token,
 					'two_checkout_publishable' => $two_checkout_publishable
 				);
-				
+
 				return view('theme2.order-confirm')->with($record);
-				
+
 			} else if ($payment_method == 'paystack') {
 				$callback = $website_url . '/paystack';
 				$csf_token = csrf_token();
@@ -1737,10 +1737,10 @@ class ItemController extends Controller {
 			} else if ($payment_method == 'localbank') {
 				$bank_details = $setting['setting']->local_bank_details;
 				$bank_data = array(
-					'purchase_token' => $purchase_token, 
+					'purchase_token' => $purchase_token,
 					'bank_details' => $bank_details
 				);
-				
+
 				return view('theme2.bank-details')->with($bank_data);
 			}
 			/* stripe code */ else if ($payment_method == 'stripe') {

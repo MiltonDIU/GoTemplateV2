@@ -10,7 +10,7 @@ use Feberr\Models\Settings;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-
+use Auth;
 class MembersController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');

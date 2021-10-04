@@ -56,6 +56,7 @@
                                     <th>Phone</th>
                                     <th>Amount</th>
                                     <th>Transaction ID</th>
+                                    <th>Transaction Date</th>
                                     <th>Status</th>
                                     <th>Currency</th>
                                     <th>User Id</th>
@@ -64,40 +65,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                </tbody>
-                            </table>
-
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Sno</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Transaction ID</th>
-                                    <th>Status</th>
-                                    <th>Currency</th>
-                                    <th>Purchase Token</th>
-                                    <th>Order ids</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                              @foreach($transactions as $key => $transaction)
-
-                                    <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{$transaction->name}}</td>
-                                        <td>{{$transaction->email}}</td>
-                                        <td>{{$transaction->phone}}</td>
-                                        <td>{{$transaction->transaction_id}}</td>
-                                        <td>{{$transaction->status}}</td>
-                                        <td>{{$transaction->currency}}</td>
-                                        <td>{{$transaction->purchase_token}}</td>
-                                        <td>{{$transaction->order_ids}}</td>
-                                    </tr>
-@endforeach
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -130,6 +97,12 @@
                 {data: 'phone', name: 'phone'},
                 {data: 'amount', name: 'amount'},
                 {data: 'transaction_id', name: 'transaction_id'},
+                { data: 'created_at',
+                    type: 'num',
+                    render: {
+                        sort: 'timestamp'
+                    }
+                },
                 {data: 'status', name: 'status'},
                 {data: 'currency', name: 'currency'},
                 {data: 'user_id', name: 'user_id'},

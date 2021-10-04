@@ -19,7 +19,7 @@
   <!-- Google Fonts end -->
 
   @include('theme2/stylesheet')
-  
+
   @stack('styles')
   @stack('others')
 
@@ -289,7 +289,7 @@
     <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
 
     <!-------------- Messenger start ------------->
-    <a href="#" id="messenger"><i class="fab fa-facebook-messenger"></i></a>
+{{--    <a href="#" id="messenger"><i class="fab fa-facebook-messenger"></i></a>--}}
 
     <div class="container">
       <div class="footer_main">
@@ -350,10 +350,10 @@
 
                   <li><a href="{{ URL::to('/contact') }}">{{ Helper::translation(2910,$translate) }}</a></li>
                   <li><a href="{{ URL::to('/top-authors') }}">{{ Helper::translation(3028,$translate) }}</a></li>
-                  
+
                   @foreach($footerpages['pages'] as $pages)
                     <li><a href="{{ URL::to('/page/') }}/{{ $pages->page_id }}/{{ $pages->page_slug }}">{{ $pages->page_title }}</a></li>
-                  @endforeach  
+                  @endforeach
                 </ul>
               </div>
             </div>
@@ -403,11 +403,11 @@
 
               <form action="{{ route('newsletter') }}" id="footer_form" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <input 
-                  type="email" 
-                  class="footer_subscribe" 
-                  placeholder="{{ Helper::translation(3006,$translate) }}" 
-                  data-bvalidator="required" 
+                <input
+                  type="email"
+                  class="footer_subscribe"
+                  placeholder="{{ Helper::translation(3006,$translate) }}"
+                  data-bvalidator="required"
                   name="news_email"
                 >
                 <button type="submit" class="subscribe_button">
