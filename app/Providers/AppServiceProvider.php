@@ -40,8 +40,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-		$admin = Members::adminData();
-		View::share('admin', $admin);
+
+//		$admin = Members::adminData();
+//		View::share('admin', $admin);
+
+        //or with dynamic user id
+        View::composer('*', function ($view){
+            $admin = Members::adminData();
+            $view->with('admin', $admin);
+        });
 
 		$member_count = Members::getmemberData();
 		View::share('member_count', $member_count);
