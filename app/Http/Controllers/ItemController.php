@@ -300,7 +300,6 @@ class ItemController extends Controller {
 		} else {
 			$attri_field['display'] = Attribute::selectedAttribute($typer_id);
 		}
-
 		$data = array(
 			'edit'        => $edit,
 			'token'       => $token,
@@ -313,7 +312,6 @@ class ItemController extends Controller {
 			'attribute'   => $attribute,
 			'typer_id'    => $typer_id
 		);
-
 		if ($edit['item']->user_id == Auth::user()->id) {
 			return view('theme2.edit-item')->with($data);
 		} else {
@@ -474,30 +472,29 @@ class ItemController extends Controller {
 				'item_name' => 'required',
 				'item_desc' => 'required',
 				/*'item_thumbnail' => 'mimes:jpeg,jpg,png|max:'.$image_size.'|dimensions:width=80,height=80',*/
-				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
-				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
-				'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
+				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=400,height=300',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=1200,height=900',
+				'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=600,height=450',
 				'item_file' => 'mimes:zip|max:' . $file_size,
-
-
-			], [
-				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
-			]);
+			],
+            [
+            'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 400px and height 300px.',
+                'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 1200px and height 900px.',
+                'item_preview.dimensions' => 'The item preview has invalid image dimensions. only support for width 600px and height 450px.'
+            ]
+            );
 		} else {
 			$request->validate([
 				'item_name' => 'required',
 				'item_desc' => 'required',
 				'item_file' => 'required|mimes:zip|max:' . $file_size,
-				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=255,height=165',
-				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=700,height=400',
-				'item_preview' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=350,height=235',
-
+				'item_thumbnail' => 'mimes:jpeg,jpg,png|max:' . $image_size . '|dimensions:width=400,height=300',
+				'item_screenshot.*' => 'image|mimes:jpeg,jpg,png|max:' .  $image_size . '|dimensions:width=1200,height=900',
+				'item_preview' => 'mimes:jpeg,jpg,png|max:' .  $image_size . '|dimensions:width=600,height=450',
 			], [
-				'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 255px and height 165px.',
-				'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 700px and height 400px.',
-				'item_screenshot.item_preview' => 'The item screenshot has invalid image dimensions. only support for width 350px and height 235px.'
+                'item_thumbnail.dimensions' => 'The item thumbnail has invalid image dimensions. only support for width 400px and height 300px.',
+                'item_screenshot.dimensions' => 'The item screenshot has invalid image dimensions. only support for width 1200px and height 900px.',
+                'item_preview.dimensions' => 'The item preview has invalid image dimensions. only support for width 600px and height 450px.'
 			]);
 		}
 		$rules = array(

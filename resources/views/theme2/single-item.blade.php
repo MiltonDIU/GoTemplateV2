@@ -8,7 +8,7 @@
 
 @section('content')
 
-@php 
+@php
   $item = $data['item']['item'];
   $images = $data['item_allimage'];
   $itemData = $data['itemData']['item'];
@@ -55,7 +55,14 @@
       <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 vendor_details_sm">
         <div class="vendor_details">
           <div class="vendor_img">
-            <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo }}" alt="author1">
+
+              @if($item->user_photo!=null)
+                  <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo }}" alt="{{$item->username}}">
+
+              @else
+                  <img src="{{ url('public/img/no-user.png') }}" alt="{{ $item->username}}">
+              @endif
+
           </div>
           <div class="vendor_text">
             <a href="{{ url('/user') }}/{{ $item->username }}" class="vendor_name">{{ $item->name }}</a>
@@ -75,15 +82,15 @@
           @if (Auth::check())
             @if($item->user_id != Auth::user()->id)
               @if($data['followcheck'] == 0)
-                <a 
-                  href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $item->user_id }}" 
+                <a
+                  href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $item->user_id }}"
                   class="vendor_follow"
                 >
                   <i class="fas fa-plus"></i>{{ Helper::translation(3202,$translate) }}
                 </a>
               @else
-                <a 
-                  href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $item->user_id }}" 
+                <a
+                  href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $item->user_id }}"
                   class="vendor_follow"
                 >
                   <i class="fas fa-plus"></i>{{ Helper::translation(3203,$translate) }}
@@ -110,9 +117,9 @@
           <div class="item_img_focus">
             @foreach($images as $image)
               <div class="img_focus">
-                <img 
-                  src="{{ url('/') }}/public/storage/items/{{ $image->item_image }}" 
-                  alt="focus1" 
+                <img
+                  src="{{ url('/') }}/public/storage/items/{{ $image->item_image }}"
+                  alt="focus1"
                   class="i_focus"
                 >
               </div>
@@ -124,9 +131,9 @@
           <div class="item_img_bottom">
             @foreach($images as $image)
               <div class="img_bottom">
-                <img 
-                  src="{{ url('/') }}/public/storage/items/{{ $image->item_image }}" 
-                  alt="focus1" 
+                <img
+                  src="{{ url('/') }}/public/storage/items/{{ $image->item_image }}"
+                  alt="focus1"
                   class="i_bottom"
                 >
               </div>
@@ -153,11 +160,11 @@
         <div class="item_view_details">
           <h1 class="item_name">{{ $item->item_name }}</h1>
 
-          <form 
-            action="{{ route('cart') }}" 
-            class="setting_form" 
-            method="post" 
-            id="order_form" 
+          <form
+            action="{{ route('cart') }}"
+            class="setting_form"
+            method="post"
+            id="order_form"
             enctype="multipart/form-data"
           >
             {{ csrf_field() }}
@@ -216,16 +223,16 @@
 
             <div class="item_license">
               <div class="custom-radio">
-                <input 
-                  type="radio" 
-                  id="opt1" 
-                  class="" 
-                  value="{{ base64_encode($item_price) }}_regular" 
-                  name="item_price" 
+                <input
+                  type="radio"
+                  id="opt1"
+                  class=""
+                  value="{{ base64_encode($item_price) }}_regular"
+                  name="item_price"
                   checked
                 >
-                <label 
-                  for="opt1" 
+                <label
+                  for="opt1"
                   data-price="{{ $item->free_download ? 'FREE' : $allsettings->site_currency.' '.$item_price }}"
                 >
                   <span class="circle"></span>{{ Helper::translation(3072,$translate) }}
@@ -234,15 +241,15 @@
 
               @if($item->extended_price != 0)
                 <div class="custom-radio">
-                  <input 
-                    type="radio" 
-                    id="opt2" 
-                    class="" 
-                    value="{{ base64_encode($extend_item_price) }}_extended" 
+                  <input
+                    type="radio"
+                    id="opt2"
+                    class=""
+                    value="{{ base64_encode($extend_item_price) }}_extended"
                     name="item_price"
                   >
-                  <label 
-                    for="opt2" 
+                  <label
+                    for="opt2"
                     data-price="{{ $allsettings->site_currency.' '.$extend_item_price }}"
                   >
                     <span class="circle"></span>{{ Helper::translation(3073,$translate) }}
@@ -347,14 +354,14 @@
                     @endif
                   @endif
 
-                  <a 
-                    href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}" 
+                  <a
+                    href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}"
                     class="item_action_btn btn_save_like {{(\Feberr\Models\Items::getfavouriteCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
                   >
                     <i class="fas fa-folder-plus"></i>Save
                   </a>
-                  <a 
-                    href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}" 
+                  <a
+                    href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}"
                     class="item_action_btn btn_save_like {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
                   >
                     <i class="fas fa-heart"></i>Like
@@ -440,7 +447,7 @@
     $("input[name$='item_price']").click(function() {
       var licence = $(this).val();
       const licence_type = licence.split('_');
-  
+
       //console.log('licence=====', licence_type[1]); // extended, regular
 
       var price = licence_type[1] === 'extended' ? <?php echo $extend_item_price; ?> : <?php echo $item_price; ?>;

@@ -11,6 +11,7 @@ use Feberr\Models\Category;
 use Feberr\Models\Comment;
 use Feberr\Models\Attribute;
 use Feberr\Models\SubCategory;
+use Illuminate\Support\Facades\DB;
 use Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -62,6 +63,8 @@ class CommonController extends Controller {
     $flashes           = Items::where('item_flash','1')->where('drop_status','no')->where('item_status','1')->orderBy('items.item_sold', 'desc')->take(4)->get();
 		$free['items']     = Items::where('free_download','1')->where('drop_status','no')->where('item_status','1')->get();
 
+
+
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
 		$category_limit = $setting['setting']->site_category_newest_files;
@@ -71,6 +74,12 @@ class CommonController extends Controller {
 		$catData = Category::homecategoryData($category_limit);
 
 		$newest = Items::recentitemData()->take($newest_limit);
+
+        $newest = Items::with('user')
+            ->where('items.item_status', '=', 1)
+            ->where('items.drop_status', '=', 'no')
+            ->orderBy('items.item_id', 'desc')
+            ->get();
 
 		$itemData['item'] = Items::with('ratings')
 			->leftjoin('users', 'users.id', '=', 'items.user_id')

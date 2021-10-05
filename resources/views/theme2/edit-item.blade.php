@@ -103,7 +103,7 @@
               <div class="form-group">
                 <div class="upload_wrapper">
                   <p class="label">{{ Helper::translation(2943,$translate) }} <sup>*</sup>
-                    <span>({{ Helper::translation(2946,$translate) }} : 255x165px)</span>
+                    <span>({{ Helper::translation(2946,$translate) }} : 400x300px)</span>
                   </p>
 
                   <div class="custom_upload">
@@ -129,7 +129,7 @@
               <div class="form-group">
                 <div class="upload_wrapper">
                   <p class="label">{{ Helper::translation(2945,$translate) }} <sup>*</sup>
-                    <span>({{ Helper::translation(2946,$translate) }} : 350x235px)</span>
+                    <span>({{ Helper::translation(2946,$translate) }} : 600x450px)</span>
                   </p>
 
                   <div class="custom_upload">
@@ -182,19 +182,19 @@
               <div class="form-group mb-0 pb-0">
                 <div class="upload_wrapper">
                   <p class="label">{{ Helper::translation(2950,$translate) }}
-                    <span>({{ Helper::translation(2946,$translate) }} : 700x400px)</span>
+                    <span>({{ Helper::translation(2946,$translate) }} : 1200x900px)</span>
                   </p>
 
                   <div class="custom_upload">
                     <label for="screenshot">
                       <input type="file" id="item_screenshot" name="item_screenshot[]" class="files"><br /><br />
-                      
+
                       @foreach($item_image['item'] as $item)
                         <div class="item-img">
                           <img src="{{ url('/') }}/public/storage/items/{{ $item->item_image }}" alt="{{ $item->item_image }}" class="item-thumb">
-                          <a 
-                            href="{{ url('/edit-item') }}/dropimg/{{ base64_encode($item->itm_id) }}" 
-                            onClick="return confirm('{{ Helper::translation(2892,$translate) }}');" 
+                          <a
+                            href="{{ url('/edit-item') }}/dropimg/{{ base64_encode($item->itm_id) }}"
+                            onClick="return confirm('{{ Helper::translation(2892,$translate) }}');"
                             class="drop-icon"
                           >
                             <span class="lnr lnr-trash drop-icon"></span>
@@ -220,16 +220,16 @@
                 </div>
               </div>
 
-              <div id="youtube" @if($edit['item']->video_preview_type == 'youtube') class="form-group force-block" @else class="form-group force-none" @endif>
+              <div id="youtube" @if($edit['item']->video_preview_type == 'youtube') class="form-group force-block" @else class="form-group" @endif>
                 <label for="tags">{{ Helper::translation(2967,$translate) }}
 
                 </label>
-                <input type="text" id="video_url" name="video_url" class="text_field" data-bvalidator="required" value="{{ $edit['item']->video_url }}">
+                <input type="text" id="video_url" name="video_url" class="text_field" value="{{ $edit['item']->video_url }}">
                 <small>({{ Helper::translation(2968,$translate) }} : https://www.youtube.com/watch?v=C0DPdy98e4c)</small>
               </div>
 
-              <div id="mp4" @if($edit['item']->video_preview_type == 'mp4') class="form-group force-block" @else class="form-group force-none" @endif>
-                <label for="tags">Upload MP4 Video <sup>*</sup></label>
+              <div id="mp4" @if($edit['item']->video_preview_type == 'mp4') class="form-group force-block" @else class="form-group" @endif>
+                <label for="tags">Upload MP4 Video</label>
                 <input type="file" id="video_file" name="video_file" class="text_field files"><small>(MP4 - file only)</small>
                 @if($allsettings->site_s3_storage == 1)
                 @php $videofileurl = Storage::disk('s3')->url($edit['item']->video_file); @endphp
@@ -351,12 +351,12 @@
 
               <div class="form-group">
                 <label for="tags">{{ Helper::translation(2966,$translate) }}</label>
-                <input 
-                  type="text" 
-                  id="demo_url" 
-                  name="demo_url" 
-                  class="text_field" 
-                  value="{{ $edit['item']->demo_url }}" 
+                <input
+                  type="text"
+                  id="demo_url"
+                  name="demo_url"
+                  class="text_field"
+                  value="{{ $edit['item']->demo_url }}"
                   data-bvalidator="url"
                 >
               </div>

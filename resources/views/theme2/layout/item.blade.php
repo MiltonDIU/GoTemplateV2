@@ -20,8 +20,8 @@
           @endif
 
           <div class="item_title">
-            <a 
-              href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" 
+            <a
+              href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}"
               class="item_name"
             >
               {{$item->item_name}}
@@ -30,11 +30,11 @@
         </div>
 
         <div class="icon_container">
-          <a 
-            href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" 
-            data-bs-toggle="tooltip" 
-            data-bs-placement="left" 
-            title="Product details" 
+          <a
+            href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="Product details"
             class="item_icons"
           >
             <i class="fas fa-external-link-alt"></i>
@@ -42,40 +42,40 @@
 
           @if (Auth::check())
             @if($item->id != Auth::user()->id)
-              <a 
-                href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}" 
+              <a
+                href="{{ url('/item') }}/{{ base64_encode($item->item_id) }}/favorite/{{ base64_encode($item->item_liked) }}"
                 class="item_icons {{(\Feberr\Models\Items::getfavouriteCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Save"
               >
                 <i class="fas fa-folder-plus"></i>
               </a>
-              <a 
-                href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
-                title="Like" 
+              <a
+                href="{{ route('item.liked',[base64_encode($item->item_id),base64_encode($item->item_liked)]) }}"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="Like"
                 class="item_icons {{(\Feberr\Models\Items::getLikeCount($item->item_id,  Auth::user()->id)>0)?'item-active-like':''}}"
               >
                 <i class="fas fa-heart"></i>
               </a>
             @else
-              <a 
-                href="javascript:void(0);" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
-                title="Save" 
+              <a
+                href="javascript:void(0);"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="Save"
                 class="item_icons"
                 onClick="alert(`You can't save your own item!`)"
               >
                 <i class="fas fa-folder-plus"></i>
               </a>
-              <a 
-                href="javascript:void(0);" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
-                title="Like" 
+              <a
+                href="javascript:void(0);"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="Like"
                 class="item_icons"
                 onClick="alert(`You can't like your own item!`)"
               >
@@ -83,21 +83,21 @@
               </a>
             @endif
           @else
-            <a 
-              href="javascript:void(0);" 
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
-              title="Save" 
+            <a
+              href="javascript:void(0);"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="Save"
               class="item_icons"
               onClick="alert('Login user only');"
             >
               <i class="fas fa-folder-plus"></i>
             </a>
-            <a 
-              href="javascript:void(0);" 
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
-              title="Like" 
+            <a
+              href="javascript:void(0);"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="Like"
               class="item_icons"
               onClick="alert('Login user only');"
             >
@@ -119,25 +119,30 @@
     <div class="item_bottom">
       <div class="author_details">
         <div class="item_author_img">
+
+            @if($item->user_photo!=null or $item->user->user_photo!=null)
           <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo?$item->user_photo:$item->user->user_photo }}" alt="{{ $item->username}}">
+            @else
+                <img src="{{ url('public/img/no-user.png') }}" alt="{{ $item->username}}">
+            @endif
         </div>
-        <a 
-          class="text-truncate" 
-          style="max-width: 85px;" 
+        <a
+          class="text-truncate"
+          style="max-width: 85px;"
           href="{{ URL::to('/user') }}/{{ $item->username }}"
-          data-bs-toggle="tooltip" 
-          data-bs-placement="bottom" 
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
           title="{{ $item->username }}"
         >
           {{ $item->username }}
         </a>
       </div>
       <div class="item_bottom_icons">
-        <a 
-          href="#" 
-          data-bs-toggle="tooltip" 
-          data-bs-placement="bottom" 
-          title="Add to Cart" 
+        <a
+          href="#"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          title="Add to Cart"
           class="item_bottom_cart"
         >
           <i class="fa fa-cart-plus"></i>

@@ -4,7 +4,7 @@
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/banner.css') }}">
-@endpush 
+@endpush
 
 @section('content')
   @include('theme2.layout.banner')
@@ -16,12 +16,12 @@
         <span>
           <span class="alert_icon lnr lnr-checkmark-circle"></span>
           <span>{{ $message }}</span>
-        </span>  
+        </span>
         <i type="button" class="fas fa-times close" data-bs-dismiss="alert" aria-label="Close"></i>
       </div>
     @endif
-  
-  
+
+
     @if ($message = Session::get('error'))
       <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
         <span>
@@ -59,6 +59,7 @@
 
       <div class="row">
         @foreach( $data['newest'] as $item)
+
           @include('theme2.layout.item', [
             "item" => $item
           ])
@@ -81,6 +82,8 @@
         <div class="item_slider_main">
           @foreach($data['flashes'] as $item)
             <div class="slider_item">
+
+
               @include('theme2.layout.item', [
                 "item" => $item,
                 "item_slider" => true
