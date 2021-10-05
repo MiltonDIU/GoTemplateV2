@@ -104,7 +104,7 @@ Route::group(['middleware' => ['XSS']], function () {
 
 
 	// forgot
-	Route::get('/forgot', 'CommonController@view_forgot');
+	Route::get('/forgot', 'CommonController@view_forgot')->name('theme2.forgot');
 	Route::post('/forgot', ['as' => 'forgot', 'uses' => 'CommonController@update_forgot']);
 	Route::get('/reset/{user_token}', 'CommonController@view_reset');
 	Route::post('/reset', ['as' => 'reset', 'uses' => 'CommonController@update_reset']);

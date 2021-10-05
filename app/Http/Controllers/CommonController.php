@@ -172,7 +172,7 @@ class CommonController extends Controller {
 		$followcheck = Items::getfollowuserCheck($user_id);
 
 		$data = array(
-			'follower_user_id' => $my_id, 
+			'follower_user_id' => $my_id,
 			'following_user_id' => $follow_id
 		);
 
@@ -203,12 +203,12 @@ class CommonController extends Controller {
 		$badges['setting'] = Settings::editBadges($sid);
 
 		$data = array (
-			'user' => $user, 
+			'user' => $user,
 			'badges' => $badges,
-			'count_sale' => $count_sale, 
+			'count_sale' => $count_sale,
 			'count_items' => $count_items
 		);
-		
+
 		return view('theme2.top-authors', compact('data'));
 	}
 
@@ -280,30 +280,30 @@ class CommonController extends Controller {
 		$tren_count     = Items::getTrendUser($user_id);
 
 		$data = array (
-			'user'           => $user, 
-			'year'           => $year, 
-			'since'          => $since, 
-			'badges'         => $badges, 
-			'bottom'         => $bottom, 
-			'country'        => $country, 
-			'itemData'       => $itemData, 
-			'getreview'      => $getreview, 
-			'ratingview'     => $ratingview, 
-			'free_count'     => $free_count, 
+			'user'           => $user,
+			'year'           => $year,
+			'since'          => $since,
+			'badges'         => $badges,
+			'bottom'         => $bottom,
+			'country'        => $country,
+			'itemData'       => $itemData,
+			'getreview'      => $getreview,
+			'ratingview'     => $ratingview,
+			'free_count'     => $free_count,
 			'tren_count'     => $tren_count,
-			'countreview'    => $countreview, 
-			'followcheck'    => $followcheck, 
-			'sold_amount'    => $sold_amount, 
-			'getitemcount'   => $getitemcount, 
-			'getsalecount'   => $getsalecount, 
-			'count_rating'   => $count_rating, 
-			'followercount'  => $followercount, 
-			'followingcount' =>  $followingcount, 
-			'collect_amount' => $collect_amount, 
-			'referral_count' => $referral_count, 
-			'featured_count' => $featured_count, 
+			'countreview'    => $countreview,
+			'followcheck'    => $followcheck,
+			'sold_amount'    => $sold_amount,
+			'getitemcount'   => $getitemcount,
+			'getsalecount'   => $getsalecount,
+			'count_rating'   => $count_rating,
+			'followercount'  => $followercount,
+			'followingcount' =>  $followingcount,
+			'collect_amount' => $collect_amount,
+			'referral_count' => $referral_count,
+			'featured_count' => $featured_count,
 		);
-		
+
 		return view('theme2.user-reviews', compact('data'));
 	}
 
@@ -344,7 +344,7 @@ class CommonController extends Controller {
 			$review['view'] = Items::getreviewRecord($user_id);
 			$top = 0;
 			$bottom = 0;
-			foreach ($review['view'] as $review) {	
+			foreach ($review['view'] as $review) {
 				$value1 = $review->rating == 1 ? $review->rating * 1 : 0;
 				$value2 = $review->rating == 2 ? $review->rating * 2 : 0;
 				$value3 = $review->rating == 3 ? $review->rating * 3 : 0;
@@ -374,28 +374,28 @@ class CommonController extends Controller {
 		//$viewfollowing['view'] = Follow::with('followers')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('follow.following_user_id','=',$user_id)->orderBy('follow.fid', 'desc')->get();
 
 		$data = array (
-			'user'           => $user, 
-			'since'          => $since, 
-			'itemData'       => $itemData, 
-			'getitemcount'   => $getitemcount, 
-			'getsalecount'   => $getsalecount, 
-			'count_rating'   => $count_rating, 
-			'bottom'         => $bottom, 
-			'ratingview'     => $ratingview, 
-			'countreview'    => $countreview, 
-			'getreview'      => $getreview, 
-			'followcheck'    => $followcheck, 
-			'followingcount' => $followingcount, 
-			'followercount'  => $followercount, 
-			'viewfollowing'  => $viewfollowing, 
-			'badges'         => $badges, 
-			'sold_amount'    => $sold_amount, 
-			'country'        => $country, 
-			'year'           => $year, 
-			'collect_amount' => $collect_amount, 
-			'referral_count' => $referral_count, 
-			'featured_count' => $featured_count, 
-			'free_count'     => $free_count, 
+			'user'           => $user,
+			'since'          => $since,
+			'itemData'       => $itemData,
+			'getitemcount'   => $getitemcount,
+			'getsalecount'   => $getsalecount,
+			'count_rating'   => $count_rating,
+			'bottom'         => $bottom,
+			'ratingview'     => $ratingview,
+			'countreview'    => $countreview,
+			'getreview'      => $getreview,
+			'followcheck'    => $followcheck,
+			'followingcount' => $followingcount,
+			'followercount'  => $followercount,
+			'viewfollowing'  => $viewfollowing,
+			'badges'         => $badges,
+			'sold_amount'    => $sold_amount,
+			'country'        => $country,
+			'year'           => $year,
+			'collect_amount' => $collect_amount,
+			'referral_count' => $referral_count,
+			'featured_count' => $featured_count,
+			'free_count'     => $free_count,
 			'tren_count'     => $tren_count
 		);
 
@@ -468,31 +468,31 @@ class CommonController extends Controller {
 		//$viewfollowing['view'] = Follow::with('followers')->leftjoin('users', 'users.id', '=', 'items.user_id')->where('follow.following_user_id','=',$user_id)->orderBy('follow.fid', 'desc')->get();
 
 		$data = array (
-			'user'           => $user, 
-			'year'           => $year, 
-			'since'          => $since, 
-			'badges'         => $badges, 
-			'bottom'         => $bottom, 
-			'country'        => $country, 
-			'itemData'       => $itemData, 
-			'getreview'      => $getreview, 
-			'free_count'     => $free_count, 
+			'user'           => $user,
+			'year'           => $year,
+			'since'          => $since,
+			'badges'         => $badges,
+			'bottom'         => $bottom,
+			'country'        => $country,
+			'itemData'       => $itemData,
+			'getreview'      => $getreview,
+			'free_count'     => $free_count,
 			'tren_count'     => $tren_count,
-			'ratingview'     => $ratingview, 
-			'countreview'    => $countreview, 
-			'followcheck'    => $followcheck, 
-			'sold_amount'    => $sold_amount, 
-			'getitemcount'   => $getitemcount, 
-			'getsalecount'   => $getsalecount, 
-			'count_rating'   => $count_rating, 
-			'followercount'  => $followercount, 
-			'viewfollowing'  => $viewfollowing, 
-			'followingcount' => $followingcount, 
-			'collect_amount' => $collect_amount, 
-			'referral_count' => $referral_count, 
-			'featured_count' => $featured_count, 
+			'ratingview'     => $ratingview,
+			'countreview'    => $countreview,
+			'followcheck'    => $followcheck,
+			'sold_amount'    => $sold_amount,
+			'getitemcount'   => $getitemcount,
+			'getsalecount'   => $getsalecount,
+			'count_rating'   => $count_rating,
+			'followercount'  => $followercount,
+			'viewfollowing'  => $viewfollowing,
+			'followingcount' => $followingcount,
+			'collect_amount' => $collect_amount,
+			'referral_count' => $referral_count,
+			'featured_count' => $featured_count,
 		);
-		
+
 		return view('theme2.user-following', compact('data'));
 	}
 
@@ -560,26 +560,26 @@ class CommonController extends Controller {
 		$tren_count     = Items::getTrendUser($user_id);
 
 		$data = array (
-			'user'           => $user, 
-			'year'           => $year, 
-			'since'          => $since, 
-			'badges'         => $badges, 
-			'bottom'         => $bottom, 
-			'country'        => $country, 
-			'itemData'       => $itemData, 
-			'getreview'      => $getreview, 
-			'free_count'     => $free_count, 
+			'user'           => $user,
+			'year'           => $year,
+			'since'          => $since,
+			'badges'         => $badges,
+			'bottom'         => $bottom,
+			'country'        => $country,
+			'itemData'       => $itemData,
+			'getreview'      => $getreview,
+			'free_count'     => $free_count,
 			'tren_count'     => $tren_count,
-			'sold_amount'    => $sold_amount, 
-			'followcheck'    => $followcheck, 
-			'getitemcount'   => $getitemcount, 
-			'getsalecount'   => $getsalecount, 
-			'count_rating'   => $count_rating, 
-			'followercount'  => $followercount, 
-			'collect_amount' => $collect_amount, 
-			'referral_count' => $referral_count, 
-			'featured_count' => $featured_count, 
-			'followingcount' => $followingcount, 
+			'sold_amount'    => $sold_amount,
+			'followcheck'    => $followcheck,
+			'getitemcount'   => $getitemcount,
+			'getsalecount'   => $getsalecount,
+			'count_rating'   => $count_rating,
+			'followercount'  => $followercount,
+			'collect_amount' => $collect_amount,
+			'referral_count' => $referral_count,
+			'featured_count' => $featured_count,
+			'followingcount' => $followingcount,
 		);
 
 		return view('theme2.user', compact('data'));
@@ -634,7 +634,7 @@ class CommonController extends Controller {
 				// 	'status' => 'success',
 				// 	'message' => 'Your new password updated successfully. Please login now.'
 				// ];
-				
+
 				return redirect('login')->with('success', 'Your new password updated successfully. Please login now.');
 			}
 		} else {
@@ -666,7 +666,7 @@ class CommonController extends Controller {
 				$message->from($from_email, $from_name);
 			});
 
-			return redirect('theme2.forgot')->with('success', 'We have e-mailed your password reset link!');
+			return redirect()->back()->with('success', 'We have e-mailed your password reset link!');
 		} else {
 			return redirect()->back()->with('error', 'These credentials do not match our records.');
 		}
@@ -704,7 +704,7 @@ class CommonController extends Controller {
 			->where('items.drop_status', '=', 'no')
 			->orderBy('items.item_id', 'desc')
 			->get();
-		
+
 
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
@@ -989,30 +989,30 @@ class CommonController extends Controller {
 		$viewattribute['details'] = Attribute::getattributeViews($token);
 
 		$data = array (
-			'item' => $item, 
-			'getcount' => $getcount, 
-			'item_image' => $item_image, 
-			'item_allimage' => $item_allimage, 
-			'category_name' => $category_name, 
-			'item_tags' => $item_tags, 
-			'itemData' => $itemData, 
-			'checkif_purchased' => $checkif_purchased, 
-			'getreview' => $getreview, 
-			'count_rating' => $count_rating, 
-			'getreviewdata' => $getreviewdata, 
-			'comment' => $comment, 
-			'comment_count' => $comment_count, 
-			'badges' => $badges, 
-			'country' => $country, 
-			'trends' => $trends, 
-			'year' => $year, 
-			'sold_amount' => $sold_amount, 
-			'collect_amount' => $collect_amount, 
-			'referral_count' => $referral_count, 
+			'item' => $item,
+			'getcount' => $getcount,
+			'item_image' => $item_image,
+			'item_allimage' => $item_allimage,
+			'category_name' => $category_name,
+			'item_tags' => $item_tags,
+			'itemData' => $itemData,
+			'checkif_purchased' => $checkif_purchased,
+			'getreview' => $getreview,
+			'count_rating' => $count_rating,
+			'getreviewdata' => $getreviewdata,
+			'comment' => $comment,
+			'comment_count' => $comment_count,
+			'badges' => $badges,
+			'country' => $country,
+			'trends' => $trends,
+			'year' => $year,
+			'sold_amount' => $sold_amount,
+			'collect_amount' => $collect_amount,
+			'referral_count' => $referral_count,
 			'viewattribute' => $viewattribute,
 			'followcheck' => $followcheck
 		);
-		
+
 		return view('theme2.single-item', compact('data'));
 	}
 	// end item
@@ -1030,12 +1030,12 @@ class CommonController extends Controller {
 		$admin_email = $setting['setting']->sender_email;
 
 		$record = array (
-			'from_name' => $from_name, 
-			'from_email' => $from_email, 
-			'message_text' => $message_text, 
+			'from_name' => $from_name,
+			'from_email' => $from_email,
+			'message_text' => $message_text,
 			'contact_date' => date('Y-m-d')
 		);
-		
+
 		$contact_count = Items::getcontactCount($from_email);
 
 		if ($contact_count == 0) {
@@ -1113,7 +1113,7 @@ class CommonController extends Controller {
 
 		$rules = array (
 			'news_email' => [
-				'required',  
+				'required',
 				Rule::unique('newsletter')->where(function ($sql) {
 					$sql->where('news_status', '=', 0);
 				})
@@ -1131,8 +1131,8 @@ class CommonController extends Controller {
 		} else {
 
 			$data = array (
-				'news_email' => $news_email, 
-				'news_token' => $news_token, 
+				'news_email' => $news_email,
+				'news_token' => $news_token,
 				'news_status' => $news_status
 			);
 

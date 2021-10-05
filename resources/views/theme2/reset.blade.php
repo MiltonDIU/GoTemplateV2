@@ -3,7 +3,6 @@
 @extends('theme2.layout.master')
 
 @section('content')
-{{ dd($data['token'])}}
   @include("theme2.layout.breadcrumb", [
     "list" => [array("path" => "/login", "text" => 3015)]
   ])
