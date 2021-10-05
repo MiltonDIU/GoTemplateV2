@@ -1,0 +1,285 @@
+#selling_banner {
+  background-color: rgba(20, 33, 61, .1);
+  text-align: center;
+  color: #14213D;
+  padding-bottom: 100px;
+}
+
+.sale_page_button {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.sale_page_button a {
+  padding: 17px 26px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #14213D;
+  border-radius: 32px;
+  transition: all linear .3s;
+}
+
+.sale_page_button a:hover {
+  background-color: #FCA311;
+  color: #14213D;
+}
+
+#benefit {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #14213D;
+}
+
+.sale_title_small {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#benefit .benefit_main {
+  margin-top: 60px;
+}
+
+#benefit .benefit_points {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+#benefit .benefit_points i {
+  color: #FCA311;
+  margin-right: 20px;
+}
+
+#benefit .benefit_points p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#become_vendor {
+  padding-top: 30px;
+  color: #14213D;
+}
+
+.sale_title_big {
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.sale_page_details {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2;
+  text-align: center;
+  padding: 0 35px;
+  margin-top: 50px;
+}
+
+#become_vendor {
+  color: #14213D;
+}
+
+#become_vendor .sale_page_button {
+  text-align: center;
+}
+
+#become_vendor .sale_page_button a {
+  background-color: #fff;
+  border: 2px solid #14213D;
+  color: #14213D;
+  transition: all linear .3s;
+  padding: 13px 22px;
+}
+
+#become_vendor .sale_page_button a:hover {
+  background-color: #14213D;
+  color: #fff;
+}
+
+#payment_breakdown {
+  margin-top: 100px;
+  background-color: #14213D;
+  padding-bottom: 60px;
+  color: #14213D;
+  text-align: center;
+}
+
+#payment_breakdown .sale_title_big {
+  color: #FCA311;
+  padding-top: 60px;
+  padding-bottom: 50px;
+}
+
+#payment_breakdown .payment_table {
+  color: #fff;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.payment_download_btn{
+  display: inline-block;
+  padding: 13px 24px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #14213D;
+  background-color: #fff;
+  border-radius: 32px;
+  transition: all linear .3s;
+  margin-top: 50px;
+}
+.payment_download_btn:hover{
+  background-color: #FCA311;
+  color: #14213D;
+}
+
+#payment_breakdown .payment_table thead th {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  padding-bottom: 35px;
+}
+#payment_breakdown .payment_table tbody th,td {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 2;
+  padding: 12px 0;
+}
+#payment_breakdown .payment_table thead th,
+#payment_breakdown .payment_table tbody tr th, 
+#payment_breakdown .payment_table tbody tr td {
+  border-bottom-color: rgba(255, 255, 255, .1);
+}
+#payment_breakdown .payment_table tbody td {
+  padding: 12px 0;
+}
+
+#payment_breakdown .payment_table tbody .last_col td {
+  padding: 27px 0;
+}
+
+#sale_items {
+  margin-top: 80px;
+  color: #14213D;
+}
+
+#sale_items .sale_items_details {
+  margin-bottom: 70px;
+}
+
+.sale_item_box {
+  padding-right: 20px;
+}
+
+.sale_item_title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.sale_item_text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+#apply_vendor {
+  background-color: rgba(20, 33, 61, .1);
+  padding: 60px;
+  color: #14213D;
+}
+
+#apply_vendor .apply_steps {
+  margin-top: 75px;
+}
+
+#apply_vendor .apply_steps .steps_details {
+  padding-left: 65px;
+  position: relative;
+  z-index: 111;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+#apply_vendor .apply_steps .steps_main {
+  position: relative;
+}
+
+#apply_vendor .apply_steps .step_number {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 185px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgb(255, 255, 255, .7);
+  z-index: 110;
+}
+
+#vendor_trait {
+  margin-top: 80px;
+  color: #14213D;
+}
+
+#vendor_trait .vendor_trait_main {
+  margin-top: 70px;
+}
+
+#vendor_agreement {
+  margin-top: 50px;
+}
+
+#vendor_payment {
+  margin-top: 80px;
+  background-color: rgba(20, 33, 61, .1);
+  padding-top: 60px;
+  padding-bottom: 40px;
+  color: #14213D;
+}
+
+#vendor_payment .payment_policy {
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+#vendor_payment .payment_policy_text {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+#vendor_payment .payment_policy_text i {
+  color: #FCA311;
+  margin-right: 20px;
+}
+
+#vendor_payment .payment_policy_text p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#next_level {
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+
+#next_level .sale_page_button a {
+  padding: 13px 22px;
+}

@@ -1,0 +1,29 @@
+#manage_item .item_view .manage_item_top i{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #FCA311;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+}
+
+#manage_item .dropdown-toggle::after {
+display: none;
+}
+
+#manage_item .manage_item_btn .show{
+position: absolute;
+top: 34px;
+  left: 10px;
+margin: 0px;
+transform: translate(0px, 6px);
+}
+
+#manage_item .dropdown-menu {
+  min-width: 60px !important;
+}

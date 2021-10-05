@@ -1,0 +1,1316 @@
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    box-sizing: border-box;
+}
+ul,ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+
+.page_banner_title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    padding-top: 100px;
+}
+.page_banner_description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 17px;
+}
+
+
+/*------------- category start --------------*/
+#category .main_category,
+#flash_category .main_category,
+#all_category .main_category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+#category .main_category li,
+#flash_category .main_category li,
+#all_category .main_category li {
+    display: flex;
+    margin-bottom: 10px;
+}
+#category .category_button,
+#flash_category .category_button,
+#all_category .category_button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #14213D;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin: 0 18px;
+    background-color: rgb(252, 163, 17,.25);
+    transition: all linear .3s;
+    cursor: pointer;
+}
+#category .category_button:hover,
+#flash_category .category_button:hover,
+#all_category .category_button:hover {
+    background-color: #FCA311;
+    color: #14213D;
+}
+/*---------------- category end ---------------*/
+
+
+/* ------------- section title start ----------- */
+.title {
+    text-align: center;
+    padding-top: 64px;
+    margin-bottom: 29px;
+}
+.section_title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #14213D;
+}
+.section_title a {
+    font-size: 14px;
+    color: #FCA311;
+    font-weight: 600;
+    margin-left: 17px;
+}
+/* ---------------- section title end ------------- */
+
+
+/* ---------------- item slider start --------------- */
+.slider_item {
+    margin: 0 10px;
+}
+.item_slider_main {
+    position: relative;
+    z-index: 1;
+}
+.item_slider_main .slick-prev {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+}
+.item_slider_main .slick-next {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-100%);
+    z-index: 3;
+}
+.item_slider_main .slick-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #FCA311;
+    cursor: pointer;
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 2px 2px 18px -8px rgba(20,33,61,0.8);
+    -moz-box-shadow: 2px 2px 18px -8px rgba(20,33,61,0.8);
+    box-shadow: 2px 2px 16px -8px rgba(20,33,61,0.8);
+    transition: all linear .3s;
+}
+.item_slider_main .slick-arrow:hover {
+    background-color: #14213D;
+}
+/* ---------------- item slider end ------------- */
+
+
+/*------ tooltip start ------*/
+.tooltip {
+    top: -5px !important;
+}
+/*------ tooltip end ------*/
+
+
+.view_more {
+    text-align: center;
+    margin-top: 50px;
+} 
+.view_more_btn {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: 1px solid #14213D;
+    background-color: rgba(20, 33, 61, .05);
+    padding: 8px 14px;
+    border-radius: 25px;
+    transition: all linear .3s;
+}
+.view_more_btn:hover {
+    background-color: #14213D;
+    color: #FCA311;
+}
+
+/* ===========================================================================
+                                common css end
+============================================================================*/
+
+
+/* ---------- Return to Top start --------- */
+#return-to-top {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    border-radius: 50%;
+    display: none;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(20,33,61,0.2);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(20,33,61,0.2);
+    box-shadow: 0px 0px 6px 1px rgba(20,33,61,0.2);
+    z-index: 999;
+}
+#return-to-top i {
+    color: #14213D;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+}
+#return-to-top:hover {
+    background: #FCA311;
+}
+/* ----------- Return to Top start ----------- */
+
+
+/* ----------- Messenger start ------------ */
+#messenger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #FCA311;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 999;
+}
+#messenger i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 7px;
+    top: 8px;
+    font-size: 35px;
+    transition: all linear .3s;
+}
+#messenger:hover i {
+    color: #14213D;
+}
+/* ------------- Messenger end ------------ */
+
+
+/* ==================================================
+               All items page start
+=====================================================*/
+
+#all_category {
+    margin-top: 50px;
+}
+
+.controls button {
+    border: none;
+}
+
+.category_button_blue {
+    background-color: rgba(20, 33, 61, .07);
+}
+
+.mix {
+    display: inline-block;
+    width: 23%;
+    margin: 24px 9px 24px 10px !important;
+}
+
+.mixitup-control-active {
+    background-color: #FCA311;
+}
+
+.filter_field{
+    margin-top: 70px;
+    margin-bottom: 55px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/* .filter_field .filter_options{
+    margin-left: 10px;
+} */
+
+.filter_field label{
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #14213D;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.filter_field input{
+    outline: none;
+    border: none;
+    background-color: rgba(20, 33, 61, .1);
+    height: 40px;
+    border-radius: 20px;
+    padding: 10px 20px 10px 40px;
+    width: 100%;
+}
+
+.filter_field .f_s_box{
+    position: relative;
+}
+
+.filter_field .f_s_box i{
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    border: none;
+}
+
+.filter_field .f_o_select{
+    border: none;
+    background-color: rgba(20, 33, 61, .1);
+    height: 40px;
+    border-radius: 20px;
+    width: 100%;
+    padding: 0 14px;
+    appearance: none;
+    background-image: url("../images/chevron-down-solid.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 42px 16px;
+}
+
+.filter_field .f_o_select:focus-visible{
+    outline: none;
+}
+
+.filter_category{
+    justify-content: flex-start;
+    align-items: center;
+    margin: 32px 0;
+}
+
+.filter_category .sort_title{
+    width: 120px;
+}
+
+.item_sort_main{
+    display: flex;
+	justify-content: space-between;
+	margin: 40px 0;
+}
+
+.item_page{
+    display: flex;
+    justify-content: space-around;
+	align-items: center;
+    margin-right: 20px;
+}
+
+.item_page .sort_btn{
+    padding: 0;
+}
+
+.item_page .mixitup-control-active{
+    color: #14213D;
+}
+
+.item_sort_main .sort_title{
+    margin-right: 10px;
+}
+
+.item_sort_main .input_title{
+    width: 120px;
+}
+
+.item_sort_main .input{
+	outline: none;
+	border: 1px solid rgba(20, 33, 61, .3);
+	height: 40px;
+	border-radius: 20px;
+	padding: 7px 10px 10px 15px;
+    margin-left: 10px;
+}
+
+
+/* ======================================================================
+                            Single item page start
+=========================================================================*/
+
+.modal-dialog{
+    max-width: 50% !important;
+}
+
+.modal-body iframe{
+    width: 100%;
+}
+
+.modal-header{
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-content{
+    border: none;
+    background-color: transparent;
+}
+
+.btn-close{
+    opacity: 1;
+}
+
+.btn-close:focus {
+	box-shadow: none;
+	opacity: 1;
+}
+/* ======================================================================
+                            Single item page end
+=========================================================================*/
+
+
+/* ======================================================================
+                            Vendor profile page start
+=========================================================================*/
+#vendor_main {
+    margin-top: 55px;
+    color: #14213D;
+}
+#vendor_main .v_box {
+    background-color: rgba(20, 33, 61, .05);
+    border-radius: 15px;
+    padding: 50px 27px 35px 27px;
+}
+#vendor_main .v_image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(20, 33, 61, .1);
+    margin: 0 auto;
+}
+#vendor_main .v_image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+#vendor_main .v_name h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+#vendor_main .vendor_skill {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+#vendor_main .v_sub_details {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+#vendor_main .v_location {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+#vendor_main .v_location i{
+    margin-right: 8px;
+    color: #14213D;
+}
+
+#vendor_main .v_follow{
+    text-align: right;
+    margin-right: 25px;
+}
+
+#vendor_main .vendor_follow{
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: 1px solid #14213D;
+    background-color: #fff;
+    padding: 8px 14px;
+    border-radius: 25px;
+    transition: all linear .3s;
+}
+
+#vendor_main .vendor_follow i{
+    margin-right: 9px;
+    font-size: 14px;
+    transition: all linear .3s;
+}
+
+#vendor_main .vendor_follow:hover{
+    background-color: #14213D;
+    color: #FCA311;
+}
+
+#vendor_main .f_count{
+    text-align: right;
+    margin-right: 25px;
+}
+
+#vendor_main .follow_details{
+    display: flex;
+    justify-content: right;
+    margin-top: 25px;
+}
+
+#vendor_main .follow_details .total_follow{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+#vendor_main .v_ratings{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 12px;
+}
+
+#vendor_main .v_ratings p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#vendor_main .v_ratings ul{
+    margin-left: 15px;
+}
+
+#vendor_main .v_ratings ul li{
+    display: inline-block;
+}
+
+#vendor_main .v_ratings ul li i{
+    color: #FCA311;
+}
+
+#vendor_main .v_connect{
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+#vendor_main .v_connect ul li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#vendor_main .v_connect ul li i{
+    font-size: 17px;
+    height: 30px;
+    width: 30px;
+    border: 1px solid #14213D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all linear .3s;
+}
+
+#vendor_main .v_connect ul li i:hover{
+    background-color: #14213D;
+    color: #FCA311;
+}
+
+#vendor_main .vendor_count{
+    margin-right: 25px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#vendor_main .vendor_count .product_count{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#vendor_main .vendor_count .product_count i{
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid rgba(20, 33, 61, .3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all linear .3s;
+}
+
+#vendor_main .vendor_count .vendor_sale{
+    display: flex;
+    align-items: center;
+}
+
+#vendor_main .vendor_count .vendor_sale i{
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid rgba(20, 33, 61, .3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all linear .3s;
+}
+
+#vendor_main .v_count{
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+#product_by{
+    margin-top: 70px;
+    color: #14213D;
+}
+
+#product_by h5{
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+#product_by h5 span{
+    color: #FCA311;
+}
+
+#product_by .item_box{
+    /* display: none; */
+}
+
+#product_by .end_product{
+    display: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ======================================================================
+                            Vendor profile page end
+=========================================================================*/
+
+
+/* ======================================================================
+                            404 page start
+=========================================================================*/
+#error{
+    margin: 75px 0;
+}
+
+#error .error_text{
+    margin-right: 150px;
+    margin-top: 20px;
+}
+
+#error .error_text h1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 37px;
+    font-weight: 800;
+    color: #14213D;
+    margin-bottom: 60px;
+}
+
+#error .error_text h2{
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #14213D;
+    margin-bottom: 90px;
+}
+
+#error .error_text a {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	color: #14213D;
+	background-color: #FCA311;
+	padding: 14px 22px;
+	border-radius: 30px;
+	line-height: 1;
+    transition: all linear .3s;
+}
+
+#error .error_text a:hover{
+    background-color: #14213D;
+    color: #FCA311;
+}
+
+#error .error_img{
+    margin: 0 75px;
+}
+
+#error .error_img img{
+    display: block;
+    width: 100%;
+}
+/* ======================================================================
+                            404 page end
+=========================================================================*/
+
+
+/* ======================================================================
+                            contact page start
+=========================================================================*/
+#contact{
+    margin-top: 60px;
+    color: #14213D;
+}
+
+#contact .contact_details_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #FCA311;
+    margin-bottom: 70px;
+    margin-top: 30px;
+}
+
+#contact .contact_details_group{
+    display: flex;
+    margin-bottom: 60px;
+}
+
+#contact .contact_details_icon i{
+    margin-right: 20px;
+}
+
+#contact .contact_sub_title{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#contact .contact_text{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2;
+}
+
+#contact .contact_details_bottom{
+    padding-top: 25px;
+}
+
+#contact .contact_details_bottom h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 2;
+    color: #FCA311;
+}
+
+#contact .contact_details_bottom h4{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 2;
+}
+
+#contact .contact_form{
+    background-color: rgba(20, 33, 61, .03);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+#contact .contact_form_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #14213D;
+    margin-bottom: 40px;
+}
+
+/* ======================================================================
+                            contact page end
+=========================================================================*/
+
+
+/* ======================================================================
+                            Cart page start
+=========================================================================*/
+
+
+
+#cart{
+    margin-top: 60px;
+    color: #14213D;
+}
+
+#cart .cart_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart .cart_top_title{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+#cart .cart_main{
+    margin-top: 35px;
+    border-top: 1px solid rgba(42, 70, 131, 0.2);
+    border-bottom: 1px solid rgba(42, 70, 131, 0.2);
+    padding: 25px 5px 0 5px;
+}
+
+#cart .table{
+    color: #14213D;
+}
+
+#cart .cart_table_heading{
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+#cart .table .cart_item_name{
+    padding-left: 50px;
+    padding-right: 40px;
+}
+
+#cart .cart_item_details{
+    padding-top: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#cart .remove_icon{
+    text-align: center;
+}
+
+#cart .remove_icon i{
+    color: #14213D;
+    transition: all linear .2s;
+    cursor: pointer;
+}
+
+#cart .remove_icon i:hover{
+    color: #FCA311;
+}
+
+#cart .cart_coupon{
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#cart .coupon_field input{
+    border: none;
+    border-bottom: 1px solid rgba(42, 70, 131, 0.2);
+}
+
+#cart .coupon_field input:focus-visible{
+    outline: none;
+}
+
+#cart .coupon_button{
+    margin-left: 30px;
+}
+
+#cart .c_btn{
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: 2px solid #14213D;
+    background-color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #14213D;
+    line-height: 1;
+    transition: all linear .3s;
+}
+
+#cart .c_btn:hover{
+    background-color: #14213D;
+    color: #FCA311;
+}
+
+#cart .cart_count{
+    margin-top: 60px;
+}
+
+#cart .checkout_btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+#cart .checkout_btn .check_btn{
+    background-color: #14213D;
+    color: #fff;
+    transition: all linear .3s;
+}
+
+#cart .checkout_btn .check_btn:hover{
+    background-color: #FCA311;
+    color: #14213D;
+    border-color: #FCA311;
+}
+
+#cart .cart_count_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#cart .cart_count_value{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+/* ======================================================================
+                            Cart page end
+=========================================================================*/
+
+/* ======================================================================
+                            Checkout page start
+=========================================================================*/
+
+#checkout{
+    margin-top: 80px;
+    color: #14213D;
+}
+
+#checkout .checkout_title p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    color: #14213D;
+}
+
+#checkout .order_details_main{
+    margin-top: 40px;
+    border-top: 1px solid rgba(20, 33, 61, .2);
+}
+
+#checkout .order_info{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+#checkout .order_item_text{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #14213D;
+}
+
+#checkout .order_item_name{
+    width: 60%;
+}
+
+#checkout .order_item_price{
+    width: 40%;
+    text-align: right;
+}
+
+#checkout .order_total{
+    border-top: 1px solid rgba(20, 33, 61, .2);
+}
+
+#checkout .total_text{
+    font-weight: 700;
+}
+
+#checkout .payment_method_main{
+    background-color: rgba(20, 33, 61, .03);
+    border-radius: 12px;
+    padding: 5px 30px 40px 35px;
+    margin-top: 40px;
+}
+
+#checkout .method_select{
+    margin: 40px 0;
+}
+
+#checkout .method_select label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#checkout .method_select label input{
+    display: none;
+}
+
+#checkout .method_select .check_circle{
+    width: 22px;
+    height: 22px;
+    border: 5px solid #c7c7c7;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+#checkout .method_select label input:checked + .check_circle{
+    border-color: #FCA311;
+}
+
+#checkout .method_select span{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #95989A
+}
+
+#checkout .method_select label input:checked + .check_circle + span{
+    color: #14213D;
+}
+
+
+#checkout .confirm_btn {
+    padding: 14px 25px;
+    border-radius: 30px;
+    border: none;
+    background-color: #14213D;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    transition: all linear .3s;
+}
+
+#checkout .confirm_btn:hover{
+    background-color: #FCA311;
+    color: #14213D;
+}
+/* ======================================================================
+                            Checkout page end
+=========================================================================*/
+
+/* ======================================================================
+                            Purchase page start
+=========================================================================*/
+
+#purchase{
+    margin-top: 80px;
+    color: #14213D;
+}
+
+#purchase .purchase_id{
+    margin-bottom: 50px;
+}
+
+#purchase .p_text_semi{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#purchase .p_text_bold{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#purchase .transaction_details{
+    margin-top: 30px;
+}
+
+#purchase .t_details_box{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#purchase .p_text_regular{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#purchase .p_thanks{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+#purchase .back_btn{
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #14213D;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    transition: all linear .3s;
+}
+
+#purchase .back_btn:hover{
+    background-color: #FCA311;
+    color: #14213D;
+}
+
+#purchase .back_home{
+    position: relative;
+}
+
+#purchase .p_icon{
+    font-size: 200px;
+    position: absolute;
+    top: -100px;
+    left: 30%;
+    color: rgba(20, 33, 61, .05);
+}
+
+/* ======================================================================
+                            Purchase page end
+=========================================================================*/
+
+/* ======================================================================
+        Payment policy, Privacy policy, Terms conditions page start
+=========================================================================*/
+.payment_download_btn{
+    display: inline-block;
+    padding: 13px 24px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #14213D;
+    background-color: #fff;
+    border-radius: 32px;
+    transition: all linear .3s;
+    margin-top: 50px;
+}
+.payment_download_btn:hover{
+    background-color: #FCA311;
+    color: #14213D;
+}
+#payment_policy{
+    margin-top: 80px;
+    color: #14213D;
+}
+
+.p_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.p_box{
+    margin-top: 50px;
+}
+
+.p_sub_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #FCA311;
+}
+
+.p_text{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.p_list{
+    margin: 8px 0;
+}
+
+.p_list_main ol li{
+    list-style: lower-roman !important;
+}
+
+.p_list_main ul li{
+    list-style: square !important;
+}
+
+#payment_policy .payment_breakdown{
+    background-color: rgba(20, 33, 61, .05);
+    padding: 60px 0 65px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#payment_policy .payment_breakdown .p_box{
+    margin-top: 0;
+}
+
+#payment_policy .payment_table{
+    color: #14213D;
+    text-align: center;
+}
+
+#payment_policy .payment_table thead th {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.8;
+    padding-bottom: 30px;
+    border-bottom-color: rgba(20, 33, 61, .2);
+}
+
+#payment_policy .payment_table tbody th, td {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 2;
+    border-bottom-color: rgba(20, 33, 61, .2);
+    padding: 12px 0;
+}
+
+#payment_policy .payment_breakdown .p_box a{
+    background-color: #14213D;
+}
+
+#payment_policy .payment_breakdown .p_box a:hover{
+    color: #14213D;
+    background-color: #FCA311;
+}
+
+.p_box a{
+    color: #FCA311;
+    font-weight: 600;
+    transition: all linear .2s;
+}
+
+.p_box a:hover{
+    color: #14213D;
+}
+
+#privacy_policy{
+    margin-top: 80px;
+    color: #14213D;
+}
+
+#terms_conditions{
+    margin-top: 80px;
+    color: #14213D;
+}
+/* ======================================================================
+        Payment policy, privacy policy, Terms conditions page end
+=========================================================================*/
+
+
+
+/* ======================================================================
+                            About us page start
+=========================================================================*/
+
+#about_us{
+    margin-top: 80px;
+    color: #14213D;
+}
+
+#about_us .about_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+#about_us .about_main p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+#about_us .about_sub_title{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#about_us .about_tag_line{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+#about_us .text_point{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#about_us .text_point i{
+    color: #FCA311;
+    font-size: 15px;
+}
+
+#about_us .text_point h6{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 15px;
+}
+
+
+/* ======================================================================
+                            About us page end
+=========================================================================*/

@@ -1,0 +1,2047 @@
+
+
+@media (min-width:320px) and (max-width:575px){
+
+    /* ----------------------------- Home page start ----------------------------- */
+    
+    .top_menu{
+        justify-content: space-between;
+        margin-left: 0;
+    }
+    
+    .top_menu li a{
+        font-size: 13px;
+    }
+    
+    .navbar .navbar-brand img{
+        height: 25px;
+    }
+
+    .navbar .nav_sign a{
+        font-size: 14px;
+    }
+
+    .navbar .nav_sign .sign_up::before {
+        bottom: -24px;
+    }
+
+    .navbar .nav_sign .sign_up::after {
+        bottom: -24px;
+    }
+
+    .navbar .nav_sign .sign_in::after {
+        bottom: -24px;
+    }
+
+    #banner .banner_main_heading{
+        padding-top: 70px;
+    }
+
+    #banner h1 {
+        font-size: 15px;
+        margin-bottom: 22px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #banner .search_box{
+        margin: 0 10px;
+        padding: 11px 16px;
+    }
+
+    #banner .banner_example{
+        padding-bottom: 70px;
+    }
+
+    #banner .banner_example h6{
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    .main_category li{
+        margin-bottom: 30px;
+    }
+
+    .category_button {
+        font-size: 13px;
+        margin: 15px 10px;
+    }
+
+    .title {
+        text-align: center;
+        padding-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .item_view {
+        height: 280px;
+    }
+
+    #premium_member{
+        margin-top: 50px;
+    }
+
+    #premium_member .counter_main {
+        padding-top: 60px;
+        padding-bottom: 33px;
+    }
+
+    #premium_member h3 {
+        font-size: 25px;
+    }
+
+    #premium_member .counter_number p {
+        font-size: 14px;
+        padding-top: 8px;
+    }
+
+    #premium_member .counter_number {
+        margin-bottom: 30px;
+    }
+
+    #premium_member .member_action .action_button a {
+        padding: 17px 20px;
+        font-size: 15px;
+    }
+
+    #premium_member .member_action .member_text p {
+        font-size: 13px;
+    }
+
+    #premium_member .member_action {
+        padding-bottom: 50px;
+    }
+
+    #popular_category .popular_why h4 {
+        font-size: 23px;
+        text-align: center;
+    }
+
+    #popular_category .popular_why p {
+        text-align: center;
+    }
+
+    #popular_category .popular_why .popular_details {
+        padding-right: 0;
+        padding-left: 50px;
+    }
+
+    #popular_category .popular_why .popular_details_box{
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    #popular_category .popular_why .popular_text h5 {
+        font-size: 14px;
+        padding-top: 0;
+        padding-left: 15px;
+    }
+
+    #popular_category .popular_why .popular_icons i {
+        font-size: 21px;
+    }
+
+    #popular_category .popular_category_item .item_in{
+        width: 50%;
+        float: left;
+    }
+
+    #popular_category .popular_category_item .popular_category_image {
+        height: 110px;
+    }
+
+    #popular_category .popular_category_item {
+        margin-top: 60px;
+    }
+
+    #popular_category .popular_category_item .popular_category_image .category_overlay p {
+        font-size: 17px;
+    }
+
+    footer {
+        margin-top: 70px;
+    }
+
+    footer .footer_main {
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+
+    footer .footer_follow {
+        text-align: center;
+    }
+
+    footer .footer_main .contact_us .contact_details{
+        justify-content: center;
+    }
+
+    footer .footer_link {
+        margin-top: 44px;
+        text-align: center;
+    }
+
+    footer .newsletter{
+        margin-top: 44px;
+        text-align: center;
+    }
+
+    footer .footer_main .newsletter form {
+        margin: 0 10px;
+    }
+
+    /* ----------------------------- Home page end ----------------------------- */
+
+
+    /* ----------------------------- All items page start ----------------------------- */
+
+    #all_category {
+        margin-top: 40px;
+    }
+
+    .main_category {
+        margin: 40px 0 10px 0;
+    }
+
+    #all_category .main_category li{
+        margin-bottom: 12px;
+    }
+
+    .filter_field {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .filter_options{
+        margin-bottom: 25px;
+    }
+
+    .filter_field label {
+        font-size: 15px;
+    }
+
+    .mix {
+        width: 94%;
+        margin: 24px 9px 24px 9px;
+    }
+
+    /* ----------------------------- All items page end ----------------------------- */
+
+
+    /* ----------------------------- Single item page start ----------------------------- */
+
+    #single_item_top .vendor_img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+    }
+
+    #single_item_top .vendor_text {
+        margin-left: 20px;
+    }
+
+    #single_item_top .vendor_text .vendor_name {
+        font-size: 15px;
+    }
+
+    #single_item_top .vendor_text .vendor_skill {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    #single_item_top .vendor_follow {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+
+    #single_item_top .vendor_details_sm{
+        width: 60%;
+    }
+
+    #single_item_top .v_follow_sm {
+        width: 40%;
+        margin-top: 10px;
+    }
+
+    #single_item_view .img_focus {
+        height: 255px;
+    }
+
+    #single_item_view .img_bottom {
+        height: 35px;
+        margin: 0 4px;
+    }
+
+    #single_item_view .item_view_details .item_name {
+        font-size: 18px;
+        margin-top: 35px;
+    }
+
+    #single_item_view .item_view_details .action_buy {
+        display: block;
+    }
+
+    #single_item_details {
+        margin-top: 20px;
+    }
+
+    #single_item_details .product_tags {
+        margin-left: 0;
+    }
+
+    #more_items .m_title {
+        align-items: center;
+    }
+
+    #more_items .related_items h5 {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    #more_items .m_link {
+        font-size: 13px;
+    }
+
+    /* ----------------------------- Single item page end ----------------------------- */
+
+    /* ----------------------------- Vendor profile page start ----------------------------- */
+
+    #vendor_main {
+        margin-top: 40px;
+    }
+
+    #vendor_main .v_box {
+        padding: 25px 27px 25px 27px;
+    }
+
+    #vendor_main .v_details {
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #vendor_main .v_sub_details {
+        margin-top: 10px;
+    }
+
+    #vendor_main .v_follow {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    #vendor_main .vendor_follow {
+        padding: 7px 16px;
+    }
+
+    #vendor_main .follow_details {
+        margin-top: 26px;
+        justify-content: space-between;
+    }
+
+    #vendor_main .follow_details .total_follow {
+        font-size: 14px;
+        margin-left: 0;
+    }
+
+    #vendor_main .f_count {
+        text-align: center;
+    }
+
+    #vendor_main .v_ratings {
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #vendor_main .v_connect {
+        margin-left: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    #vendor_main .vendor_count {
+        margin-right: 0;
+        justify-content: space-between;
+    }
+
+    .vendor_count_xs{
+        padding: 0;
+    }
+
+    #product_by {
+        margin-top: 50px;
+    }
+
+    #product_by h5 {
+        font-size: 15px;
+    }
+
+    /* ----------------------------- Vendor profile page end ----------------------------- */
+
+    /* ----------------------------- Flash Sale page start ----------------------------- */
+
+    .page_banner_title {
+        padding-top: 55px;
+    }
+
+    .page_banner_description {
+        font-size: 16px;
+        margin-left: 10px;
+        margin-right: 10px;
+        line-height: 1.5;
+    }
+
+    #flash_banner .flash_counter {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #flash_banner .flash_counter .count_number {
+        font-size: 35px;
+    }
+
+    #flash_banner .count_time {
+        background-color: transparent;
+    }
+
+    #flash_banner .flash_counter .count_text {
+        font-size: 13px;
+        font-weight: 400;
+        color: #14213D;
+    }
+
+    /* .category_button {
+        margin: 15px 15px;
+    } */
+
+    .sort_main {
+        display: block;
+        margin: 20px 0;
+    }
+
+    .sort_group {
+        margin: 0;
+        padding: 15px 0;
+    }
+
+    .sort_btn {
+        margin: 0 12px;
+        padding: 0;
+    }
+
+    /* ----------------------------- Flash Sale page end ----------------------------- */
+
+    /* ----------------------------- Start Selling page start ----------------------------- */
+
+    #selling_banner {
+        padding-bottom: 75px;
+    }
+
+    .page_banner_title {
+        font-size: 25px;
+    }
+
+    .sale_page_button {
+        margin-top: 55px;
+    }
+
+    .sale_page_button a {
+        padding: 17px 19px;
+        font-size: 15px;
+    }
+
+    #benefit {
+        margin-top: 55px;
+        margin-bottom: 25px;
+        color: #14213D;
+    }
+
+    #benefit .benefit_main {
+        margin-left: 10px;
+        margin-top: 40px;
+    }
+
+    .sale_page_details {
+        padding: 0 5px;
+    }
+
+    .sale_page_button {
+        margin-top: 45px;
+    }
+
+    #payment_breakdown {
+        margin-top: 70px;
+        text-align: center;
+    }
+
+    #payment_breakdown .sale_title_big {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #payment_breakdown .payment_table{
+        display: none;
+    }
+
+    .payment_download_btn{
+        margin-top: 0;
+    }
+
+    .payment_download_btn:hover{
+        background-color: #FCA311;
+    }
+
+    #sale_items {
+        margin-top: 50px;
+    }
+
+    .sale_title_small {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .sale_title_big {
+        font-size: 25px;
+        line-height: 1.5;
+    }
+
+    .sale_page_details {
+        margin-top: 30px;
+    }
+
+    .sale_item_box {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    #apply_vendor {
+        padding: 60px 0 25px 0;
+    }
+
+    #apply_vendor .apply_steps {
+        margin-top: 60px;
+    }
+
+    .apply_steps_xs{
+        display: block;
+    }
+
+    #apply_vendor .apply_steps .steps_main {
+        width: 76%;
+        margin: 0 auto;
+        padding-bottom: 39px;
+    }
+
+    #apply_vendor .apply_steps .step_number {
+        top: -13px;
+        left: 22px;
+        font-size: 93px;
+    }
+
+    #apply_vendor .apply_steps .steps_details {
+        font-size: 14px;
+    }
+
+    #vendor_trait {
+        margin-top: 60px;
+    }
+
+    #vendor_agreement {
+        margin-top: 15px;
+    }
+
+    #vendor_payment {
+        margin-top: 50px;
+        padding-top: 45px;
+    }
+
+    #next_level {
+        margin-top: 50px;
+        margin-bottom: 75px;
+    }
+
+    /* ----------------------------- Start Selling page end ----------------------------- */
+
+    /* ----------------------------- Sign in page start ----------------------------- */
+
+    #signin {
+        margin-top: 35px;
+    }
+
+    .sign_text{
+        display: none;
+    }
+
+    .sign_form {
+        padding: 15px;
+    }
+
+    .sign_form h2 {
+        font-size: 25px;
+        margin-bottom: 28px;
+    }
+
+    .form_group p {
+        font-size: 15px;
+    }
+
+    .form_group .f_input {
+        padding: 11px 17px;
+    }
+
+    .f_check {
+        margin-top: 10px;
+    }
+
+    .s_btn {
+        margin-top: 18px;
+        padding: 13px 0;
+    }
+
+    .form_bottom {
+        display: block;
+    }
+
+    .forgot_pass{
+        margin-bottom: 18px;
+    }
+
+    /* ----------------------------- Sign in page end ----------------------------- */
+
+
+    /* ----------------------------- Sign up page start ----------------------------- */
+
+    .s_up {
+        margin-left: 0;
+    }
+
+    .group_flex {
+        display: block;
+    }
+
+    .group_box {
+        width: 100%;
+    }
+
+    #signup {
+        margin-top: 35px;
+    }
+
+    /* ----------------------------- Sign up page end ----------------------------- */
+
+    /* ----------------------------- 404 page start ----------------------------- */
+
+    #error {
+        margin: 35px 10px;
+    }
+
+    #error .error_text h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    #error .error_text {
+        margin-right: 0;
+    }
+
+    #error .error_text h2 {
+        font-size: 18px;
+        margin-bottom: 65px;
+        line-height: 1.5;
+    }
+
+    #error .error_text a {
+        font-size: 17px;
+        padding: 12px 20px;
+    }
+
+    #error .error_img {
+        margin: 20px 0;
+    }
+
+    #error .error_img {
+        margin: 50px 20px 0 20px;
+    }
+
+    /* ----------------------------- 404 page end ----------------------------- */
+
+    /* ----------------------------- contact page start ----------------------------- */
+
+    #contact {
+        margin-top: 20px;
+    }
+
+    #contact .contact_details_title {
+        margin-bottom: 25px;
+    }
+
+    #contact .contact_details_group {
+        margin-bottom: 26px;
+    }
+
+    #contact .contact_details_bottom {
+        display: none;
+    }
+
+    #contact .contact_form {
+        padding: 13px 13px 20px 13px;
+        margin-top: 15px;
+    }
+
+    #contact .contact_form_title {
+        font-size: 22px;
+    }
+
+    /* ----------------------------- contact page end ----------------------------- */
+
+    /* ----------------------------- Cart page start ----------------------------- */
+
+    #cart {
+        margin-top: 35px;
+    }
+
+    #cart .cart_main {
+        margin-top: 20px;
+        padding: 12px 0 0 0;
+    }
+
+    #cart .table > :not(caption) > * > * {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #cart .table .cart_item_name {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #cart .cart_table_heading {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    #cart .cart_item_details {
+        padding-top: 13px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
+    #cart .item_box{
+        margin: 9px 0;
+    }
+
+    #cart .item_view {
+        height: 55px;
+        border-radius: 5px;
+    }
+
+    #cart .item_view .item_view_img {
+        border-radius: 5px;
+    }
+
+    #cart .item_view .item_view_overlay{
+        display: none;
+    }
+
+    #cart .item_view .paid_item_top i{
+        display: none;
+    }
+
+    #cart .cart_item_details_xs{
+        padding-right: 10px;
+    }
+
+    #cart .cart_coupon {
+        display: block;
+        margin-top: 60px;
+    }
+
+    #cart .coupon_field{
+        text-align: center;
+    }
+
+    #cart .coupon_button {
+        margin-left: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    #cart .cart_count {
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    #cart .cart_sub_total{
+        margin-bottom: 30px;
+    }
+
+    #cart .cart_count_value {
+        margin-top: 10px;
+    }
+
+    #cart .checkout_btn {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* ----------------------------- Cart page end ----------------------------- */
+
+    /* ----------------------------- Checkout page start ----------------------------- */
+
+    #checkout {
+        margin-top: 40px;
+    }
+
+    #checkout .order_details_main {
+        margin-top: 20px;
+    }
+
+    #checkout .order_info {
+        padding: 20px 0;
+    }
+
+    #checkout .order_item_text {
+        font-size: 14px;
+    }
+
+    #checkout .payment_method{
+        margin-top: 40px;
+    }
+
+    #checkout .payment_method_main {
+        margin-top: 25px;
+    }
+
+    #checkout .method_select {
+        margin: 20px 0 40px 0;
+    }
+
+    /* ----------------------------- Checkout page end ----------------------------- */
+
+    /* ----------------------------- Purchase page start ----------------------------- */
+
+    #purchase {
+        margin-top: 40px;
+    }
+
+    #purchase .purchase_id {
+        margin-bottom: 30px;
+    }
+
+    .p_title {
+        margin-bottom: 20px;
+    }
+
+    #purchase .transaction_details {
+        margin-top: 20px;
+    }
+
+    #purchase .purchase_details .p_text_semi {
+        font-size: 15px;
+    }
+
+    #purchase .back_home {
+        margin-top: 50px;
+    }
+
+    #purchase .p_icon {
+        font-size: 124px;
+        top: -150px;
+        left: 47%;
+    }
+
+    /* ----------------------------- Purchase page end ----------------------------- */
+
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page start ----------------------------- */
+    
+    #payment_policy {
+        margin-top: 40px;
+    }
+
+    .p_title {
+        font-size: 30px;
+    }
+
+    .p_box {
+        margin-top: 30px;
+    }
+
+    #payment_policy .payment_breakdown{
+        text-align: center;
+    }
+
+    .p_list_main ol{
+        margin: 0 30px;
+    }
+
+    .p_list_main ul{
+        margin: 0 30px;
+    }
+
+    #payment_policy .payment_table {
+        display: none;
+    }
+
+    #privacy_policy {
+        margin-top: 40px;
+    }
+
+    #terms_conditions {
+        margin-top: 40px;
+    }
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page end ----------------------------- */
+
+    /* ----------------------------- Top authors page start ----------------------------- */
+
+    #top_authors {
+        margin-top: 40px;
+        margin-left: 15px;
+        margin-right: 16px;
+    }
+
+    /* ----------------------------- Top authors page end ----------------------------- */
+
+    /* ----------------------------- About us page start ----------------------------- */
+
+    #about_us {
+        margin-top: 40px;
+    }
+
+    /* ----------------------------- About us page end ----------------------------- */
+
+    /* ----------------------------- Blog main page start ----------------------------- */
+
+
+    #blog_box {
+        margin-top: 0;
+    }
+
+    .single_blog {
+        margin-top: 55px;
+    }
+
+    .single_blog .blog_banner .blog_banner_img {
+        height: 185px;
+        border-radius: 12px;
+    }
+
+    .single_blog .blog_data {
+        margin-top: 28px;
+    }
+
+    .single_blog .data_text {
+        font-size: 14px;
+    }
+
+    .blog_details .blog_title {
+        font-size: 18px;
+    }
+
+    .blog_details .blog_des {
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+
+    .single_blog .more_btn {
+        font-size: 15px;
+        padding: 10px 19px;
+    }
+
+    .blog_sidebar {
+        margin-top: 80px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .sidebar_list .sidebar_blog_img img {
+        margin-top: 9px;
+    }
+
+    /* ----------------------------- Blog main page end ----------------------------- */
+
+    /* ----------------------------- Blog post page start ----------------------------- */
+
+    .blog_share {
+        display: block;
+    }
+
+    .blog_share .share_text {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .blog_share_icon{
+        text-align: center;
+    }
+
+    .blog_share_icon a {
+        margin-right: 10px;
+        margin-left: 0;
+    }
+
+    .blog_comment {
+        margin-top: 45px;
+        padding: 9px;
+    }
+
+    .reply_main .reply_box .reply_name {
+        width: 100%;
+    }
+
+
+    /* ----------------------------- Blog post page end ----------------------------- */
+
+
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+@media (min-width:576px) and (max-width:767px){
+
+    /* ----------------------------- Home page start ----------------------------- */
+
+    .main_category li{
+        margin-bottom: 30px;
+    }
+
+    .title {
+        padding-top: 40px;
+    }
+
+    .item_view {
+        height: 385px;
+    }
+
+    #premium_member .counter_number {
+        margin-bottom: 40px;
+    }
+
+    #premium_member .counter_main {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    #premium_member .member_action {
+        text-align: center;
+        padding-bottom: 57px;
+    }
+
+    #popular_category .popular_why {
+        text-align: center;
+    }
+
+    #popular_category .popular_why .popular_details {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    #popular_category .popular_category_item .popular_category_image {
+        height: 175px;
+    }
+
+    footer {
+        margin-top: 75px;
+    }
+
+    footer .footer_main {
+        text-align: center;
+        padding-top: 65px;
+    }
+
+    footer .footer_main .contact_us .contact_details {
+        justify-content: center;
+    }
+
+    footer .footer_link {
+        margin-top: 45px;
+    }
+
+    footer .newsletter {
+        margin-top: 45px;
+    }
+
+    footer .footer_main .newsletter form {
+        margin: 0 30px;
+    }
+
+    footer .footer_main .newsletter .footer_subscribe {
+        height: 47px;
+    }
+
+    footer .footer_main .newsletter .subscribe_button {
+        height: 47px;
+    }
+
+    /* ----------------------------- Home page end ----------------------------- */
+
+    /* ----------------------------- All items page start ----------------------------- */
+
+    #all_category .main_category li {
+        margin-bottom: 12px;
+    }
+
+    .filter_field {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .filter_options {
+        margin-bottom: 25px;
+    }
+
+    .mix {
+        width: 100%;
+        margin: 24px 0;
+    }
+
+    /* ----------------------------- All items page end ----------------------------- */
+
+    /* ----------------------------- Single item page start ----------------------------- */
+
+    #single_item_top .v_follow {
+        margin-top: 14px;
+    }
+
+    #single_item_view .img_focus {
+        height: 320px;
+    }
+
+    #single_item_view .img_bottom {
+        height: 50px;
+    }
+
+    #single_item_view .item_view_details {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    #single_item_details .product_tags {
+        margin-left: 0;
+    }
+
+    /* ----------------------------- Single item page end ----------------------------- */
+
+    /* ----------------------------- Vendor profile page start ----------------------------- */
+
+    #vendor_main .v_details {
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #vendor_main .v_sub_details {
+        margin-top: 10px;
+    }
+
+    #vendor_main .v_follow {
+        text-align: center;
+        margin-right: 0;
+        margin-top: 20px;
+    }
+
+    #vendor_main .f_count {
+        text-align: center;
+    }
+
+    #vendor_main .follow_details {
+        margin-top: 40px;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    #vendor_main .v_ratings {
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #vendor_main .v_connect {
+        margin-left: 0;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        text-align: center;
+    }
+    
+    #vendor_main .vendor_count {
+        margin-left: 20px;
+        margin-right: 20px;
+        justify-content: space-evenly;
+    }
+
+    /* ----------------------------- Vendor profile page end ----------------------------- */
+
+    /* ----------------------------- Flash Sale page start ----------------------------- */
+
+    .page_banner_title {
+        padding-top: 80px;
+    }
+
+    .page_banner_description {
+        margin-left: 20px;
+        margin-right: 20px;
+        line-height: 1.5;
+    }
+
+    #flash_banner .flash_counter {
+        margin-top: 65px;
+        margin-bottom: 70px;
+    }
+
+    #flash_banner .flash_counter .count_number {
+        font-size: 40px;
+    }
+
+    #flash_banner .flash_counter .count_text {
+        font-size: 17px;
+    }
+
+    #flash_banner .count_time {
+        width: 110px;
+    }
+
+    .category_button {
+        margin: 15px 15px;
+    }
+
+    .sort_main {
+        display: block;
+    }
+
+    .sort_group {
+        margin: 0 0 10px 80px;
+    }
+
+    /* ----------------------------- Flash Sale page end ----------------------------- */
+
+    /* ----------------------------- Start Selling page start ----------------------------- */
+
+    .page_banner_title {
+        line-height: 1.5;
+    }
+
+    #benefit {
+        margin-bottom: 30px;
+    }
+
+    #benefit .benefit_main {
+        margin-top: 45px;
+        margin-left: 100px;
+    }
+
+    #payment_breakdown .payment_table {
+        display: none;
+    }
+
+    .payment_download_btn {
+        margin-top: 0;
+    }
+
+    .sale_item_box {
+        text-align: center;
+    }
+
+    .sale_title_big {
+        line-height: 1.5;
+    }
+
+    #apply_vendor {
+        background-color: rgba(20, 33, 61, .1);
+        padding-bottom: 40px;
+        color: #14213D;
+    }
+
+    #apply_vendor .apply_steps .steps_main {
+        width: 100%;
+        margin: 0 auto;
+        padding-bottom: 39px;
+    }
+
+    #apply_vendor .apply_steps .step_number {
+        top: -8px;
+        left: 13px;
+        font-size: 99px;
+    }
+
+    #vendor_agreement {
+        margin-top: 15px;
+    }
+
+    #next_level {
+        margin-top: 65px;
+        margin-bottom: 90px;
+    }
+
+    /* ----------------------------- Start Selling page end ----------------------------- */
+
+    /* ----------------------------- Sign in page start ----------------------------- */
+
+    .sign_text {
+        display: none;
+    }
+
+    /* ----------------------------- Sign in page end ----------------------------- */
+
+    /* ----------------------------- Sign up page start ----------------------------- */
+
+    .s_up {
+        margin-left: 0;
+    }
+
+    .group_flex {
+        display: block;
+    }
+
+    .group_box {
+        width: 100%;
+    }
+
+    /* ----------------------------- Sign up page end ----------------------------- */
+
+
+    /* ----------------------------- 404 page start ----------------------------- */
+
+    #error {
+        margin: 50px 0;
+    }
+
+    #error .error_text h2 {
+        font-size: 20px;
+        margin-bottom: 80px;
+        line-height: 1.5;
+    }
+
+    #error .error_img {
+        margin: 58px 100px 0 100px;
+    }
+
+    /* ----------------------------- 404 page end ----------------------------- */
+
+    /* ----------------------------- contact page start ----------------------------- */
+
+    #contact {
+        margin-top: 20px;
+    }
+
+    #contact .contact_details{
+        margin-bottom: 40px;
+    }
+
+    #contact .contact_details_title {
+        margin-bottom: 45px;
+    }
+
+    #contact .contact_sub_title {
+        margin-bottom: 8px;
+    }
+
+    #contact .contact_details_group {
+        margin-bottom: 35px;
+    }
+
+    #contact .contact_details_bottom {
+        padding-top: 0;
+    }
+
+    /* ----------------------------- contact page end ----------------------------- */
+
+    /* ----------------------------- Cart page start ----------------------------- */
+
+    #cart .table .cart_item_name {
+        padding-left: 0;
+        padding-right: 8px;
+    }
+
+    .table > :not(caption) > * > * {
+        padding-left: 0;
+    }
+
+    #cart .item_view {
+        height: 103px;
+    }
+
+    #cart .item_box{
+        margin-right: 5px;
+    }
+
+    #cart .item_view .item_view_overlay {
+        display: none;
+    }
+
+    #cart .cart_item_details {
+        font-size: 14px;
+        line-height: 1.5;
+        padding-top: 27px;
+    }
+
+    /* ----------------------------- Cart page end ----------------------------- */
+
+    /* ----------------------------- Checkout page start ----------------------------- */
+
+    #checkout {
+        margin-top: 50px;
+    }
+
+    #checkout .payment_method{
+        margin-top: 30px;
+    }
+    
+
+    /* ----------------------------- Checkout page end ----------------------------- */
+
+    /* ----------------------------- Purchase page start ----------------------------- */
+
+    #purchase .back_home {
+        margin-top: 55px;
+    }
+
+    /* ----------------------------- Purchase page end ----------------------------- */
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page start ----------------------------- */
+
+    #payment_policy {
+        margin-top: 50px;
+    }
+
+    #payment_policy .payment_table {
+        display: none;
+    }
+
+    #payment_policy  .p_sub_title {
+        margin-bottom: 53px;
+    }
+
+    #privacy_policy {
+        margin-top: 50px;
+    }
+
+    #terms_conditions {
+        margin-top: 50px;
+    }
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page end ----------------------------- */
+
+    /* ----------------------------- Top authors page start ----------------------------- */
+
+    #top_authors {
+        margin-top: 50px;
+    }
+
+    #top_authors .a_title {
+        font-family: 'Raleway', sans-serif;
+        font-size: 30px;
+        font-weight: 800;
+        margin-bottom: 13px;
+    }
+
+    /* ----------------------------- Top authors page end ----------------------------- */
+
+    /* ----------------------------- About us page start ----------------------------- */
+
+    #about_us {
+        margin-top: 50px;
+    }
+
+    /* ----------------------------- About us page end ----------------------------- */
+
+    /* ----------------------------- Blog main page start ----------------------------- */
+
+    #blog_box {
+        margin-top: 0;
+    }
+
+    .blog_sidebar {
+        margin-left: 0;
+    }
+
+    .sidebar_list .sidebar_blog_img {
+        width: 20%;
+    }
+
+    .sidebar_list .sidebar_blog_title {
+        width: 65%;
+    }
+
+    .sidebar_blog .sidebar_blog_title .s_title {
+        font-size: 15px;
+        line-height: 2;
+    }
+
+    .single_blog .blog_banner .blog_banner_img {
+        height: 300px;
+    }
+    
+    /* ----------------------------- Blog main page end ----------------------------- */
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+@media (min-width:768px) and (max-width:991px){
+
+    /* ----------------------------- Home page start ----------------------------- */
+
+    .main_category li {
+        margin: 18px 0;
+    }
+
+    .title {
+        padding-top: 40px;
+        margin-bottom: 15px;
+    }
+
+    .item_view {
+        height: 260px;
+    }
+
+    #premium_member .counter_number {
+        margin-bottom: 50px;
+    }
+
+    #premium_member .counter_main {
+        padding-top: 75px;
+        padding-bottom: 60px;
+    }
+
+    #popular_category .popular_why {
+        text-align: center;
+    }
+
+    #popular_category .popular_why .popular_details {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    #popular_category .popular_why .popular_details {
+        padding-right: 30px !important;
+        padding-left: 30px;
+        margin-bottom: 40px;
+        margin-top: 15px;
+    }
+
+    #popular_category .popular_category_item .popular_category_image {
+        height: 160px;
+    }
+
+    footer {
+        margin-top: 80px;
+    }
+
+    footer .footer_main {
+        padding-top: 80px;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+    footer .footer_main .contact_us .contact_details {
+        justify-content: center;
+    }
+
+    footer .footer_link {
+        margin-bottom: 50px;
+    }
+
+    footer .footer_main .newsletter form {
+        margin: 0 15px;
+    }
+
+    /* ----------------------------- Home page end ----------------------------- */
+
+    /* ----------------------------- All items page start ----------------------------- */
+
+    #all_category .main_category li {
+        margin: 18px 14px;
+    }
+
+    .filter_field {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .filter_options {
+        margin-bottom: 32px;
+    }
+
+    .mix {
+        width: 47%;
+        margin: 24px 9px;
+    }
+
+    /* ----------------------------- All items page end ----------------------------- */
+
+    /* ----------------------------- Single item page start ----------------------------- */
+
+    #single_item_top .v_follow {
+        margin-top: 13px;
+    }
+
+    #single_item_view .img_focus {
+        height: 420px;
+        width: 100%;
+    }
+
+    #single_item_view .item_view_details {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    #single_item_details .product_tags {
+        margin-left: 0;
+    }
+
+    /* ----------------------------- Single item page end ----------------------------- */
+
+    /* ----------------------------- Vendor profile page start ----------------------------- */
+
+    #vendor_main .v_box {
+        padding: 36px 10px 26px 20px;
+    }
+
+    #vendor_main .v_connect {
+        margin-left: 17px;
+        margin-top: 20px;
+    }
+
+    #vendor_main .vendor_count {
+        margin-top: 20px;
+    }
+
+    /* ----------------------------- Vendor profile page end ----------------------------- */
+
+    /* ----------------------------- Flash Sale page start ----------------------------- */
+
+    .page_banner_title {
+        padding-top: 85px;
+    }
+
+    #flash_banner .flash_counter {
+        margin: 70px 40px;
+    }
+
+    #flash_banner .flash_counter .count_number {
+        font-size: 40px;
+    }
+
+    #flash_banner .flash_counter .count_text {
+        font-size: 16px;
+        padding: 0 18px 13px 18px;
+    }
+
+    #flash_banner .count_time {
+        width: 125px;
+    }
+
+    .category_button {
+        margin: 15px 15px;
+    }
+
+    .sort_main {
+        justify-content: space-around;
+    }
+
+    .sort_group {
+        margin: 0;
+    }
+    .sort_btn {
+        margin: 0;
+    }
+
+    /* ----------------------------- Flash Sale page end ----------------------------- */
+
+    /* ----------------------------- Start Selling page start ----------------------------- */
+
+    #benefit {
+        margin-bottom: 30px;
+    }
+    
+    #benefit .benefit_main {
+        margin-top: 45px;
+        margin-left: 195px;
+    }
+
+    #payment_breakdown .payment_table thead th {
+        font-size: 14px;
+    }
+
+    .sale_title_big {
+        line-height: 1.5;
+    }
+
+    #apply_vendor .apply_steps .steps_main {
+        width: 70%;
+        margin: 0 auto;
+        padding-bottom: 39px;
+    }
+
+    #apply_vendor .apply_steps .step_number {
+        top: -12px;
+        left: 7px;
+        font-size: 99px;
+    }
+
+    #vendor_agreement {
+        margin-top: 15px;
+    }
+
+    #next_level {
+        margin-top: 65px;
+        margin-bottom: 90px;
+    }
+
+    /* ----------------------------- Start Selling page start ----------------------------- */
+
+    /* ----------------------------- Sign in page start ----------------------------- */
+
+    .sign_text {
+        margin-top: 0;
+    }
+
+    .sign_text h1 {
+        margin-bottom: 8px;
+    }
+
+    .sign_text .text_point_main {
+        margin-top: 35px;
+    }
+
+    .sign_text .text_point {
+        margin-bottom: 20px;
+    }
+
+    .sign_form {
+        margin-top: 30px;
+    }
+
+    /* ----------------------------- Sign in page end ----------------------------- */
+
+    /* ----------------------------- Sign up page start ----------------------------- */
+
+    .s_up {
+        margin-left: 0;
+    }
+
+    /* ----------------------------- Sign up page end ----------------------------- */
+
+    /* ----------------------------- 404 page start ----------------------------- */
+
+    #error {
+        margin: 45px 0;
+    }
+
+    #error .error_text h1 {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+
+    #error .error_text {
+        margin-right: 15px;
+    }
+
+    #error .error_text h2 {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 49px;
+    }
+    
+    #error .error_text a {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    #error .error_img {
+        margin: 0 20px;
+    }
+
+    /* ----------------------------- 404 page end ----------------------------- */
+
+    /* ----------------------------- contact page start ----------------------------- */
+
+    #contact {
+        margin-top: 20px;
+    }
+
+    #contact .contact_details {
+        margin-bottom: 40px;
+    }
+
+    #contact .contact_details_title {
+        margin-bottom: 45px;
+    }
+
+    #contact .contact_details_group {
+        margin-bottom: 35px;
+    }
+
+    #contact .contact_details_bottom {
+        padding-top: 0;
+    }
+
+    /* ----------------------------- contact page end ----------------------------- */
+
+    /* ----------------------------- Cart page start ----------------------------- */
+
+    #cart .item_view {
+        height: 165px;
+    }
+
+    #cart .table .cart_item_name {
+        padding-left: 8px; 
+        padding-right: 8px;
+    }
+
+    #cart .item_view .item_view_overlay .item_title .item_name {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    #cart .item_view .item_view_overlay .icon_container {
+        padding-right: 2px;
+    }
+
+    .item_view .item_view_overlay .icon_container .item_icons i {
+        font-size: 13px;
+        line-height: 25px;
+        height: 25px;
+        width: 25px;
+    }
+
+    /* ----------------------------- Cart page end ----------------------------- */
+
+    /* ----------------------------- Checkout page start ----------------------------- */
+
+    #checkout {
+        margin-top: 60px;
+    }
+
+    #checkout .checkout_title p {
+        font-size: 20px;
+    }
+
+    /* ----------------------------- Checkout page end ----------------------------- */
+
+    /* ----------------------------- Purchase page start ----------------------------- */
+
+    #purchase {
+        margin-top: 60px;
+    }
+
+    #purchase .back_home {
+        margin-top: 35px;
+    }
+
+    #purchase .p_icon {
+        top: -108px;
+        left: 54%;
+    }
+
+    /* ----------------------------- Purchase page end ----------------------------- */
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page start ----------------------------- */
+
+    #payment_policy {
+        margin-top: 60px;
+    }
+
+    .p_box {
+        margin-top: 40px;
+    }
+
+    #payment_policy .payment_table thead th {
+        font-size: 14px;
+    }
+
+    #privacy_policy {
+        margin-top: 60px;
+    }
+
+    #terms_conditions {
+        margin-top: 60px;
+    }
+
+    /* ----------------------------- Payment policy, Privacy policy, Terms conditions page end ----------------------------- */
+
+    /* ----------------------------- Top authors page start ----------------------------- */
+
+    #top_authors {
+        margin-top: 60px;
+    }
+
+
+    #top_authors .author_box {
+        padding: 25px 40px;
+        margin: 30px 15px;
+    }
+
+    /* ----------------------------- Top authors page end ----------------------------- */
+
+    /* ----------------------------- About us page start ----------------------------- */
+
+    #about_us {
+        margin-top: 60px;
+    }
+
+    /* ----------------------------- About us page end ----------------------------- */
+
+    /* ----------------------------- Blog main page start ----------------------------- */
+
+    #blog_box {
+        margin-top: 0;
+    }
+
+    .single_blog .blog_banner .blog_banner_img {
+        height: 255px;
+    }
+
+    .blog_sidebar {
+        margin-left: 10px;
+    }
+
+    .sidebar_section {
+        margin-top: 65px;
+    }
+
+    .sidebar_list .sidebar_blog_img img {
+        height: 50px;
+        margin-top: 6px;
+    }
+
+    .sidebar_blog {
+        line-height: 1.2;
+    }
+
+    .sidebar_blog .sidebar_blog_title {
+        padding-left: 10px;
+    }
+
+    .sidebar_blog .sidebar_blog_title .s_title {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    /* ----------------------------- Blog main page end ----------------------------- */
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+@media (min-width:992px) and (max-width:1199px){
+
+    /* ----------------------------- Home page start ----------------------------- */
+
+    .main_category li{
+        margin: 18px 0;
+    }
+
+    .title {
+        padding-top: 40px;
+    }
+
+    #popular_category .popular_why h4 {
+        font-size: 30px;
+    }
+
+    #popular_category .popular_why .popular_details_box {
+        padding-top: 40px;
+    }
+
+    footer .footer_main .newsletter .footer_subscribe {
+        font-size: 13px;
+    }
+
+    footer .footer_main .newsletter .subscribe_button {
+        font-size: 13px;
+        padding: 0 10px 0 7px;
+    }
+
+    /* ----------------------------- Home page end ----------------------------- */
+
+    /* ----------------------------- All items page start ----------------------------- */
+
+    #all_category .main_category li{
+        margin: 0 18px;
+    }
+
+    .mix {
+        width: 31%;
+        margin: 24px 9px 24px 9px;
+    }
+
+    /* ----------------------------- All items page end ----------------------------- */
+
+    /* ----------------------------- Single item page start ----------------------------- */
+
+    #single_item_view .item_view_details .item_name {
+        font-size: 19px;
+    }
+
+    #single_item_view .item_view_details .item_action_btn {
+        margin-right: 0;
+        padding: 7px 12px;
+        font-size: 14px;
+    }
+
+    /* ----------------------------- Single item page end ----------------------------- */
+
+    /* ----------------------------- Start Selling page start ----------------------------- */
+
+    #apply_vendor .apply_steps .steps_main {
+        width: 70%;
+        margin: 0 auto;
+        padding-bottom: 39px;
+    }
+
+    #apply_vendor .apply_steps .step_number {
+        top: -18px;
+        font-size: 150px;
+    }
+
+    /* ----------------------------- Start Selling page end ----------------------------- */
+
+    /* ----------------------------- Sign up page start ----------------------------- */
+
+    .sign_text .text_point_main {
+        margin-left: 0;
+    }
+
+    /* ----------------------------- Sign up page end ----------------------------- */
+
+    /* ----------------------------- 404 page start ----------------------------- */
+
+    #error .error_text {
+        margin-right: 0;
+    }
+
+    #error .error_img {
+        margin: 0 32px;
+    }
+
+    /* ----------------------------- 404 page end ----------------------------- */
+
+    /* ----------------------------- contact page start ----------------------------- */
+
+    #contact .contact_details_bottom {
+        padding-top: 8px;
+    }
+
+    /* ----------------------------- contact page end ----------------------------- */
+
+    /* ----------------------------- Cart page start ----------------------------- */
+
+    #cart .table .cart_item_name {
+        padding-left: 24px;
+        padding-right: 12px;
+    }
+
+    /* ----------------------------- Cart page end ----------------------------- */
+    
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
