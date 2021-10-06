@@ -19,7 +19,7 @@
   <!-- Google Fonts end -->
 
   @include('theme2/stylesheet')
-  
+
   @stack('styles')
   @stack('others')
 
@@ -377,10 +377,10 @@ fjs.parentNode.insertBefore(js, fjs);
 
                   <li><a href="{{ URL::to('/contact') }}">{{ Helper::translation(2910,$translate) }}</a></li>
                   <li><a href="{{ URL::to('/top-authors') }}">{{ Helper::translation(3028,$translate) }}</a></li>
-                  
+
                   @foreach($footerpages['pages'] as $pages)
                     <li><a href="{{ URL::to('/page/') }}/{{ $pages->page_id }}/{{ $pages->page_slug }}">{{ $pages->page_title }}</a></li>
-                  @endforeach  
+                  @endforeach
                 </ul>
               </div>
             </div>
@@ -430,11 +430,11 @@ fjs.parentNode.insertBefore(js, fjs);
 
               <form action="{{ route('newsletter') }}" id="footer_form" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <input 
-                  type="email" 
-                  class="footer_subscribe" 
-                  placeholder="{{ Helper::translation(3006,$translate) }}" 
-                  data-bvalidator="required" 
+                <input
+                  type="email"
+                  class="footer_subscribe"
+                  placeholder="{{ Helper::translation(3006,$translate) }}"
+                  data-bvalidator="required"
                   name="news_email"
                 >
                 <button type="submit" class="subscribe_button">

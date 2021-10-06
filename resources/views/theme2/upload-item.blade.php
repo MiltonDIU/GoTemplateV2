@@ -76,18 +76,18 @@
                   <label for="product_name">{{ Helper::translation(2938,$translate) }} <sup>*</sup>
                     <span>(Max 100 characters)</span>
                   </label>
-                  <input type="text" id="item_name" name="item_name" class="text_field" data-bvalidator="required,maxlen[100]">
+                  <input type="text" id="item_name" name="item_name" value="{{ old('item_name') }}" class="text_field" data-bvalidator="required,maxlen[100]">
                 </div>
 
                 <div class="form-group no-margin">
                   <p class="label">Product Overview <sup>*</sup></p>
-                  <textarea name="item_shortdesc" rows="6" class="form-control" data-bvalidator="required"></textarea>
+                  <textarea name="item_shortdesc" rows="6" class="form-control" data-bvalidator="required">{{ old('item_shortdesc') }}</textarea>
                 </div>
 
 
                 <div class="form-group no-margin">
                   <p class="label">Product Features &amp; Details <sup>*</sup></p>
-                  <textarea name="item_desc" id="summary-ckeditor" rows="6" class="form-control" data-bvalidator="required"></textarea>
+                  <textarea name="item_desc" id="summary-ckeditor" rows="6" class="form-control" data-bvalidator="required">{{ old('item_desc') }}</textarea>
                 </div>
               </div>
               <!-- end /.modules__content -->
@@ -190,17 +190,16 @@
                   <div class="select-wrap select-wrap2">
                     <select name="video_preview_type" id="video_preview_type" class="text_field">
                       <option value=""></option>
-                      <option value="youtube">Youtube</option>
-                      <option value="mp4">MP4</option>
+                      <option value="youtube" @if(old('video_preview_type') == "youtube") {{ 'selected' }} @endif>Youtube</option>
+                      <option value="mp4" @if(old('video_preview_type') == "mp4") {{ 'selected' }} @endif>MP4</option>
                     </select>
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
                 </div>
 
-
                 <div class="form-group" id="youtube">
                   <label for="tags">{{ Helper::translation(2967,$translate) }}</label>
-                  <input type="text" id="video_url" name="video_url" class="text_field">
+                  <input type="text" id="video_url" name="video_url" value="{{ old('video_url') }}" class="text_field">
                   <small>(example : https://www.youtube.com/watch?v=C0DPdy98e4c)</small>
                 </div>
 
@@ -229,7 +228,7 @@
                     <div class="form-group">
                       <label for="category">{{ Helper::translation(2952,$translate) }} <sup>*</sup></label>
                       <div class="select-wrap select-wrap2">
-                        <select name="item_category" id="item_category" class="text_field" data-bvalidator="required">
+                        <select name="item_category" id="item_category" class="text_field" required data-bvalidator="required">
                           <option value="">Select</option>
                           @foreach($categories['menu'] as $menu)
 
@@ -293,7 +292,7 @@
                   <label for="tags">{{ Helper::translation(2966,$translate) }}
 
                   </label>
-                  <input type="text" id="demo_url" name="demo_url" class="text_field" data-bvalidator="url">
+                  <input type="text" id="demo_url" name="demo_url" value="{{ old('demo_url')}}"  class="text_field" data-bvalidator="url">
 
                 </div>
 
@@ -307,8 +306,8 @@
                   <div class="select-wrap select-wrap2">
                     <select name="free_download" id="free_download" class="text_field" data-bvalidator="required">
                       <option value=""></option>
-                      <option value="1">{{ Helper::translation(2970,$translate) }}</option>
-                      <option value="0">{{ Helper::translation(2971,$translate) }}</option>
+                      <option value="1" @if(old('free_download') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
+                      <option value="0" @if(old('free_download') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                     </select>
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -319,8 +318,8 @@
                   <div class="select-wrap select-wrap2">
                     <select name="item_flash_request" id="item_flash_request" class="text_field">
                       <option value=""></option>
-                      <option value="1">{{ Helper::translation(2970,$translate) }}</option>
-                      <option value="0">{{ Helper::translation(2971,$translate) }}</option>
+                      <option value="1" @if(old('item_flash_request') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
+                      <option value="0" @if(old('item_flash_request') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                     </select>
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -331,7 +330,7 @@
                   <label for="tags">{{ Helper::translation(2974,$translate) }}
 
                   </label>
-                  <textarea name="item_tags" id="item_tags" class="text_field"></textarea>
+                  <textarea name="item_tags" id="item_tags" class="text_field">{{ old('item_tags') }}</textarea>
                   <small>({{ Helper::translation(2975,$translate) }})</small>
                 </div>
               </div>
@@ -354,8 +353,8 @@
                       <div class="select-wrap select-wrap2">
                         <select name="future_update" id="future_update" class="text_field" data-bvalidator="required">
                           <option value=""></option>
-                          <option value="1">{{ Helper::translation(2970,$translate) }}</option>
-                          <option value="0">{{ Helper::translation(2971,$translate) }}</option>
+                          <option value="1" @if(old('future_update') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
+                          <option value="0" @if(old('future_update') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
@@ -369,8 +368,8 @@
                       <div class="select-wrap select-wrap2">
                         <select name="item_support" id="item_support" class="text_field" data-bvalidator="required">
                           <option value=""></option>
-                          <option value="1">{{ Helper::translation(2970,$translate) }}</option>
-                          <option value="0">{{ Helper::translation(2971,$translate) }}</option>
+                          <option value="1" @if(old('item_support') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
+                          <option value="0" @if(old('item_support') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
@@ -401,7 +400,7 @@
                       <label for="rlicense">{{ Helper::translation(2979,$translate) }}<sup>*</sup></label>
                       <div class="input-group">
                         <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                        <input type="text" id="regular_price" name="regular_price" class="text_field" data-bvalidator="digit,min[1],required">
+                        <input type="text" id="regular_price" name="regular_price" value="{{ old('regular_price') }}" class="text_field" data-bvalidator="digit,min[1],required">
                       </div>
                     </div>
                   </div>
@@ -412,7 +411,7 @@
                       <label for="exlicense">{{ Helper::translation(2980,$translate) }}</label>
                       <div class="input-group">
                         <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                        <input type="text" id="extended_price" name="extended_price" class="text_field" data-bvalidator="digit,min[1]">
+                        <input type="text" id="extended_price" name="extended_price" value="{{ old('extended_price') }}" class="text_field" data-bvalidator="digit,min[1]">
                       </div>
                     </div>
                   </div>
@@ -425,7 +424,7 @@
                     <div class="form-group">
                       <label for="rlicense">Regular Licence</label>
                       <div class="input-group">
-                        <textarea type="text" id="regular_licence" name="regular_licence" class="text_field"></textarea>
+                        <textarea type="text" id="regular_licence" name="regular_licence"  class="text_field"> {{ old('regular_licence') }} </textarea>
                         <p>After single service, do line separator using commas</p>
                       </div>
                     </div>
@@ -436,7 +435,7 @@
                     <div class="form-group">
                       <label for="rlicense">Extended Licence</label>
                       <div class="input-group">
-                        <textarea type="text" id="extended_licence" name="extended_licence" class="text_field"></textarea>
+                        <textarea type="text" id="extended_licence" name="extended_licence" class="text_field"> {{ old('extended_licence') }} </textarea>
                         <p>After single service, do line separator using commas</p>
                       </div>
                     </div>
