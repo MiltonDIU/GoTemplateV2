@@ -12,9 +12,12 @@
   @include("theme2.layout.breadcrumb", [
     "list" => [array("path" => "/user/{{$user->username}}", "text" => "User Profile")]
   ])
-  @include("theme2.layout.dashboard_menu", ["profile"=>true])
+    @if(Auth::user())
+       @if(Auth::user()->username==$user->username)
+              @include("theme2.layout.dashboard_menu", ["profile"=>true])
+        @endif
+    @endif
 </div>
-
 <div class="container">
   @if ($message = Session::get('success'))
     <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
@@ -60,13 +63,13 @@
         <div class="col-lg-2 col-sm-12 col-md-3 col-xl-2">
           <div class="v_image">
             @if($user->user_photo != '')
-              <img 
-                src="{{ url('/') }}/public/storage/users/{{ $user->user_photo }}" 
+              <img
+                src="{{ url('/') }}/public/storage/users/{{ $user->user_photo }}"
                 alt="{{ $user->name }}"
               >
             @else
-              <img 
-                src="{{ url('/') }}/public/img/no-user.png" 
+              <img
+                src="{{ url('/') }}/public/img/no-user.png"
                 alt="{{ $user->username }}"
               >
             @endif
@@ -106,15 +109,15 @@
                 @php $followcheck = $data['followcheck']; @endphp
 
                 @if($followcheck == 0)
-                  <a 
-                    href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $user->id }}" 
+                  <a
+                    href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $user->id }}"
                     class="vendor_follow"
                   >
                     <i class="fas fa-plus"></i>{{ Helper::translation(3202,$translate) }}
                   </a>
                 @else
-                  <a 
-                    href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $user->id }}" 
+                  <a
+                    href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $user->id }}"
                     class="vendor_follow"
                   >
                     <i class="fas fa-plus"></i>{{ Helper::translation(3203,$translate) }}
@@ -143,11 +146,11 @@
               <ul>
                 @php $notStar = 5 - $data['count_rating']; @endphp
 
-                @for($i = 0; $i < $data['count_rating']; $i++) 
+                @for($i = 0; $i < $data['count_rating']; $i++)
                   <li><i class="fas fa-star"></i></li>
                 @endfor
 
-                @for($j = 0; $j < $notStar; $j++) 
+                @for($j = 0; $j < $notStar; $j++)
                   <li><i class="far fa-star"></i></li>
                 @endfor
               </ul>

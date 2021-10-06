@@ -2,16 +2,17 @@
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/dashboard-menu.css') }}">
 @endpush
 
-<nav id="dashboard-menu" class="navbar navbar-expand-lg navbar-light" style="border-bottom: none;">          
+<nav id="dashboard-menu" class="navbar navbar-expand-lg navbar-light" style="border-bottom: none;">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
+        @if(Auth::user())
       <a class="nav-link {{isset($profile) && $profile ? 'active' : ''}}" href="{{ URL::to('/user') }}/{{ Auth::user()->username }}">
         <i class="fas fa-user"></i>Profile
       </a>
+        @endif
       <a class="nav-link {{isset($setting) && $setting ? 'active' : ''}}" href="{{ URL::to('/profile-settings') }}">
         <i class="fas fa-cog"></i>Settings
       </a>
