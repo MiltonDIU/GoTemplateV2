@@ -45,7 +45,7 @@
           {{ csrf_field() }}
           <input type="hidden" name="order_firstname" value="{{ Auth::user()->name }}">
           <input type="hidden" name="order_email" value="{{ Auth::user()->email }}">
-          
+
           <div class="row">
             <div class="col-lg-5 col-sm-12 col-md-6 col-xl-5">
               <div class="order_summary">

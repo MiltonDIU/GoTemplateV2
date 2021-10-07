@@ -1186,13 +1186,14 @@ class ItemController extends Controller {
 		$cart_count = Items::getcartCount();
 		$sid = 1;
 		$setting['setting'] = Settings::editGeneral($sid);
+
 		$get_payment = explode(',', $setting['setting']->payment_option);
 		$data = array(
 			'cart' => $cart,
 			'cart_count' => $cart_count,
 			'get_payment' => $get_payment
 		);
-
+//		return view('checkout')->with($data);
 		return view('theme2.checkout')->with($data);
 	}
 
@@ -1310,6 +1311,7 @@ class ItemController extends Controller {
 	}
 
 	public function view_checkout(Request $request) {
+
 		$order_firstname = $request->input('order_firstname');
 		$order_lastname = $request->input('order_lastname');
 		$order_company = $request->input('order_company');
@@ -1343,13 +1345,12 @@ class ItemController extends Controller {
 		$vendor_amount = base64_decode($request->input('vendor_amount'));
 		$admin_amount = base64_decode($request->input('admin_amount'));
 
-
 		$getcount  = Items::getcheckoutCount($purchase_token, $user_id, $payment_status);
-
 
 		$savedata = array('purchase_token' => $purchase_token, 'order_ids' => $order_id, 'item_prices' => $item_prices, 'item_user_id' => $item_user_id, 'user_id' => $user_id, 'total' => $amount, 'vendor_amount' => $vendor_amount, 'admin_amount' => $admin_amount, 'processing_fee' => $processing_fee, 'payment_type' => $payment_method, 'payment_date' => $payment_date, 'order_firstname' => $order_firstname, 'order_lastname' => $order_lastname, 'order_company' => $order_company, 'order_email' => $order_email, 'order_country' => $order_country, 'order_address' => $order_address, 'order_city' => $order_city, 'order_zipcode' => $order_zipcode, 'order_notes' => $order_notes, 'payment_status' => $payment_status);
 
 		$updatedata = array('order_ids' => $order_id, 'item_prices' => $item_prices, 'item_user_id' => $item_user_id, 'total' => $amount, 'vendor_amount' => $vendor_amount, 'admin_amount' => $admin_amount, 'processing_fee' => $processing_fee, 'payment_type' => $payment_method, 'payment_date' => $payment_date, 'order_firstname' => $order_firstname, 'order_lastname' => $order_lastname, 'order_company' => $order_company, 'order_email' => $order_email, 'order_country' => $order_country, 'order_address' => $order_address, 'order_city' => $order_city, 'order_zipcode' => $order_zipcode, 'order_notes' => $order_notes);
+
 
 
 		/* settings */
