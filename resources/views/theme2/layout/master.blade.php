@@ -24,6 +24,7 @@
   @stack('others')
 
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/responsive.css') }}">
+
 </head>
 
 <body>
@@ -482,6 +483,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
   <script src="{{ asset('public/assets/theme2/js/script.js') }}"></script>
   @include('theme2.javascript')
+@stack('script')
 </body>
 
 </html>

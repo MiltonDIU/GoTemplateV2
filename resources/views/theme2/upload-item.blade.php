@@ -516,3 +516,12 @@
 @else
   @include('theme2.503')
 @endif
+
+@push('others')
+    <style>
+        textarea.form-control {
+            font-size: 16px;
+            font-weight: normal;
+        }
+    </style>
+@endpush
