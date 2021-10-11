@@ -138,7 +138,7 @@
 
                                             <div class="form-group">
                                                 <label for="site_desc" class="control-label mb-1">Upload Thumbnail <span class="require">*</span> </label><br/>
-                                                <input type="file" id="item_thumbnail" name="item_thumbnail" class="files"><small>(Size : 255x165px)</small><br/>
+                                                <input type="file" id="item_thumbnail" name="item_thumbnail" class="files"><small>(Size : 400x300px)</small><br/>
                                         @if($edit['item']->item_thumbnail!='')
                                         <img src="{{ url('/') }}/public/storage/items/{{ $edit['item']->item_thumbnail }}" alt="{{ $edit['item']->item_name }}" class="item-thumb">
                                         @else
@@ -150,7 +150,7 @@
 
                                             <div class="form-group">
                                                 <label for="site_desc" class="control-label mb-1">Upload Preview <span class="require">*</span> </label><br/>
-                                                <input type="file" id="item_preview" name="item_preview" class="files"><small>(Size : 350x235px)</small><br/>
+                                                <input type="file" id="item_preview" name="item_preview" class="files"><small>(Size : 600x450px)</small><br/>
                                         @if($edit['item']->item_preview!='')
                                         <img src="{{ url('/') }}/public/storage/items/{{ $edit['item']->item_preview }}" alt="{{ $edit['item']->item_name }}" class="item-thumb">
                                         @else
@@ -177,7 +177,7 @@
 
                                             <div class="form-group">
                                                 <label for="site_desc" class="control-label mb-1">Upload Screenshots (multiple) </label><br/>
-                                                <input type="file" id="item_screenshot" name="item_screenshot[]" class="files"><small>(Size : 700x400px)</small><br/><br/>@foreach($item_image['item'] as $item)
+                                                <input type="file" id="item_screenshot" name="item_screenshot[]" class="files"><small>(Size : 1200x900px)</small><br/><br/>@foreach($item_image['item'] as $item)
 
                                                     <div class="item-img"><img src="{{ url('/') }}/public/storage/items/{{ $item->item_image }}" alt="{{ $item->item_image }}" class="item-thumb">
                                                     <a href="{{ url('/admin/edit-item') }}/dropimg/{{ base64_encode($item->itm_id) }}" onClick="return confirm('Are you sure you want to delete?');" class="drop-icon"><span class="ti-trash drop-icon"></span></a>

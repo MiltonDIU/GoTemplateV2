@@ -15,10 +15,14 @@
 <section id="all_category">
   <div class="container">
     <ul class="controls main_category">
-      <li class="control category_button" data-filter="all">All</li>
+      <li class="control category_button" data-filter="all">
+          <a href="{{ URL::to('/shop/category/') }}/{{"0"}}/{{"all"}}">{{ "All" }}</a>
+      </li>
 
       @foreach($cats as $cat)
-        <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
+            <li class="control category_button" data-filter=".{{$cat->category_slug}}">
+                <a href="{{ URL::to('/shop/category/') }}/{{$cat->cat_id}}/{{$cat->category_slug}}">{{ $cat->category_name }}</a>
+            </li>
       @endforeach
     </ul>
 
@@ -76,8 +80,7 @@
     </div>
     <!-- end Filter -->
 
-      @include('theme2.layout.item_category',['items'=>$items])
-
+@include('theme2.layout.item_category',['items'=>$items])
 
   </div>
 </section>

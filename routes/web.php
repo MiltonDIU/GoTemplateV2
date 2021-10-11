@@ -141,7 +141,7 @@ Route::group(['middleware' => ['XSS']], function () {
 	Route::get('/shop', 'CommonController@view_all_items');
 	Route::get('/shop/{filter}', 'CommonController@view_filter_items');
 	Route::get('/shop/{item_type}/{slug}', 'CommonController@view_item_type');
-	Route::get('/shop/{type}/{id}/{slug}', 'CommonController@view_category_items');
+	Route::get('/shop/category/{id}/{slug}', 'CommonController@view_category_items');
 	Route::post('/shop', ['as' => 'shop', 'uses' => 'CommonController@view_shop_items']);
 	// Route::get('/shop-list', 'CommonController@view_all_list_items');
 

@@ -144,15 +144,6 @@
         </a>
       </div>
       <div class="item_bottom_icons">
-        <a
-          href="#"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="Add to Cart"
-          class="item_bottom_cart"
-        >
-          <i class="fa fa-cart-plus"></i>
-        </a>
         <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads">
           <i class="fa fa-download"></i>{{ $item->item_sold }}
         </a>

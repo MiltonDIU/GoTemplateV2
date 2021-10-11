@@ -827,16 +827,26 @@ class CommonController extends Controller {
     }
 
 
-    public function view_category_items($type, $id, $slug) {
+    public function view_category_items($id, $slug) {
 
-        $itemData['item'] = Items::with('ratings')
-            ->leftjoin('users', 'users.id', '=', 'items.user_id')
-            ->where('items.item_status', '=', 1)
-            ->where('items.drop_status', '=', 'no')
-            ->where('items.item_category', '=', $id)
-            ->where('items.item_category_type', '=', $type)
-            ->orderBy('items.item_id', 'desc')
-            ->get();
+if ($slug=="all")
+{
+    $itemData['item'] = Items::with('ratings')
+        ->leftjoin('users', 'users.id', '=', 'items.user_id')
+        ->where('items.item_status', '=', 1)
+        ->where('items.drop_status', '=', 'no')
+        ->orderBy('items.item_id', 'desc')
+        ->get();
+}else{
+    $itemData['item'] = Items::with('ratings')
+        ->leftjoin('users', 'users.id', '=', 'items.user_id')
+        ->where('items.item_status', '=', 1)
+        ->where('items.drop_status', '=', 'no')
+        ->where('items.item_type', '=', $slug)
+        ->orderBy('items.item_id', 'desc')
+        ->get();
+}
+
 
         $catData['item'] = Items::getitemcatData();
 
@@ -845,7 +855,7 @@ class CommonController extends Controller {
             'catData' => $catData
         ];
 
-        return view('theme2.shop', compact('data'));
+        return view('theme2.shop_category', compact('data'));
     }
 
 

@@ -31,3 +31,8 @@
             </div>
 
         </header>
+<style>
+    .user-area .user-avatar {
+        margin-top: 6px;
+    }
+</style>
