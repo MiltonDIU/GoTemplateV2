@@ -175,7 +175,8 @@
                     FREE
                   @else
                     <div class="item_view_price">
-                      <i class="fas fa-dollar-sign"></i>
+
+                        <span class="bd-taka">৳</span>
                       <h2 class="price">{{ $item_price }}</h2>
                     </div>
                   @endif
@@ -462,3 +463,20 @@
 @else
   @include('theme2.503')
 @endif
+
+@push('styles')
+<style>
+    .bd-taka {
+        font-size: 14px;
+        color: #14213D;
+        background-color: #FCA311;
+        height: 24px;
+        width: 24px;
+        margin-right: 10px;
+        border-radius: 50%;
+        line-height: 24px;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+    @endpush
