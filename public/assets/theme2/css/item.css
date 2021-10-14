@@ -32,17 +32,27 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.item_view .item_view_overlay .free_item i {
-  font-size: 14px;
-  color: #14213D;
-  background-color: #FCA311;
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  line-height: 24px;
-  text-align: center;
+.item_view .item_view_overlay .free_item i{
+    font-size: 14px;
+    color: #14213D;
+    background-color: #FCA311;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    line-height: 24px;
+    text-align: center;
 }
 
+.item_view .free_item .price{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    position: absolute;
+    top: 14px;
+    left: 44px;
+}
 
 .item_view .paid_item_top .bd-taka {
   position: absolute;

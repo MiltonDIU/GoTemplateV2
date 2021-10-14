@@ -14,7 +14,7 @@
         <div class="item_details">
           @if($item->free_download)
             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item">
-              <i class="fa fa-gift"></i>
+                <i class="fas fa-gift"></i><p class="price">Free</p>
             </a>
           @else
             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">

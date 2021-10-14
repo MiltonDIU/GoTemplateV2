@@ -1,16 +1,16 @@
 @push('styles')
   <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
 @endpush
-
 <div class="col-lg-4 col-sm-12 col-md-6 col-xl-3 {{ isset($item_slider) && $item_slider ? 'w-100' : 'li-items' }}">
   <div class="item_box">
     <div class="item_view">
       <div class="item_view_overlay">
         <div class="item_details">
           @if($item->free_download)
-            <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item">
-              <i class="fa fa-gift"></i>
-            </a>
+                <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item">
+                    <i class="fas fa-gift"></i><p class="price">Free</p>
+                </a>
+
           @else
             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">
               <!-- <i class="fas fa-dollar-sign"></i> -->

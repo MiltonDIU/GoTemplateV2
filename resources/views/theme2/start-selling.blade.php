@@ -86,11 +86,11 @@
 
       <div class="become_vendor_details">
         <p class="sale_page_details">
-          Online content is getting popular really fast. This is an opportunity 
-          for students, teachers and all kinds of professionals. Professionals 
-          can take this opportunity to share their knowledge, skills and expertise 
-          with others. GoTemplate provides all skilled people with an online 
-          platform and all the necessary support to get started with this trend 
+          Online content is getting popular really fast. This is an opportunity
+          for students, teachers and all kinds of professionals. Professionals
+          can take this opportunity to share their knowledge, skills and expertise
+          with others. GoTemplate provides all skilled people with an online
+          platform and all the necessary support to get started with this trend
           and become successful.
         </p>
       </div>
@@ -170,9 +170,9 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Website Templates</h5>
               <p class="sale_item_text">
-                Become an author on GoTemplate and sell WordPress, WooCommerce, Joomla, Drupal, HTML, Bootstrap, 
-                Admin templates, Shopify, Opencart, Magento, PrestaShop templates, and much more. 
-                Your website templates will show off on our top category pages, receive sustainable 
+                Become an author on GoTemplate and sell WordPress, WooCommerce, Joomla, Drupal, HTML, Bootstrap,
+                Admin templates, Shopify, Opencart, Magento, PrestaShop templates, and much more.
+                Your website templates will show off on our top category pages, receive sustainable
                 traffic and sales.
               </p>
             </div>
@@ -182,9 +182,9 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Plugins</h5>
               <p class="sale_item_text">
-                Created a plugin and want to share it with others? Make an upload through your author account 
-                and sell it on TemplateMonster digital marketplace. At the moment, we feature WordPress Plugins, 
-                PrestaShop Modules, Magento Extensions, JavaScript elements, and are open for new niches and 
+                Created a plugin and want to share it with others? Make an upload through your author account
+                and sell it on TemplateMonster digital marketplace. At the moment, we feature WordPress Plugins,
+                PrestaShop Modules, Magento Extensions, JavaScript elements, and are open for new niches and
                 suggestions.
               </p>
             </div>
@@ -194,8 +194,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Presentation</h5>
               <p class="sale_item_text">
-                Are you a talented graphic designer? The digital marketplace is a perfect way to share the 
-                best works in your portfolio and sell them independently. Your logo design, fonts, CV templates, 
+                Are you a talented graphic designer? The digital marketplace is a perfect way to share the
+                best works in your portfolio and sell them independently. Your logo design, fonts, CV templates,
                 certificate designs, illustrations, and other graphics can appear on TemplateMonster shortly.
               </p>
             </div>
@@ -205,8 +205,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Graphics</h5>
               <p class="sale_item_text">
-                Presentation templates are a great way for web and graphic designers to present their 
-                skills to the world. Be it PowerPoint, Keynote, or Google Slides format, feel free to submit 
+                Presentation templates are a great way for web and graphic designers to present their
+                skills to the world. Be it PowerPoint, Keynote, or Google Slides format, feel free to submit
                 your design, and let's see it in the listings.
               </p>
             </div>
@@ -216,8 +216,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Audios and Videos</h5>
               <p class="sale_item_text">
-                Have you made lots of stock video and audio files? Rest assured that you're sitting on a 
-                gold mine that will bring you a great passive income. Upload your stock media right now and 
+                Have you made lots of stock video and audio files? Rest assured that you're sitting on a
+                gold mine that will bring you a great passive income. Upload your stock media right now and
                 start making a fortune.
               </p>
             </div>
@@ -241,35 +241,35 @@
     <div class="apply_steps">
       <div class="container">
         <div class="row apply_steps_xs">
-          <div class="col col-lg-4 col-sm-6 col-md-6">
+            <div class="offset-lg-1 col-lg-2 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="step_number">1</p>
               <p class="steps_details">Complete your registration as a vendor</p>
             </div>
           </div>
 
-          <div class="col col-lg-4 col-sm-6 col-md-6">
+            <div class="col-lg-2 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Log in to your account and upload your product</p>
               <p class="step_number">2</p>
             </div>
           </div>
 
-          <div class="col col-lg-4 col-sm-6 col-md-6">
+            <div class="col-lg-2 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Submit your request for product upload by filling out details.</p>
               <p class="step_number">3</p>
             </div>
           </div>
 
-          <div class="col col-lg-4 col-sm-6 col-md-6">
+            <div class="col-lg-2 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">Our system will review your product and publish after review</p>
               <p class="step_number">4</p>
             </div>
           </div>
 
-          <div class="col col-lg-4 col-sm-6 col-md-6">
+            <div class="col-lg-2 col-sm-6 col-md-6">
             <div class="steps_main">
               <p class="steps_details">See your product online and start making sales!</p>
               <p class="step_number">5</p>
@@ -301,8 +301,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Passionate</h5>
               <p class="sale_item_text">
-                Have you made lots of stock video and audio files? Rest assured that you're sitting on 
-                a gold mine that will bring you a great passive income. Upload your stock media right 
+                Have you made lots of stock video and audio files? Rest assured that you're sitting on
+                a gold mine that will bring you a great passive income. Upload your stock media right
                 now and start making a fortune.
               </p>
             </div>
@@ -312,8 +312,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Facilitators</h5>
               <p class="sale_item_text">
-                Have you made lots of stock video and audio files? Rest assured that you're sitting on a 
-                gold mine that will bring you a great passive income. Upload your stock media right now 
+                Have you made lots of stock video and audio files? Rest assured that you're sitting on a
+                gold mine that will bring you a great passive income. Upload your stock media right now
                 and start making a fortune.
               </p>
             </div>
@@ -323,8 +323,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Open Minded</h5>
               <p class="sale_item_text">
-                Have you made lots of stock video and audio files? Rest assured 
-                that you're sitting on a gold mine that will bring you a great passive income. 
+                Have you made lots of stock video and audio files? Rest assured
+                that you're sitting on a gold mine that will bring you a great passive income.
                 Upload your stock media right now and start making a fortune.
               </p>
             </div>
@@ -334,8 +334,8 @@
             <div class="sale_item_box">
               <h5 class="sale_item_title">Willing to work as outsource</h5>
               <p class="sale_item_text">
-                Have you made lots of stock video and audio files? Rest assured that you're sitting on 
-                a gold mine that will bring you a great passive income. Upload your stock media right 
+                Have you made lots of stock video and audio files? Rest assured that you're sitting on
+                a gold mine that will bring you a great passive income. Upload your stock media right
                 now and start making a fortune.
               </p>
             </div>
