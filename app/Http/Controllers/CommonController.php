@@ -2,6 +2,7 @@
 
 namespace Feberr\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Feberr\Models\Members;
 use Feberr\Models\Settings;
@@ -717,17 +718,18 @@ class CommonController extends Controller {
 
         $sid = 1;
         $setting['setting'] = Settings::editGeneral($sid);
-
         if ($setting['setting']->site_flash_end_date < date("Y-m-d")) {
             $data = array('item_flash' => 0);
             Items::updateFlash($data);
         }
 
         $catData = Items::getitemcatData();
+ $flashDate= \Carbon\Carbon::parse($setting['setting']->site_flash_end_date)->format('M d, Y');
 
         $data = array(
             "itemData"=> $itemData,
-            "catData"=> $catData
+            "catData"=> $catData,
+            "flashDate"=>$flashDate
         );
 
         return view('theme2.flash-sale', compact('data'));
