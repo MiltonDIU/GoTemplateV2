@@ -189,13 +189,59 @@
               <ul id="r_license">
                 <li><i class="fas fa-check"></i>Quality checked by GoTemplate</li>
 
-                @if($item->extended_licence)
-                  @foreach(explode(",",$item->extended_licence) as $licence)
-                    <li>
+
+<span class="item-features-show-hide" id="licence_regular">
+      @if($item->regular_licence)
+        @foreach(explode(",",$item->regular_licence) as $licence)
+            <li>
                       <i class="fas fa-check"></i>{{$licence}}
                     </li>
-                  @endforeach
-                @endif
+        @endforeach
+    @endif
+
+</span>
+
+
+                  <span class="item-features-show-hide" id="licence_extended">
+      @if($item->extended_licence)
+                          @foreach(explode(",",$item->extended_licence) as $licence)
+                              <li>
+                      <i class="fas fa-check"></i>{{$licence}}
+                    </li>
+                          @endforeach
+                      @endif
+
+</span>
+
+
+{{--                  <li>--}}
+
+{{--                      <div class="item-features" id="licence_regular">--}}
+{{--                  @if($item->regular_licence)--}}
+{{--                      @foreach(explode(",",$item->regular_licence) as $licence)--}}
+{{--                          <li>--}}
+{{--                              <i class="fas fa-check"></i>{{$licence}}--}}
+{{--                          </li>--}}
+{{--                @endforeach--}}
+
+{{--                      </div>--}}
+
+{{--                      <div class="item-features" id="licence_extended" style="display: none">--}}
+{{--                          @if($item->extended_licence)--}}
+{{--                              @foreach(explode(",",$item->extended_licence) as $licence)--}}
+{{--                                  <li>--}}
+{{--                                      <i class="fas fa-check"></i>{{$licence}}--}}
+{{--                                  </li>--}}
+{{--                              @endforeach--}}
+{{--                      </div>--}}
+
+{{--                  </li>--}}
+
+
+
+
+
+
 
                 @if($item->future_update == 1)
                   <li><i class="fas fa-check"></i>{{ Helper::translation(3069,$translate) }}</li>
@@ -205,7 +251,14 @@
 
                 @if($item->item_support == 1)
                   <li>
-                    <i class="fas fa-check"></i>12 months support from
+                    <i class="fas fa-check"></i>
+                      <span class="item-features-show-hide2" id="licence2_regular">
+                            6 months support from
+                      </span>
+                      <span class="item-features-show-hide2" id="licence2_extended">
+                            12 months support from
+                      </span>
+
                     <a href="{{ URL::to('/user') }}/{{ $item->username }}">
                       {{ $item->name }}
                     </a>
@@ -449,14 +502,32 @@
       var licence = $(this).val();
       const licence_type = licence.split('_');
 
-      //console.log('licence=====', licence_type[1]); // extended, regular
+      console.log('licence=====', licence_type[1]); // extended, regular
 
       var price = licence_type[1] === 'extended' ? <?php echo $extend_item_price; ?> : <?php echo $item_price; ?>;
 
       $('.item_view_price .price').empty().append(`<h2 class="price">${price}</h2>`);
+
+        $("span.item-features-show-hide").hide();
+        $("#licence_" + licence_type[1]).show();
+        $("span.item-features-show-hide2").hide();
+        $("#licence2_" + licence_type[1]).show();
     });
   });
 </script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--        $("input[name$='item_price']").click(function() {--}}
+{{--            var licence = $(this).val();--}}
+{{--            const licence_type = licence.split('_');--}}
+{{--            //console.log(licence_type[1]);--}}
+{{--            $("div.item-features").hide();--}}
+{{--            $("#licence_" + licence_type[1]).show();--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
 
 @endsection
 
@@ -478,5 +549,6 @@
         text-align: center;
         font-weight: bold;
     }
+    #licence2_extended{display: none}
 </style>
     @endpush
