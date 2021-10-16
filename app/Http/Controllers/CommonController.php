@@ -731,7 +731,6 @@ class CommonController extends Controller {
             "catData"=> $catData,
             "flashDate"=>$flashDate
         );
-
         return view('theme2.flash-sale', compact('data'));
     }
 
@@ -930,7 +929,6 @@ if ($slug=="all")
         $badges['setting'] = Settings::editBadges($sid);
 
         $item['item'] = Items::singleitemData($item_slug, $item_id);
-
         $membership = date('m/d/Y', strtotime($item['item']->created_at));
         $membership_date = explode("/", $membership);
         $year = (date("md", date("U", mktime(0, 0, 0, $membership_date[0], $membership_date[1], $membership_date[2]))) > date("md")

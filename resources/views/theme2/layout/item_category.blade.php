@@ -3,7 +3,7 @@
 
     @foreach($items as $item)
         <div
-            class="mix item_box {{ $item->item_type }} {{$item->regular_price != 0 ? 'premium' : 'free'}}"
+            class="mix item_box {{ $item->item_type }} {{$item->free_download == 1 ? 'free' : 'premium'}}"
             data-price="{{ $item->regular_price }}"
             data-published-date="{{ $item->created_at }}"
         >
@@ -13,7 +13,7 @@
 
                         @if($item->free_download)
                             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="free_item">
-                                <i class="fa fa-gift"></i>
+                                <i class="fas fa-gift"></i><p class="price">Free</p>
                             </a>
                         @else
                             <a href="{{ URL::to('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" class="paid_item_top">
@@ -122,7 +122,6 @@
                     <img class="item_view_img" src="{{ url('/') }}/public/img/no-image.jpg" alt="{{ $item->item_name }}">
                 @endif
             </div>
-
             <div class="item_bottom">
                 <div class="author_details">
                     <div class="item_author_img">
@@ -156,10 +155,7 @@
                     </a>
                 </div>
             </div>
-
         </div>
-
-
     @endforeach
 
 </div>

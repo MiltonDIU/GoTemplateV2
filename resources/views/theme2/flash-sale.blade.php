@@ -1,129 +1,149 @@
 @if($allsettings->maintenance_mode == 0)
-
-@extends('theme2.layout.master')
-
-@push('styles')
-  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/flash-sale.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
-@endpush
-
+    @extends('theme2.layout.master')
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/flash-sale.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
+    @endpush
 @section('content')
+    @php
+        $items = $data['itemData']['item'];
+        $cats = $data['catData'];
+    @endphp
+    <!-- Flash banner start -->
+    <section id="flash_banner">
+        <div class="container">
+            <h1 class="page_banner_title">Free Items</h1>
+            <h2 class="page_banner_description">Download these files before they are gone</h2>
 
-@php
-  $items = $data['itemData']['item'];
-  $cats = $data['catData'];
-@endphp
+            <div class="row">
+                <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">
+                    <!-- counter start -->
+                    <div id="getting-started" class="flash_counter">
+                        <div class="count_time">
+                            <p id="days" class="count_number"></p>
+                            <p class="count_text">Days</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="hours" class="count_number"></p>
+                            <p class="count_text">Hours</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="minutes" class="count_number"></p>
+                            <p class="count_text">Minutes</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="seconds" class="count_number"></p>
+                            <p class="count_text">Seconds</p>
+                        </div>
+                    </div>
+                    <h3 id="expired"></h3>
+                    <!-- counter end -->
+                </div>
 
-<!-- Flash banner start -->
-<section id="flash_banner">
-  <div class="container">
-    <h1 class="page_banner_title">Flash Sale</h1>
-    <h2 class="page_banner_description">Only for a short period of time you can grab these files with 50% discount</h2>
 
-    <div class="row">
-      <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">
-        <!-- counter start -->
-        <div id="getting-started" class="flash_counter">
-          <div class="count_time">
-            <p id="days" class="count_number"></p>
-            <p class="count_text">Days</p>
-          </div>
-          <div class="count_time">
-            <p id="hours" class="count_number"></p>
-            <p class="count_text">Hours</p>
-          </div>
-          <div class="count_time">
-            <p id="minutes" class="count_number"></p>
-            <p class="count_text">Minutes</p>
-          </div>
-          <div class="count_time">
-            <p id="seconds" class="count_number"></p>
-            <p class="count_text">Seconds</p>
-          </div>
+            </div>
         </div>
-          <h3 id="expired"></h3>
-        <!-- counter end -->
-      </div>
+    </section>
+    <!-- Flash banner end -->
+
+    <section id="all_category">
+        <div class="container">
+            <ul class="controls main_category">
+                <li class="control category_button" data-filter="all">All</li>
+
+                @foreach($cats as $cat)
+                    <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
+                @endforeach
+            </ul>
+            @include('theme2.layout.filter2')
+            @include('theme2.layout.item_category',['items'=>$items])
 
 
-    </div>
-  </div>
-</section>
-<!-- Flash banner end -->
-
-@if($items->all())
-  <!-- category start -->
-  <section id="flash_category">
-    <!-- container start -->
-    <div class="container">
-      <!-- category buttons start -->
-      <ul class="controls main_category">
-        <li class="control category_button" data-filter="all">All</li>
-
-        @foreach($cats as $cat)
-          <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
-        @endforeach
-      </ul>
-      <!-- category buttons end -->
-
-      <!-- sort start -->
-      <div class="controls sort_main">
-        <div class="sort_group">
-          <p class="sort_title">Sort by price:</p>
-          <button type="button" class="control sort_btn" data-sort="price:asc">Low to High</button>
-          <button type="button" class="control sort_btn" data-sort="price:desc">High to Low</button>
         </div>
+    </section>
 
-        <div class="sort_group">
-          <p class="sort_title">Sort by date:</p>
-          <button type="button" class="control sort_btn" data-sort="published-date:desc">Latest First</button>
-          <button type="button" class="control sort_btn" data-sort="published-date:asc">Oldest First</button>
-        </div>
-      </div>
-      <!-- sort end -->
-    </div>
-    <!-- container end -->
-  </section>
-  <!-- category end -->
+    <script src="{{ asset('public/assets/theme2/js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('public/assets/theme2/js/mixitup.min.js') }}"></script>
 
+    <script type="text/javascript">
+        const mixContainerEl        = $('#mix-container');
+        const filterPriceSelectEl   = $('#filter_p');
+        const filterTypeSelectEl    = $('#filter_t');
+        const filterLicenceSelectEl = $('#filter_l');
+        const inputSearchEl         = $('#filter_s');
 
-  <!-- product container start -->
-  <section id="product_container">
-    <!-- container start -->
-    <div class="container">
+        let keyupTimeout;
 
-      <!-- mix container start -->
-      <div class="mix_container">
+        const mixer = mixitup(mixContainerEl, {
+            animation: {
+                duration: 350
+            },
+            callbacks: {
+                onMixClick: function() {
+                    // Reset the search if a filter is clicked
+                    if (this.matches('[data-filter]')) {
+                        inputSearchEl.val('');
+                    }
+                }
+            }
+        });
 
-        <div class="row">
-          @foreach($items->all() as $item)
-                @include('theme2.layout.item_flash_sale',['item'=>$item])
-          @endforeach
-        </div>
+        inputSearchEl.on('keyup', function() {
+            let searchValue;
 
-      </div>
-      <!-- mix container end -->
-    </div>
-    <!-- container end -->
-  </section>
-  <!-- product container end -->
-@endif
+            if ($(this).val().length < 3) {
+                // If the input value is less than 3 characters, don't send
+                searchValue = '';
+            } else {
+                searchValue = $(this).val().toLowerCase().trim();
+            }
 
-<script src="{{ asset('public/assets/theme2/js/mixitup.min.js') }}"></script>
+            // Very basic throttling to prevent mixer thrashing. Only search
+            // once 350ms has passed since the last keyup event
 
-<script type="text/javascript">
-  var containerEl = document.querySelector('.mix_container');
-  var mixer = mixitup(containerEl);
-</script>
+            clearTimeout(keyupTimeout);
 
-@endsection
+            keyupTimeout = setTimeout(function() {
+                filterByString(searchValue);
+            }, 350);
+        });
 
-@else
-  @include('theme2.503')
-@endif
+        /**
+         * Filters the mixer using a provided search string, which is matched against
+         * the contents of each target's "class" attribute. Any custom data-attribute(s)
+         * could also be used.
+         *
+         * @param  {string} searchValue
+         * @return {void}
+         */
 
-@push('script')
-    <!-- Display the countdown timer in an element -->
+        function filterByString(searchValue) {
+            if (searchValue) {
+                // Use an attribute wildcard selector to check for matches
+
+                mixer.filter('[class*="' + searchValue + '"]');
+            } else {
+                // If no searchValue, treat as filter('all')
+
+                mixer.filter('all');
+            }
+        }
+
+        filterPriceSelectEl.on('change', function() {
+            mixer.sort(this.value);
+        });
+
+        filterTypeSelectEl.on('change', function() {
+            mixer.filter(this.value);
+        });
+
+        filterLicenceSelectEl.on('change', function() {
+            mixer.filter(this.value);
+        });
+
+        // var containerEl = document.querySelector('.mix_container');
+        // var mixer = mixitup(containerEl);
+    </script>
 
     <script>
         // Set the date we're counting down to
@@ -153,8 +173,12 @@
             // If the count down is finished, write some text
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("expired").innerHTML = "There is currently no flash sale";
+                document.getElementById("expired").innerHTML = "There is currently no flash item";
             }
         }, 1000);
     </script>
-@endpush
+@endsection
+
+@else
+    @include('theme2.503')
+@endif

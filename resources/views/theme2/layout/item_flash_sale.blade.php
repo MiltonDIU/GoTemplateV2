@@ -4,7 +4,7 @@
 
 
 <div
-    class="mix scripts item_box {{ $item->item_type }}"
+    class="mix item_box {{ $item->item_type }} {{$item->free_download == 1 ? 'free' : 'premium'}}"
     data-price="{{ $item->regular_price/2 }}"
     data-published-date="{{ $item->created_at }}"
 >
