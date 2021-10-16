@@ -1,74 +1,145 @@
 @if($allsettings->maintenance_mode == 0)
 
-@extends('theme2.layout.master')
+    @extends('theme2.layout.master')
+
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/flash-sale.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/theme2/css/item.css') }}">
+    @endpush
 
 @section('content')
-<section class="hero-area bgimage d-flex flex-center">
-  <div class="bg_image_holder">
-    <img src="{{ url('/') }}/public/storage/settings/{{ $allsettings->site_banner }}" alt="{{ $allsettings->site_title }}">
-  </div>
-  <div class="bg-overlay"></div>
 
-  <div class="container content_above">
-    <div class="row jplist-panel">
-      <div class="col-md-8 offset-md-2">
-        <div class="search">
-          <div class="search__title">
-            <h3>{{ Helper::translation(3016,$translate) }}</h3>
-            <h4 class="mt-3 pt-3 text--white">{{ Helper::translation(3017,$translate) }}</h4>
-          </div>
-          <div class="countdown-timer">
-            <ul id="example">
-              <li class="pt-2 pb-1 mb-2"><span class="days">00</span>
-                <div>{{ Helper::translation(2995,$translate) }}</div>
-              </li>
-              <li class="pt-2 pb-1 mb-2"><span class="hours">00</span>
-                <div>{{ Helper::translation(2996,$translate) }}</div>
-              </li>
-              <li class="pt-2 pb-1 mb-2"><span class="minutes">00</span>
-                <div>{{ Helper::translation(2997,$translate) }}</div>
-              </li>
-              <li class="pt-2 pb-1 mb-2"><span class="seconds">00</span>
-                <div>{{ Helper::translation(2998,$translate) }}</div>
-              </li>
-            </ul>
-          </div>
+    @php
+        $items = $data['itemData']['item'];
+        $cats = $data['catData'];
+    @endphp
 
+    <!-- Flash banner start -->
+    <section id="flash_banner">
+        <div class="container">
+            <h1 class="page_banner_title">Free Items</h1>
+            <h2 class="page_banner_description">Download these files before they are gone</h2>
+
+            <div class="row">
+                <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">
+                    <!-- counter start -->
+                    <div id="getting-started" class="flash_counter">
+                        <div class="count_time">
+                            <p id="days" class="count_number"></p>
+                            <p class="count_text">Days</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="hours" class="count_number"></p>
+                            <p class="count_text">Hours</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="minutes" class="count_number"></p>
+                            <p class="count_text">Minutes</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="seconds" class="count_number"></p>
+                            <p class="count_text">Seconds</p>
+                        </div>
+                    </div>
+                    <h3 id="expired"></h3>
+                    <!-- counter end -->
+                </div>
+
+
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+    <!-- Flash banner end -->
 
-<div class="container">
-  <div class="row" id="listShow">
-    @foreach($data['item'] as $item)
-      @include('theme2.layout.item', [
-        "item" => $item
-      ])
-    @endforeach
-  
-    <div class="pagination-area">
-      <div class="turn-page" id="blogpager"></div>
-    </div>
-  </div>
-</div>
+    @if($items->all())
+        <!-- category start -->
+        <section id="flash_category">
+            <!-- container start -->
+            <div class="container">
+                <!-- category buttons start -->
+                <ul class="controls main_category">
+                    <li class="control category_button" data-filter="all">All</li>
 
-@if(!empty($allsettings->site_free_end_date))
-<script type="text/javascript">
-  $('#example').countdown({
-    date: '{{ date("m/d/Y H:i:s", strtotime($allsettings->site_free_end_date)) }}',
-    offset: -8,
-    day: 'Day',
-    days: 'Days'
-  }, function () {
+                    @foreach($cats as $cat)
+                        <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
+                    @endforeach
+                </ul>
+                <!-- category buttons end -->
 
-  });
-</script>
-@endif
+            </div>
+            <!-- container end -->
+        </section>
+        <!-- category end -->
+
+
+        <!-- product container start -->
+        <section id="product_container">
+            <!-- container start -->
+            <div class="container">
+
+                <!-- mix container start -->
+                <div class="mix_container">
+
+                    <div class="row">
+                        @foreach($items->all() as $item)
+                            @include('theme2.layout.item_flash_sale',['item'=>$item])
+                        @endforeach
+                    </div>
+
+                </div>
+                <!-- mix container end -->
+            </div>
+            <!-- container end -->
+        </section>
+        <!-- product container end -->
+    @endif
+
+    <script src="{{ asset('public/assets/theme2/js/mixitup.min.js') }}"></script>
+
+    <script type="text/javascript">
+        var containerEl = document.querySelector('.mix_container');
+        var mixer = mixitup(containerEl);
+    </script>
 
 @endsection
 
 @else
-  @include('theme2.503')
+    @include('theme2.503')
 @endif
+
+@push('script')
+    <!-- Display the countdown timer in an element -->
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("{{$data['freeDate']}} 12:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("expired").innerHTML = "There is currently no free item";
+            }
+        }, 1000);
+    </script>
+@endpush

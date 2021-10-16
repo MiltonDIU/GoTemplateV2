@@ -90,6 +90,7 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('ssl_transaction.list') }}",
+
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
@@ -97,10 +98,9 @@
                 {data: 'phone', name: 'phone'},
                 {data: 'amount', name: 'amount'},
                 {data: 'transaction_id', name: 'transaction_id'},
-                { data: 'created_at',
-                    type: 'num',
-                    render: {
-                        sort: 'timestamp'
+                { "data": "created_at",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<span>"+ new Date(oData.created_at).toDateString()+"</span>");
                     }
                 },
                 {data: 'status', name: 'status'},
@@ -114,3 +114,4 @@
     });
 </script>
 </body>
+

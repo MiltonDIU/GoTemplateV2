@@ -747,9 +747,14 @@ class CommonController extends Controller {
             $data = array('free_download' => 0);
             Items::updateFree($data);
         }
+        $catData = Items::getitemcatData();
+        $freeDate= \Carbon\Carbon::parse($setting['setting']->site_free_end_date)->format('M d, Y');
 
-        $data = $itemData;
-
+        $data = array(
+            "itemData"=> $itemData,
+            'catData' =>$catData,
+            "freeDate"=>$freeDate
+        );
         return view('theme2.free-items', compact('data'));
     }
 

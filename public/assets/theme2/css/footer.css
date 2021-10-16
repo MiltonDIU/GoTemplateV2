@@ -56,7 +56,7 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
-  color: #555;
+  color: white;
 }
 
 #footer .footer_main .footer_link .all_links a {
@@ -73,50 +73,53 @@
   color: #FCA311;
 }
 
-#footer .footer_main .newsletter_details {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 27px;
-  margin-bottom: 38px;
-}
-#footer .footer_main .newsletter form {
-  position: relative;
-}
-#footer .footer_main .newsletter .footer_subscribe {
-  border: none;
-  height: 40px;
-  width: 60%;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  padding-left: 14px;
-}
-#footer .footer_main .newsletter .footer_subscribe:focus {
-  outline:none;
-}
-#footer .footer_main .newsletter .subscribe_button {
-  background-color: #FCA311;
-  border: none;
-  border-radius: 0 40px 40px 0;
-  position: absolute;
-  color: #14213D;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  height: 40px;
-  padding: 0 14px 0 10px;
-  right: 0;
-  top: 0;
-  transition: all linear .3s;
-  width: 40%;
-}
-#footer .footer_main .newsletter .subscribe_button:hover {
-  color: #fff;
+footer .footer_main .newsletter_details{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 27px;
+    margin-bottom: 38px;
+    color: white;
 }
 
+footer .footer_main .newsletter form{
+    position: relative;
+}
+
+footer .footer_main .newsletter .footer_subscribe{
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 14px;
+}
+
+footer .footer_main .newsletter .footer_subscribe:focus{
+    outline:none;
+}
+
+footer .footer_main .newsletter .subscribe_button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 40px;
+    border-radius: 0 40px 40px 0;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0 14px 0 10px;
+    background-color: #FCA311;
+    color: #14213D;
+    transition: all linear .3s;
+}
+
+footer .footer_main .newsletter .subscribe_button:hover{
+    color: #fff;
+}
 #footer .footer_copyright {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
