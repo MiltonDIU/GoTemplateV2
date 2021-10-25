@@ -12,8 +12,8 @@
     <!-- Flash banner start -->
     <section id="flash_banner">
         <div class="container">
-            <h1 class="page_banner_title">Free Items</h1>
-            <h2 class="page_banner_description">Download these files before they are gone</h2>
+            <h1 class="page_banner_title">{{ Helper::translation(2993,$translate) }}</h1>
+            <h2 class="page_banner_description">{{ Helper::translation(2994,$translate) }}</h2>
 
             <div class="row">
                 <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">

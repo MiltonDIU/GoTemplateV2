@@ -116,7 +116,16 @@
                                                         <a class="title text-truncate p-0" style="width: 100%;" href="{{ url('/item') }}/{{ $cart->item_slug }}/{{ $cart->item_id }}">
                                                             {{ $cart->item_name }}
                                                         </a>
-                                                        <p>{{ $allsettings->site_currency }} {{ $cart->item_price }}</p>
+
+                                                        <p>
+    @if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d'))
+        Free
+    @else
+        {{ $allsettings->site_currency }}
+        {{ $cart->item_price }}
+    @endif
+
+                                                        </p>
                                                     </div>
 
                                                     <div class="col-2 flex-center px-0">
@@ -126,7 +135,15 @@
                                                     </div>
                                                 </div>
 
-                                                @php $subtotal += $cart->item_price; @endphp
+                                                @php
+                                                    if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d')){
+     $subtotal += 0;
+}else{
+    $subtotal += $cart->item_price;
+}
+
+
+                                                @endphp
                                             @endforeach
 
                                             <div class="total px-4">
@@ -340,12 +357,12 @@
                             <div class="contact_main">
                                 <div class="contact_details">
                                     <i class="fa fa-phone"></i>
-                                    <a href="tel:+8801811458897">+88 01811458897</a>
+                                    <a href="tel:+8801847334879">+88 01847334879</a>
                                 </div>
 
                                 <div class="contact_details">
                                     <i class="fa fa-envelope"></i>
-                                    <a href="mailto:info@gotemplate.net">info@gotemplate.net</a>
+                                    <a href="mailto:operation@gotemplate.net">operation@gotemplate.net</a>
                                 </div>
                             </div>
                         </div>

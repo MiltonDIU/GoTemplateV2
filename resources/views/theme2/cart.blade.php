@@ -110,25 +110,43 @@
                         @endphp
 
                         @if($cart->discount_price != 0)
-                          <span>{{ $price }} {{ $allsettings->site_currency }}</span>
+                          <span>
+                                  @if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d'))
+                                  Free
+                              @else
+                                  {{ $price }}
+
+                                  {{ $allsettings->site_currency }}
+                              @endif
+                          </span>
                         @endif
 
                         <span @if($cart->discount_price != 0) class="cross-line" @endif>
-                          {{ $cart->item_price }} {{ $allsettings->site_currency }}
+                                @if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d'))
+                                Free
+                            @else
+                                {{ $allsettings->site_currency }}
+                                {{ $cart->item_price }}
+                            @endif
                         </span>
+
                       </td>
 
                       <td class="cart_item_details remove_icon">
-                        <a 
-                          href="{{ url('/cart') }}/{{ base64_encode($cart->ord_id) }}" 
+                        <a
+                          href="{{ url('/cart') }}/{{ base64_encode($cart->ord_id) }}"
                           onClick="return confirm('{{ Helper::translation(2892,$translate) }}');"
                         >
                           <i class="fas fa-trash"></i>
                         </a>
                       </td>
                     </tr>
-
-                    @php $subtotal += $cart->item_price; @endphp
+                    @if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d'))
+                        @php $subtotal += 0; @endphp
+                    @else
+                        @php $subtotal += $cart->item_price; @endphp
+                    @endif
+{{--                    @php $subtotal += $cart->item_price; @endphp--}}
                   @endforeach
 
                 </tbody>
@@ -164,10 +182,10 @@
                       <span>{{ Helper::translation(2895,$translate) }}</span>
                       <span class="fs14 green">
                         ( {{ Helper::translation(2866,$translate) }} : <strong>{{ $coupon_code }}</strong> )
-                        <a 
-                          href="{{ URL::to('/cart/') }}/remove/{{ $coupon_code }}" 
-                          class="red fs14" 
-                          onClick="return confirm('{{ Helper::translation(2892,$translate) }}');" 
+                        <a
+                          href="{{ URL::to('/cart/') }}/remove/{{ $coupon_code }}"
+                          class="red fs14"
+                          onClick="return confirm('{{ Helper::translation(2892,$translate) }}');"
                           title="Remove"
                         >
                           <i class="fa fa-remove"></i>

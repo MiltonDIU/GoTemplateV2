@@ -74,34 +74,46 @@
                           {{ $cart->item_name }}
                         </a>
                         <p class="order_item_text order_item_price">
-                          {{ $cart->item_price }} {{ $allsettings->site_currency }}
+                            @if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d'))
+                                Free
+                            @else
+                                {{ $allsettings->site_currency }}
+                                {{ $cart->item_price }}
+                            @endif
                         </p>
                       </li>
 
                       @php
-                        $subtotal       += $cart->item_price;
-                        $order_id       .= $cart->ord_id.',';
-                        $item_price     .= $cart->item_price.',';
-                        $item_userid    .= $cart->item_user_id.',';
-                        $item_user_type .= $cart->exclusive_author;
-                        $amount_price    = $subtotal;
-                        $single_price    = $cart->item_price;
-
-                        if($cart->discount_price != 0) {
-                          $price = $cart->discount_price;
-                          $new_price += $cart->discount_price;
-                          $coupon_code = $cart->coupon_code;
-                        }else {
-                          $price = $cart->item_price;
-                          $new_price += $cart->item_price;
-                          $coupon_code = "";
+                          if($cart->free_download==1 and ($allsettings->site_free_end_date)>date('Y-m-d')){
+                            $subtotal       +=  0;
+                             $item_price     .= '0'.',';
+                             $single_price    = 0;
+                        }else{
+                            $subtotal       +=  $cart->item_price;
+                             $item_price     .= $cart->item_price.',';
+                             $single_price    = $cart->item_price;
                         }
+                            $order_id       .= $cart->ord_id.',';
+                            $item_userid    .= $cart->item_user_id.',';
+                            $item_user_type .= $cart->exclusive_author;
+                            $amount_price    = $subtotal;
 
-                        if($item_user_type == 1) {
-                          $commission +=($price * $allsettings->site_exclusive_commission) / 100;
-                        }else {
-                          $commission +=($price * $allsettings->site_non_exclusive_commission) / 100;
-                        }
+
+                            if($cart->discount_price != 0) {
+                              $price = $cart->discount_price;
+                              $new_price += $cart->discount_price;
+                              $coupon_code = $cart->coupon_code;
+                            }else {
+                              $price = $cart->item_price;
+                              $new_price += $cart->item_price;
+                              $coupon_code = "";
+                            }
+
+                            if($item_user_type == 1) {
+                              $commission +=($price * $allsettings->site_exclusive_commission) / 100;
+                            }else {
+                              $commission +=($price * $allsettings->site_non_exclusive_commission) / 100;
+                            }
                       @endphp
 
                     @endforeach
@@ -169,6 +181,7 @@
 
                   <ul>
                     @foreach($get_payment as $payment)
+                        @if($final>0)
                       <li class="d-flex align-items-center justify-content-between" @if($payment=='paystack' ) @if($allsettings->site_currency != 'NGN') style="display:none;" @endif @endif>
                         <div class="method_select custom-radio capital">
                           <input type="radio" id="opt1-{{ $payment }}" value="{{ $payment }}" @if($no==1) checked @endif name="payment_method" data-bvalidator="required">
@@ -216,7 +229,24 @@
                           </div>
                         @endif
                       </li>
-
+                          @else
+                            @if($payment=='wallet')
+                              <li class="d-flex align-items-center justify-content-between" @if($payment=='paystack' ) @if($allsettings->site_currency != 'NGN') style="display:none;" @endif @endif>
+                                  <div class="method_select custom-radio capital">
+                                      <input type="radio" id="opt1-{{ $payment }}" value="{{ $payment }}" @if($no==1) checked @endif name="payment_method" data-bvalidator="required">
+                                      <label for="opt1-{{ $payment }}" @if($payment=='paystack' ) @if($allsettings->site_currency != 'NGN')
+                                      style="display:none;"
+                                          @endif
+                                          @endif
+                                      >
+                                          <span class="circle"></span>{{ $payment }} @if($payment == 'wallet') ({{ $allsettings->site_currency }} {{ Auth::user()->earnings }}) @endif</label>
+                                  </div>
+                                  @if($payment == 'wallet')
+                                      <img src="{{ url('/') }}/public/img/wallet.png" alt="{{ $payment }}" height="50">
+                                  @endif
+                              </li>
+                              @endif
+                          @endif
                       @php $no++; @endphp
                     @endforeach
                   </ul>
