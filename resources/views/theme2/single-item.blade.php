@@ -246,9 +246,10 @@
                 @if($item->future_update == 1)
                   <li><i class="fas fa-check"></i>{{ Helper::translation(3069,$translate) }}</li>
                 @else
-                  <li><i class="fas fa-check"></i>{{ Helper::translation(3069,$translate) }}</li>
-                @endif
 
+                  <li><i class="fas fa-check"></i>{{ Helper::translation(3069,$translate) }}</li>
+
+                @endif
                 @if($item->item_support == 1)
                   <li>
                     <i class="fas fa-check"></i>
@@ -263,13 +264,14 @@
                       {{ $item->name }}
                     </a>
                   </li>
-                @else
-                  <li>
-                    <i class="fas fa-check"></i>{{ Helper::translation(3070,$translate) }}
-                    <a href="{{ URL::to('/user') }}/{{ $item->username }}">
-                      {{ $item->name }}
-                    </a>
-                  </li>
+{{--                @else--}}
+
+{{--                  <li>--}}
+{{--                    <i class="fas fa-check"></i>{{ Helper::translation(3070,$translate) }}--}}
+{{--                    <a href="{{ URL::to('/user') }}/{{ $item->username }}">--}}
+{{--                      {{ $item->name }}--}}
+{{--                    </a>--}}
+{{--                  </li>--}}
                 @endif
 
               </ul>

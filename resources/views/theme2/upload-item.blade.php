@@ -305,9 +305,9 @@
                   <label for="selected">{{ Helper::translation(2969,$translate) }} <sup>*</sup></label>
                   <div class="select-wrap select-wrap2">
                     <select name="free_download" id="free_download" class="text_field" data-bvalidator="required">
-                      <option value=""></option>
+{{--                        <option value=""></option>--}}
+                        <option value="0" @if(old('free_download') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                       <option value="1" @if(old('free_download') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
-                      <option value="0" @if(old('free_download') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                     </select>
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -317,9 +317,10 @@
                   <label for="selected">{{ Helper::translation(2972,$translate) }}</label>
                   <div class="select-wrap select-wrap2">
                     <select name="item_flash_request" id="item_flash_request" class="text_field">
-                      <option value=""></option>
+{{--                      <option value=""></option>--}}
+                        <option value="0" @if(old('item_flash_request') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
                       <option value="1" @if(old('item_flash_request') == "1") {{ 'selected' }} @endif>{{ Helper::translation(2970,$translate) }}</option>
-                      <option value="0" @if(old('item_flash_request') == "0") {{ 'selected' }} @endif>{{ Helper::translation(2971,$translate) }}</option>
+
                     </select>
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -400,7 +401,7 @@
                       <label for="rlicense">{{ Helper::translation(2979,$translate) }}<sup>*</sup></label>
                       <div class="input-group">
                         <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                        <input type="text" id="regular_price" name="regular_price" value="{{ old('regular_price') }}" class="text_field" data-bvalidator="digit,min[1],required">
+                        <input type="text" id="regular_price" name="regular_price" value="{{ old('regular_price') }}" class="text_field" data-bvalidator="digit,min[0],required">
                       </div>
                     </div>
                   </div>
@@ -411,7 +412,7 @@
                       <label for="exlicense">{{ Helper::translation(2980,$translate) }}</label>
                       <div class="input-group">
                         <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                        <input type="text" id="extended_price" name="extended_price" value="{{ old('extended_price') }}" class="text_field" data-bvalidator="digit,min[1]">
+                        <input type="text" id="extended_price" name="extended_price" value="{{ old('extended_price') }}" class="text_field" data-bvalidator="digit,min[0]">
                       </div>
                     </div>
                   </div>
@@ -524,4 +525,34 @@
             font-weight: normal;
         }
     </style>
+@endpush
+
+@push('script')
+    <script>
+        $(function() {
+            $('#youtube').hide();
+            $('#mp4').hide();
+            $('#video_preview_type').change(function(){
+                if($('#video_preview_type').val() == 'youtube') {
+                    $('#youtube').show();
+                    $('#mp4').hide();
+                }else if($('#video_preview_type').val() == 'mp4') {
+                    $('#youtube').hide();
+                    $('#mp4').show();
+                } else {
+                    $('#youtube').hide();
+                    $('#mp4').hide();
+                }
+            });
+            $('#free_download').change(function(){
+                if($('#free_download').val() == "1") {
+                    $('#regular_price').attr("readonly", "readonly").val('0');
+                    $('#extended_price').attr("readonly", "readonly").val('0');
+                }else {
+                    $('#regular_price').removeAttr("readonly", "readonly").val('');
+                    $('#extended_price').removeAttr("readonly", "readonly").val('');
+                }
+            });
+        });
+    </script>
 @endpush
