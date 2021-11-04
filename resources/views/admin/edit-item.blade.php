@@ -360,14 +360,14 @@
 
                                             <div class="form-group">
                                                 <label for="name" class="control-label mb-1">Regular License (6 months support) </label>
-                                                <input type="text" id="regular_price" name="regular_price"  class="form-control" value="{{ $edit['item']->regular_price }}" data-bvalidator="digit,min[1],required">
+                                                <input type="text" id="regular_price" name="regular_price"  class="form-control" value="{{ $edit['item']->regular_price }}" data-bvalidator="digit,min[0],required">
                                                 ({{ $allsettings->site_currency }})
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="name" class="control-label mb-1">Extended License (12 months support) </label>
 
-                                                <input type="text" id="extended_price" name="extended_price" class="form-control" value="@if($edit['item']->extended_price==0) @else {{ $edit['item']->extended_price }} @endif" data-bvalidator="digit,min[1]">
+                                                <input type="text" id="extended_price" name="extended_price" class="form-control" value="@if($edit['item']->extended_price==0) @else {{ $edit['item']->extended_price }} @endif" data-bvalidator="digit,min[0]">
                                                 ({{ $allsettings->site_currency }})
                                             </div>
 

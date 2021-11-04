@@ -56,7 +56,7 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<header id="header">
+<header>
     <div class="container">
         <div class="row">
             <div class="offset-lg-7 col-lg-5 offset-sm-3 col-sm-9 offset-md-4 col-md-8 offset-xl-8 col-xl-4">
@@ -67,7 +67,11 @@
                     <li class="top_flash_sale">
                         <a class="link" href="{{ URL::to('/flash-sale') }}">
                             <!-- <i class="fas fa-dollar-sign"></i> -->
-                            <span class="bd-taka">&#2547;</span>{{ Helper::translation(2993,$translate) }}
+                          
+                             <span class="iconify" data-icon="tabler:currency-taka" data-width="20"></span>
+                               {{ Helper::translation(2993,$translate) }}
+                                </a>
+                                
                         </a>
                     </li>
 
@@ -75,8 +79,9 @@
                     @if(Auth::guest())
                         <li class="has_dropdown h_cart">
                             <div class="icon_wrap">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="notification_count header_cart_notification purch">0</span>
+                                  <a class="header_cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+                            <span class = "header_cart_notification">0</span>
+                                
                             </div>
                             <div class="dropdowns dropdown--cart" style="top: 58px !important; right: -11px; z-index: 11111;">
                                 <div class="cart_area">
@@ -91,7 +96,7 @@
                         @if(Auth::user()->id != 1)
                             <li class="has_dropdown h_cart">
                                 <div class="icon_wrap">
-                                    <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="header_cart" href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"></i></a>
                                     <span class="notification_count header_cart_notification purch">{{ $cartcount }}</span>
                                 </div>
 
@@ -481,6 +486,8 @@
 <script src="{{ asset('public/assets/theme2/js/waypoints.min.js') }}"></script>
 <script src="{{ asset('public/assets/theme2/js/jquery.counterup.min.js') }}"></script>
 <script src="{{ asset('public/assets/theme2/js/jquery.countdown.js') }}"></script>
+  <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+
 
 <script>
     $(window).scroll(function() {
@@ -501,6 +508,14 @@
 <script src="{{ asset('public/assets/theme2/js/script.js') }}"></script>
 @include('theme2.javascript')
 @stack('script')
+
+
+    <style>
+        .Locale_en_GB div{
+            background: red!important;
+            color:green;
+        }
+    </style>
 </body>
 
 </html>

@@ -12,7 +12,7 @@
     <!-- Flash banner start -->
     <section id="flash_banner">
         <div class="container">
-            <h1 class="page_banner_title">{{ Helper::translation(2993,$translate) }}</h1>
+                <h1 class="page_banner_title">{{ Helper::translation(2993,$translate) }}</h1>
             <h2 class="page_banner_description">{{ Helper::translation(2994,$translate) }}</h2>
 
             <div class="row">

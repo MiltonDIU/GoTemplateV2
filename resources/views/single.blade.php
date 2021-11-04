@@ -15,12 +15,12 @@
         @include("./components/hero", [
             "list" => [array("path" => "/blog", "text" => 2877)],
             "headline" => $edit["post"]->post_title
-        ])
-
+        ])  
+    
         <section class="blog_area section--padding2">
             <div class="container">
             <div>
-
+                    
             @if ($message = Session::get('success'))
                 <div class="alert alert-success" role="alert">
                     <span class="alert_icon lnr lnr-checkmark-circle"></span>
@@ -30,8 +30,8 @@
                     </button>
                 </div>
             @endif
-
-
+            
+            
             @if ($message = Session::get('error'))
                 <div class="alert alert-danger" role="alert">
                     <span class="alert_icon lnr lnr-warning"></span>
@@ -41,7 +41,7 @@
                     </button>
                 </div>
             @endif
-
+            
             @if (!$errors->isEmpty())
                 <div class="alert alert-danger" role="alert">
                     <span class="alert_icon lnr lnr-warning"></span>
@@ -55,8 +55,8 @@
                     </button>
                 </div>
             @endif
-
-
+            
+                        
             <div>
                 <div class="row">
                     <div class="col-lg-8">
@@ -75,7 +75,7 @@
                                     </a>
 
                                     <div class="blog__meta">
-
+                                        
                                         <div class="date_time">
                                             <span class="lnr lnr-clock"></span>
                                             <p>{{ date('d F Y', strtotime($edit['post']->post_date)) }}</p>
@@ -119,7 +119,7 @@
                                                             <span class="fa fa-linkedin"></span>
                                                         </a>
                                                     </li>
-
+                                                                                                    
                                                 </ul>
                                             </div>
                                             <!-- end social_share -->
@@ -136,33 +136,33 @@
 
                             <div class="comment___wrapper">
                                 <ul class="media-list">
-
+                                    
                                     @foreach($comment['display'] as $comment)
                                     <li class="depth-1">
                                         <div class="media">
                                             <div class="pull-left no-pull-xs">
-
+                                            
                                                     <img src="{{ url('/') }}/public/img/no-user.png" class="media-object" alt="{{ $comment->comment_name }}">
-
+                                            
                                             </div>
                                             <div class="media-body">
                                                 <div class="media_top">
                                                     <div class="heading_left pull-left">
-
+                                                        
                                                             <h4 class="media-heading">{{ $comment->comment_name }}</h4>
-
+                                                        
                                                         <span>{{ date('d F Y', strtotime($comment->comment_date)) }}</span>
                                                     </div>
-
+                                                    
                                                 </div>
                                                 <p>{{ $comment->comment_content }}</p>
-
+                                                
                                             </div>
                                         </div>
                                     </li>
                                     @endforeach
-
-
+                                    
+                                    
                                 </ul>
                             </div>
                             <!-- end /.comment___wrapper -->
@@ -180,22 +180,22 @@
                                     {{ csrf_field() }}
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input
-                                                    class="input_field"
-                                                    type="text"
-                                                    name="comment_name"
-                                                    placeholder="{{ Helper::translation(2917,$translate) }}"
+                                                <input 
+                                                    class="input_field" 
+                                                    type="text" 
+                                                    name="comment_name" 
+                                                    placeholder="{{ Helper::translation(2917,$translate) }}" 
                                                     data-bvalidator="required"
                                                 >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input
-                                                    class="input_field"
-                                                    type="text"
-                                                    name="comment_email"
-                                                    placeholder="{{ Helper::translation(2915,$translate) }}"
+                                                <input 
+                                                    class="input_field" 
+                                                    type="text" 
+                                                    name="comment_email" 
+                                                    placeholder="{{ Helper::translation(2915,$translate) }}" 
                                                     data-bvalidator="required,email"
                                                 >
                                             </div>
@@ -203,16 +203,16 @@
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea
-                                                    class="input_field"
-                                                    name="comment_content"
-                                                    placeholder="{{ Helper::translation(3186,$translate) }}"
-                                                    rows="10"
-                                                    cols="80"
+                                                <textarea 
+                                                    class="input_field" 
+                                                    name="comment_content" 
+                                                    placeholder="{{ Helper::translation(3186,$translate) }}" 
+                                                    rows="10" 
+                                                    cols="80" 
                                                     data-bvalidator="required"
                                                 ></textarea>
                                             </div>
-
+                                            
                                             <input type="hidden" name="post_id" value="{{ $edit['post']->post_id }}">
 
                                             <button type="submit" class="btn btn--default theme-button" name="btn">
@@ -230,7 +230,7 @@
 
                     <div class="col-lg-4">
                         <aside class="sidebar sidebar--blog">
-
+                            
                             <div class="sidebar-card card--blog_sidebar card--category">
                                 <div class="card-title">
                                     <h4>{{ Helper::translation(2879,$translate) }}</h4>
@@ -261,7 +261,7 @@
                                         </li>
                                     </ul>
                                 </div>
-
+                                
 
                                 <div class="card_content">
                                     <div class="tab-content">
@@ -290,7 +290,7 @@
                                                 @endforeach
                                             </ul>
                                         </div>
-
+                                        
 
                                         <div role="tabpanel" class="tab-pane fade" id="latest" aria-labelledby="latest-tab">
                                             <ul class="post-list">
@@ -314,15 +314,15 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                @endforeach
+                                                @endforeach   
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-
+                                
                             </div>
-
-
+                            
+                            
                             <div class="sidebar-card card--blog_sidebar card--tags">
                                 <h4 class="card-title">{{ Helper::translation(2974,$translate) }}</h4>
 
@@ -331,14 +331,14 @@
                                         <li>
                                             <a href="{{ url('/tag') }}/blog/{{ strtolower(str_replace(' ','-',$tags)) }}">{{ $tags }}</a>
                                         </li>
-                                    @endforeach
+                                    @endforeach    
                                 </ul>
                             </div>
-
+                            
 
                             <div class="banner">
-                                @if($allsettings->site_blog_adbanner_link !="" )
-                                    <a href="{{ $allsettings->site_blog_adbanner_link }}" target="_blank">
+                                @if($allsettings->site_blog_adbanner_link !="" ) 
+                                    <a href="{{ $allsettings->site_blog_adbanner_link }}" target="_blank"> 
                                 @endif
 
                                 @if($allsettings->site_blog_adbanner!='')
@@ -347,25 +347,25 @@
                                     <img src="{{ url('/') }}/public/img/no-image.png" alt="">
                                 @endif
 
-                                @if($allsettings->site_blog_adbanner_link !="" )
-                                    </a>
+                                @if($allsettings->site_blog_adbanner_link !="" ) 
+                                    </a> 
                                 @endif
                             </div>
-
+                        
                         </aside>
                     </div>
-
+                    
                 </div>
             </div>
-
+            
         </section>
     @else
         @include('not-found')
     @endif
-
-    @include('footer')
+    
+    @include('footer') 
     @include('javascript')
-
+    
 </body>
 
 </html>

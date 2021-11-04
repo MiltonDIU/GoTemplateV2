@@ -456,7 +456,7 @@
                     <label for="rlicense">{{ Helper::translation(2979,$translate) }}<sup>*</sup></label>
                     <div class="input-group">
                       <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                      <input type="text" id="regular_price" name="regular_price" class="text_field" value="{{ $edit['item']->regular_price }}" data-bvalidator="digit,min[1],required">
+                      <input type="text" id="regular_price" name="regular_price" class="text_field" value="{{ $edit['item']->regular_price }}" data-bvalidator="digit,min[0],required">
                     </div>
                   </div>
                 </div>
@@ -467,7 +467,7 @@
                     <label for="exlicense">{{ Helper::translation(2980,$translate) }}</label>
                     <div class="input-group">
                       <span class="input-group-addon">{{ $allsettings->site_currency }}</span>
-                      <input type="text" id="extended_price" name="extended_price" class="text_field" value="@if($edit['item']->extended_price==0) @else {{ $edit['item']->extended_price }} @endif" data-bvalidator="digit,min[1]">
+                      <input type="text" id="extended_price" name="extended_price" class="text_field" value="@if($edit['item']->extended_price==0) @else {{ $edit['item']->extended_price }} @endif" data-bvalidator="digit,min[0]">
                     </div>
                   </div>
                 </div>

@@ -74,7 +74,7 @@
     }
 
     .item_view {
-        height: 280px;
+        height: 250px;
     }
 
     #premium_member{
@@ -994,10 +994,177 @@
         width: 100%;
     }
 
-
     /* ----------------------------- Blog post page end ----------------------------- */
 
+    /* ----------------------------- Profile nav start ----------------------------- */
 
+    #breadcrumb {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    #profile_nav {
+        margin-bottom: 20px;
+    }
+
+    #profile_nav .nav-link {
+        border-radius: 0;
+        padding: 14px 24px;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active,
+    .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* ----------------------------- Profile nav end ----------------------------- */
+
+    /* ----------------------------- Profile setting start ----------------------------- */
+
+
+    #profile_setting {
+        padding-top: 0;
+    }
+
+    #profile_setting .profile_left {
+        margin-top: 50px;
+        padding: 30px 18px;
+    }
+
+    #profile_setting .profile_left .profile_social {
+        margin-top: 30px;
+    }
+
+    #profile_setting .profile_left .profile_social .p_social_group .social_input_field {
+        width: 75%;
+    }
+
+    #profile_setting .profile_left .email_settings {
+        margin-top: 65px;
+    }
+
+    /* ----------------------------- Profile setting end ----------------------------- */
+
+    /* ----------------------------- Profile purchase page start ----------------------------- */
+
+    #pofile_purchase {
+        padding-top: 0;
+    }
+
+    #pofile_purchase .purchase_title {
+        margin-bottom: 37px;
+    }
+
+    #pofile_purchase .item_box {
+        margin: 24px 0 55px 0;
+    }
+
+    #pofile_purchase .purchase_center {
+        margin-top: 37px;
+    }
+
+    /* ----------------------------- Profile purchase page end ----------------------------- */
+
+    /* ----------------------------- Coupon page start ----------------------------- */
+
+    #add_coupon_btn {
+        margin: 20px 0;
+    }
+
+    #coupon_list .coupon_table thead tr {
+        font-size: 9px;
+    }
+
+    #coupon_list .coupon_table tbody th, td {
+        font-size: 9px;
+    }
+
+    #add_coupon_btn .cou_btn {
+        padding: 8px 13px;
+        font-size: 12px;
+    }
+
+    /* ----------------------------- Coupon page end ----------------------------- */
+
+    /* ----------------------------- Add Coupon page start ----------------------------- */
+
+    #add_coupon form {
+        padding: 18px;
+    }
+    
+    #add_coupon .group_box {
+        width: 100%;
+    }
+    
+    /* ----------------------------- Add Coupon page start ----------------------------- */
+
+    /* ----------------------------- Sales page start ----------------------------- */
+
+    #sales {
+        padding-top: 0;
+    }
+
+    #sales .sales_count_box {
+        margin-bottom: 30px;
+    }
+
+    #sales .sales_table {
+        padding-top: 0;
+    }
+
+    #sales .sales_table tr{
+        font-size: 8px;
+    }
+
+    /* ----------------------------- Sales page end ----------------------------- */
+
+    /* ----------------------------- Manage item start ----------------------------- */
+
+    #upload_item_btn .up_btn {
+        margin-top: 0; 
+    }
+
+    /* ----------------------------- Manage item end ----------------------------- */
+
+    /* ----------------------------- Upload item start ----------------------------- */
+
+    #upload_items .l_main {
+        margin-top: 55px;
+    }
+
+    /* ----------------------------- Upload item end ----------------------------- */
+
+    /* ----------------------------- Upload item start ----------------------------- */
+
+    #withdrawal {
+        margin-top: 22px;
+    }
+
+    #withdrawal .w_title_regular {
+        font-size: 14px;
+    }
+
+    #withdrawal .withdrawal_main {
+        margin-top: 40px;
+    }
+
+    .withdrawals_options {
+        padding: 33px 20px 20px 20px;
+    }
+
+
+    /* ----------------------------- Upload item end ----------------------------- */
+
+    /* ----------------------------- withdrawal start start ----------------------------- */
+
+    #withdrawal table tr{
+        font-size: 8px;
+    }
+    
+    /* ----------------------------- withdrawal end ----------------------------- */
+    
 }
 
 
@@ -1479,6 +1646,148 @@
     }
     
     /* ----------------------------- Blog main page end ----------------------------- */
+
+    /* ----------------------------- Profile nav start ----------------------------- */
+
+    #breadcrumb {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    #profile_nav .nav-link {
+        border-radius: 0;
+        padding: 14px 24px;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active,
+    .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* ----------------------------- Profile nav end ----------------------------- */
+
+    /* ----------------------------- Profile setting start ----------------------------- */
+
+    #profile_setting {
+        padding-top: 0;
+    }
+
+    #profile_setting .profile_left {
+        margin-top: 50px;
+    }
+
+    #profile_setting .profile_left .profile_social {
+        margin-top: 30px;
+    }
+
+    #profile_setting .profile_left .profile_social .p_social_group .social_input_field {
+        width: 75%;
+    }
+
+    #profile_setting .profile_left .email_settings {
+        margin-top: 65px;
+    }
+
+    /* ----------------------------- Profile setting end ----------------------------- */
+
+    /* ----------------------------- Profile purchase page start ----------------------------- */
+
+    #pofile_purchase {
+        padding-top: 0;
+    }
+
+    #pofile_purchase .purchase_title {
+        margin-bottom: 28px;
+    }
+
+    #pofile_purchase .item_box {
+        margin: 24px 0 55px 0;
+    }
+
+    #pofile_purchase .purchase_center {
+        margin-top: 37px;
+    }
+
+    /* ----------------------------- Profile purchase page end ----------------------------- */
+
+    /* ----------------------------- Coupon page start ----------------------------- */
+
+    #profile_nav {
+        margin-bottom: 15px;
+    }
+
+    #add_coupon_btn {
+        margin: 15px 0 40px 0;
+    }
+
+    /* ----------------------------- Coupon page end ----------------------------- */
+
+    /* ----------------------------- Add Coupon page start ----------------------------- */
+    
+    #add_coupon .group_box {
+        width: 100%;
+    }
+    
+    /* ----------------------------- Add Coupon page start ----------------------------- */
+
+    /* ----------------------------- Sales page start ----------------------------- */
+
+    #sales {
+        padding-top: 0;
+    }
+
+    #sales .sales_count_box {
+        margin: 0 10px 45px 10px;
+    }
+
+    #sales .total_title .sales_text {
+        font-size: 15px;
+    }
+
+    #sales .sales_table {
+        padding-top: 0;
+    }
+
+    #sales .sales_table tr{
+        font-size: 12px;
+    }
+
+    #sales .sales_table th{
+        font-size: 12px;
+    }
+
+    #coupon_list .coupon_table tbody th, td {
+        font-size: 12px;
+    }
+
+    /* ----------------------------- Sales page end ----------------------------- */
+
+    /* ----------------------------- Manage item start ----------------------------- */
+
+    #upload_item_btn .up_btn {
+        margin-top: 0; 
+    }
+
+    /* ----------------------------- Manage item end ----------------------------- */
+
+    /* ----------------------------- Upload item start ----------------------------- */
+
+    #upload_items .l_main {
+        margin-top: 55px;
+    }
+
+    /* ----------------------------- Upload item end ----------------------------- */
+
+    /* ----------------------------- withdrawal start start ----------------------------- */
+
+    #withdrawal table tr{
+        font-size: 13px;
+    }
+    
+    /* ----------------------------- withdrawal end ----------------------------- */
+
 }
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -1520,7 +1829,7 @@
     }
 
     #popular_category .popular_why .popular_details {
-        padding-right: 30px !important;
+        padding-right: 30px;
         padding-left: 30px;
         margin-bottom: 40px;
         margin-top: 15px;
@@ -1926,6 +2235,124 @@
     }
 
     /* ----------------------------- Blog main page end ----------------------------- */
+
+    /* ----------------------------- Profile nav start ----------------------------- */
+
+    #breadcrumb {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    #profile_nav .nav-link {
+        border-radius: 0;
+        padding: 14px 24px;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active,
+    .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* ----------------------------- Profile nav end ----------------------------- */
+
+    /* ----------------------------- Profile setting start ----------------------------- */
+
+    #profile_setting {
+        padding-top: 0;
+    }
+
+    #profile_setting .profile_left {
+        margin-top: 50px;
+    }
+
+    #profile_setting .profile_left .profile_social {
+        margin-top: 30px;
+    }
+
+    #profile_setting .profile_left .profile_social .p_social_group .social_input_field {
+        width: 75%;
+    }
+
+    #profile_setting .profile_left .email_settings {
+        margin-top: 65px;
+    }
+
+    /* ----------------------------- Profile setting end ----------------------------- */
+
+    /* ----------------------------- Profile purchase page start ----------------------------- */
+
+    #pofile_purchase {
+        padding-top: 0;
+    }
+
+    #pofile_purchase .purchase_title {
+        margin-bottom: 30px;
+    }
+
+    #pofile_purchase .purchase_center {
+        margin-top: 70px;
+    }
+
+    /* ----------------------------- Profile purchase page end ----------------------------- */
+
+    /* ----------------------------- Coupon page start ----------------------------- */
+
+    #profile_nav {
+        margin-bottom: 20px;
+    }
+
+    #add_coupon_btn {
+        margin: 20px 0 40px 0;
+    }
+
+    /* ----------------------------- Coupon page end ----------------------------- */
+
+    /* ----------------------------- Sales page start ----------------------------- */
+
+    #sales {
+        padding-top: 0;
+    }
+
+    #sales .sales_main {
+        margin-bottom: 0;
+    }
+
+    #sales .sales_count_box {
+        margin: 0 35px 91px 35px;
+    }
+
+    #sales .total_title .sales_text {
+        font-size: 15px;
+    }
+
+    #sales .sales_table {
+        padding-top: 0;
+    }
+
+    #sales .sales_table tr{
+        font-size: 12px;
+    }
+
+    #sales .sales_table th{
+        font-size: 12px;
+    }
+
+    #coupon_list .coupon_table tbody th, td {
+        font-size: 12px;
+    }
+
+    /* ----------------------------- Sales page end ----------------------------- */
+
+    /* ----------------------------- Upload item start ----------------------------- */
+
+    #upload_items .l_main {
+        margin-top: 55px;
+    }
+
+    /* ----------------------------- Upload item end ----------------------------- */
+
 }
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -2039,6 +2466,43 @@
     }
 
     /* ----------------------------- Cart page end ----------------------------- */
+
+    /* ----------------------------- Profile nav start ----------------------------- */
+
+    #profile_nav .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    #profile_nav .nav-link i {
+        margin-right: 6px;
+    }
+
+    /* ----------------------------- Profile nav end ----------------------------- */
+
+    /* ----------------------------- Profile setting start ----------------------------- */
+
+    #profile_setting .profile_left .profile_social .p_social_group .social_input_field {
+        width: 72%;
+    }
+
+    /* ----------------------------- Profile setting end ----------------------------- */
+
+    /* ----------------------------- Coupon page start ----------------------------- */
+
+    #add_coupon_btn {
+        margin: 20px 0;
+    }
+
+    /* ----------------------------- Coupon page end ----------------------------- */
+
+    /* ----------------------------- Sales page start ----------------------------- */
+
+    #sales .sales_count_box {
+        margin: 0;
+    }
+
+    /* ----------------------------- Sales page end ----------------------------- */
     
 }
 

@@ -1,6 +1,3 @@
-#header {
-  background-color: #14213D;
-}
 #header .top_menu {
   display: flex;
   justify-content: space-between;
@@ -71,7 +68,6 @@
   margin-right: 13px;
 }
 #header .h_cart .icon_wrap {
-  position: relative;
   margin-right: 15px;
 }
 #header .h_cart .icon_wrap i {
