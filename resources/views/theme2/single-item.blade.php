@@ -176,7 +176,7 @@
                   @else
                     <div class="item_view_price">
 
-                        <span class="bd-taka">৳</span>
+                       <span class="iconify" data-icon="tabler:currency-taka" data-width="20"></span>
                       <h2 class="price">{{ $item_price }}</h2>
                     </div>
                   @endif

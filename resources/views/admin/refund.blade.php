@@ -8,21 +8,21 @@
 <!--<![endif]-->
 
 <head>
-    
+
     @include('admin.stylesheet')
 </head>
 
 <body>
-    
+
     @include('admin.navigation')
 
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
-        
+
                        @include('admin.header')
-                       
+
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -34,11 +34,11 @@
             </div>
             <div class="col-sm-8">
                 <div class="page-header float-right">
-                    
+
                 </div>
             </div>
         </div>
-        
+
          @if (session('success'))
     <div class="col-sm-12">
         <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -66,43 +66,51 @@
                                             <th>Sno</th>
                                             <th>Order ID</th>
                                             <th>Item Name</th>
-                                            <th>Buyer</th>
+                                            <th>Vendor Name</th>
+                                            <th>Buyer Name</th>
+                                            <th>Transaction Date</th>
+                                            <th>Transaction ID</th>
+                                            <th>Transaction Amount</th>
                                             <th>Refund Reason</th>
                                             <th>Refund Comment</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                     @php $no = 1; @endphp
                                     @foreach($itemData['item'] as $refund)
+
                                         <tr>
                                             <td>{{ $no }}</td>
                                             <td>{{ $refund->ref_purchased_token }} </td>
                                             <td>{{ $refund->item_name }} </td>
+                                            <td>Vendor Name (currently no more data)</td>
+                                            <td>Transaction Date</td>
+                                            <td>Transaction ID</td>
                                             <td><a href="{{ URL::to('/user') }}/{{ $refund->username }}" target="_blank" class="blue-color">{{ $refund->username }}</a></td>
                                             <td>{{ $refund->ref_refund_reason }} </td>
                                             <td>{{ $refund->ref_refund_comment }}</td>
                                             <td>
-                                            @if($refund->ref_refund_approval == "") 
-                                            <a href="{{ URL::to('/admin/refund') }}/{{ $refund->ref_order_id }}/{{ $refund->refund_id }}/buyer" class="btn btn-success btn-sm" title="payment released to buyer"><i class="fa fa-money"></i>&nbsp; Refund Accept</a> 
+                                            @if($refund->ref_refund_approval == "")
+                                            <a href="{{ URL::to('/admin/refund') }}/{{ $refund->ref_order_id }}/{{ $refund->refund_id }}/buyer" class="btn btn-success btn-sm" title="payment released to buyer"><i class="fa fa-money"></i>&nbsp; Refund Accept</a>
                                             <a href="{{ URL::to('/admin/refund') }}/{{ $refund->ref_order_id }}/{{ $refund->refund_id }}/vendor" class="btn btn-danger btn-sm" title="payment released to vendor"><i class="fa fa-close"></i>&nbsp; Refund Declined</a>
                                             @else
                                             @if($refund->ref_refund_approval == 'accepted') <span class="badge badge-success">Accepted</span> @else <span class="badge badge-danger">Declined</span> @endif
-                                            
                                             @endif
                                             </td>
                                         </tr>
-                                        
+
                                         @php $no++; @endphp
-                                   @endforeach     
-                                        
+                                   @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
- 
+
                 </div>
             </div>
         </div>
@@ -110,7 +118,7 @@
 
     </div>
 
-    
+
 
 
    @include('admin.javascript')

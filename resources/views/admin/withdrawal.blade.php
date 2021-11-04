@@ -64,15 +64,16 @@
                                     <thead>
                                         <tr>
                                             <th>Sno</th>
-                                            <th>User Name</th>
                                             <th>Date</th>
-
+                                            <th>Vendor Name</th>
+                                            <th>Vendor Email</th>
+{{--                                            <th>Vendor Phone</th>--}}
+                                            <th width="200">Bank Details</th>
                                             <th>Withdrawal Type</th>
+                                            <th>Withdrawal Amount</th>
                                             <th>Paypal Email</th>
                                             <th>Stripe Email</th>
                                             <th>Paystack Email</th>
-                                            <th width="200">Bank Details</th>
-                                            <th>Amount</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -81,14 +82,19 @@
                                     @foreach($itemData['item'] as $withdraw)
                                         <tr>
                                             <td>{{ $no }}</td>
+                                            <td>{{ date('d F Y', strtotime($withdraw->wd_date)) }} </td>
                                             <td><a href="{{ URL::to('/user') }}/{{ $withdraw->username }}" target="_blank" class="blue-color">{{ $withdraw->username }}</a></td>
-                                            <td>{{ $withdraw->wd_date }} </td>
+                                           <td>{{ $withdraw->email }}</td>
+{{--                                           <td>{{ $withdraw->phone }}</td> --}}{{--need to first development this option--}}
+                                            <td width="200">@if($withdraw->bank_details != "") @php echo nl2br($withdraw->bank_details); @endphp @else <span>---</span> @endif</td>
+
                                             <td>{{ $withdraw->withdraw_type }} </td>
+                                            <td>{{ $withdraw->wd_amount }} {{ $allsettings->site_currency }}</td>
+
                                             <td>@if($withdraw->paypal_email != "") {{ $withdraw->paypal_email }} @else <span>---</span> @endif</td>
                                             <td>@if($withdraw->stripe_email != "") {{ $withdraw->stripe_email }} @else <span>---</span> @endif</td>
                                             <td>@if($withdraw->paystack_email != "") {{ $withdraw->paystack_email }} @else <span>---</span> @endif</td>
-                                            <td width="200">@if($withdraw->bank_details != "") @php echo nl2br($withdraw->bank_details); @endphp @else <span>---</span> @endif</td>
-                                            <td>{{ $withdraw->wd_amount }} {{ $allsettings->site_currency }}</td>
+
                                             <td>
                                             @if($withdraw->wd_status == 'pending')
                                             <a href="{{ URL::to('/admin/withdrawal') }}/{{ $withdraw->wd_id }}/{{ $withdraw->wd_user_id }}" class="btn btn-success btn-sm" onClick="return confirm('Are you sure you want to complete withdrawal request?');"><i class="fa fa-money"></i>&nbsp; Complete Withdrawal</a>

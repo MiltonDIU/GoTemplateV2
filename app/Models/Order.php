@@ -23,4 +23,8 @@ class Order extends Model
         'purchase_token',
         'order_ids',
     ];
+
+    public function itemOrder(){
+        return $this->belongsTo(ItemOrder::class,'order_ids','ord_id');
+    }
 }

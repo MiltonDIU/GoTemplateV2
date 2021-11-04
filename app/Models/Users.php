@@ -15,4 +15,8 @@ class Users extends Model {
   public function item(){
       return $this->hasMany(Items::class, 'user_id','id');
   }
+
+
+
+
 }

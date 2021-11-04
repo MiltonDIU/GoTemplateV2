@@ -63,36 +63,46 @@
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Sno</th>
-                                            <th>Order ID</th>
-                                            <th>Payment Date</th>
-                                            <th>Buyer</th>
+                                            <th>Sl</th>
+                                            <th>Order/Purchased Date</th>
+                                            <th>Order/Purchased ID</th>
+                                            <th>Item Name</th>
+                                            <th>Vendor Name</th>
+                                            <th>Buyer Name</th>
+                                            <th>Total Amount</th>
                                             <th>Vendor Amount</th>
                                             <th>Admin Amount</th>
                                             <th>Processing Fee</th>
-                                            <th>Payment Type</th>
+                                            <th>Payment Status</th>
                                             <th>Payment Id</th>
-
+                                            <th>Payment Type</th>
                                             <th>Complete Payment? (Localbank Only)</th>
                                             <!--<th>Payment Approval?</th> -->
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($itemData['item'] as $order)
+                                    @foreach($orders as $key=> $order)
                                         <tr>
-                                            <td>{{ $no }}</td>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ date('d F Y', strtotime($order->payment_date)) }} </td>
                                             <td>{{ $order->purchase_token }} </td>
-                                            <td>{{ $order->payment_date }} </td>
 
-                                            <td><a href="{{ URL::to('/user') }}/{{ $order->username }}" target="_blank" class="blue-color">{{ $order->username }}</a></td>
+<td>
+    @foreach($order->itemOrder as $single)
+        {{$single->item_name}},
+    @endforeach
+</td>
+                                            <td><a href="{{ URL::to('/user') }}/{{ $order->ownerShip->username }}" target="_blank" class="blue-color">{{ $order->ownerShip->username }}</a></td>
+                                            <td><a href="{{ URL::to('/user') }}/{{ $order->buyer->username }}" target="_blank" class="blue-color">{{ $order->buyer->username }}</a></td>
+
+                                            <td>{{ $order->vendor_amount + $order->admin_amount }} {{ $allsettings->site_currency }} </td>
                                             <td>{{ $order->vendor_amount }} {{ $allsettings->site_currency }} </td>
                                             <td>{{ $order->admin_amount }} {{ $allsettings->site_currency }}</td>
                                             <td>{{ $order->processing_fee }} {{ $allsettings->site_currency }}</td>
-                                            <td>{{ $order->payment_type }}</td>
+                                            <td>{{ $order->payment_status }}</td>
                                             <td>@if($order->payment_token != ""){{ $order->payment_token }}@else <span>---</span> @endif</td>
-
+                                            <td>{{ $order->payment_type }}</td>
                                             <td>
                                                 @if($order->payment_type == 'localbank' && $order->payment_status == 'pending')
                                                     <a href="orders/{{ base64_encode($order->purchase_token) }}" class="blue-color"onClick="return confirm('Are you sure click to complete payment?');">
@@ -106,8 +116,6 @@
                                             <!--<td><a href="#" class="btn btn-success btn-sm"><i class="fa fa-money"></i>&nbsp; Waiting for approval</a></td>-->
                                             <td><a href="order-details/{{ $order->purchase_token }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i>&nbsp; View More</a></td>
                                         </tr>
-
-                                        @php $no++; @endphp
                                    @endforeach
 
                                     </tbody>

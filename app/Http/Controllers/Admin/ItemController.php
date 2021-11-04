@@ -2,6 +2,7 @@
 
 namespace Feberr\Http\Controllers\Admin;
 
+use Feberr\Models\ItemCheckout;
 use Feberr\Models\Order;
 use Feberr\User;
 use Illuminate\Http\Request;
@@ -564,9 +565,13 @@ class ItemController extends Controller
 	public function view_orders()
 	{
 
-	   $itemData['item'] = Items::getorderItem();
-	   $data = array('itemData' => $itemData);
-	   return view('admin.orders')->with($data);
+//	   $itemData['item'] = Items::getorderItem();
+//	   $data = array('itemData' => $itemData);
+//	   return view('admin.orders')->with($data);
+
+        $orders = ItemCheckout::orderBy('chout_id','desc')->get();
+
+        return view('admin.orders', compact('orders'));
 	}
 
 
@@ -1660,7 +1665,8 @@ class ItemController extends Controller
 
 	/* refund */
 public function ssl_transaction(){
-    $transactions = Order::all();
+
+    $transactions = Order::with('itemOrder')->get();
     return view('admin.ssl_transaction',compact('transactions'));
 //    return view('admin.ssl_transaction');
 }
@@ -1669,9 +1675,36 @@ public function ssl_transaction(){
     public function get_transaction(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::latest()->get();
+            $data = Order::with('itemOrder')->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('itemName',function ($row){
+                    $order = $row->itemOrder;
+                    if (empty($order)){
+                        $item_name = "-";
+                    }else{
+                        $item_name = $order->item_name;
+                    }
+                    return $item_name;
+                })
+                ->addColumn('vendorName',function ($row){
+                    $order = $row->itemOrder;
+                    if (empty($order)){
+                        $vendorName = "-";
+                    }else{
+                        $vendorName = $order->ownerShip->username;
+                    }
+                    return $vendorName;
+                })
+                ->addColumn('vendorEmail',function ($row){
+                    $order = $row->itemOrder;
+                    if (empty($order)){
+                        $vendorEmail = "-";
+                    }else{
+                        $vendorEmail = $order->ownerShip->email;
+                    }
+                    return $vendorEmail;
+                })
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;

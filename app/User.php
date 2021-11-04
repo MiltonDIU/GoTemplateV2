@@ -60,4 +60,8 @@ class User extends Authenticatable
         return $this->hasMany(Items::class,'user_id','id');
     }
 
+    public static function getUserName($user_id){
+        $user = User::where('id',$user_id)->first();
+       return $user;
+    }
 }

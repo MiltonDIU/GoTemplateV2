@@ -51,15 +51,17 @@
                                 <thead>
                                 <tr>
                                     <th>Sno</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Amount</th>
-                                    <th>Transaction ID</th>
+                                    <th>Item Name</th>
+                                    <th>Vendor Name</th>
+                                    <th>Vendor Email</th>
+                                    <th>Buyer Name</th>
+                                    <th>Buyer Email</th>
                                     <th>Transaction Date</th>
+                                    <th>Transaction ID</th>
+                                    <th>Transaction Amount</th>
                                     <th>Status</th>
                                     <th>Currency</th>
-                                    <th>User Id</th>
+{{--                                    <th>User Id</th>--}}
                                     <th>Purchase Token</th>
                                     <th>Order ids</th>
                                 </tr>
@@ -93,19 +95,35 @@
 
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                { "data": "itemName",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        // $(nTd).html("<span>"+console.log((oData.itemName!=null)?oData.itemName:oData.itemName)+"</span>");
+                        $(nTd).html("<span>"+(oData.itemName!=null)?oData.itemName:""+"</span>");
+                    }
+                },
+                { "data": "vendorName",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<span>"+(oData.itemName!=null)?oData.vendorName:""+"</span>");
+                    }
+                },
+                { "data": "vendorEmail",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<span>"+(oData.itemName!=null)?oData.vendorEmail:""+"</span>");
+                    }
+                },
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
-                {data: 'phone', name: 'phone'},
-                {data: 'amount', name: 'amount'},
-                {data: 'transaction_id', name: 'transaction_id'},
                 { "data": "created_at",
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                         $(nTd).html("<span>"+ new Date(oData.created_at).toDateString()+"</span>");
                     }
                 },
+                {data: 'transaction_id', name: 'transaction_id'},
+                {data: 'amount', name: 'amount'},
                 {data: 'status', name: 'status'},
+
                 {data: 'currency', name: 'currency'},
-                {data: 'user_id', name: 'user_id'},
+                // {data: 'user_id', name: 'user_id'},
                 {data: 'purchase_token', name: 'purchase_token'},
                 {data: 'order_ids', name: 'order_ids'},
             ]

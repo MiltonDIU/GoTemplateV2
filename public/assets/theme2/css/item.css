@@ -1,5 +1,5 @@
-.item_box {
-  margin: 24px 0;
+#product_by .item_box{
+    display: block;
 }
 .item_view {
   height: 220px;
