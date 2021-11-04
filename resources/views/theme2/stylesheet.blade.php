@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="{{ asset('public/lightbox/topbox.css') }}" media="screen"/>
 <link rel="stylesheet" href="{{ asset('public/video/video.popup.css') }}">
 <link rel="stylesheet" href="{{ URL::to('public/countdown/jquery.countdown.css?v=1.0.0.0') }}" type="text/css">
-<link rel="stylesheet" href="{{ URL::to('resources/views/admin/template/datepicker/picker.css') }}"> 
+<link rel="stylesheet" href="{{ URL::to('resources/views/admin/template/datepicker/picker.css') }}">
 <link rel="stylesheet" href="{{ asset('resources/views/admin/template/dragdrop/css/jquery.filer.css') }}" >
 
 
@@ -232,8 +232,8 @@
     color: #fff;
   }
 
-  .custom_checkbox label .shadow_checkbox:before, 
-  .custom_checkbox .form-group p.label .shadow_checkbox:before, 
+  .custom_checkbox label .shadow_checkbox:before,
+  .custom_checkbox .form-group p.label .shadow_checkbox:before,
   .form-group .custom_checkbox p.label .shadow_checkbox:before {
     position: absolute;
     height: 100%;
@@ -251,7 +251,7 @@
     border-radius: 2px;
   }
 
-  .sidebar_author .author-menu ul li a:hover, 
+  .sidebar_author .author-menu ul li a:hover,
   .sidebar_author .author-menu ul li a.active {
     color: {{ $allsettings->site_button_color }} !important;
   }
@@ -282,14 +282,14 @@
     color: {{ $allsettings->site_button_color }} !important;
   }
 
-  .product--sidebar .card--category ul li a:hover, 
-  .support--sidebar .card--category ul li a:hover, 
-  .faq--sidebar .card--category ul li a:hover, 
-  .affliate_rule_module .card--category ul li a:hover, 
-  .support--sidebar .card--forum_categories ul li a:hover, 
-  .faq--sidebar .card--forum_categories ul li a:hover, 
-  .affliate_rule_module .card--forum_categories ul li a:hover, 
-  .sidebar--blog .card--forum_categories ul li a:hover, 
+  .product--sidebar .card--category ul li a:hover,
+  .support--sidebar .card--category ul li a:hover,
+  .faq--sidebar .card--category ul li a:hover,
+  .affliate_rule_module .card--category ul li a:hover,
+  .support--sidebar .card--forum_categories ul li a:hover,
+  .faq--sidebar .card--forum_categories ul li a:hover,
+  .affliate_rule_module .card--forum_categories ul li a:hover,
+  .sidebar--blog .card--forum_categories ul li a:hover,
   .sidebar--blog .card--category ul li a:hover {
     color: {{ $allsettings->site_button_color }} !important;
   }
@@ -319,7 +319,7 @@
     cursor: pointer;
     background: #fff;
   }
-	.jplist-label { 
+	.jplist-label {
     height: 36px !important;
     line-height: 38px !important;
 	  border: 1px solid #54667a !important;
@@ -328,14 +328,14 @@
     background: #fff !important;
 	  border-radius:0px !important;
 	}
-  .jplist-panel button { 
-    border-radius:0px !important; 
-    box-shadow:0px !important; 
-    text-shadow:none !important; 
-    margin:10px 5px 0 0 !important; 
-  }	
+  .jplist-panel button {
+    border-radius:0px !important;
+    box-shadow:0px !important;
+    text-shadow:none !important;
+    margin:10px 5px 0 0 !important;
+  }
   .jplist-panel .jplist-pagination .jplist-current {
-    color: #fff; 
+    color: #fff;
     background:{{ $allsettings->site_button_color }} !important;
   }
   .jplist-panel .jplist-pagination .jplist-pagingprev,
@@ -354,8 +354,8 @@
     display:none;
   }
 
-  .custom-radio label span.circle:before, 
-  .custom-radio .form-group p.label span.circle:before, 
+  .custom-radio label span.circle:before,
+  .custom-radio .form-group p.label span.circle:before,
   .form-group .custom-radio p.label span.circle:before {
     content: "";
     background: #fff;
@@ -373,7 +373,7 @@
     color: {{ $allsettings->site_button_color }} !important;
   }
 
-  .sidebar--single-product .sidebar-card.card--pricing2 .price, 
+  .sidebar--single-product .sidebar-card.card--pricing2 .price,
   .sidebar--single-product .card--pricing2.item-preview .price {
     background: {{ $allsettings->site_button_color }} !important;
     -webkit-border-radius: 4px 4px 0 0;
@@ -492,8 +492,8 @@
     color: {{ $allsettings->site_button_color }} !important;
   }
 
-  .sidebar_author .freelance-status .custom-radio label span.circle:before, 
-  .sidebar_author .freelance-status .custom-radio .form-group p.label span.circle:before, 
+  .sidebar_author .freelance-status .custom-radio label span.circle:before,
+  .sidebar_author .freelance-status .custom-radio .form-group p.label span.circle:before,
   .form-group .sidebar_author .freelance-status .custom-radio p.label span.circle:before {
     background: {{ $allsettings->site_button_color }} !important;
     border: 0;
