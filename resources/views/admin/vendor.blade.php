@@ -8,21 +8,21 @@
 <!--<![endif]-->
 
 <head>
-    
+
     @include('admin.stylesheet')
 </head>
 
 <body>
-    
+
     @include('admin.navigation')
 
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
-        
+
                        @include('admin.header')
-                       
+
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        
+
          @if (session('success'))
     <div class="col-sm-12">
         <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -76,13 +76,16 @@
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Sno</th>
+                                            <th>SL</th>
                                             <th>Name</th>
+                                            <th>Username</th>
                                             <th>Email</th>
+
                                             <th>Photo</th>
+                                            <th>Vendor Type</th>
+                                            <th>Bank Details</th>
+                                            <th>Earning Amount</th>
                                             <th>Email Verified</th>
-                                            <th>User Type</th>
-                                            <th>Earnings</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -91,21 +94,25 @@
                                     @foreach($userData['data'] as $user)
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td><a href="{{ URL::to('/user') }}/{{ $user->username }}" target="_blank" class="blue-color">{{ $user->username }}</a></td>
                                             <td>{{ $user->email }}</td>
                                             <td>@if($user->user_photo != '') <img height="50" src="{{ url('/') }}/public/storage/users/{{ $user->user_photo }}" alt="{{ $user->name }}" class="userphoto"/>@else <img height="50" src="{{ url('/') }}/public/img/no-user.png" alt="{{ $user->name }}" class="userphoto"/>  @endif</td>
-                                            <td>@if($user->verified == 1) <span class="badge badge-success">verified</span> @else <span class="badge badge-danger">unverified</span> @endif</td>
+
                                             <td>@if($user->exclusive_author == 1) <span class="badge badge-success">Exclusive User</span> @else <span class="badge badge-danger">Non Exclusive User</span> @endif</td>
+
+                                           <td>--</td>
                                             <td>{{ $user->earnings }} {{ $allsettings->site_currency }}</td>
+                                            <td>@if($user->verified == 1) <span class="badge badge-success">verified</span> @else <span class="badge badge-danger">unverified</span> @endif</td>
                                             <td><a href="edit-vendor/{{ $user->user_token }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                            @if($demo_mode == 'on') 
+                                            @if($demo_mode == 'on')
                                             <a href="demo-mode" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Delete</a>
-                                            @else 
+                                            @else
                                             <a href="vendor/{{ $user->user_token }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure you want to delete?');"><i class="fa fa-trash"></i>&nbsp;Delete</a>@endif</td>
                                         </tr>
                                         @php $no++; @endphp
-                                   @endforeach     
-                                        
+                                   @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
