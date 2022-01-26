@@ -1,7 +1,8 @@
 <section id="banner">
   <div class="container">
     <div class="banner_main_heading">
-      <h1>Find digital resources from local creative community!</h1>
+      <h1>Visit 0ur Creative Marketplace</h1>
+       <p style="padding-bottom: 10px; font-size:18px; color:rgba(20, 33, 61, .65)">Get various creative assets at low cost</p>
     </div>
 
     <div class="row">

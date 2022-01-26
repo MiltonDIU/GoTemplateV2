@@ -71,6 +71,9 @@
                         </div>
 
                     </div>
+                    <div class="sign_in_img">
+                        <!--<img src="{{url('public/assets/theme2/images/sign_in_page.png')}}" alt="sign in page">-->
+                    </div>
                 </div>
             </div>
 

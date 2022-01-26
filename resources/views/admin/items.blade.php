@@ -8,21 +8,21 @@
 <!--<![endif]-->
 
 <head>
-    
+
     @include('admin.stylesheet')
 </head>
 
 <body>
-    
+
     @include('admin.navigation')
 
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
-        
+
                        @include('admin.header')
-                       
+
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -35,7 +35,7 @@
             <div class="col-sm-8">
                 <div class="page-header float-right">
                     <div class="page-title">
-                        
+
                         <ol class="breadcrumb text-right">
                             <button onClick="myFunction()" class="btn btn-success btn-sm dropbtn"><i class="fa fa-plus"></i> Add Item</button>
                             <div id="myDropdown" class="dropdown-content">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        
+
          @if (session('success'))
     <div class="col-sm-12">
         <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -83,13 +83,17 @@
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Sno</th>
+                                            <th>SL</th>
+                                            <th>Item Upload Date</th>
+                                            <th>Last Update Date</th>
                                             <th>Item Image</th>
                                             <th width="100">Item Name</th>
-                                            <th>Featured Item?</th>
+                                            <th>Category</th>
+                                            <th>Vendor Name</th>
+                                            <th>Item Support?</th>
                                             <th>Free Item?</th>
                                             <th>Flash Request?</th>
-                                            <th>Vendor</th>
+                                            <th>Featured Item?</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -99,24 +103,34 @@
                                     @foreach($itemData['item'] as $item)
                                         <tr>
                                             <td>{{ $no }}</td>
+                                            <td>{{ date('d F Y', strtotime($item->created_item)) }}
+                                                <br>
+                                                {{ date('h:i:sa', strtotime($item->created_item)) }}
+                                            </td>
+                                            <td>{{ date('d F Y', strtotime($item->updated_item)) }}   <br>
+                                                {{ date('h:i:sa', strtotime($item->updated_item)) }}</td>
                                             <td>@if($item->item_thumbnail != '') <img height="50" width="50" src="{{ url('/') }}/public/storage/items/{{ $item->item_thumbnail }}" alt="{{ $item->item_name }}"/>@else <img height="50" width="50" src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" />  @endif</td>
                                             <td><a href="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" target="_blank" class="black-color">{{ substr($item->item_name,0,50) }}</a></td>
-                                            
-                                            
-                                            <td>@if($item->item_featured == 'no') No @else Yes @endif <a href="items/{{ $item->item_featured }}/{{ $item->item_token }}" style="font-size:12px; color:#0000FF; text-decoration:underline;">Can you change?</a></td>
+                                           <td>{{ $item->item_type }}</td>
+                                            <td><a href="{{ url('/user') }}/{{ $item->username }}" target="_blank" class="black-color">{{ $item->username }}</a></td>
+
+                                            <td>@if($item->item_support == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>
+
                                             <td>@if($item->free_download == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>
                                             <td>@if($item->item_flash_request == 1) @if($item->item_flash == 0) <span class="badge badge-danger">Waiting for approval</span> @else <span class="badge badge-success">Approved</span> @endif @else <span>---</span> @endif</td>
-                                            <td><a href="{{ url('/user') }}/{{ $item->username }}" target="_blank" class="black-color">{{ $item->username }}</a></td>
+
+                                            <td>@if($item->item_featured == 'no') No @else Yes @endif <a href="items/{{ $item->item_featured }}/{{ $item->item_token }}" style="font-size:12px; color:#0000FF; text-decoration:underline;">Can you change?</a></td>
+
                                             <td>@if($item->item_status == 1) <span class="badge badge-success">Approved</span> @elseif($item->item_status == 2) <span class="badge badge-danger">Rejected</span> @else <span class="badge badge-warning">UnApproved</span> @endif</td>
-                                            <td><a href="edit-item/{{ $item->item_token }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a> 
-                                            @if($demo_mode == 'on') 
+                                            <td><a href="edit-item/{{ $item->item_token }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                            @if($demo_mode == 'on')
                                             <a href="demo-mode" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Delete</a>
                                             @else
                                             <a href="items/{{ $item->item_token }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure you want to delete?');"><i class="fa fa-trash"></i>&nbsp;Delete</a>@endif</td>
                                         </tr>
                                         @php $no++; @endphp
-                                   @endforeach     
-                                        
+                                   @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

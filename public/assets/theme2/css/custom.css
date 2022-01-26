@@ -1,0 +1,44 @@
+.v_follow a{
+    color: black;
+}
+
+.follow_details a{
+    color: black;
+}
+.follow_details a:hover{
+    color: #FCA311;
+}
+#vendor_main .v_connect ul li i{
+    color: black;
+}
+.vendor_sale > .iconify {
+    font-size: 14px;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid rgba(20, 33, 61, .3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all linear .3s;
+}
+.banner_main_heading > h1{font-size:36px!important;}
+.left_box p{color: white!important;}
+.top_menu li {
+    padding-top: 24px;
+}
+.navbar .nav_sign a{
+    margin-left:0px;
+}
+.navbar .nav_sign .nav_selling{
+    margin-right:36px;
+}
+.f_copy p{
+    color:white;
+}
+
+.nav_after > li {
+    padding-left: 20px; padding-right: 20px;
+}
+.category_button a {color: black!important;}

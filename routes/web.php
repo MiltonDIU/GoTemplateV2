@@ -65,6 +65,8 @@ Route::group(['middleware' => ['XSS']], function () {
 	// start selling
 	Route::get('/start-selling', 'CommonController@view_start_selling');
 
+    // user guideline
+    Route::get('/user-guideline', 'CommonController@userGuideline');
 
 	// email verification
 	Route::get('/user-verify/{user_token}', 'CommonController@user_verify');

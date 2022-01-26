@@ -55,6 +55,9 @@
                         </div>
 
                     </div>
+                      <div class="sign_up_img">
+                        <!--<img src="{{url('public/assets/theme2/images/sign_up_page.png')}}" alt="sign up page">-->
+                    </div>
                 </div>
                 <!-- sign up text end -->
             </div>

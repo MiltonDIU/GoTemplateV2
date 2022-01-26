@@ -63,10 +63,11 @@
                             <li><i class="menu-icon fa fa-location-arrow"></i><a href="{{ url('/admin/items') }}">Items</a></li>
                             <li><i class="menu-icon fa fa-location-arrow"></i><a href="{{ url('/admin/item-type') }}">Item Type</a></li>
                             <li><i class="menu-icon fa fa-location-arrow"></i><a href="{{ url('/admin/attributes') }}">Attributes</a></li>
-                            <li><i class="menu-icon fa fa-location-arrow"></i><a href="{{ url('/admin/orders') }}">Orders</a></li>
-                            <li><i class="menu-icon fa fa-location-arrow"></i><a href="{{ url('/admin/ssl-transaction') }}">Ssl Transaction</a></li>
                         </ul>
                     </li>
+
+                    <li><a href="{{ url('/admin/orders') }}"> <i class="menu-icon fa fa-paper-plane"></i>Orders</a></li>
+                    <li><a href="{{ url('/admin/ssl-transaction') }}"> <i class="menu-icon fa fa-paper-plane"></i>Ssl Transaction</a></li>
 
                     <li>
                         <a href="{{ url('/admin/refund') }}"> <i class="menu-icon fa fa-paper-plane"></i>Refund Request </a>

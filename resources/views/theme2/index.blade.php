@@ -146,10 +146,11 @@
 
 
   @include('theme2.layout.insights', [
-    "totalearning" => $data['totalearning'],
-    "totalfiles"   => $data['totalfiles'],
-    "totalsales"   => $data['totalsales'],
-    "totalmembers" => $data['totalmembers']
+        "totalCustomer" => $data['totalCustomer'],
+        "totalVendors" => $data['totalVendors'],
+        "totalCategories" => $data['totalCategories'],
+        "totalProduct" => $data['totalProduct'],
+
   ])
 
 

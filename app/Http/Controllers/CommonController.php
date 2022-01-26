@@ -37,6 +37,12 @@ class CommonController extends Controller {
         return view('theme2.start-selling', compact('data'));
     }
 
+    public function userGuideline() {
+        $setting['setting'] = Settings::editSelling();
+        $data = array('setting' => $setting);
+        return view('theme2.user_guideline', compact('data'));
+    }
+
 
     public function view_preview($item_slug, $item_id) {
         $item['item'] = Items::singleitemData($item_slug, $item_id);
@@ -55,9 +61,8 @@ class CommonController extends Controller {
         $blog['data']      = Blog::homeblogData();
         $comments          = Blog::getgroupcommentData();
         $review['data']    = Items::homereviewsData();
-        $totalmembers      = Members::getmemberData();
-        $totalsales        = Items::totalsaleitemCount();
-        $totalfiles        = Items::totalfileItems();
+        $totalVendors     = Members::getmemberData();
+        $totalCustomer     = Members::getCustomerData();
         $total['earning']  = Items::totalearningCount();
         $featured['items'] = Items::featuredItems();
         $populars          = Items::orderBy('items.item_sold', 'desc')->where('drop_status','no')->where('item_status','1')->take(8)->get();
@@ -75,6 +80,11 @@ class CommonController extends Controller {
         $catData = Category::homecategoryData($category_limit);
 
         $newest = Items::recentitemData()->take($newest_limit);
+
+        $totalCategories = Category::where('drop_status','no')->get()->count();
+        $totalCategories += SubCategory::where('drop_status','no')->get()->count();
+
+        $totalProduct = Items::where('drop_status','no')->get()->count();
 
         $newest = Items::with('user')
             ->where('items.item_status', '=', 1)
@@ -106,10 +116,11 @@ class CommonController extends Controller {
             'itemData'     => $itemData,
             'populars'     => $populars,
             'comments'     => $comments,
-            'totalsales'   => $totalsales,
-            'totalfiles'   => $totalfiles,
             'totalearning' => $totalearning,
-            'totalmembers' => $totalmembers,
+            'totalVendors' => $totalVendors,
+            'totalCustomer' => $totalCustomer,
+            'totalCategories' => $totalCategories,
+            'totalProduct' => $totalProduct,
         );
         //SitemapGenerator::create(URL::to('/'))->writeToFile('sitemap.xml');
 

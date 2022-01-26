@@ -57,6 +57,36 @@ class ProfileController extends Controller {
         }
 
 
+
+
+
+
+        if (!empty($request->input('envelope_url'))) {
+            $envelope_url  = $request->input('envelope_url');
+        }else {
+            $envelope_url = "";
+        }
+        if (!empty($request->input('linkedin_url'))) {
+            $linkedin_url  = $request->input('linkedin_url');
+        }else {
+            $linkedin_url = "";
+        }
+        if (!empty($request->input('dribbble_url'))) {
+            $dribbble_url  = $request->input('dribbble_url');
+        }else {
+            $dribbble_url = "";
+        }
+        if (!empty($request->input('behance_url'))) {
+            $behance_url  = $request->input('behance_url');
+        }else {
+            $behance_url = "";
+        }
+//        if (!empty($request->input('website_url'))) {
+//            $website_url  = $request->input('website_url');
+//        }else {
+//            $website_url = "";
+//        }
+
         if(!empty($request->input('twitter_url'))) {
             $twitter_url  = $request->input('twitter_url');
             $twitter = $twitter_url;
@@ -188,7 +218,12 @@ class ProfileController extends Controller {
                 'website' => $website_url,
                 'country' => $country,
                 'profile_heading' => $profile_heading,
-                'about' => $about, 'facebook_url' => $facebook,
+                'about' => $about,
+                'facebook_url' => $facebook,
+                'behance_url' => $behance_url,
+                'dribbble_url' => $dribbble_url,
+                'linkedin_url' => $linkedin_url,
+                'envelope_url' => $envelope_url,
                 'twitter_url' => $twitter,
                 'gplus_url' => $gplus,
                 'user_photo' => $user_image,

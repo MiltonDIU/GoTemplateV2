@@ -533,7 +533,7 @@ class Items extends Model {
   public static function singleitemData($item_slug, $item_id) {
     $value = DB::table('items')
       ->join('users', 'users.id', 'items.user_id')
-      ->where('items.item_status', '=', 1)
+    //   ->where('items.item_status', '=', 1)
       ->where('items.drop_status', '=', 'no')
       ->where('items.item_id', '=', $item_id)
       ->first();

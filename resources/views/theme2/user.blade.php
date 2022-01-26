@@ -109,12 +109,14 @@
                 @php $followcheck = $data['followcheck']; @endphp
 
                 @if($followcheck == 0)
+                            <div class="v_follow">
                   <a
                     href="{{ url('/user') }}/{{ Auth::user()->id }}/{{ $user->id }}"
                     class="vendor_follow"
                   >
                     <i class="fas fa-plus"></i>{{ Helper::translation(3202,$translate) }}
                   </a>
+                            </div>
                 @else
                   <a
                     href="{{ url('/user') }}/unfollow/{{ Auth::user()->id }}/{{ $user->id }}"
@@ -163,11 +165,33 @@
         <div class="col-lg-6 col-sm-12 col-md-6 col-xl-6">
           <div class="v_connect">
             <ul>
-              <li><a href="mailto:{{ $user->email }}"><i class="fas fa-envelope"></i></a></li>
-              <li><a href="{{ $user->facebook_url }}"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="{{ $user->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="{{ $user->gplus_url }}"><i class="fab fa-google-plus-g"></i></a></li>
-              <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="mailto:{{ ($user->envelope_url!=null)?$user->envelope_url:$user->email }}"><i class="fas fa-envelope"></i></a></li>
+
+                @if($user->facebook_url!=null)
+                    <li><a target="_blank" href="{{ $user->facebook_url }}"><i class="fab fa-facebook-f"></i></a></li>
+                @endif
+                    @if($user->linkedin_url!=null)
+                        <li><a target="_blank" href="{{ $user->linkedin_url }}"><i class="fab fa-linkedin-in"></i></a></li>
+                    @endif
+
+                        @if($user->dribbble_url!=null)
+                            <li><a target="_blank" href="{{ $user->dribbble_url }}"><i class="fab fa-dribbble"></i></a></li>
+                        @endif
+
+                        @if($user->behance_url!=null)
+                            <li><a target="_blank" href="{{ $user->behance_url }}"><i class="fab fa-behance"></i></a></li>
+                        @endif
+
+                        @if($user->twitter_url!=null)
+                            <li><a target="_blank" href="{{ $user->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                        @endif
+                        @if($user->gplus_url!=null)
+                            <li><a target="_blank" href="{{ $user->gplus_url }}"><i class="fab fa-google-plus-g"></i></a></li>
+                        @endif
+                        @if($user->website!=null)
+                            <li><a target="_blank" href="{{ $user->website }}"><i class="fas fa-link"></i></a></li>
+                        @endif
+
             </ul>
           </div>
         </div>
@@ -179,7 +203,8 @@
               <h6 class="v_count">{{ $data['getitemcount'] }} Products</h6>
             </div>
             <div class="vendor_sale">
-              <i class="fas fa-dollar-sign"></i>
+{{--                <span class="iconify" data-icon="tabler:currency-taka" data-width="20"></span>--}}
+                <i class="fa fa-download"></i>
               <h6 class="v_count">{{ $data['getsalecount'] }} Sales</h6>
             </div>
           </div>

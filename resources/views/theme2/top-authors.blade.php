@@ -14,7 +14,7 @@
 @section('content')
 <section id="top_authors">
   <div class="container">
-    <h1 class="a_title">Top Authors</h1>
+    <h1 class="a_title">Top Vendors</h1>
 
     <div class="row">
 
@@ -56,7 +56,8 @@
                     <h6 class="v_count">{{ $data['count_items']->has($user->id) ? count($data['count_items'][$user->id]) : 0 }} Products</h6>
                   </div>
                   <div class="product_sale">
-                    <i class="fas fa-dollar-sign count_icon"></i>
+                    <!--<i class="fas fa-dollar-sign count_icon"></i>-->
+                     <span class="iconify" data-icon="tabler:currency-taka" data-width="20"></span>
                     <h6 class="v_count">{{ $user->earnings }} Sales</h6>
                   </div>
                 </div>

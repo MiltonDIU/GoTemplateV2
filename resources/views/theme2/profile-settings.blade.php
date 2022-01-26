@@ -9,7 +9,7 @@
     "list" => [array("path" => "/profile-settings", "text" => 3109)]
   ])
   @include("theme2.layout.dashboard_menu", ["setting"=>true])
-  
+
   <div>
     @if ($message = Session::get('success'))
     <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
@@ -267,31 +267,84 @@
 
           <div class="information__set social_profile toggle_module collapse " id="collapse5">
             <div class="information_wrapper">
+
+                <div class="social__single">
+                    <div class="social_icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="link_field">
+                        <input type="text" class="text_field" name="envelope_url" value="{{ Auth::user()->envelope_url }}" placeholder="ex: example@gmail.com">
+                    </div>
+                </div>
+
+
               <div class="social__single">
                 <div class="social_icon">
-                  <span class="fa fa-facebook"></span>
+                  <i class="fa fa-facebook"></i>
                 </div>
 
                 <div class="link_field">
                   <input type="text" class="text_field" name="facebook_url" value="{{ Auth::user()->facebook_url }}" placeholder="ex: https://www.facebook.com">
                 </div>
               </div>
+
+                <div class="social__single">
+                    <div class="social_icon">
+                        <i class="fa fa-linkedin"></i>
+                    </div>
+
+                    <div class="link_field">
+                        <input type="text" class="text_field" name="linkedin_url" value="{{ Auth::user()->linkedin_url }}" placeholder="ex: https://www.linkedin.com/">
+                    </div>
+                </div>
+
+                <div class="social__single">
+                    <div class="social_icon">
+                        <i class="fa fa-dribbble"></i>
+                    </div>
+
+                    <div class="link_field">
+                        <input type="text" class="text_field" name="dribbble_url" value="{{ Auth::user()->dribbble_url }}" placeholder="ex: https://dribbble.com">
+                    </div>
+                </div>
               <!-- end /.social__single -->
 
               <div class="social__single">
                 <div class="social_icon">
-                  <span class="fa fa-twitter"></span>
+                  <i class="fa fa-behance"></i>
                 </div>
 
                 <div class="link_field">
-                  <input type="text" class="text_field" name="twitter_url" value="{{ Auth::user()->twitter_url }}" placeholder="ex: https://www.twitter.com">
+                  <input type="text" class="text_field" name="behance_url" value="{{ Auth::user()->behance_url }}" placeholder="ex: https://www.behance.net">
                 </div>
               </div>
+
+{{--                <div class="social__single">--}}
+{{--                    <div class="social_icon">--}}
+{{--                        <i class="fa fa-link"></i>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="link_field">--}}
+{{--                        <input type="text" class="text_field" name="website_url" value="{{ Auth::user()->website_url }}" placeholder="ex: personal website link">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <div class="social__single">
+                    <div class="social_icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+
+                    <div class="link_field">
+                        <input type="text" class="text_field" name="twitter_url" value="{{ Auth::user()->twitter_url }}" placeholder="ex: https://www.twitter.com">
+                    </div>
+                </div>
+
+
               <!-- end /.social__single -->
 
               <div class="social__single">
                 <div class="social_icon">
-                  <span class="fa fa-google-plus"></span>
+                  <i class="fa fa-google-plus"></i>
                 </div>
 
                 <div class="link_field">
