@@ -8,21 +8,21 @@
 <!--<![endif]-->
 
 <head>
-    
+
     @include('admin.stylesheet')
 </head>
 
 <body>
-    
+
     @include('admin.navigation')
 
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
-        
+
                        @include('admin.header')
-                       
+
 
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        
+
          @if (session('success'))
     <div class="col-sm-12">
         <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -80,6 +80,7 @@
                                             <th>Name</th>
                                             <th>Display Main Menu?</th>
                                             <th>Display Footer Menu?</th>
+                                            <th>Display Copyright Menu?</th>
                                             <th>Menu Order</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -93,26 +94,27 @@
                                             <td>{{ substr($page->page_title,0,20) }} </td>
                                             <td>@if($page->main_menu == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>
                                             <td>@if($page->footer_menu == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>
+                                            <td>@if($page->copyright_menu == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>
                                             <td>{{ $page->menu_order }} </td>
                                             <td>@if($page->page_status == 1) <span class="badge badge-success">Active</span> @else <span class="badge badge-danger">InActive</span> @endif</td>
-                                            <td><a href="edit-page/{{ $page->page_id }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a> 
-                                            @if($demo_mode == 'on') 
+                                            <td><a href="edit-page/{{ $page->page_id }}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                            @if($demo_mode == 'on')
                                             <a href="demo-mode" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Delete</a>
                                             @else
-                                            @if($page->page_id != 13) 
+                                            @if($page->page_id != 13)
                                             <a href="pages/{{ $page->page_id }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure you want to delete?');"><i class="fa fa-trash"></i>&nbsp;Delete</a>@endif @endif</td>
                                         </tr>
-                                        
+
                                         @php $no++; @endphp
-                                   @endforeach     
-                                        
+                                   @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
- 
+
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->

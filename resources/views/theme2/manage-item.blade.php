@@ -211,7 +211,11 @@
             <div class="item_bottom">
               <div class="author_details">
                 <div class="item_author_img">
-                  <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo?$item->user_photo:$item->user->user_photo }}" alt="{{ $item->username}}">
+                 @if($item->user_photo)
+                        <img src="{{ url('/') }}/public/storage/users/{{ $item->user_photo }}" alt="{{ $item->username}}">
+                    @else
+                        <img src="{{ url('/public/img/no-user.png') }}" alt="{{ $item->username}}">
+                    @endif
                 </div>
                 <a 
                   class="text-truncate" 

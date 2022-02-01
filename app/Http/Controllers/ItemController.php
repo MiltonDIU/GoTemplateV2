@@ -519,6 +519,7 @@ class ItemController extends Controller {
 				if ($allsettings->watermark_option == 1) {
 					$image = $request->file('item_thumbnail');
 					$img_name = time() . '.' . $image->getClientOriginalExtension();
+//					$img_name = "milton" . '.' . $image->getClientOriginalExtension();
 					$destinationPath = public_path('/storage/items');
 					$imagePath = $destinationPath . "/" .  $img_name;
 					$image->move($destinationPath, $img_name);
@@ -529,22 +530,39 @@ class ItemController extends Controller {
 					$wmarkWidth = $watermarkImg->width();
 					$wmarkHeight = $watermarkImg->height();
 
-					$imgWidth = $img->width();
-					$imgHeight = $img->height();
+                    $imgWidth = $img->width();
+                    $imgHeight = $img->height();
 
-					$x = 0;
-					$y = 0;
-					while ($y <= $imgHeight) {
-						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-						$x += $wmarkWidth;
-						if ($x >= $imgWidth) {
-							$x = 0;
-							$y += $wmarkHeight;
-						}
-					}
-					$img->save(base_path('public/storage/items/' . $img_name));
-					$item_thumbnail = $img_name;
-					/* new code */
+                    $i = 50;
+                    $y = 50;
+                    while ($y <= $imgHeight) {
+                        echo "$y<br>";
+                        for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                            if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                            }
+                        }
+                        $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                    }
+
+
+//                    $x = 20;
+//                    $y = 0;
+//                    while ($y <= $imgHeight) {
+//
+//                        echo "test<br>";
+//                        $y += $wmarkHeight;
+//
+////                        $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+////                        $x += $wmarkWidth;
+////                        if ($x >= $imgWidth) {
+////                            $x = $imgWidth+20;
+////                            $y += $wmarkHeight;
+////                        }
+//                    }
+                    $img->save(base_path('public/storage/items/' . $img_name));
+                    $item_thumbnail = $img_name;
+                    /* new code */
 				} else {
 					$image = $request->file('item_thumbnail');
 					$img_name = time() . '.' . $image->getClientOriginalExtension();
@@ -575,16 +593,28 @@ class ItemController extends Controller {
 					$imgWidth = $img->width();
 					$imgHeight = $img->height();
 
-					$x = 0;
-					$y = 0;
-					while ($y <= $imgHeight) {
-						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-						$x += $wmarkWidth;
-						if ($x >= $imgWidth) {
-							$x = 0;
-							$y += $wmarkHeight;
-						}
-					}
+                    $i = 50;
+                    $y = 50;
+                    while ($y <= $imgHeight) {
+                        echo "$y<br>";
+                        for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                            if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                            }
+                        }
+                        $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                    }
+
+//					$x = 0;
+//					$y = 0;
+//					while ($y <= $imgHeight) {
+//						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+//						$x += $wmarkWidth;
+//						if ($x >= $imgWidth) {
+//							$x = 0;
+//							$y += $wmarkHeight;
+//						}
+//					}
 					$img->save(base_path('public/storage/items/' . $img_name));
 					$item_preview = $img_name;
 					/* new code */
@@ -684,16 +714,29 @@ class ItemController extends Controller {
 						$imgWidth = $img->width();
 						$imgHeight = $img->height();
 
-						$x = 0;
-						$y = 0;
-						while ($y <= $imgHeight) {
-							$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-							$x += $wmarkWidth;
-							if ($x >= $imgWidth) {
-								$x = 0;
-								$y += $wmarkHeight;
-							}
-						}
+                        $i = 50;
+                        $y = 50;
+                        while ($y <= $imgHeight) {
+                            echo "$y<br>";
+                            for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                                if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                    $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                                }
+                            }
+                            $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                        }
+
+
+//						$x = 0;
+//						$y = 0;
+//						while ($y <= $imgHeight) {
+//							$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+//							$x += $wmarkWidth;
+//							if ($x >= $imgWidth) {
+//								$x = 0;
+//								$y += $wmarkHeight;
+//							}
+//						}
 						$img->save(base_path('public/storage/items/' . $fileName));
 						/* new code */
 						$imgdata = array('item_token' => $item_token, 'item_image' => $fileName);
@@ -869,16 +912,28 @@ class ItemController extends Controller {
 					$imgWidth = $img->width();
 					$imgHeight = $img->height();
 
-					$x = 0;
-					$y = 0;
-					while ($y <= $imgHeight) {
-						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-						$x += $wmarkWidth;
-						if ($x >= $imgWidth) {
-							$x = 0;
-							$y += $wmarkHeight;
-						}
-					}
+//					$x = 0;
+//					$y = 0;
+//					while ($y <= $imgHeight) {
+//						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+//						$x += $wmarkWidth;
+//						if ($x >= $imgWidth) {
+//							$x = 0;
+//							$y += $wmarkHeight;
+//						}
+//					}
+                    $i = 50;
+                    $y = 50;
+                    while ($y <= $imgHeight) {
+                        echo "$y<br>";
+                        for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                            if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                            }
+                        }
+                        $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                    }
+
 					$img->save(base_path('public/storage/items/' . $img_name));
 					$item_thumbnail = $img_name;
 					/* new code */
@@ -911,16 +966,27 @@ class ItemController extends Controller {
 					$imgWidth = $img->width();
 					$imgHeight = $img->height();
 
-					$x = 0;
-					$y = 0;
-					while ($y <= $imgHeight) {
-						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-						$x += $wmarkWidth;
-						if ($x >= $imgWidth) {
-							$x = 0;
-							$y += $wmarkHeight;
-						}
-					}
+//					$x = 0;
+//					$y = 0;
+//					while ($y <= $imgHeight) {
+//						$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+//						$x += $wmarkWidth;
+//						if ($x >= $imgWidth) {
+//							$x = 0;
+//							$y += $wmarkHeight;
+//						}
+//					}
+                    $i = 50;
+                    $y = 50;
+                    while ($y <= $imgHeight) {
+                        echo "$y<br>";
+                        for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                            if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                            }
+                        }
+                        $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                    }
 					$img->save(base_path('public/storage/items/' . $img_name));
 					$item_preview = $img_name;
 					/* new code */
@@ -1015,16 +1081,27 @@ class ItemController extends Controller {
 						$imgWidth = $img->width();
 						$imgHeight = $img->height();
 
-						$x = 0;
-						$y = 0;
-						while ($y <= $imgHeight) {
-							$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
-							$x += $wmarkWidth;
-							if ($x >= $imgWidth) {
-								$x = 0;
-								$y += $wmarkHeight;
-							}
-						}
+//						$x = 0;
+//						$y = 0;
+//						while ($y <= $imgHeight) {
+//							$img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+//							$x += $wmarkWidth;
+//							if ($x >= $imgWidth) {
+//								$x = 0;
+//								$y += $wmarkHeight;
+//							}
+//						}
+                        $i = 50;
+                        $y = 50;
+                        while ($y <= $imgHeight) {
+                            echo "$y<br>";
+                            for ($x=50; $x<$imgWidth; $x+=$wmarkWidth+$i){
+                                if ($x+$wmarkWidth<$imgWidth and $y+$wmarkHeight<$imgHeight){
+                                    $img->insert($url . '/public/storage/settings/' . $watermark, 'top-left', $x, $y);
+                                }
+                            }
+                            $y += $wmarkHeight+$wmarkHeight+$wmarkHeight;
+                        }
 						$img->save(base_path('public/storage/items/' . $fileName));
 						/* new code */
 						$imgdata = array('item_token' => $item_token, 'item_image' => $fileName);

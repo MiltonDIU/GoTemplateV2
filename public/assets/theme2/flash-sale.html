@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoTemplate</title>
+    <link rel="icon" href="images/fav.png" type="image/fav" sizes="16x16"> 
+
+    <!-- Google Fonts start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts end -->
+
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+    <!-- ------------------------------ header start ------------------------------ -->
+    <header>
+        <!-- conatiner start -->
+        <div class="container"> 
+            <div class="row">
+                <div class="offset-lg-7 col-lg-5 offset-sm-3 col-sm-9 offset-md-4 col-md-8 offset-xl-8 col-xl-4">
+                    <ul class="top_menu">
+                        <li>
+                            <a href="start-selling.html">Start Selling</a>
+                        </li>
+                        <li class="top_flash_sale">
+                            <a href="flash-sale.html"><i class="fas fa-dollar-sign"></i>Flash Sale</a>
+                        </li>
+                        <li class="h_cart">
+                            <a href="#" class="header_cart"><i class="fas fa-shopping-cart"></i></a>
+                            <span class = "header_cart_notification">0</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- conatiner end -->
+    </header>
+    <!-- ------------------------------ header end ------------------------------ -->
+
+    <!-- ------------------------------ navbar start ------------------------------ -->
+    <nav class="navbar sticky-top">
+        <!-- container start -->
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/Logo.png" alt="Logo">
+            </a>
+            <ul class="navbar-nav ms-auto nav_sign">
+                <li>
+                    <a href="sign-in.html" class="sign_in">Sign in</a>
+                    <a href="sign-up.html" class="sign_up">Sign up</a>
+                </li>
+            </ul>
+        </div>
+        <!-- container start -->
+    </nav>
+    <!-- ------------------------------ navbar end ------------------------------ -->
+
+    <!-- ------------------------------ Flash banner start ------------------------------ -->
+    <section id="flash_banner">
+        <!-- container start -->
+        <div class="container">
+            <h1 class="page_banner_title">Flash Sale</h1>
+            <h2 class="page_banner_description">Only for a short period of time you can grab these files with 50% discount</h2>
+
+            
+            <div class="row">
+                <div class="col-lg-8 m-auto col-sm-12 col-md-12 col-xl-8">
+                    <!-- counter start -->
+                    <div id="getting-started" class="flash_counter">
+                        <div class="count_time">
+                            <p id="days" class="count_number"></p>
+                            <p class="count_text">Days</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="hours" class="count_number"></p>
+                            <p class="count_text">Hours</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="minutes" class="count_number"></p>
+                            <p class="count_text">Minutes</p>
+                        </div>
+                        <div class="count_time">
+                            <p id="seconds" class="count_number"></p>
+                            <p class="count_text">Seconds</p>
+                        </div>
+                    </div>
+                    <!-- counter end -->
+                </div>
+            </div>
+
+        </div>
+        <!-- container end -->
+    </section>
+    <!-- ------------------------------ Flash banner end ------------------------------ -->
+
+    <!-- ------------------------------ category start ------------------------------ -->
+    <section id="flash_category">
+        <!-- container start -->
+        <div class="container">
+            <!-- category buttons start -->
+            <div class="controls main_category">
+                <button type="button" class="control category_button" data-filter="all">All</button>
+                <button type="button" class="control category_button" data-filter=".scripts">Scripts</button>
+                <button type="button" class="control category_button" data-filter=".apps">apps</button>
+                <button type="button" class="control category_button" data-filter=".themes">Themes</button>
+                <button type="button" class="control category_button" data-filter=".plugins">Plugins</button>
+                <button type="button" class="control category_button" data-filter=".graphics">Graphics</button>
+                <button type="button" class="control category_button" data-filter=".business">Business</button>
+                <button type="button" class="control category_button" data-filter=".education">Education</button>
+            </div>
+            <!-- category buttons end -->
+
+            <!-- sort start -->
+            <div class="controls sort_main">
+                <div class="sort_group">
+                    <p class="sort_title">Sort by price:</p>
+                    <button type="button" class="control sort_btn" data-sort="price:asc">Low to High</button>
+                    <button type="button" class="control sort_btn" data-sort="price:desc">High to Low</button>
+                </div>
+
+                <div class="sort_group">
+                    <p class="sort_title">Sort by date:</p>
+                    <button type="button" class="control sort_btn" data-sort="published-date:desc">Latest First</button>
+                    <button type="button" class="control sort_btn" data-sort="published-date:asc">Oldest First</button>
+                </div>
+            </div>
+            <!-- sort end -->
+        </div>
+        <!-- container end -->
+    </section>
+    <!-- ------------------------------ category end ------------------------------ -->
+
+
+    <!-- ------------------------------ product container start ------------------------------ -->
+    <section id="product_container">
+        <!-- container start -->
+        <div class="container">
+
+            <!-- mix container start -->
+            <div class="mix_container">
+
+                <div class="mix scripts item_box" data-price="200" data-published-date="2020-10-1">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">200 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Scripts</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item1.png" class="item_view_img" alt="item1">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix apps item_box" data-price="3000" data-published-date="2020-10-02">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">3000 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Apps</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item2.png" class="item_view_img" alt="item2">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix themes item_box" data-price="1050" data-published-date="2020-11-05">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">1050 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Themes</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item3.jpg" class="item_view_img" alt="item3">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix plugins item_box" data-price="500" data-published-date="2020-10-10">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Plugins</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item4.png" class="item_view_img" alt="item4">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix graphics item_box" data-price="200" data-published-date="2020-09-19">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">200 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Graphics</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item5.png" class="item_view_img" alt="item5">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix education item_box" data-price="500" data-published-date="2021-07-10">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Education</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item6.jpg" class="item_view_img" alt="item6">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix business item_box" data-price="350" data-published-date="2021-08-10">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">350 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Business</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item7.png" class="item_view_img" alt="item7">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix scripts item_box" data-price="500" data-published-date="2021-06-10">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Scripts</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item8.jpg" class="item_view_img" alt="item8">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix scripts item_box" data-price="200" data-published-date="2021-05-13">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">200 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Scripts</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item9.png" class="item_view_img" alt="item9">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix apps item_box" data-price="1000" data-published-date="2021-04-02">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">1000 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Apps</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item10.jpg" class="item_view_img" alt="item10">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix themes item_box" data-price="300" data-published-date="2021-06-05">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">300 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Themes</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item11.jpg" class="item_view_img" alt="item11">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix plugins item_box" data-price="600" data-published-date="2021-01-18">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">600 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Plugins</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item12.png" class="item_view_img" alt="item12">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix graphics item_box" data-price="500" data-published-date="2021-02-19">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Graphics</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item13.png" class="item_view_img" alt="item13">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix education item_box" data-price="300" data-published-date="2021-07-09">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">300 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Education</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item14.png" class="item_view_img" alt="item14">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix business item_box" data-price="550" data-published-date="2021-03-17">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">550 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Business</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item15.png" class="item_view_img" alt="item15">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix scripts item_box" data-price="500" data-published-date="2021-02-28">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Scripts</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item16.png" class="item_view_img" alt="item16">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix plugins item_box" data-price="1500" data-published-date="2021-01-18">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">1500 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Plugins</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item17.png" class="item_view_img" alt="item17">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix graphics item_box" data-price="200" data-published-date="2021-02-19">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">200 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Graphics</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item18.jpg" class="item_view_img" alt="item18">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix education item_box" data-price="600" data-published-date="2021-07-09">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">600 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Education</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item19.png" class="item_view_img" alt="item19">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix business item_box" data-price="900" data-published-date="2021-03-17">
+                    <div class="item_view">
+                        <div class="item_view_overlay">
+                            <div class="item_details">
+                                <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i><p class="price">900 BDT</p></a>
+                                <div class="item_title">
+                                    <a href="#" class="item_name">Business</a>
+                                </div>
+                            </div>
+                            <div class="icon_container">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Product details" class="item_icons"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Save" class="item_icons"><i class="fas fa-folder-plus"></i></a>
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Like" class="item_icons"><i class="fas fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <a href="#" class="paid_item_top"><i class="fas fa-dollar-sign"></i></a>
+                        <img src="images/item20.PNG" class="item_view_img" alt="item20">
+                    </div>
+                    <div class="item_bottom">
+                        <div class="author_details">
+                            <div class="item_author_img">
+                                <img src="images/author1.jpg" alt="author1">
+                            </div>
+                            <a href="#">Jhon Doe</a>
+                        </div>
+                        <div class="item_bottom_icons">
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add to Cart" class="item_bottom_cart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Downloads"><i class="fas fa-download"></i>202</a>
+                            <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Likes"><i class="fas fa-heart"></i>300</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- mix container end -->
+        </div>
+        <!-- container end -->
+    </section>
+    <!-- ------------------------------ product container end ------------------------------ -->
+
+    <!-- ------------------------------ Pagination start ------------------------------ -->
+    <section id="pagination_main">
+        <!-- container start -->
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#"><i class="fas fa-ellipsis-h"></i></a></li>
+                  <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- container end -->
+    </section>
+    <!-- ------------------------------ Pagination end ------------------------------ -->
+
+    <!-- ------------------------------ Footer start ------------------------------ -->
+    <footer>
+        <!-- ------------------------------ Return to Top start ------------------------------ -->
+        <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
+        <!-- ------------------------------ Return to Top end ------------------------------ -->
+
+        <!-- ------------------------------ Messenger start ------------------------------ -->
+        <a href="#" id="messenger"><i class="fab fa-facebook-messenger"></i></a>
+        <!-- ------------------------------ Messenger end ------------------------------ -->
+
+        <!-- container start -->
+        <div class="container">
+            <div class="footer_main">
+                <div class="row">
+
+                    <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
+                        <div class="footer_follow">
+                            <div class="follow_us">
+                                <p class="footer_title">Follow <span class="r_title">Us</span></p>
+                                <div class="follow_icons">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="contact_us">
+                                <p class="footer_title">Contact <span class="r_title">Us</span></p>
+                                <div class="contact_main">
+                                    <div class="contact_details">
+                                        <i class="fas fa-phone-alt"></i>
+                                        <p>+88 01847334879</p>
+                                    </div>
+
+                                    <div class="contact_details">
+                                        <i class="fas fa-envelope"></i>
+                                        <p>info@gotemplate.net</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
+                        <div class="footer_link">
+                            <p class="footer_title">POPULAR <span class="r_title">CATEGORIES</span></p>
+                            <div class="all_links">
+                                <a href="#">Scripts</a>
+                                <a href="#">Apps</a>
+                                <a href="#">Themes</a>
+                                <a href="#">Plugins</a>
+                                <a href="#">Graphics</a>
+                                <a href="#">Business</a>
+                                <a href="#">Education</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
+                        <div class="footer_link">
+                            <p class="footer_title">More <span class="r_title">Info</span></p>
+                            <div class="all_links">
+                                <a href="top-authors.html">Top Authors</a>
+                                <a href="about-us.html">About Us</a>
+                                <a href="blog-main.html">Blog</a>
+                                <a href="contact.html">Contact</a>
+                                <a href="payment-policy.html">Payment Policy</a>
+                                <a href="privacy-policy.html">Privacy Policy</a>
+                                <a href="terms-conditions.html">Terms & Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-12 col-md-6 col-xl-3">
+                        <div class="newsletter">
+                            <p class="footer_title">Newsletter</p>
+                            <p class="newsletter_details">Want more script, themes & templates? Subscribe to our mailing list to receive an update when new items arrive!</p>
+                            <form action="#">
+                                <input type="email" class="footer_subscribe" placeholder="Enter your email">
+                                <button type="submit" class="subscribe_button">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end -->
+
+        <div class="footer_copyright">
+            <!-- container start -->
+            <div class="container">
+                <p>© 2021 <a href="#" class="c_link">GoTemplate</a> | Digital Product & Template Marketplace in Bangladesh. All rights reserved.</p>
+            </div>
+            <!-- container end -->
+        </div>
+    </footer>
+
+    <!-- ------------------------------ Footer end ------------------------------ -->
+
+
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+
+    <script>
+        // ===== Return to Top ==== 
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= 200) {        // If page is scrolled more than 200px
+                $('#return-to-top').fadeIn(200);    // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+            }
+        });
+
+        $('#return-to-top').click(function() {      // When arrow is clicked
+            $('body,html').animate({
+                scrollTop : 0                       // Scroll to top of body
+            }, 500);
+        });
+    </script>
+
+    <script src="js/mixitup.min.js"></script>
+
+    <script>
+        var containerEl = document.querySelector('.mix_container');
+
+        var mixer = mixitup(containerEl);
+    </script>
+
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

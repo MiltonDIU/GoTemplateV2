@@ -3,6 +3,10 @@
 @media (min-width:320px) and (max-width:575px){
 
     /* ----------------------------- Home page start ----------------------------- */
+
+    .top_menu_left {
+        display: none;
+    }
     
     .top_menu{
         justify-content: space-between;
@@ -11,6 +15,14 @@
     
     .top_menu li a{
         font-size: 13px;
+    }
+
+    .nav_selling {
+        display: none;
+    }
+
+    .navbar-brand {
+        margin-right: 0;
     }
     
     .navbar .navbar-brand img{
@@ -21,16 +33,21 @@
         font-size: 14px;
     }
 
-    .navbar .nav_sign .sign_up::before {
+    .navbar .nav_sign .sign_up::before{
         bottom: -24px;
     }
 
-    .navbar .nav_sign .sign_up::after {
+    .navbar .nav_sign .sign_up::after{
         bottom: -24px;
     }
 
     .navbar .nav_sign .sign_in::after {
         bottom: -24px;
+    }
+
+    .navbar-nav {
+        margin-bottom: 8px;
+        margin-top: 8px;
     }
 
     #banner .banner_main_heading{
@@ -188,6 +205,34 @@
 
     footer .footer_main .newsletter form {
         margin: 0 10px;
+    }
+
+    footer .f_copy_main {
+        flex-direction: column-reverse;
+    }
+
+    footer .f_copy {
+        margin-top: 35px;
+    }
+
+    footer .footer_policy {
+        margin-top: 0;
+    }
+
+    footer .footer_copyright {
+        text-align: center;
+    }
+
+    footer .footer_policy {
+        margin-top: 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .copy_link {
+        margin: 0 10px;
+        padding: 10px 0;
     }
 
     /* ----------------------------- Home page end ----------------------------- */
@@ -1173,6 +1218,17 @@
 @media (min-width:576px) and (max-width:767px){
 
     /* ----------------------------- Home page start ----------------------------- */
+    .top_menu_left {
+        display: none;
+    }
+
+    .top_menu {
+        justify-content: flex-end;
+    }
+
+    .top_menu li {
+        margin-left: 35px;
+    }
 
     .main_category li{
         margin-bottom: 30px;
@@ -1244,6 +1300,34 @@
 
     footer .footer_main .newsletter .subscribe_button {
         height: 47px;
+    }
+
+    footer .f_copy_main {
+        flex-direction: column-reverse;
+    }
+
+    footer .f_copy {
+        margin-top: 35px;
+    }
+
+    footer .footer_policy {
+        margin-top: 0;
+    }
+
+    footer .footer_copyright {
+        text-align: center;
+    }
+
+    footer .footer_policy {
+        margin-top: 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .copy_link {
+        margin: 0 10px;
+        padding: 10px 0;
     }
 
     /* ----------------------------- Home page end ----------------------------- */
@@ -1796,6 +1880,17 @@
 @media (min-width:768px) and (max-width:991px){
 
     /* ----------------------------- Home page start ----------------------------- */
+    .top_menu_left {
+        display: none;
+    }
+
+    .top_menu {
+        justify-content: flex-end;
+    }
+
+    .top_menu li {
+        margin-left: 35px;
+    }
 
     .main_category li {
         margin: 18px 0;
@@ -1849,6 +1944,10 @@
         text-align: center;
     }
 
+    footer .contact_main {
+        margin-bottom: 44px;
+    }
+
     footer .footer_main .contact_us .contact_details {
         justify-content: center;
     }
@@ -1859,6 +1958,34 @@
 
     footer .footer_main .newsletter form {
         margin: 0 15px;
+    }
+
+    footer .f_copy_main {
+        flex-direction: column-reverse;
+    }
+
+    footer .f_copy {
+        margin-top: 35px;
+    }
+
+    footer .footer_policy {
+        margin-top: 0;
+    }
+
+    footer .footer_copyright {
+        text-align: center;
+    }
+
+    footer .footer_policy {
+        margin-top: 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .copy_link {
+        margin: 0 10px;
+        padding: 10px 0;
     }
 
     /* ----------------------------- Home page end ----------------------------- */
@@ -2028,6 +2155,18 @@
         margin-top: 30px;
     }
 
+    /* #signin .sign_text .sign_in_img img {
+        width: 272px;
+        height: auto;
+        opacity: .1;
+    }
+
+    #signin .sign_text .sign_in_img {
+        position: absolute;
+        top: 0;
+        left: 360px;
+    } */
+
     /* ----------------------------- Sign in page end ----------------------------- */
 
     /* ----------------------------- Sign up page start ----------------------------- */
@@ -2035,6 +2174,18 @@
     .s_up {
         margin-left: 0;
     }
+
+    /* #signup .sign_text .sign_up_img {
+        position: absolute;
+        top: -59px;
+        left: 386px;
+    }
+
+    #signup .sign_text .sign_up_img img {
+        width: 314px;
+        height: auto;
+        opacity: .1;
+    } */
 
     /* ----------------------------- Sign up page end ----------------------------- */
 
@@ -2360,6 +2511,9 @@
 @media (min-width:992px) and (max-width:1199px){
 
     /* ----------------------------- Home page start ----------------------------- */
+    .top_menu_left .left_box {
+        margin-right: 32px;
+    }
 
     .main_category li{
         margin: 18px 0;
@@ -2435,6 +2589,12 @@
     .sign_text .text_point_main {
         margin-left: 0;
     }
+
+    /* #signup .sign_text .sign_up_img {
+        position: absolute;
+        top: 11px;
+        left: -78px;
+    } */
 
     /* ----------------------------- Sign up page end ----------------------------- */
 

@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
         //or with dynamic user id
         View::composer('*', function ($view){
             $admin = Members::adminData();
-        
+
             $view->with('admin', $admin);
         });
 
@@ -111,6 +111,10 @@ class AppServiceProvider extends ServiceProvider
 
 		$footerpages['pages'] = Pages::footermenuData();
 		View::share('footerpages', $footerpages);
+
+        $copyRightMenuData['pages'] = Pages::copyRightMenuData();
+        View::share('copyRightMenuData', $copyRightMenuData);
+
 
 		$languages['view'] = Languages::allLanguage();
 		View::share('languages', $languages);

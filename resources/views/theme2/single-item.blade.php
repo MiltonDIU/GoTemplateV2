@@ -375,19 +375,22 @@
               </div>
             </div>
             @endif
-
-            <div class="btn_buy">
-              @if(Auth::guest())
+    @if(Auth::guest())
+                  <div class="btn_buy single-page-button">
                 <a href="javascript:void(0);" class="item_action_btn action_buy" onClick="alert('Login user only');">
                   <i class="fas fa-shopping-cart"></i> {{ Helper::translation(3074,$translate) }}
                 </a>
+                  </div>
+                  <div class="btn_buy single-page-button">
                 <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert('Login user only');">
                   <i class="fas fa-folder-plus"></i>Save
                 </a>
                 <a href="javascript:void(0);" class="item_action_btn btn_save_like" onClick="alert('Login user only');">
                   <i class="fas fa-heart"></i>Like
                 </a>
+                  </div>
               @endif
+              <div class="btn_buy single-page-button">
 
               @if (Auth::check())
                 @if($item->user_id == Auth::user()->id)
@@ -441,9 +444,16 @@
       <div class="col-lg-8">
         <div class="item_product">
           <h4 class="product_title">Product Overview</h4>
-          <p class="product_details">{!! html_entity_decode($item->item_desc) !!}</p>
+          <p class="product_details">{!! html_entity_decode($item->item_shortdesc) !!}</p>
         </div>
 
+
+   <div class="item_product">
+          <h4 class="product_title">Product Details</h4>
+          <p class="product_details">{!! html_entity_decode($item->item_desc) !!}</p>
+        </div>
+        
+        
         <!-- <div class="item_features">
           <h4 class="product_title">Features</h4>
           <p class="product_details"></p>
@@ -552,5 +562,6 @@
         font-weight: bold;
     }
     #licence2_extended{display: none}
+      .single-page-button{line-height: 60px}
 </style>
     @endpush

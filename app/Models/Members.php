@@ -103,6 +103,14 @@ class Members extends Model
 
   }
 
+    public static function getuserDataAdmin()
+    {
+
+        $value=DB::table('users')->where('user_type','=','admin')->where('drop_status','=','no')->orderBy('id', 'desc')->get();
+        return $value;
+
+    }
+
   public static function deleteData($token,$data){
 
 	$image = DB::table('users')->where('user_token', $token)->first();
@@ -302,7 +310,10 @@ class Members extends Model
   public static function getmemberData()
   {
 
-    $get=DB::table('users')->where('user_type','=','vendor')->where('drop_status','=','no')->orderBy('id', 'desc')->get();
+    $get=DB::table('users')
+        ->where('user_type','=','vendor')
+        ->where('drop_status','=','no')
+        ->orderBy('id', 'desc')->get();
 	$value = $get->count();
     return $value;
 
@@ -311,9 +322,19 @@ class Members extends Model
   /* total members */
 
 
+    /* total members */
 
+    public static function getCustomerData()
+    {
 
+        $get=DB::table('users')
+            ->where('user_type','=','vendor')
+            ->orWhere('user_type','=','customer')
+            ->where('drop_status','=','no')
+            ->orderBy('id', 'desc')->get();
+        $value = $get->count();
+        return $value;
 
-
-
+    }
+    /* total members */
 }

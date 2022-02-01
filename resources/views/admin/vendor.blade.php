@@ -80,6 +80,7 @@
                                             <th>Name</th>
                                             <th>Username</th>
                                             <th>Email</th>
+                                            <th>Mobile</th>
 
                                             <th>Photo</th>
                                             <th>Vendor Type</th>
@@ -97,6 +98,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td><a href="{{ URL::to('/user') }}/{{ $user->username }}" target="_blank" class="blue-color">{{ $user->username }}</a></td>
                                             <td>{{ $user->email }}</td>
+                                            <td>{{ $user->mobile }}</td>
                                             <td>@if($user->user_photo != '') <img height="50" src="{{ url('/') }}/public/storage/users/{{ $user->user_photo }}" alt="{{ $user->name }}" class="userphoto"/>@else <img height="50" src="{{ url('/') }}/public/img/no-user.png" alt="{{ $user->name }}" class="userphoto"/>  @endif</td>
 
                                             <td>@if($user->exclusive_author == 1) <span class="badge badge-success">Exclusive User</span> @else <span class="badge badge-danger">Non Exclusive User</span> @endif</td>

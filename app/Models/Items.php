@@ -129,7 +129,22 @@ class Items extends Model {
     $value = DB::table('items')->join('users', 'users.id', 'items.user_id')->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
     return $value;
   }
+    public static function getFreeItem() {
 
+        $value = DB::table('items')->where('free_download','1')->join('users', 'users.id', 'items.user_id')->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
+        return $value;
+    }
+
+    public static function getFlashRequestItem() {
+
+        $value = DB::table('items')->where('item_flash_request','1')->join('users', 'users.id', 'items.user_id')->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
+        return $value;
+    }
+    public static function getApproveItem($status) {
+
+        $value = DB::table('items')->where('items.item_status',$status)->join('users', 'users.id', 'items.user_id')->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
+        return $value;
+    }
   public static function getuserItem($user_id) {
 
     $value = DB::table('items')->join('users', 'users.id', 'items.user_id')->where('items.user_id', '=', $user_id)->where('items.item_status', '=', 1)->where('items.drop_status', '=', 'no')->orderBy('items.item_id', 'desc')->get();
@@ -533,7 +548,7 @@ class Items extends Model {
   public static function singleitemData($item_slug, $item_id) {
     $value = DB::table('items')
       ->join('users', 'users.id', 'items.user_id')
-      ->where('items.item_status', '=', 1)
+    //   ->where('items.item_status', '=', 1)
       ->where('items.drop_status', '=', 'no')
       ->where('items.item_id', '=', $item_id)
       ->first();

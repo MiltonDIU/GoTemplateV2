@@ -111,7 +111,10 @@
                                                 <label for="name" class="control-label mb-1">Username <span class="require">*</span></label>
                                                 <input id="username" name="username" type="text" class="form-control" value="{{ $edit['userdata']->username }}" required>
                                             </div>
-
+                                        <div class="form-group">
+                                            <label for="mobile" class="control-label mb-1">Mobile</label>
+                                            <input id="mobile" name="mobile" type="text" class="form-control" value="{{ $edit['userdata']->mobile }}">
+                                        </div>
 
                                                 <div class="form-group">
                                                     <label for="email" class="control-label mb-1">Email <span class="require">*</span></label>

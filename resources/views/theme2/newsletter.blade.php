@@ -3,13 +3,15 @@
 @extends('theme2.layout.master')
 
 @section('content')
-  @include("theme2.layout.breadcrumb", [
-    "list" => [array("text" => 3093)]
-  ])    
-    
-  <section class="term_condition_area">
+
+
+  <section class="pt-0">
     <div class="container">
-      <div class="row mt-5">
+        @include("theme2.layout.breadcrumb", [
+  "list" => [array("text" => 3093)]
+])
+
+        <div class="row">
         <div class="col-md-12">
           <div class="text-center">
 
@@ -24,12 +26,14 @@
                 @endif
               </div>
             </div>
-              
+
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
 @endsection
 
 @else

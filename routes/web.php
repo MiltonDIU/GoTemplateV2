@@ -65,6 +65,8 @@ Route::group(['middleware' => ['XSS']], function () {
 	// start selling
 	Route::get('/start-selling', 'CommonController@view_start_selling');
 
+    // user guideline
+    Route::get('/user-guideline', 'CommonController@userGuideline');
 
 	// email verification
 	Route::get('/user-verify/{user_token}', 'CommonController@user_verify');
@@ -208,9 +210,9 @@ Route::group(['middleware' => ['XSS']], function () {
 
 
 // admin panel
-Route::group(['middleware' => ['is_admin', 'XSS']], function () {
+Route::group(['middleware' => ['XSS']], function () {
 	Route::get('/admin', 'Admin\AdminController@admin');
-
+//    Route::get('/admin/admin-list', 'Admin\MembersController@adminList');
 	// customer
 	Route::get('/admin/customer', 'Admin\MembersController@customer');
 	Route::get('/admin/add-customer', 'Admin\MembersController@add_customer')->name('admin.add-customer');
@@ -322,6 +324,11 @@ Route::group(['middleware' => ['is_admin', 'XSS']], function () {
 
 	// items
 	Route::get('/admin/items', 'Admin\ItemController@view_items');
+	Route::get('/admin/approve-items', 'Admin\ItemController@approveItems');
+	Route::get('/admin/un-approve-items', 'Admin\ItemController@unApproveItems');
+	Route::get('/admin/rejected-items', 'Admin\ItemController@rejectedItems');
+	Route::get('/admin/flash-request-items', 'Admin\ItemController@flashRequestItems');
+	Route::get('/admin/free-items', 'Admin\ItemController@freeItems');
 	Route::get('/admin/upload-item/{itemtype}', 'Admin\ItemController@upload_item');
 	Route::post('/admin/upload-item', ['as' => 'admin.upload-item', 'uses' => 'Admin\ItemController@save_items']);
 	Route::get('/admin/edit-item/{token}', 'Admin\ItemController@edit_item');
@@ -332,6 +339,10 @@ Route::group(['middleware' => ['is_admin', 'XSS']], function () {
 
 
 	// orders
+
+    Route::get('/admin/payment-orders', 'Admin\ItemController@paymentOrders');
+    Route::get('/admin/pending-orders', 'Admin\ItemController@pendingOrders');
+    Route::get('/admin/free-orders', 'Admin\ItemController@freeOrders');
 	Route::get('/admin/orders', 'Admin\ItemController@view_orders');
 	Route::get('/admin/order-details/{token}', 'Admin\ItemController@view_order_single');
 	Route::get('/admin/order-details/{ord_id}/{user_type}', 'Admin\ItemController@view_payment_approval');

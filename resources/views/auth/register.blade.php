@@ -55,6 +55,9 @@
                         </div>
 
                     </div>
+                      <div class="sign_up_img">
+                        <!--<img src="{{url('public/assets/theme2/images/sign_up_page.png')}}" alt="sign up page">-->
+                    </div>
                 </div>
                 <!-- sign up text end -->
             </div>
@@ -70,12 +73,12 @@
                         <div class="form_group group_flex">
                             <div class="group_box">
                                 <label for="name">Name</label>
-                                <input 
+                                <input
                                     id="name"
                                     name="name"
-                                    type="text" 
-                                    placeholder="Your name" 
-                                    class="f_input" 
+                                    type="text"
+                                    placeholder="Your name"
+                                    class="f_input"
                                     required
                                     autofocus
                                 >
@@ -88,12 +91,12 @@
                             </div>
                             <div class="group_box">
                                 <label for="username">Username</label>
-                                <input 
+                                <input
                                     id="username"
                                     name="username"
-                                    type="text" 
-                                    placeholder="Your username" 
-                                    class="f_input" 
+                                    type="text"
+                                    placeholder="Your username"
+                                    class="f_input"
                                     required
                                 >
                             </div>
@@ -102,12 +105,12 @@
                         <div class="form_group group_flex">
                             <div class="group_box">
                                 <label for="email">Email</label>
-                                <input 
+                                <input
                                     id="email"
                                     name="email"
-                                    type="email" 
-                                    placeholder="Your email" 
-                                    class="f_input" 
+                                    type="email"
+                                    placeholder="Your email"
+                                    class="f_input"
                                     required
                                 >
 
@@ -127,16 +130,34 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form_group group_flex">
+                            <div class="group_box" style="width: 100%">
+                                <label for="email">Mobile</label>
+                                <input
+                                    id="mobile"
+                                    name="mobile"
+                                    type="text"
+                                    placeholder="Your Mobile Number"
+                                    class="f_input"
+                                    required
+                                >
 
+                                @error('mobile')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form_group group_flex">
                             <div class="group_box">
                                 <label for="password">Password</label>
-                                <input 
+                                <input
                                     id="password"
                                     name="password"
-                                    type="password" 
-                                    placeholder="Your password" 
-                                    class="f_input" 
+                                    type="password"
+                                    placeholder="Your password"
+                                    class="f_input"
                                     required
                                 >
 
@@ -150,11 +171,11 @@
                             <div class="group_box">
                                 <label for="password-confirm">Confirm Password</label>
                                 <input
-                                    id="password-confirm" 
+                                    id="password-confirm"
                                     name="password_confirmation"
-                                    type="password" 
-                                    placeholder="Confirm password" 
-                                    class="f_input" 
+                                    type="password"
+                                    placeholder="Confirm password"
+                                    class="f_input"
                                     required
                                 >
                             </div>

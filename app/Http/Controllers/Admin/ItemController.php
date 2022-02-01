@@ -75,8 +75,51 @@ class ItemController extends Controller
 	  $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
 	  return view('admin.items')->with($data);
 	}
+    public function approveItems()
+    {
 
+        $itemData['item'] = Items::getApproveItem('1');
+        $viewitem['type'] = Items::gettypeItem();
+        $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+        $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
+        return view('admin.items')->with($data);
+    }
+    public function unApproveItems()
+    {
 
+        $itemData['item'] = Items::getApproveItem('0');
+        $viewitem['type'] = Items::gettypeItem();
+        $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+        $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
+        return view('admin.items')->with($data);
+    }
+    public function rejectedItems()
+    {
+
+        $itemData['item'] = Items::getApproveItem('2');
+        $viewitem['type'] = Items::gettypeItem();
+        $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+        $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
+        return view('admin.items')->with($data);
+    }
+    public function freeItems()
+    {
+
+        $itemData['item'] = Items::getFreeItem();
+        $viewitem['type'] = Items::gettypeItem();
+        $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+        $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
+        return view('admin.items')->with($data);
+    }
+    public function flashRequestItems()
+    {
+
+        $itemData['item'] = Items::getFlashRequestItem();
+        $viewitem['type'] = Items::gettypeItem();
+        $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+        $data = array('itemData' => $itemData, 'viewitem' => $viewitem, 'encrypter' => $encrypter);
+        return view('admin.items')->with($data);
+    }
 	public function update_edit_item_type(Request $request)
 	{
 
@@ -574,12 +617,24 @@ class ItemController extends Controller
         return view('admin.orders', compact('orders'));
 	}
 
+    public function paymentOrders()
+    {
+        $orders = ItemCheckout::where('payment_status','completed')->where('vendor_amount','!=','0')->orderBy('chout_id', 'desc')->get();
+        return view('admin.orders', compact('orders'));
+    }
+    public function pendingOrders()
+    {
+        $orders = ItemCheckout::where('payment_status','pending')->where('vendor_amount','!=','0')->orderBy('chout_id', 'desc')->get();
+        return view('admin.orders', compact('orders'));
+    }
+    public function freeOrders()
+    {
+        $orders = ItemCheckout::where('vendor_amount','=','0')->orderBy('chout_id', 'desc')->get();
+        return view('admin.orders', compact('orders'));
+    }
 
-
-	public function edit_item($token)
+        public function edit_item($token)
 	{
-
-
 		$edit['item'] = Items::edititemData($token);
 		$type_id = $edit['item']->item_type;
 		$getcount  = Items::getimagesCount($token);

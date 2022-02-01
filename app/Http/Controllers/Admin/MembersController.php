@@ -16,6 +16,11 @@ class MembersController extends Controller {
 		$this->middleware('auth');
 	}
 
+    /* start admin */
+    public function adminList() {
+        $userData['data'] = Members::getuserDataAdmin();
+        return view('admin.admin', ['userData' => $userData]);
+    }
 	/* start customer */
 	public function customer() {
 		$userData['data'] = Members::getuserData();
@@ -120,6 +125,7 @@ class MembersController extends Controller {
 	public function update_customer(Request $request) {
 
 		$name = $request->input('name');
+		$mobile = $request->input('mobile');
 		$username = $request->input('username');
 		$exclusive_author = $request->input('exclusive_author');
 		$verified = $request->input('verified');
@@ -187,7 +193,7 @@ class MembersController extends Controller {
 
 
 
-			$data = array('name' => $name, 'username' => $username,  'email' => $email, 'user_type' => $user_type, 'password' => $pass, 'earnings' => $earnings, 'user_photo' => $user_image, 'exclusive_author' => $exclusive_author,  'verified' => $verified, 'updated_at' => date('Y-m-d H:i:s'));
+			$data = array('name' => $name,'mobile' => $mobile, 'username' => $username,  'email' => $email, 'user_type' => $user_type, 'password' => $pass, 'earnings' => $earnings, 'user_photo' => $user_image, 'exclusive_author' => $exclusive_author,  'verified' => $verified, 'updated_at' => date('Y-m-d H:i:s'));
 			Members::updateData($token, $data);
 			return redirect()->back()->with('success', 'Update successfully.');
 		}
@@ -225,6 +231,7 @@ class MembersController extends Controller {
 
 	public function update_profile(Request $request) {
 		$name = $request->input('name');
+		$mobile = $request->input('mobile');
 		$username = $request->input('username');
 		$email = $request->input('email');
 		$user_type = $request->input('user_type');
@@ -242,6 +249,7 @@ class MembersController extends Controller {
 		$image_size = $allsettings->site_max_image_size;
 		$request->validate([
 			'name' => 'required',
+			'mobile' => 'required',
 			'username' => 'required',
 			'email' => 'required|email',
 			'user_photo' => 'mimes:jpeg,jpg,png,gif|max:' . $image_size,
@@ -280,7 +288,7 @@ class MembersController extends Controller {
 				$user_image = $request->input('save_photo');
 			}
 
-			$data = array('name' => $name, 'username' => $username, 'email' => $email, 'user_type' => $user_type, 'password' => $pass, 'user_photo' => $user_image, 'updated_at' => date('Y-m-d H:i:s'));
+			$data = array('name' => $name,'mobile' => $mobile, 'username' => $username, 'email' => $email, 'user_type' => $user_type, 'password' => $pass, 'user_photo' => $user_image, 'updated_at' => date('Y-m-d H:i:s'));
 
 			Members::updateprofileData($token, $data);
 			return redirect()->back()->with('success', 'Update successfully.');

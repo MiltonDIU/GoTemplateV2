@@ -70,6 +70,7 @@
                                             <th>Sno</th>
                                             <th>Name</th>
                                             <th>Username</th>
+                                            <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Photo</th>
                                             <th>Bank Details</th>
@@ -85,6 +86,7 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td><a href="{{ URL::to('/user') }}/{{ $user->username }}" target="_blank" class="blue-color">{{ $user->username }}</a></td>
+                                            <td>{{ $user->mobile }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>@if($user->user_photo != '') <img height="50" src="{{ url('/') }}/public/storage/users/{{ $user->user_photo }}" alt="{{ $user->name }}" class="userphoto"/>@else <img height="50" src="{{ url('/') }}/public/img/no-user.png" alt="{{ $user->name }}" class="userphoto"/>  @endif</td>
                                            <td>--</td>

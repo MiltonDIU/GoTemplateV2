@@ -47,6 +47,7 @@ class RegisterController extends Controller {
         $encrypter   = app('Illuminate\Contracts\Encryption\Encrypter');
         $allsettings = Settings::allSettings();
         $name        = $request->input('name');
+        $mobile        = $request->input('mobile');
         $username    = $request->input('username');
         $email       = $request->input('email');
         $user_type   = $encrypter->decrypt($request->input('user_type'));
@@ -65,8 +66,8 @@ class RegisterController extends Controller {
                 $referral_count      = $referred['display']->referral_count + 1;
 
                 $update_data = array (
-                    'earnings' => $wallet_amount, 
-                    'referral_amount' => $referral_amount, 
+                    'earnings' => $wallet_amount,
+                    'referral_amount' => $referral_amount,
                     'referral_count' => $referral_count
                 );
 
@@ -78,6 +79,7 @@ class RegisterController extends Controller {
 
         $request->validate([
             'name'     => 'required',
+            'mobile'     => 'required',
             'username' => 'required',
             'email'    => 'required|email',
             'password' => ['required', 'min:6'],
@@ -103,20 +105,21 @@ class RegisterController extends Controller {
             }else {
                 $verified = 1;
             }
-            
+
             $user_token = $this->generateRandomString();
 
             $data = array (
-                'name' => $name, 
-                'username' => $username, 
-                'email' => $email, 
-                'user_type' => $user_type, 
-                'password' => $password, 
-                'earnings' => $earnings, 
-                'verified' => $verified, 
-                'created_at' => date('Y-m-d H:i:s'), 
-                'updated_at' => date('Y-m-d H:i:s'), 
-                'user_token' => $user_token, 
+                'name' => $name,
+                'mobile' => $mobile,
+                'username' => $username,
+                'email' => $email,
+                'user_type' => $user_type,
+                'password' => $password,
+                'earnings' => $earnings,
+                'verified' => $verified,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'user_token' => $user_token,
                 'referral_by' => $referral_by
             );
 
@@ -150,6 +153,7 @@ class RegisterController extends Controller {
     protected function validator(array $data) {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'mobile' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 			'username' => ['required', 'regex:/^[\w-]*$/', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:7', 'confirmed'],
@@ -191,11 +195,11 @@ class RegisterController extends Controller {
                 $referral_count = $referred['display']->referral_count + 1;
 
                 $update_data = array (
-                    'earnings' => $wallet_amount, 
-                    'referral_amount' => $referral_amount, 
+                    'earnings' => $wallet_amount,
+                    'referral_amount' => $referral_amount,
                     'referral_count' => $referral_count
                 );
-                
+
                 Members::updateReferral($referral_by,$update_data);
 		    }
         }else {
@@ -205,6 +209,7 @@ class RegisterController extends Controller {
 		$token = $this->generateRandomString();
 		return User::create([
             'name' => $data['name'],
+            'mobile' => $data['mobile'],
             'email' => $data['email'],
 			'username' => $data['username'],
             'password' => Hash::make($data['password']),
