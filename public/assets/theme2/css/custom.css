@@ -11,7 +11,10 @@
 #vendor_main .v_connect ul li i{
     color: black;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 .vendor_sale > .iconify {
     font-size: 14px;
     height: 30px;
@@ -32,9 +35,19 @@
 .navbar .nav_sign a{
     margin-left:0px;
 }
+<<<<<<< HEAD
 .f_copy p{
     color:white;
 }
+=======
+.navbar .nav_sign .nav_selling{
+    margin-right:36px;
+}
+.f_copy p{
+    color:white;
+}
+
+>>>>>>> origin/master
 .nav_after > li {
     padding-left: 20px; padding-right: 20px;
 }
