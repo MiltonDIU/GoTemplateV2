@@ -380,7 +380,7 @@ class Items extends Model {
     $value = DB::table('category')
       ->where('drop_status', '=', 'no')
       ->where('category_status', '=', 1)
-      ->orderBy('cat_id', 'asc')
+      ->orderBy('menu_order', 'asc')
       ->get();
 
     return $value;

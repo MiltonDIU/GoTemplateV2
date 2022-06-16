@@ -79,7 +79,7 @@ class RegisterController extends Controller {
 
         $request->validate([
             'name'     => 'required',
-            'mobile'     => 'required',
+            'mobile'     => ['required','integer','max:14','min:9'],
             'username' => 'required',
             'email'    => 'required|email',
             'password' => ['required', 'min:6'],
@@ -153,7 +153,7 @@ class RegisterController extends Controller {
     protected function validator(array $data) {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'string', 'max:20'],
+            'mobile' => ['required','integer','max:14','min:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 			'username' => ['required', 'regex:/^[\w-]*$/', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:7', 'confirmed'],

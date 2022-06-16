@@ -18,7 +18,7 @@
       <li class="control category_button" data-filter="all">All</li>
 
       @foreach($cats as $cat)
-        <li class="control category_button" data-filter=".{{$cat->category_slug}}">{{ $cat->category_name }}</li>
+        <li class="control category_button" data-filter=".category{{ $cat->cat_id }}">{{ $cat->category_name }}</li>
       @endforeach
     </ul>
       @include('theme2.layout.filter2')

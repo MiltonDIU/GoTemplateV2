@@ -27,6 +27,7 @@ class ProfileController extends Controller {
 
     public function update_profile(Request $request) {
         $name     = $request->input('name');
+        $mobile   = $request->input('mobile');
         $username = $request->input('username');
         $email    = $request->input('email');
 
@@ -212,6 +213,7 @@ class ProfileController extends Controller {
 
             $data = array (
                 'name' => $name,
+                'mobile' => $mobile,
                 'username' => $username,
                 'email' => $email,
                 'password' => $pass,

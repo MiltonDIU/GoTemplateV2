@@ -3,7 +3,7 @@
 
     @foreach($items as $item)
         <div
-            class="mix item_box {{ $item->item_type }} {{$item->free_download == 1 ? 'free' : 'premium'}}"
+            class="mix item_box {{ 'category'.\Feberr\Helpers\Helper::parrentCategory($item->item_category,$item->item_category_type) }} {{$item->free_download == 1 ? 'free' : 'premium'}}"
             data-price="{{ $item->regular_price }}"
             data-published-date="{{ $item->created_at }}"
         >

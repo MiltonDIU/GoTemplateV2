@@ -111,7 +111,12 @@
                                                 {{ date('h:i:sa', strtotime($item->updated_item)) }}</td>
                                             <td>@if($item->item_thumbnail != '') <img height="50" width="50" src="{{ url('/') }}/public/storage/items/{{ $item->item_thumbnail }}" alt="{{ $item->item_name }}"/>@else <img height="50" width="50" src="{{ url('/') }}/public/img/no-image.png" alt="{{ $item->item_name }}" />  @endif</td>
                                             <td><a href="{{ url('/item') }}/{{ $item->item_slug }}/{{ $item->item_id }}" target="_blank" class="black-color">{{ substr($item->item_name,0,50) }}</a></td>
-                                           <td>{{ $item->item_type }}</td>
+
+
+                                           <td>{{ \Feberr\Helpers\Helper::parrentCategoryName($item->item_category,$item->item_category_type)  }}</td>
+
+
+
                                             <td><a href="{{ url('/user') }}/{{ $item->username }}" target="_blank" class="black-color">{{ $item->username }}</a></td>
 
                                             <td>@if($item->item_support == 1) <span class="badge badge-success">Yes</span> @else <span class="badge badge-danger">No</span> @endif</td>

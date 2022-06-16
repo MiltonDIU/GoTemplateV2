@@ -1,6 +1,4 @@
 @foreach($childs as $key=> $parent)
-
-
     <option value="subcategory_{{$parent->subcat_id}}">
     @for($j=0;$j<=$i; $j++)
             -
